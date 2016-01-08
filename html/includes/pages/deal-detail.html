@@ -1,0 +1,78 @@
+<div class="deal-title">
+    <small ng-bind="ctrl.deal.company_name"></small>
+    <h1 ng-bind="ctrl.deal.name"></h1>
+</div>
+
+<div class="deal-detail clearfix">
+    <aside>
+        <img src="{{ctrl.deal.owner.data.picture}}">
+
+        <h2><a ui-sref="root.profile.user({user_id: ctrl.deal.owner.data.id})" ng-bind="ctrl.deal.owner.data.name"></a>
+        </h2>
+        <small>Deal Owner</small>
+    </aside>
+    <div class="details clearfix">
+        <div class="match-height column">
+            <div class="activity">
+                <!-- include qqs asked and aswered for deal -->
+                <small>Total QQs Asked & Answered by week</small>
+                <div class="graph clearfix">
+                    <div ng-repeat="(key, week) in ctrl.weekCounts | limitTo:4" style="height:{{week.count}}%"
+                         class="week {{ctrl.convertNumberToWord(key + 1)}}">
+                        <p><span>{{week.count}}</span>Week {{key + 1}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="plays">
+                <div ng-repeat="(playbook_name, playbook) in ctrl.playbook_counts">
+                    <small>{{playbook_name}}</small>
+                    <div ng-repeat="play in playbook" class="play-row">
+                        <p>{{play.play}}</p>
+                        <div class="questions clearfix">
+                            <div class="answered">{{play.answer_count}}</div>
+                            <div class="asked">{{play.question_count}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="match-height">
+            <div class="account-value">
+                <small>Account Value</small>
+                <h2 ng-bind="ctrl.account_value"></h2>
+            </div>
+            <div class="close-date">
+                <small>Close Date</small>
+                <h2 ng-bind="ctrl.close_date"></h2>
+            </div>
+        </div>
+        <div class="match-height">
+            <div class="forecast">
+                <small>forecast</small>
+                <h2 ng-bind="ctrl.deal.forecast"></h2>
+            </div>
+            <div class="stage">
+                <small>Stage</small>
+                <h2 ng-bind="ctrl.deal.stage"></h2>
+            </div>
+        </div>
+        <div class="qq-buttons">
+            <button ui-sref="root.deal-set-play({deal_id: ctrl.deal.id})">Add Play</button>
+            <button ui-sref="root.deal-feed({deal_id: ctrl.deal.id})">View Answers</button>
+        </div>
+        <div class="salesforce-button">
+            <button class="salesforce">View Deal in Salesforce</button>
+        </div>
+        <div class="virtual-team clearfix">
+            <small>Extended Team</small>
+            <div ng-repeat="team_mate in ctrl.extended_team" class="questions clearfix">
+                <small><a ui-sref="root.profile.user({user_id: team_mate.id})">{{team_mate.name}}</a></small>
+                <div class="answered {{ctrl.answerCountIsZero(team_mate)}}">{{team_mate.answer_count}}</div>
+                <div class="asked">{{team_mate.question_count}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

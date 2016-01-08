@@ -1,0 +1,55 @@
+<div class="deal-title">
+    <small ng-bind="ctrl.deal.company_name"></small>
+    <h1 ng-bind="ctrl.deal.name"></h1>
+</div>
+<div class="deal-questions">
+    <div ng-repeat="(playbook_name, playbook) in ctrl.feed">
+        <div ng-repeat="(play_name, play) in playbook">
+            <div class="play-header ng-class=" {border-top:$first}">
+            <small>{{playbook_name}}</small>
+            <h2>{{play_name}}</h2>
+
+            <div class="questions">
+                <h2><span class="green">{{play.meta.answer_count}}</span> / <span class="dk-green">{{play.meta.question_count}}</span>
+                </h2>
+            </div>
+        </div>
+        <div ng-repeat="sub_play in play.data">
+            <div class="row">
+                <h2><a class="accordion" ng-class="{ active: ctrl.checkExpansion(play_name, sub_play.child_play) }"
+                       ng-click="ctrl.toggle(play_name, sub_play.child_play)">{{sub_play.child_play}}</a></h2>
+
+                <div class="questions clearfix">
+                    <div class="answered">{{sub_play.child_answer_count}}</div>
+                    <div class="asked">{{sub_play.child_question_count}}</div>
+                </div>
+            </div>
+            <div ng-show="ctrl.checkExpansion(play_name, sub_play.child_play)" class="expanded" id="money">
+                <button ui-sref="root.ask-play-questions">Send {{sub_play.child_play}} QQs</button>
+
+                <div ng-repeat="question in ctrl.questionsForPlay(playbook_name, play_name, sub_play.child_play)">
+                    <div class="qq">
+                        <p>{{question.question}}</p>
+                        <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
+                        </small>
+                        <a ui-sref="root.ask-reps" class="share"></a>
+                    </div>
+
+                    <div ng-repeat="answer in question.answers">
+                        <div class="qq-answer">
+                            <p>{{answer.answer_user_name}} {{ctrl.formatAnswer(answer.answer)}}</p>
+                            <small class="timestamp">{{ctrl.formatDate(answer.answer_date)}}</small>
+                        </div>
+                        <div ng-repeat="comment in answer.comments" class="qq-comment">
+                            <p class="comment-icon">{{comment.comment_user_name}} commented</p>
+
+                            <p>{{comment.comment}}</p>
+                            <small class="timestamp">{{ctrl.formatDate(comment.comment_date)}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

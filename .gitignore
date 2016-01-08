@@ -1,0 +1,127 @@
+###### PER-PROJECT IGNORE ######
+
+####### COMMON IGNORES #######
+#######   10/15/2015   #######
+
+# -------- Generic --------
+*.tmp*
+*.log*
+*.pid
+*.bak
+**/tmp/**
+
+# -------- Tools --------
+# Pixel-Tools
+.pixel-temp/
+
+# Vagrant
+.vagrant/
+vagrant_ansible_inventory_default
+
+# COMPOSER (PHP)
+composer.phar
+
+# Laravel
+**/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+.env.behat
+
+# BOWER
+bower_components/
+
+# GRUNT
+.grunt/
+
+# JSPM
+jspm_packages/
+
+# NODEJS NPM
+*.seed
+# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+# Retain folder, but exclude all modules with glob
+node_modules
+
+# SASS
+.sass-cache/
+
+# AWS - Amazon Web Services
+.elasticbeanstalk/
+
+# -------- IDE Extras --------
+# INTELLIJ
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
+
+# TEXTMATE
+*.tmproj
+*.tmproject
+tmtags
+
+# SUBLIME TEXT
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-*
+sftp-config.json
+local.sbt
+
+# ECLIPSE
+.gradle/
+.project
+.cproject
+.metadata
+*.pydevproject
+.texlipse
+*.launch
+*.factorypath
+.buildpath
+.target
+*~.nib
+*.swp
+.settings/
+.loadpath
+local.properties
+
+# -------- OPERATING SYSTEMS --------
+
+# LINUX
+*~
+.directory
+.Trash-*
+
+# WINDOWS
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.lnk
+
+# MacOS X
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Icon must end with two \r
+Icon
+
+
+# ---- EOF ----

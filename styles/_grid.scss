@@ -1,0 +1,176 @@
+@import "../../../node_modules/susy/sass/_susy.scss";
+
+$susy: (
+        columns: 12,
+        gutters: 1/4,
+        math: fluid,
+        output: float,
+        gutter-position: split,
+);
+
+
+
+
+main, .wrapper {
+  @include container(100% border-box);
+  @include pad(20px);
+}
+
+header {
+  .logo {
+    @include span(2 no-gutter);
+  }
+}
+
+
+/* FEED ----------------------------------
+-------------------------------------------*/
+.row {
+  @include span(100% no-gutter border-box);
+  aside {
+    @include span(15% no-gutter border-box);
+  }
+  .feed-detail-wrapper {
+    @include span(85% no-gutter border-box);
+  }
+}
+
+
+
+/* DISTRICT LIST ---------------------------
+-------------------------------------------*/
+.row {
+  .details {
+    @include span(85% no-gutter border-box);
+  }
+}
+
+
+
+
+/* PROFILE --------------------------------
+-------------------------------------------*/
+.profile, .deal-detail {
+  aside {
+    @include span(25% no-gutter border-box);
+  }
+  .details {
+    @include span(75% no-gutter border-box);
+    .qq-total, .qq-value, .playbook {
+      @include span(50% no-gutter border-box);
+    }
+    .virtual-team {
+      .questions {
+        @include span(10 of 12 no-gutter border-box);
+        @include push(1);
+        small {
+          @include span(7.1 of 10 no-gutter border-box);
+        }
+        .answered, .asked {
+          @include span(1.55 of 10 no-gutter);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+/* SETTINGS -------------------------------
+-------------------------------------------*/
+.profile {
+  .settings {
+    @include span(75% no-gutter border-box);
+  }
+}
+
+/* DEAL DETAIL ----------------------------
+-------------------------------------------*/
+.deal-detail {
+  aside {
+    @include span(25% no-gutter border-box);
+  }
+  .details {
+    @include span(75% no-gutter border-box);
+    .account-value, .close-date, .stage, .forecast, .activity, .plays, .qq-buttons, .salesforce-button {
+      @include span(50% no-gutter border-box);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES --------------------------
+-------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  main, .wrapper {
+    @include pad(0);
+  }
+
+  .row {
+    aside {
+      @include span(20% no-gutter border-box);
+    }
+    .feed-detail-wrapper, .details {
+      @include span(80% no-gutter border-box);
+    }
+  }
+
+  .profile {
+    aside {
+      @include span(100% no-gutter border-box);
+    }
+    .details {
+      @include span(100% no-gutter border-box);
+      .qq-total, .qq-value, .qualify, .campaign {
+        @include span(50% no-gutter border-box);
+      }
+    }
+  }
+
+  .deal-detail {
+    .details {
+      @include span(100% no-gutter border-box);
+      .activity, .plays, .qq-buttons, .salesforce-button {
+        @include span(100% no-gutter border-box);
+      }
+    }
+  }
+
+  .profile {
+    .settings {
+      @include span(100% no-gutter border-box);
+    }
+  }
+
+}
+
+@media only screen and (max-width: 320px) {
+  .profile, .deal-detail {
+    .details {
+      .virtual-team {
+        .questions {
+          @include span(100% no-gutter border-box);
+          @include push(0);
+          @include pad(10px);
+          small {
+            @include span(8 no-gutter border-box);
+          }
+          .answered, .asked {
+            @include span(2 no-gutter border-box);
+          }
+        }
+      }
+    }
+  }
+}

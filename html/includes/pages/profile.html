@@ -1,0 +1,56 @@
+<h1>Profile</h1>
+<div class="profile clearfix">
+    <aside>
+        <img ng-if="ctrl.profile.picture" src="{{ctrl.profile.picture}}">
+
+        <h2>{{ctrl.profile.name}}<a ui-sref="root.settings" class="settings-icon" ng-if="ctrl.not_other_profile"></a></h2>
+
+        <p class="profile-title">{{ctrl.roleLabel}}</p>
+        <small><a class="deals-count" ng-if="ctrl.MyDeals != true" ui-sref="root.deals.user({user_id: ctrl.profile.id})">{{ctrl.profile.deal_count}} deals</a>
+            <a class="deals-count" ng-if="ctrl.MyDeals == true" ui-sref="root.deals">{{ctrl.profile.deal_count}} deals</a>
+            <span ng-if="ctrl.isManager">| <a class="district"
+                                                        ui-sref="root.district.user({user_id: ctrl.profile.id})">Direct Reports</a></span>
+        </small>
+    </aside>
+    <div class="details clearfix">
+        <div class="match-height">
+            <div class="qq-total">
+                <small>Trailing 13 QQs</small>
+                <div class="questions clearfix">
+                    <div class="answered">{{ctrl.quarterAnswerCount}}</div>
+                    <div class="asked">{{ctrl.quarterQuestionCount}}</div>
+                </div>
+            </div>
+            <div class="qq-value">
+                <small>Current Quarter Deals</small>
+                <h2 ng-if="ctrl.trailingCounts.deal_value">{{ctrl.formatMoney(ctrl.trailingCounts.deal_value)}}</h2>
+            </div>
+        </div>
+        <div class="activity">
+            <small>Activity by week</small>
+            <div class="graph clearfix">
+                <div ng-repeat="(key, week) in ctrl.trailingCounts.week_counts | limitTo:13"
+                     style="height:{{week.count}}%"
+                     class="week {{ctrl.convertNumberToWord(key + 1)}}">
+                    <p><span>{{week.count}}</span>Week {{key + 1}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="match-height">
+            <div ng-repeat="(key, playbook) in ctrl.playbook_counts" class="playbook">
+                <small>{{key}}</small>
+                <ul>
+                    <li ng-repeat="play in playbook">{{play.play}}: {{play.count}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="virtual-team clearfix">
+            <small>Active Virtual Team</small>
+            <div ng-repeat="team_mate in ctrl.virtual_team" class="questions clearfix">
+                <small><a ui-sref="root.profile.user({user_id: team_mate.id})">{{team_mate.name}}</a></small>
+                <div class="answered {{ctrl.answerCountIsZero(team_mate)}}">{{team_mate.answer_count}}</div>
+                <div class="asked">{{team_mate.question_count}}</div>
+            </div>
+        </div>
+    </div>
+</div>

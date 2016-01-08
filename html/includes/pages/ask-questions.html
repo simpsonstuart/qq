@@ -1,0 +1,46 @@
+<div class="ask">
+    <h1>Ask</h1>
+    <div class="ask-details">
+        <small>Deal</small>
+        <h1>Sony Tech Refresh</h1>
+    </div>
+    <div class="ask-info">
+        <form name="ask_question" novalidate>
+        <small>Have a general question? Ask it below!</small>
+        <small class="error" ng-if="ask_question.deal.$invalid && !ask_question.deal.$pristine">Question text is required</small>
+        <input name="deal" id="deal" type="text" ng-model="deal" placeholder="Begin typing..." required/>
+        <small>Question Type</small>
+        <input type="radio" name="question-type" ng-model="question_type" value="yes-no" ng-required="!question_type">Yes or no answer <br>
+        <input type="radio" name="question-type" ng-model="question_type" value="text" ng-required="!question_type">Text answer
+        <button class="submit" ng-click="$state.go('root.ask-reps')" type="button" ng-disabled="ask_question.$invalid">Next</button>
+        </form>
+        <div class="hr">
+            <p>or</p>
+        </div>
+        <small>Know (Deal Name) has been assigned plays? Find play questions to ask below.</small>
+        <div class="plays">
+            <div>
+                <small>Qualify</small>
+                <div ng-click="$state.go('root.ask-play-questions')" class="play-row">
+                    <p>MANT</p>
+                    <a class="caret"></a>
+                </div>
+                <div ng-click="$state.go('root.ask-play-questions')" class="play-row">
+                    <p>MANT</p>
+                    <a class="caret"></a>
+                </div>
+            </div>
+            <div>
+                <small>Campaign</small>
+                <div ng-click="$state.go('root.ask-play-questions')" class="play-row">
+                    <p>MANT</p>
+                    <a class="caret"></a>
+                </div>
+                <div ng-click="$state.go('root.ask-play-questions')" class="play-row">
+                    <p>MANT</p>
+                    <a class="caret"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
