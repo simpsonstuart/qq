@@ -5,8 +5,7 @@ angular.module('QQ', [
         'angular-cache'
 ])
     .constant('ApiConfig', {
-        'url': '/api/',
-        'key': 'secret'
+        'url': '/api/'
     })
 
     .run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
