@@ -1,0 +1,27 @@
+---
+# ESLint Configuration
+# Configuration Docs: http://eslint.org/docs/user-guide/
+
+# Error Levels
+# 0 - Disable
+# 1 - Warning
+# 2 - Error
+
+rules:
+  indent: [2, 2]
+  quotes: [2, single]
+  linebreak-style: [2, unix]
+  semi: [2, always]
+  eqeqeq: [2, smart]
+  complexity: [1, 2]
+  comma-dangle: [2, never]
+  block-scoped-var: [1]
+  no-console: [0]
+  # valid-jsdoc: [1, { requireReturn: false }]
+env:
+  es6: true
+  node: true
+  browser: true
+extends: 'eslint:recommended'
+ecmaFeatures:
+  modules: true
