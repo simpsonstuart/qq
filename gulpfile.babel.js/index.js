@@ -44,14 +44,11 @@ var vendorJavascriptSources = [
 
 var appJavascriptSources = [
   config.paths.source.application + '/qq-app.js',
-  config.paths.source.application + '/controllers/' + config.globs.scripts,
-  config.paths.source.application + '/directives/' + config.globs.scripts,
-  config.paths.source.application + '/middleware/' + config.globs.scripts,
-  config.paths.source.application + '/services/' + config.globs.scripts
+  config.paths.source.application + '/controllers/*.js',
+  config.paths.source.application + '/directives/*.js',
+  config.paths.source.application + '/middleware/*.js',
+  config.paths.source.application + '/services/*.js'
 ];
-
-console.log(vendorJavascriptSources);
-console.log(appJavascriptSources);
 
 //
 // GULP TASKS
@@ -125,7 +122,7 @@ gulp.task('javascript', () => {
 });
 
 gulp.task('javascript:minify', () => {
-  return gulp.src(config.path(config.paths.public.scripts, config.globs.scripts))
+  return gulp.src(path.join(config.paths.public.scripts, config.globs.scripts))
     .pipe(plumber())
     .pipe(gulpif(config.tasks.uglify.enabled, uglify(config.tasks.uglify.options)))
     .pipe(gulp.dest(config.paths.public.scripts))

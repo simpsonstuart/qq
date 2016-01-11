@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.mattneally.quickquestions"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.mattneally.quickquestions"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.mattneally.quickquestions"
+        }
+    },
+    "dependent_plugins": {}
+}

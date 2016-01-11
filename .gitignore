@@ -1,6 +1,10 @@
 ###### PER-PROJECT IGNORE ######
 /www
 
+####### CORDOVA IGNORES #######
+/platforms
+/plugins/cordova*
+
 ####### COMMON IGNORES #######
 #######   10/15/2015   #######
 

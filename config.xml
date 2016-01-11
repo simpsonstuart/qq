@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.mattneally.quickquestions" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Quick Questions</name>
+    <description>Quick Questions[needs description]</description>
+
+    <content src="index.html" />
+
+    <engine name="browser" spec="~4.0.0" />
+
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-file" spec="~3.0.0" />
+    <plugin name="cordova-plugin-device" spec="~1.1.0" />
+
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="resources/icons/icon.svg" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="landscape" />
+
+    <!-- iOS Specific Settings -->
+    <platform name="ios">
+        <preference name="StatusBarOverlaysWebView" value="false" />
+
+        <!-- When set to true, the web view does not attempt to render incoming content as it
+        arrives. Instead, the view’s current contents remain in place until all of the new content
+        has been received, at which point the new content is rendered. This property does not
+        affect the rendering of content retrieved after a frame finishes loading. -->
+        <preference name="SuppressesIncrementalRendering" value="false" />
+
+        <!-- Set to true to allow a viewport meta tag to either disable or restrict the range of
+        user scaling, which is enabled by default. -->
+        <preference name="EnableViewportScale" value="false" />
+
+        <!-- Set to false to prevent Air Play from being used in this view. -->
+        <preference name="MediaPlaybackAllowsAirPlay" value="false" />
+
+        <!-- Set to true to prevent HTML5 videos or audios from playing automatically with the
+        autoplay attribute or via JavaScript. -->
+        <preference name="MediaPlaybackRequiresUserAction" value="false" />
+
+        <!-- Set to true to allow HTML5 media playback to appear inline within the screen layout,
+        using browser-supplied controls rather than native controls. For this to work, add the
+        webkit-playsinline attribute to any <video> elements. -->
+        <preference name="AllowInlineMediaPlayback" value="true" />
+
+        <!-- Set to cloud to allow web storage data to backup via iCloud. Set to local to allow
+        only local backups via iTunes sync. Set to none prevent web storage backups. -->
+        <preference name="BackupWebStorage" value="none" />
+
+        <preference name="target-device" value="tablet" />
+        <preference name="deployment-target" value="7.0" />
+
+        <preference name="SuppressesLongPressGesture" value="true" />
+        <preference name="Suppresses3DTouchGesture" value="true" />
+
+        <!-- ICONS -->
+        <icon src="resources/icons/ios/icon-small.png" width="29" height="29" />
+        <icon src="resources/icons/ios/icon-50@2x.png" width="100" height="100" />
+        <icon src="resources/icons/ios/icon-72.png" width="72" height="72" />
+        <icon src="resources/icons/ios/icon-40@2x.png" width="80" height="80" />
+        <icon src="resources/icons/ios/icon-76.png" width="76" height="76" />
+        <icon src="resources/icons/ios/icon-small@2x.png" width="58" height="58" />
+        <icon src="resources/icons/ios/icon-60@2x.png" width="120" height="120" />
+        <icon src="resources/icons/ios/icon-60@3x.png" width="180" height="180" />
+        <icon src="resources/icons/ios/icon-40.png" width="40" height="40" />
+        <icon src="resources/icons/ios/icon-72@2x.png" width="144" height="144" />
+        <icon src="resources/icons/ios/icon.png" width="57" height="57" />
+        <icon src="resources/icons/ios/icon-50.png" width="50" height="50" />
+        <icon src="resources/icons/ios/icon-60.png" width="60" height="60" />
+        <icon src="resources/icons/ios/icon@2x.png" width="114" height="114" />
+        <icon src="resources/icons/ios/icon-76@2x.png" width="152" height="152" />
+
+        <!-- Splash Screen -->
+        <preference name="FadeSplashScreen" value="true" />
+        <splash src="resources/splash/splash.png" />
+
+        <!-- iOS Hooks -->
+
+        <!-- Fix retarded safari webview to actually load some fonts properly. -->
+        <hook type="after_prepare" src="scripts/ios/fixfonts.js" />
+    </platform>
+
+    <!-- Android Specific Settings -->
+    <platform name="android">
+      <icon src="resources/icons/android/mdpi.png" density="mdpi" />
+      <icon src="resources/icons/android/xxhdpi.png" density="xxhdpi" />
+      <icon src="resources/icons/android/hdpi.png" density="hdpi" />
+      <icon src="resources/icons/android/ldpi.png" density="ldpi" />
+      <icon src="resources/icons/android/xhdpi.png" density="xhdpi" />
+    </platform>
+
+    <!-- Browser Specific Settings -->
+    <platform name="browser">
+    </platform>
+</widget>
