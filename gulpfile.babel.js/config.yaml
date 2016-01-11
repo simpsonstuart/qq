@@ -1,0 +1,104 @@
+---
+paths:
+  node_modules: "./node_modules"
+  source:
+    root: "source"
+    html: "source/html"
+    views: "source/views"
+    fonts: "source/fonts"
+    application: "source/app"
+    styles: "source/styles"
+    audio: "source/media/audio"
+    images: "source/media/images"
+    video: "source/media/video"
+  public:
+    root: "www"
+    html: "www"
+    views: "www/views"
+    fonts: "www/fonts"
+    scripts: "www/scripts"
+    vendor: "www/app/vendor"
+    styles: "www/styles"
+    images: "www/media/images"
+    audio: "www/media/audio"
+    video: "www/media/video"
+
+tasks:
+  htmlmin:
+    options:
+      collapseWhitespace: true
+  sass:
+    enabled: true
+    options:
+      includePaths:
+        - "./node_modules"
+      outputStyle: "compressed"
+      errLogToConsole: true
+  cssnano:
+    enabled: true
+    options:
+      autoprefixer:
+        browsers:
+          - 'last 2 versions'
+      calc: true,
+      discardComments: true
+      minifyFontValues: true
+      mergeIdents: true
+      reduceIdents: false
+      mergeRules: true
+      discardUnused: true
+      normalizeUrl: true
+      zindex: true
+  babel:
+    enabled: true
+  minifycss:
+    enabled: true
+    options:
+      keepSpecialComments: 0
+  uglify:
+    enabled: true
+  imagemin:
+    enabled: true
+    options:
+      svgo:
+        multipass: true
+        plugins:
+          - removeViewBox: false
+          - removeUselessStrokeAndFill: false
+      gifsicle:
+        interlaced: true
+      pngquant:
+        floyd: 0.5
+        nofs: false
+        quality: null
+        speed: 3
+        verbose: false
+      webp:
+        preset: 'default'
+        quality: 75
+        alphaQuality: 100
+        method: 6
+        autoFilter: true
+        sharpness: 0
+        lossless: false
+      mozjpeg:
+        quality: 80
+        progressive: true
+        targa: false
+        revert: false
+        fastcrush: false
+        dcScanOpt: 1
+        notrellis: false
+        notrellisDC: false
+        tune: 'hvs-psnr'
+        noovershoot: false
+        arithmetic: false
+
+globs:
+  images: '**/*.{jpg,jpeg,gif,png,ico,svg,webp}'
+  audio: '**/**.{mp3,ogg,oga,aac,wav,flac,m4a,wma,aiff}'
+  video: '**/**.{mp4,avi,webm,ogv,mkv,mpeg,mov,f4v,wmv}'
+  scripts: '**/*.{js}'
+  styles: '**/*.{sass,scss,css}'
+  html: '**/*.{htm,html}'
+  fonts: '**/*.{ttf,eot,woff,woff2,svg,otf}'
