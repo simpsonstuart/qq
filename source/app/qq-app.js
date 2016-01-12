@@ -659,7 +659,8 @@ angular.module('QQ', [
 
     $httpProvider.interceptors.push("HttpErrorInterceptor");
 
-    $locationProvider.html5Mode(true);
+    //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution
+    $locationProvider.html5Mode(false);
 
         // setup http middleware
 
