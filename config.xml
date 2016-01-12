@@ -81,9 +81,6 @@
         <splash src="resources/splash/splash.png" />
 
         <!-- iOS Hooks -->
-
-        <!-- Fix retarded safari webview to actually load some fonts properly. -->
-        <hook type="after_prepare" src="scripts/ios/fixfonts.js" />
     </platform>
 
     <!-- Android Specific Settings -->
