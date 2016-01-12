@@ -36,6 +36,15 @@ Then, in another terminal:
 cordova browser run
 ```
 
+More research still needs to be done on what specifically is committed to the repository for a Cordova project, but if you're getting errors during initial run about this project not being a Cordova project, then try running the following commands and see if it fixes the issue:
+
+```sh
+cordova platform remove browser
+cordova platform add browser
+```
+
+There may be a better way to do this, but it should install all of the files that it needs to successfully run the project.
+
 Note that any change will not immediately be reflected, and that you'll have to cancel and run the "cordova browser run" command again to see the changes.  Soon, Browsersync will be implemented to mitigate this issue, though it may be a good idea to periodically refresh anyway.
 
 ## Style Guide
