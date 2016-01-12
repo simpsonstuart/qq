@@ -21,7 +21,7 @@
     <icon src="resources/icons/icon.svg" />
     <preference name="Fullscreen" value="true" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="Orientation" value="landscape" />
+    <preference name="Orientation" value="portrait" />
 
     <!-- iOS Specific Settings -->
     <platform name="ios">
