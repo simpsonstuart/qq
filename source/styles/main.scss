@@ -145,7 +145,7 @@ button {
     border: 1px solid #48a5d3;
     &:before {
       content: '';
-      background: url(../source/media/images/salesforce-logo.png) no-repeat;
+      background: url(../media/images/salesforce-logo.png) no-repeat;
       display: inline-block;
       width: 39px;
       height: 27px;
@@ -219,7 +219,7 @@ header {
     height: 62px;
   }
   .logo {
-    background: url(../source/media/images/logo-btn.svg) no-repeat;
+    background: url(../media/images/logo-btn.svg) no-repeat;
     text-indent: -9999px;
     width: 80px;
     height: 41px;
@@ -286,7 +286,7 @@ header {
 header.logo-nav {
   padding: 10px 0;
   .logo {
-    background: url(../source/media/images/logo.svg) no-repeat;
+    background: url(../media/images/logo.svg) no-repeat;
     margin: 0 auto;
     float: none;
     width: 80px;
@@ -2065,7 +2065,7 @@ footer {
 @media (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
   button .salesforce:before {
-    background: url(../source/media/images/salesforce-logo@2x.png) no-repeat;
+    background: url(../media/images/salesforce-logo@2x.png) no-repeat;
     background-size: 100% auto;
   }
 }

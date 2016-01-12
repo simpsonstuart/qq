@@ -5,7 +5,7 @@ angular.module('QQ', [
         'angular-cache'
 ])
     .constant('ApiConfig', {
-        'url': '/api/'
+        'url': 'http://quickquestions.pixelandline.net/api/'
     })
 
     .run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
@@ -37,7 +37,7 @@ angular.module('QQ', [
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    $authProvider.loginUrl = '/api/login';
+    $authProvider.loginUrl = 'http://quickquestions.pixelandline.net/api/login';
 
         $stateProvider
             .state('root', {
