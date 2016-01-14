@@ -1,46 +1,24 @@
 <small class="import-title">Select Users to add to your qquiqq team</small>
-<form class="import" ng-controller="MainController">
+<form class="import">
     <fieldset>
-        <div class="clearfix">
-            <input type="checkbox" id="user" class="checkbox"/>
-            <label for="user" ng-click="showPermissions()"></label>
-            <img src="/source/media/images/avatar.png"/>
+        <div class="clearfix" ng-repeat="user in ctrl.users">
+            <input type="checkbox" id="user_{{user.userId}}" ng-model="user.isChecked" ng-change="user.selected" ng-checked="is"  class="checkbox"/>
+            <label for="user_{{user.userId}}"></label>
+            <img src="{{user.avatar}}"/>
 
             <div class="import-details users">
-                <h2>Elizabeth Williams</h2>
-                <small>Manager | Paul Barr</small>
+                <h2>{{user.name}}</h2>
+                <small>Manager | {{user.manager}}</small>
             </div>
-            <h2 class="permissions">M</h2>
+            <h2 class="permissions" ng-if="user.role">{{user.role | limitTo:ctrl.letterLimit}}</h2>
 
-            <div class="permissions" ng-show="visible">
+            <div class="permissions" ng-if="user.isChecked">
                 <small>Select User's Permissions</small>
                 <div class="clearfix">
-                    <button>Admin</button>
-                    <button>Manager</button>
-                    <button>Rep</button>
+                    <button ng-repeat="role in ctrl.roles" ng-click="ctrl.clickedRole(user.userId, role);">{{role}}</button>
                 </div>
             </div>
         </div>
-        <div class="clearfix">
-            <input type="checkbox" id="user2" class="checkbox"/>
-            <label for="user2"></label>
-            <img src="/source/media/images/avatar3.png"/>
-
-            <div class="import-details users">
-                <h2>Claire Miller</h2>
-                <small>Manager | Paul Barr</small>
-            </div>
-        </div>
-        <div class="clearfix">
-            <input type="checkbox" id="user3" class="checkbox"/>
-            <label for="user3"></label>
-            <img src="/source/media/images/avatar2.png"/>
-
-            <div class="import-details users">
-                <h2>Christopher Walken</h2>
-                <small>Manager | Paul Barr</small>
-            </div>
-        </div>
-        <button class="submit" type="submit">Finish</button>
+        <button class="submit" type="submit" ng-click="ctrl.getChecked()" ng-disabled="isDisabled">Finish</button>
     </fieldset>
 </form>

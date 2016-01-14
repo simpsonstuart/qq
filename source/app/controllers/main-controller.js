@@ -11,6 +11,7 @@ function MainController($scope, QuestionsModel) {
 
     $scope.myReps = [];
 
+
     $scope.allReps = [{'name': 'Claire Miller'}, {'name': 'Christopher Walken'}, {'name': 'Dustin Jones'}, {'name': 'Elizabeth Samuels'}, {'name': 'Samuel L Jackson'}, {'name': 'Matt Neally'}];
 
     $scope.search = {
