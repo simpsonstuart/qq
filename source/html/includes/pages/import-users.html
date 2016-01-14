@@ -2,7 +2,7 @@
 <form class="import">
     <fieldset>
         <div class="clearfix" ng-repeat="user in ctrl.users">
-            <input type="checkbox" id="user_{{user.userId}}" ng-model="user.isChecked" ng-change="user.selected" ng-checked="is"  class="checkbox"/>
+            <input type="checkbox" id="user_{{user.userId}}" ng-model="user.isChecked" ng-change="user.selected" ng-click="ctrl.setEnabled()" class="checkbox"/>
             <label for="user_{{user.userId}}"></label>
             <img src="{{user.avatar}}"/>
 
@@ -19,6 +19,6 @@
                 </div>
             </div>
         </div>
-        <button class="submit" type="submit" ng-click="ctrl.getChecked()" ng-disabled="isDisabled">Finish</button>
+        <button class="submit" type="submit" ng-click="ctrl.getChecked()" ng-disabled="ctrl.isDisabled != false">Finish</button>
     </fieldset>
 </form>

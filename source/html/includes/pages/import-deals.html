@@ -2,7 +2,7 @@
 <form class="import">
     <fieldset>
         <div ng-repeat="deal in ctrl.deals">
-            <input type="checkbox" id="{{deal.dealId}}" class="checkbox" ng-model="deal.isChecked" ng-change="deal.selected" />
+            <input type="checkbox" id="{{deal.dealId}}" class="checkbox" ng-model="deal.isChecked" ng-change="deal.selected"  ng-click="ctrl.checkEnabled()" />
             <label for="{{deal.dealId}}"></label>
             <div class="import-details deals">
             <h2>{{deal.name}}</h2>
@@ -12,6 +12,6 @@
             </div>
             <h2 class="amount">{{deal.amount}}</h2>
         </div>
-        <button class="submit" type="submit" ng-click="ctrl.getChecked()" ng-disable="">Next</button>
+        <button class="submit" type="submit" ng-click="ctrl.nextPressed()" ng-disabled="ctrl.isDisabled != false">Next</button>
     </fieldset>
 </form>

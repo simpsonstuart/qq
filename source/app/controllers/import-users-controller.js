@@ -20,14 +20,16 @@ function ImportUsersController($scope, _, $state) {
 
     //returns array of only selected users on finish click then goes to profile page
     ctrl.getChecked = function () {
-        var usersChkd = [];
+        var usersChecked = [];
         for (var i = 0, l = ctrl.users.length; i < l; i++) {
             if (ctrl.users[i].isChecked) {
-                usersChkd.push(angular.copy(ctrl.users[i]));
-                delete usersChkd[i].isChecked;
+                usersChecked.push(angular.copy(ctrl.users[i]));
+                delete usersChecked[i].isChecked;
             }
         }
-        ctrl.usersChkd = usersChkd;
+        ctrl.usersChkd = usersChecked;
         $state.go('root.profile');
     };
+
+
 }
