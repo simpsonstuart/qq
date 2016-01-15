@@ -4,9 +4,9 @@ angular.module('QQ')
 function ImportUsersController($scope, _, $state) {
     var ctrl = this;
     ctrl.users = [
-        {"name":"Elizabeth Hudlet", "role": '', "manager":"David Thompson", "avatar":"/media/images/avatar3.png", "userId":"938253"},
-        {"name":"Tonya Williams", "role": '',"manager":"Rick Sanders", "avatar":"media/images/avatar.png", "userId":"454845"},
-        {"name":"Pablo Montoya", "role": '',"manager":"Nathanial Patlovich", "avatar":"/media/images/avatar2.png", "userId":"394985"}
+        {"name":"Elizabeth Hudlet", "manager":"David Thompson", "avatar":"/media/images/avatar3.png", "userId":"938253"},
+        {"name":"Tonya Williams", "manager":"Rick Sanders", "avatar":"media/images/avatar.png", "userId":"454845"},
+        {"name":"Pablo Montoya", "manager":"Nathanial Patlovich", "avatar":"/media/images/avatar2.png", "userId":"394985"}
     ];
 
     ctrl.roles =["Admin", "Manager", "Rep"];
@@ -31,25 +31,19 @@ function ImportUsersController($scope, _, $state) {
         var userIndex = _.findIndex(ctrl.users, "userId", userId);
             ctrl.users[userIndex].role = "";
 
-        //filter array fo users that are selected
-        ctrl.filteredUsers = _.filter(ctrl.users, "isChecked");
-        console.log("1",ctrl.filteredUsers);
-
+            // filter array for users that are selected
+            ctrl.filteredUsers = _.filter(ctrl.users, "isChecked");
             ctrl.validate(userIndex);
     };
 
-    //
+    //disable the finish button if no users are checked and if a role isn't selected for all selected users
     ctrl.validate = function(userIndex) {
-        if (ctrl.filteredUsers != "" && ctrl.filteredUsers.length > 0 ) {
-            // check for at least one selected item and check role to make sure a role is selected
-            if (!ctrl.filteredUsers || !ctrl.filteredUsers[userIndex].role) {
-                ctrl.isDisabled = true;
-            }
-            else {
-                ctrl.isDisabled = false;
-            }
+
+        if (_.some(ctrl.users, 'isChecked') && _.every(ctrl.filteredUsers, 'role')){
+
+            ctrl.isDisabled = false;
         }
-        else {
+        else{
             ctrl.isDisabled = true;
         }
     };
