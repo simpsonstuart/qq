@@ -3,7 +3,6 @@ import del from 'del';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
-//import watch from 'gulp-watch';
 import plumber from 'gulp-plumber';
 import gulpif from 'gulp-if';
 import filter from 'gulp-filter';
@@ -196,31 +195,3 @@ gulp.task('browsersync:reload', () => {
 });
 
 gulp.task('default', gulp.series('build', 'browsersync'));
-
-// gulp.task('watch', ['build'], () => {
-//   watch(path.join(config.paths.source.html, config.globs.html), {usePolling: true}, () => {
-//     gulp.start('html');
-//   });
-//   watch(path.join(config.paths.source.styles, config.globs.styles), {usePolling: true}, () => {
-//     gulp.start('styles');
-//   });
-//
-//   watch(path.join(config.paths.source.application, config.globs.scripts), {usePolling: true}, () => {
-//     gulp.start('javascript');
-//     gulp.start('javascript:minify');
-//   });
-//
-//   watch(path.join(config.paths.source.fonts, config.globs.fonts), {usePolling: true}, () => {
-//     gulp.start('fonts');
-//   });
-//   watch(path.join(config.paths.source.images, config.globs.images), {usePolling: true}, () => {
-//     gulp.start('images');
-//   });
-//   watch(path.join(config.paths.source.video, config.globs.video), {usePolling: true}, () => {
-//     gulp.start('video');
-//   });
-//   watch(path.join(config.paths.source.audio, config.globs.audio), {usePolling: true}, () => {
-//     gulp.start('audio');
-//   });
-//   console.log('NOTICE: Gulp is watching for changes. Press CTRL-C to stop.');
-// });
