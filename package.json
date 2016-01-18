@@ -23,7 +23,7 @@
     "browser-sync": "^2.8.2",
     "cssnano": "^3.2.0",
     "del": "^2.0.2",
-    "gulp": "^3.9.0",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.1",
     "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.6.0",
@@ -48,12 +48,10 @@
     "jquery": "^2.1.4",
     "jquery-match-height": "^0.6.0",
     "js-yaml": "^3.5.2",
-    "lazypipe": "^1.0.1",
     "moment": "^2.11.0",
     "moment-timezone": "^0.5.0",
-    "ngstorage": "^0.3.9",
+    "ngstorage": "^0.3.10",
     "numeral": "^1.5.3",
-    "run-sequence": "^1.1.4",
     "satellizer": "^0.13.0"
   }
 }
