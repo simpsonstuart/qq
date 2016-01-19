@@ -13,7 +13,7 @@
         <div class="row">
             <small>password</small>
             <h2>•••••••••••</h2>
-            <a href="#profile" class="edit" ng-click="ctrl.click_password()">edit</a>
+            <a href="#settings" class="edit" ng-click="ctrl.click_password()">edit</a>
         </div>
         <div ng-show="ctrl.expand_show_password" class="edit-expanded">
             <small>Edit Password</small>
@@ -41,7 +41,7 @@
         <div class="row">
             <small>Email Address</small>
             <h2>{{ctrl.profile.email}}</h2>
-            <a href="#" class="edit" ng-click="ctrl.click_email()">edit</a>
+            <a href="#settings" class="edit" ng-click="ctrl.click_email()">edit</a>
         </div>
         <div ng-show="ctrl.expand_show_email" class="edit-expanded">
             <small>Edit Email</small>
@@ -64,7 +64,7 @@
         <div ng-if="ctrl.isAdmin" class="row">
             <small>Account Type</small>
             <h2>{{ctrl.profile.account_type}}</h2>
-            <a href="#" class="edit" ng-click="ctrl.click_account_type()">edit</a>
+            <a href="#settings" class="edit" ng-click="ctrl.click_account_type()">edit</a>
         </div>
         <div  ng-if="ctrl.expand_show_account_type" class="edit-expanded">
         <input type="radio" name="Business" value="male" checked> Business
@@ -79,7 +79,7 @@
         <div ng-if="ctrl.isAdmin"  class="row">
         <small>Billing</small>
             <h2>xxxx-xxxx-xxxx-6836</h2>
-            <a href="#" class="edit" ng-click="ctrl.click_billing()">edit</a>
+            <a href="#settings" class="edit" ng-click="ctrl.click_billing()">edit</a>
         </div>
         <div  ng-if="ctrl.expand_show_billing" class="edit-expanded">
             <form name="cc_form" ng-submit="ctrl.billing_change()">

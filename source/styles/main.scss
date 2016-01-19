@@ -1873,6 +1873,9 @@ button.submit {
     color: #f77600 !important;
   }
 }
+.deal_owner {
+  color: #f77600 !important;
+}
 .settings {
   border-left: 1px solid $col-grey-stroke;
   .row {
@@ -2669,6 +2672,9 @@ footer {
   }
   a:hover {
     color: $col-orange-active;
+  }
+  .a.deal_owner {
+    color: #f77600 !important;
   }
 }
 
