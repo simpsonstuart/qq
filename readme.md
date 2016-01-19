@@ -1,5 +1,9 @@
 # Quick Questions Front-end
 
+## Environment Variables
+
+See `.env.json.example`.  Rename or move to `.env.json`
+
 ## Dev Environment
 
 Note that for now, the API reference in the code points to a static location, which is the url dev API.  Eventually, environment-specific configuration will be implemented using the build system.

@@ -1,5 +1,6 @@
 ###### PER-PROJECT IGNORE ######
 /www
+.env.json
 
 ####### CORDOVA IGNORES #######
 /platforms

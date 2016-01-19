@@ -7,13 +7,16 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.mattneally.quickquestions"
         },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.mattneally.quickquestions"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.mattneally.quickquestions"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.mattneally.quickquestions"
         }
     },
