@@ -17,7 +17,7 @@ nvm install stable
 nvm use stable
 ```
 
-You might have to perform "nvm use stable" on every new terminal.  Once node is installed, navigate to the directory of this repository's source and perform the following commands to install this project's dependencies:
+**You might have to perform "nvm use stable" on every new terminal.**  Once node is installed, navigate to the directory of this repository's source and perform the following commands to install this project's dependencies:
 
 ```sh
 npm install
@@ -33,7 +33,7 @@ gulp
 ```
 Then, in another terminal:
 ```sh
-cordova browser run
+cordova run browser
 ```
 
 More research still needs to be done on what specifically is committed to the repository for a Cordova project, but if you're getting errors during initial run about this project not being a Cordova project, then try running the following commands and see if it fixes the issue:
