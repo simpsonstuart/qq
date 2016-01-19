@@ -13,9 +13,6 @@
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.mattneally.quickquestions"
         },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.mattneally.quickquestions"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.mattneally.quickquestions"
         }

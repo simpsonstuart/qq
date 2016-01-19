@@ -7,7 +7,10 @@ function organizationService(ApiService) {
         createOrganization: createOrganization
     };
 
-    function createOrganization(organization_data){
-        return ApiService.post('createOrganization', organization_data);
+    function createOrganization(clientkey, clientSecret, OrganizationName ){
+        var URLBase = "https://qq.app/oauth2/salesforce/new-org?return_uri=http://qq.app/test&organization_id=";
+        var redirectURL = URLBase + OrganizationName + "&client_secret=" + clientSecret +"&client_id=" + clientkey;
+        console.log(redirectURL);
+        window.location = redirectURL;
     }
 }
