@@ -181,7 +181,7 @@ gulp.task('browsersync', () => {
     open: true,
     minify: false,
     server: {
-      baseDir: config.paths.public.root
+      baseDir: './platforms/browser/www'
     }
   });
 
