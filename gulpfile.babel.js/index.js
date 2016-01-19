@@ -24,6 +24,11 @@ import cssnano from 'cssnano';
 import concat from 'gulp-concat';
 import iife from 'gulp-iife';
 import browserSync from 'browser-sync';
+import env from "gulp-env";
+import replace from "gulp-replace";
+
+env({file: ".env.json"});
+
 const bs = browserSync.create();
 
 const config = yaml.load(fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8'));
@@ -42,6 +47,7 @@ var vendorJavascriptSources = [
 ];
 
 var appJavascriptSources = [
+  config.paths.source.application + '/IOS9Patch.js',
   config.paths.source.application + '/qq-app.js',
   config.paths.source.application + '/controllers/*.js',
   config.paths.source.application + '/directives/*.js',
@@ -111,13 +117,16 @@ gulp.task('javascript', () => {
     .pipe(gulp.dest(config.paths.public.scripts));
 
   return gulp.src(appJavascriptSources)
-    .pipe(iife())
-    .pipe(plumber())
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
-    .pipe(sourcemaps.write())
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest(config.paths.public.scripts));
+      .pipe(replace("QQ.API_URI", process.env.API_URI))
+      .pipe(replace("QQ.PLATFORM", process.env.PLATFORM))
+      .pipe(replace("QQ.ENVIRONMENT", process.env.ENVIRONMENT))
+      .pipe(iife())
+      .pipe(plumber())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
+      .pipe(sourcemaps.write())
+      .pipe(concat('app.js'))
+      .pipe(gulp.dest(config.paths.public.scripts));
 });
 
 gulp.task('javascript:minify', () => {

@@ -5,7 +5,9 @@ angular.module('QQ', [
         'angular-cache'
 ])
     .constant('ApiConfig', {
-        'url': 'http://quickquestions.pixelandline.net/api/'
+        'url': "QQ.API_URI",
+        'platform': "QQ.PLATFORM", // web, android, ios
+        'environment': "QQ.ENVIRONMENT" // e.g. dev or prod
     })
 
     .run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
