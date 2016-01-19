@@ -35,11 +35,12 @@ angular.module('QQ', [
         });
     })
 
-    .config(function ($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
+    .config(function ($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider, ApiConfig) {
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    $authProvider.loginUrl = 'http://quickquestions.pixelandline.net/api/login';
+    console.log(ApiConfig);
+    $authProvider.loginUrl = ApiConfig.url + 'login';
 
         $stateProvider
             .state('root', {

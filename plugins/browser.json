@@ -8,13 +8,13 @@
     },
     "installed_plugins": {
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.mattneally.quickquestions"
+            "PACKAGE_NAME": "com.mattneally.traqq"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.mattneally.quickquestions"
+            "PACKAGE_NAME": "com.mattneally.traqq"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.mattneally.quickquestions"
+            "PACKAGE_NAME": "com.mattneally.traqq"
         }
     },
     "dependent_plugins": {}

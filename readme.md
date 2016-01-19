@@ -37,7 +37,7 @@ gulp
 ```
 Then, in another terminal:
 ```sh
-cordova run browser
+cordova browser run
 ```
 
 More research still needs to be done on what specifically is committed to the repository for a Cordova project, but if you're getting errors during initial run about this project not being a Cordova project, then try running the following commands and see if it fixes the issue:
