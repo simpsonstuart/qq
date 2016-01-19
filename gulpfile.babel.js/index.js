@@ -74,8 +74,6 @@ gulp.task('clean:www', (callback) => {
   });
 });
 
-gulp.task('clean', gulp.series('clean:www', 'cordova:clean'));
-
 gulp.task('fonts', () => {
   return gulp.src(path.join(config.paths.source.fonts, config.globs.fonts))
     .pipe(plumber())
@@ -169,6 +167,7 @@ gulp.task('styles:production', () => {
 
 gulp.task('build',
   gulp.series(
+    'clean:www',
     'images',
     gulp.parallel('javascript', 'styles', 'html'),
     gulp.parallel('fonts', 'audio', 'video'),
@@ -178,7 +177,7 @@ gulp.task('build',
 
 gulp.task('production',
   gulp.series(
-    'clean',
+    'clean:www',
     gulp.parallel('images', 'audio', 'video', 'fonts', 'styles:production'),
     gulp.parallel('javascript', 'html'),
     gulp.parallel('html:minify', 'javascript:minify')
