@@ -4,14 +4,14 @@ angular.module('QQ')
 function ImportDealsController($scope, $state) {
     var ctrl = this;
 
-    //fictional deals
+    //fictional deals replace with real ones in future
     ctrl.deals = [
         {"name":"Asus LCD Factory Upgrade", "owner":"Travis Jones", "closeDate":"1/17/2015", "amount":"$520K", "dealId":"4564"},
         {"name":"LG Chemical PLC Retrofit", "owner":"Dawn Anderson", "closeDate":"2/23/2015", "amount":"$350K", "dealId":"6748"},
         {"name":"Motorola Mobility Plant Upgrade", "owner":"David Hewitt", "closeDate":"1/19/2015", "amount":"$900K", "dealId":"4746"},
         {"name":"Cloud Electro Server Upgrade", "owner":"Jackson Davis", "closeDate":"4/3/2015", "amount":"$830K", "dealId":"35344"}
     ];
-    //gets array of only selected users on finish click then goes to profile page
+    //gets selected users on finish click then goes to profile page
     ctrl.nextPressed = function () {
         ctrl.getChecked();
         console.log(ctrl.dealsChecked);
@@ -19,26 +19,19 @@ function ImportDealsController($scope, $state) {
         $state.go('root.import-users');
     };
 
-    //check selected
+    //Get checked deals by looking at is checked property added to array by angular
     ctrl.getChecked = function () {
-        var dealsChecked = [];
-        for (var i = 0, l = ctrl.deals.length; i < l; i++) {
-            if (ctrl.deals[i].isChecked) {
-                dealsChecked.push(angular.copy(ctrl.deals[i]));
-            }
-        }
-        ctrl.dealsChecked = dealsChecked;
+           ctrl.dealsChecked = _.filter(ctrl.deals, "isChecked");
     };
 
-    //check if array is empty and set state of finish button
+    //check if at least one deal is checked and set state of finish button
     ctrl.checkEnabled = function() {
         ctrl.getChecked();
-        console.log(ctrl.dealsChecked);
-        if(ctrl.dealsChecked === undefined || ctrl.dealsChecked.length == 0) {
-            ctrl.isDisabled = true;
-        }
-        else {
+        if(_.some(ctrl.dealsChecked, 'isChecked')) {
             ctrl.isDisabled = false;
         }
-    }
+        else {
+            ctrl.isDisabled = true;
+        }
+    };
 }

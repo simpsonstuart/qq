@@ -587,32 +587,7 @@ angular.module('QQ', [
                     }
                 }
             })
-            .state('root.profile.user', {
-                url: '/:user_id',
-                restricted: true,
-                data: {
-                    headerClasses: 'back'
-                },
-                views: {
-                    'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
-                        controller: 'HeaderController'
-                    },
-                    'container@root': {
-                        templateUrl: 'includes/pages/profile.html',
-                        controller: 'ProfileController',
-                        controllerAs: 'ctrl'
-                    },
-                    'footer@root': {
-                        templateUrl: 'includes/templates/default-footer.html',
-                        controller: 'FooterController',
-                        controllerAs: 'ctrl'
-                    }
-                },
-                params: {
-                    user_id: 'User ID'
-                }
-            })
+
             .state('root.registration', {
                 url: '/registration',
                 restricted: false,
@@ -651,6 +626,46 @@ angular.module('QQ', [
                     'footer@root': {
                         templateUrl: 'includes/templates/default-footer.html',
                         controller: 'FooterController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
+
+            .state('root.main-login', {
+                url: '/main-login',
+                restricted: false,
+                data: {
+                    bodyClasses: 'login grey',
+                    headerClasses: 'logo-nav'
+                },
+                views: {
+                    'header@root': {
+                        templateUrl: 'includes/templates/logo-nav.html',
+                        controller: 'HeaderController'
+                    },
+                    'container@root': {
+                        templateUrl: 'includes/pages/main-login.html',
+                        controller: 'MainLoginController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
+
+            .state('root.create-organization', {
+                url: '/create-organization',
+                restricted: false,
+                data: {
+                    bodyClasses: 'login grey',
+                    headerClasses: 'back'
+                },
+                views: {
+                    'header@root': {
+                        templateUrl: 'includes/templates/back-header.html',
+                        controller: 'HeaderController'
+                    },
+                    'container@root': {
+                        templateUrl: 'includes/pages/create-organization.html',
+                        controller: 'createOrganizationController',
                         controllerAs: 'ctrl'
                     }
                 }

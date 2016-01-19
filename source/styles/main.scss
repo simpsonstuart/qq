@@ -306,6 +306,10 @@ header.logo-nav {
   background: $col-grey;
 }
 
+.login form label {
+  margin-bottom: 3px;
+}
+
 .login {
   header {
     padding: 5px 0 10px 0;
@@ -334,10 +338,15 @@ header.logo-nav {
   }
   button.salesforce {
     width: 280px;
-    margin: 40px auto;
     display: block;
     text-align: center;
     height: 40px;
+  }
+  button.salesforce:disabled {
+    background: #C1C1C1;
+    border: 1px solid #DADADA;
+    color: #888;
+    cursor: not-allowed !important;
   }
   .register-text {
     text-align: center;
@@ -1859,6 +1868,9 @@ button.submit {
     @include fa-align(middle);
     @include fa-left(5px);
     line-height: 20px;
+  }
+  &:hover {
+    color: #f77600 !important;
   }
 }
 .settings {
