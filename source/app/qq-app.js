@@ -5,10 +5,12 @@ angular.module('QQ', [
         'angular-cache'
 ]);
 
-angular.module('QQ').constant('ApiConfig', {
-        'url': "QQ.API_URI",
+angular.module('QQ').constant('AppConfig', {
+        'apiUri': "QQ.API_URI",
         'platform': "QQ.PLATFORM", // web, android, ios
-        'environment': "QQ.ENVIRONMENT" // e.g. dev or prod
+        'environment': "QQ.ENVIRONMENT", // e.g. dev or prod
+        'oauthUrl': "QQ.OAUTH_URI",
+        'oauthReturnUri': "QQ.OAUTH_RETURN_URI"
     });
 
     angular.module('QQ').run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
@@ -36,12 +38,11 @@ angular.module('QQ').constant('ApiConfig', {
         });
     });
 
-    angular.module('QQ').config(function (ApiConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
+    angular.module('QQ').config(function (AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    console.log(ApiConfig);
-    $authProvider.loginUrl = ApiConfig.url + 'login';
+    $authProvider.loginUrl = AppConfig.apiUri + 'login';
 
         $stateProvider
             .state('root', {
@@ -655,8 +656,8 @@ angular.module('QQ').constant('ApiConfig', {
                 }
             })
 
-            .state('root.create-organization', {
-                url: '/create-organization',
+            .state('root.link-organization', {
+                url: '/link-organization',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
@@ -668,8 +669,8 @@ angular.module('QQ').constant('ApiConfig', {
                         controller: 'HeaderController'
                     },
                     'container@root': {
-                        templateUrl: 'includes/pages/create-organization.html',
-                        controller: 'createOrganizationController',
+                        templateUrl: 'includes/pages/link-organization.html',
+                        controller: 'LinkOrganizationController',
                         controllerAs: 'ctrl'
                     }
                 }
@@ -678,7 +679,7 @@ angular.module('QQ').constant('ApiConfig', {
 
     $httpProvider.interceptors.push("HttpErrorInterceptor");
 
-    if (ApiConfig.platform === "web") {
+    if (AppConfig.platform === "web") {
         $locationProvider.html5Mode(true);
     } else {
         //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution

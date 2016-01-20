@@ -1,0 +1,27 @@
+<h1>Create Organization</h1>
+<form name="linkOrganization_form" ng-submit="ctrl.linkOrganization()">
+    <fieldset>
+        <p>
+            <label for="organization_id">Organization ID</label>
+            <small class="error" ng-if="linkOrganization_form.organization_id.$error.required && !linkOrganization_form.organization_id.$pristine">Organization ID is required!</small>
+            <input ng-model='organization_id' type="text" id="organization_id" name='organization_id' placeholder='Name' required>
+        </p>
+        <p>
+            <label for="client_id">Client Key</label>
+            <small class="error" ng-if="linkOrganization_form.client_id.$error.required && !linkOrganization_form.client_id.$pristine">Client ID field is required!</small>
+            <small class="error" ng-if="linkOrganization_form.client_id.$error.client_id && !linkOrganization_form.client_id.$pristine">Invalid client ID format!</small>
+            <input type="text" name="client_id" ng-model="client_id" id="client_id" required placeholder="Client Key" />
+        </p>
+        <p>
+            <label for="client_secret">Client Secret</label>
+                <small class="error" ng-if="linkOrganization_form.client_secret.$error.required && !linkOrganization_form.client_secret.$pristine">Client Secret field is required!</small>
+            <input type="password" name="client_secret" id="client_secret" ng-model="client_secret" required placeholder="Secret"/>
+        </p>
+        <button class="submit" type="submit"  ng-click="submitted=true"  ng-disabled="registration_form.$invalid">Create</button>
+    </fieldset>
+
+</form>
+
+
+
+

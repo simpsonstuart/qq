@@ -1,7 +1,7 @@
 angular.module('QQ')
     .factory('ApiService', ApiService);
 
-function ApiService(ApiConfig, $http, $q, CacheFactory) {
+function ApiService(AppConfig, $http, $q, CacheFactory) {
     return {
         get: get,
         post: post
@@ -23,7 +23,7 @@ function ApiService(ApiConfig, $http, $q, CacheFactory) {
             options = {cache: true};
         }
 
-        return $http.get(ApiConfig.url + uri, options)
+        return $http.get(AppConfig.apiUri + uri, options)
             .then(function (response) {
                     return $q.when(dataAccessor(response));
                 },
@@ -34,7 +34,7 @@ function ApiService(ApiConfig, $http, $q, CacheFactory) {
     }
 
     function post(uri, data) {
-        return $http.post(ApiConfig.url + uri, data)
+        return $http.post(AppConfig.apiUri + uri, data)
             .then(function(response){
                     CacheFactory.clearAll();
                     return $q.when(response.data);

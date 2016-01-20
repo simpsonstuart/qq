@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('RegistrationController', RegistrationController);
 
-function RegistrationController($scope, $state, $http, ApiConfig, UserService) {
+function RegistrationController($scope, $state, $http, AppConfig, UserService) {
     var ctrl = this;
     ctrl.register = register;
 
