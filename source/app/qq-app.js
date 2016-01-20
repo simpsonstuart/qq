@@ -3,14 +3,15 @@ angular.module('QQ', [
         'satellizer',
         'ngIOS9UIWebViewPatch',
         'angular-cache'
-])
-    .constant('ApiConfig', {
+]);
+
+angular.module('QQ').constant('ApiConfig', {
         'url': "QQ.API_URI",
         'platform': "QQ.PLATFORM", // web, android, ios
         'environment': "QQ.ENVIRONMENT" // e.g. dev or prod
-    })
+    });
 
-    .run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
+    angular.module('QQ').run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
 
         $http.defaults.cache = CacheFactory('defaultCache', {
             maxAge: 15 * 60 * 1000, // Items added to this cache expire after 15 minutes
@@ -33,9 +34,9 @@ angular.module('QQ', [
 
             AuthService.refreshToken();
         });
-    })
+    });
 
-    .config(function ($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
+    angular.module('QQ').config(function (ApiConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
@@ -661,8 +662,12 @@ angular.module('QQ', [
 
     $httpProvider.interceptors.push("HttpErrorInterceptor");
 
-    //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution
-    $locationProvider.html5Mode(false);
+    if (ApiConfig.platform === "web") {
+        $locationProvider.html5Mode(true);
+    } else {
+        //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution
+        $locationProvider.html5Mode(false);
+    }
 
         // setup http middleware
 
