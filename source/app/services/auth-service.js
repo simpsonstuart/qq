@@ -8,10 +8,10 @@ function AuthService($auth, moment, ApiService, CacheFactory) {
         loggedIn: loggedIn,
         logIn: logIn,
         logOut: logOut,
-        getOrganizationURL: getOrganizationURL,
         authenticatedUser: authenticatedUser,
         createTokenExpirationTime: createTokenExpirationTime,
-        refreshToken: refreshToken
+        refreshToken: refreshToken,
+        setUser: setUser
     };
 
 
@@ -19,21 +19,15 @@ function AuthService($auth, moment, ApiService, CacheFactory) {
         return $auth.isAuthenticated()
     }
 
-    function logIn(username, password) {
-        var credentials = {
-            username: username,
-            password: password
-        };
+    function logIn(token) {
+        $auth.setToken(token);
+        createTokenExpirationTime();
 
-        return $auth.login(credentials);
-        // @todo add .catch to handle errors: https://github.com/sahat/satellizer#authloginuser-options
+        return true;
     }
-    //builds a URL with organization Id and redirects too it
-    function getOrganizationURL(organizationId) {
-        var URLBase = "https://qq.app/oauth2/salesforce/new-org?return_uri=http://qq.app/test&organization_id=";
-        var redirectURL = URLBase + organizationId;
-        console.log(redirectURL);
-        window.location = redirectURL;
+
+    function setUser(user) {
+          return localStorage.setItem('user', user);
     }
 
     function logOut() {
