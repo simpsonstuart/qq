@@ -175,6 +175,15 @@ gulp.task('build',
   )
 );
 
+gulp.task('staging',
+  gulp.series(
+    'clean:www',
+    'images',
+    gulp.parallel('javascript', 'styles', 'html'),
+    gulp.parallel('fonts', 'audio', 'video')
+  )
+);
+
 gulp.task('production',
   gulp.series(
     'clean:www',

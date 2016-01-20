@@ -3,6 +3,7 @@
     "clean": "gulp clean",
     "start": "gulp watch",
     "build": "gulp build",
+    "staging": "gulp staging",
     "production": "gulp production",
     "wininstall": "sh symfix",
     "symfix": "sh symfix"
