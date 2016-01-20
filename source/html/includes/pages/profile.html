@@ -2,15 +2,9 @@
 <div class="profile clearfix">
     <aside>
         <img ng-if="ctrl.profile.picture" src="{{ctrl.profile.picture}}">
-
-        <h2>{{ctrl.profile.name}}<a ui-sref="root.settings" class="settings-icon" ng-if="ctrl.not_other_profile"></a></h2>
-
+        <h2>{{ctrl.profile.name}}<a ui-sref="root.settings" class="settings-icon"></a></h2>
         <p class="profile-title">{{ctrl.roleLabel}}</p>
-        <small><a class="deals-count" ng-if="ctrl.MyDeals != true" ui-sref="root.deals.user({user_id: ctrl.profile.id})">{{ctrl.profile.deal_count}} deals</a>
-            <a class="deals-count" ng-if="ctrl.MyDeals == true" ui-sref="root.deals">{{ctrl.profile.deal_count}} deals</a>
-            <span ng-if="ctrl.isManager">| <a class="district"
-                                                        ui-sref="root.district.user({user_id: ctrl.profile.id})">Direct Reports</a></span>
-        </small>
+            <a class="deals-count" ui-sref="root.deals">{{ctrl.profile.deal_count}} deals</a>
     </aside>
     <div class="details clearfix">
         <div class="match-height">

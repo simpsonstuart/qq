@@ -174,5 +174,5 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
             return "Commented";
         }
 
-    };
+    }
 }

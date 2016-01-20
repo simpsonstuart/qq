@@ -1,0 +1,11 @@
+<h1>Login</h1>
+<form name="GetOrganization_form" ng-submit="ctrl.getOrganization()">
+    <small class="error-list" ng-repeat="error in ctrl.errorsList" >{{ error }}</small>
+    <fieldset>
+        <p>
+            <small class="error-list" ng-if="GetOrganization_form.organization.$invalid && !GetOrganization_form.organization.$pristine">Organization is required</small>
+            <input type="text" name="organization" ng-model="organization" required placeholder="Salesforce Organization"/>
+        </p>
+        <button class="submit salesforce" type="submit" ng-disabled="GetOrganization_form.organization.$invalid">Login with Salesforce</button>
+    </fieldset>
+</form>

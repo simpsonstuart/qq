@@ -7,7 +7,7 @@
     <aside>
         <img src="{{ctrl.deal.owner.data.picture}}">
 
-        <h2><a ui-sref="root.profile.user({user_id: ctrl.deal.owner.data.id})" ng-bind="ctrl.deal.owner.data.name"></a>
+        <h2><a class="deal_owner" ng-bind="ctrl.deal.owner.data.name"></a>
         </h2>
         <small>Deal Owner</small>
     </aside>
@@ -66,7 +66,7 @@
         <div class="virtual-team clearfix">
             <small>Extended Team</small>
             <div ng-repeat="team_mate in ctrl.extended_team" class="questions clearfix">
-                <small><a ui-sref="root.profile.user({user_id: team_mate.id})">{{team_mate.name}}</a></small>
+                <small><a>{{team_mate.name}}</a></small>
                 <div class="answered {{ctrl.answerCountIsZero(team_mate)}}">{{team_mate.answer_count}}</div>
                 <div class="asked">{{team_mate.question_count}}</div>
             </div>

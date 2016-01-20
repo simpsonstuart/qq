@@ -1,0 +1,27 @@
+<h1>Create Organization</h1>
+<form name="createOrganization_form" ng-submit="ctrl.createOrganization()">
+    <fieldset>
+        <p>
+        <label for="clientkey">Client Key</label>
+        <small class="error" ng-if="createOrganization_form.clientkey.$error.required && !createOrganization_form.clientkey.$pristine">Client Key field is required!</small>
+        <small class="error" ng-if="createOrganization_form.clientkey.$error.clientkey && !createOrganization_form.clientkey.$pristine">Invalid client key format!</small>
+        <input type="text" name="clientkey" ng-model="clientkey" id="clientkey" required placeholder="Client Key" />
+        </p>
+        <p>
+        <label for="clientSecret">Client Secret</label>
+            <small class="error" ng-if="createOrganization_form.clientSecret.$error.required && !createOrganization_form.clientSecret.$pristine">Client secret field is required!</small>
+        <input type="password" name="clientSecret" id="clientSecret" ng-model="clientSecret" required placeholder="Secret"/>
+        </p>
+        <p>
+        <label for="OrganizationName">Organization Name</label>
+        <small class="error" ng-if="createOrganization_form.OrganizationName.$error.required && !createOrganization_form.OrganizationName.$pristine">Organization name is required!</small>
+        <input ng-model='OrganizationName' type="text" id="OrganizationName" name='OrganizationName' placeholder='Name' required>
+        </p>
+        <button class="submit" type="submit"  ng-click="submitted=true"  ng-disabled="registration_form.$invalid">Create</button>
+    </fieldset>
+
+</form>
+
+
+
+
