@@ -554,7 +554,7 @@ angular.module('QQ').constant('AppConfig', {
                 }
             })
             .state('root.login-salesforce', {
-                url: '/login/salesforce',
+                url: '/login/salesforce?token',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
@@ -566,8 +566,8 @@ angular.module('QQ').constant('AppConfig', {
                         controller: 'HeaderController'
                     },
                     'container@root': {
-                        templateUrl: 'includes/pages/login-salesforce.html',
-                        controller: 'LoginSalesforceController',
+                        templateUrl: 'includes/pages/salesforce-login.html',
+                        controller: 'SalesforceLoginController',
                         controllerAs: 'ctrl'
                     }
                 }
@@ -637,7 +637,7 @@ angular.module('QQ').constant('AppConfig', {
             })
 
             .state('root.main-login', {
-                url: '/main-login',
+                url: '/main-login?token',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
