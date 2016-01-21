@@ -1,7 +1,7 @@
 angular.module('QQ')
     .factory('AuthService', AuthService);
 
-function AuthService($auth, moment, ApiService, CacheFactory) {
+function AuthService($auth, moment, ApiService, CacheFactory, $q) {
     var tokenLifeMinutes = 60;
 
     return {
@@ -19,11 +19,29 @@ function AuthService($auth, moment, ApiService, CacheFactory) {
         return $auth.isAuthenticated()
     }
 
-    function logIn(token) {
-        $auth.setToken(token);
-        createTokenExpirationTime();
+    /**
+     * @param username|token
+     * @param password|null
+     */
+    function logIn(username, password) {
+        var deferred = $q.defer();
+        var args = arguments;
 
-        return true;
+        if (args.length == 2) {
+            var credentials = {
+                username: arguments[0],
+                password: arguments[1]
+            };
+
+            return $auth.login(credentials);
+        }
+
+        deferred.resolve(function() {
+            var token = args[0];
+            $auth.setToken(token);
+        });
+
+        return deferred.promise;
     }
 
     function setUser(user) {

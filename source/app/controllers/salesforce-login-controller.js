@@ -8,16 +8,24 @@ function SalesforceLoginController($state, $scope, AppConfig, $window, AuthServi
 
 
     if (token) {
-        AuthService.logIn(token);
-        console.log('here');
-        UserService.profile('current').then(function (data) {
-            var user = JSON.stringify(data);
-            localStorage.setItem('user', user);
-        }).then(function () {
-            // wait until the user is stored to go to feed
-            $state.go('root.feed');
+        AuthService.logIn(token).then(function (data) {
+            UserService.profile('current').then(function (data) {
+                var user = JSON.stringify(data);
+                AuthService.createTokenExpirationTime();
+                localStorage.setItem('user', user);
+            }).then(function () {
+                // wait until the user is stored to go to feed
+                $state.go('root.feed');
+            });
+        }).catch(function (response) {
+            //if we get an an error 401 display an error and reset forms
+            if (response.status === 401) {
+                errors.push("Invalid username or password!");
+                $scope.username = '';
+                $scope.password ='';
+                $scope.login_form.$setPristine(true);
+            }
         });
-
     }
 
     function GetOrganization() {
