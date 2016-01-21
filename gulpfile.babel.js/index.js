@@ -174,15 +174,21 @@ gulp.task('styles:production', () => {
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 
-gulp.task('build',
-  gulp.series(
+
+gulp.task('build', (() => {
+  var buildTasks = [
     'clean:www',
     'images',
     gulp.parallel('javascript', 'styles', 'html'),
-    gulp.parallel('fonts', 'audio', 'video'),
-    'cordova:prepare'
-  )
-);
+    gulp.parallel('fonts', 'audio', 'video')
+  ];
+
+  if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
+    buildTasks.push('cordova:prepare')
+  }
+
+  return gulp.series.apply(gulp, buildTasks)
+})());
 
 gulp.task('staging',
   gulp.series(
@@ -203,6 +209,16 @@ gulp.task('production',
 );
 
 gulp.task('browsersync', () => {
+  var baseDir;
+  console.log(process.env.PLATFORM)
+  if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
+    baseDir = './platforms/browser/www';
+  } else if (process.env.PLATFORM == 'web') {
+    baseDir = './www';
+  } else {
+    throw "unable to determine base directory for browsersync"
+  }
+
   bs.init({
     reloadOnRestart: true,
     logConnections: true,
@@ -211,7 +227,7 @@ gulp.task('browsersync', () => {
     open: true,
     minify: false,
     server: {
-      baseDir: fullPath('./platforms/browser/www')
+      baseDir: fullPath(baseDir)
     }
   });
 
