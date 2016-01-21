@@ -14,9 +14,9 @@
             <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
         </div>
         <div class="questions clearfix">
-            <small ng-if="deal.close_date > ctrl.dateNow">closes {{ ctrl.timeToClose(deal.close_date) }}</small>
-            <small class="overdue" ng-if="deal.close_date < ctrl.dateNow">Overdue!</small>
-            <small class="caution" ng-if="deal.close_date == ctrl.dateNow">Due Today!</small>
+            <small ng-if="deal.close_date > ctrl.dateNow">closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>
+            <small class="overdue" ng-if="deal.close_date < ctrl.dateNow">Past Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
+            <small class="caution" ng-if="deal.close_date == ctrl.dateNow">Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <div class="answered">{{deal.question_answer_count.answer_count}}</div>
             <div class="asked">{{deal.question_answer_count.question_count}}</div>
         </div>
