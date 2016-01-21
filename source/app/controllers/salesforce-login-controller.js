@@ -1,10 +1,16 @@
 angular.module('QQ')
     .controller('SalesforceLoginController', SalesforceLoginController);
 
-function SalesforceLoginController($state, $scope, AppConfig, $window, AuthService, UserService) {
+function SalesforceLoginController($state, $scope, AppConfig, $window, AuthService, UserService, _) {
     var token = $state.params.token;
+    var errorParams = $state.params.errors;
     var ctrl = this;
     ctrl.getOrganization = GetOrganization;
+    ctrl.errorsList = [];
+
+    if (errorParams) {
+        ctrl.errorsList.push(errorParams.split(','));
+    }
 
 
     if (token) {

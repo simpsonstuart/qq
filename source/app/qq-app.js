@@ -555,7 +555,7 @@ angular.module('QQ').constant('AppConfig', {
                 }
             })
             .state('root.login-salesforce', {
-                url: '/login/salesforce?token',
+                url: '/login/salesforce?token,errors',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
@@ -636,29 +636,8 @@ angular.module('QQ').constant('AppConfig', {
                     }
                 }
             })
-
-            .state('root.main-login', {
-                url: '/main-login?token',
-                restricted: false,
-                data: {
-                    bodyClasses: 'login grey',
-                    headerClasses: 'logo-nav'
-                },
-                views: {
-                    'header@root': {
-                        templateUrl: 'includes/templates/logo-nav.html',
-                        controller: 'HeaderController'
-                    },
-                    'container@root': {
-                        templateUrl: 'includes/pages/main-login.html',
-                        controller: 'MainLoginController',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            })
-
             .state('root.link-organization', {
-                url: '/link-organization?token',
+                url: '/link-organization?token,errors',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
