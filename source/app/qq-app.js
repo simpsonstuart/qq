@@ -4,13 +4,16 @@ angular.module('QQ', [
         'ngIOS9UIWebViewPatch',
         'angular-cache'
 ])
-    .constant('ApiConfig', {
-        'url': "QQ.API_URI",
-        'platform': "QQ.PLATFORM", // web, android, ios
-        'environment': "QQ.ENVIRONMENT" // e.g. dev or prod
-    })
 
-    .run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
+angular.module('QQ').constant('AppConfig', {
+        'apiUri': "http://api.quickquestions.pixelandline.net/api/",
+        'platform': "web", // web, android, ios
+        'environment': "dev", // e.g. dev or prod
+        'oauthUrl': "http://api.quickquestions.pixelandline.net/",
+        'oauthReturnUri': "http://quickquestions.pixelandline.net/"
+    });
+
+    angular.module('QQ').run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
 
         $http.defaults.cache = CacheFactory('defaultCache', {
             maxAge: 15 * 60 * 1000, // Items added to this cache expire after 15 minutes
@@ -33,14 +36,13 @@ angular.module('QQ', [
 
             AuthService.refreshToken();
         });
-    })
+    });
 
-    .config(function ($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider, ApiConfig) {
+    angular.module('QQ').config(function (AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    console.log(ApiConfig);
-    $authProvider.loginUrl = ApiConfig.url + 'login';
+    $authProvider.loginUrl = AppConfig.apiUri + 'login';
 
         $stateProvider
             .state('root', {
@@ -552,7 +554,7 @@ angular.module('QQ', [
                 }
             })
             .state('root.login-salesforce', {
-                url: '/login/salesforce',
+                url: '/login/salesforce?token',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
@@ -564,8 +566,8 @@ angular.module('QQ', [
                         controller: 'HeaderController'
                     },
                     'container@root': {
-                        templateUrl: 'includes/pages/login-salesforce.html',
-                        controller: 'LoginSalesforceController',
+                        templateUrl: 'includes/pages/salesforce-login.html',
+                        controller: 'SalesforceLoginController',
                         controllerAs: 'ctrl'
                     }
                 }
@@ -590,32 +592,7 @@ angular.module('QQ', [
                     }
                 }
             })
-            .state('root.profile.user', {
-                url: '/:user_id',
-                restricted: true,
-                data: {
-                    headerClasses: 'back'
-                },
-                views: {
-                    'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
-                        controller: 'HeaderController'
-                    },
-                    'container@root': {
-                        templateUrl: 'includes/pages/profile.html',
-                        controller: 'ProfileController',
-                        controllerAs: 'ctrl'
-                    },
-                    'footer@root': {
-                        templateUrl: 'includes/templates/default-footer.html',
-                        controller: 'FooterController',
-                        controllerAs: 'ctrl'
-                    }
-                },
-                params: {
-                    user_id: 'User ID'
-                }
-            })
+
             .state('root.registration', {
                 url: '/registration',
                 restricted: false,
@@ -658,12 +635,56 @@ angular.module('QQ', [
                     }
                 }
             })
+
+            .state('root.main-login', {
+                url: '/main-login?token',
+                restricted: false,
+                data: {
+                    bodyClasses: 'login grey',
+                    headerClasses: 'logo-nav'
+                },
+                views: {
+                    'header@root': {
+                        templateUrl: 'includes/templates/logo-nav.html',
+                        controller: 'HeaderController'
+                    },
+                    'container@root': {
+                        templateUrl: 'includes/pages/main-login.html',
+                        controller: 'MainLoginController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
+
+            .state('root.link-organization', {
+                url: '/link-organization?token',
+                restricted: false,
+                data: {
+                    bodyClasses: 'login grey',
+                    headerClasses: 'back'
+                },
+                views: {
+                    'header@root': {
+                        templateUrl: 'includes/templates/back-header.html',
+                        controller: 'HeaderController'
+                    },
+                    'container@root': {
+                        templateUrl: 'includes/pages/link-organization.html',
+                        controller: 'LinkOrganizationController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            })
         ;
 
     $httpProvider.interceptors.push("HttpErrorInterceptor");
 
-    //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution
-    $locationProvider.html5Mode(false);
+    if (AppConfig.platform === "web") {
+        $locationProvider.html5Mode(true);
+    } else {
+        //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution
+        $locationProvider.html5Mode(false);
+    }
 
         // setup http middleware
 
