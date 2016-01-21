@@ -372,7 +372,7 @@ angular.module('QQ').constant('AppConfig', {
                     },
                     'container@root': {
                         templateUrl: 'includes/pages/ask-deal.html',
-                        controller: 'TestController',
+                        controller: 'QuestionController',
                         controllerAs: 'ctrl'
                     },
                     'footer@root': {

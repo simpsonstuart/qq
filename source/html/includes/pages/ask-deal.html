@@ -1,9 +1,11 @@
 <div class="ask deal">
     <h1>Ask</h1>
     <div class="ask-info">
+        <form name="ask_deal" novalidate>
         <small>Which deal are your questions associated with?</small>
-        <small class="error">This field is required</small>
-        <input name="deal" id="deal" type="text" placeholder="Enter deal name" />
-        <button type="button">Next</button>
+        <small ng-if="ask_deal.deal.$invalid && !ask_deal.deal.$pristine" class="error">This field is required</small>
+        <input name="deal" id="deal" type="text" ng-model="deal" placeholder="Enter deal name" required/>
+        <button type="button" ng-click="ctrl.click_dealSubmit()" ng-disabled="ask_deal.$invalid">Next</button>
+        </form>
     </div>
 </div>
