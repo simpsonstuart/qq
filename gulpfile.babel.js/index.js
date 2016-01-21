@@ -138,6 +138,7 @@ gulp.task('javascript', () => {
       .pipe(replace("QQ.ENVIRONMENT", process.env.ENVIRONMENT))
       .pipe(replace("QQ.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("QQ.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
+      .pipe(replace("QQ.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
       .pipe(iife())
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))

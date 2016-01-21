@@ -6,11 +6,12 @@ angular.module('QQ', [
 ]);
 
 angular.module('QQ').constant('AppConfig', {
-        'apiUri': "QQ.API_URI",
-        'platform': "QQ.PLATFORM", // web, android, ios
-        'environment': "QQ.ENVIRONMENT", // e.g. dev or prod
-        'oauthUrl': "QQ.OAUTH_URI",
-        'oauthReturnUri': "QQ.OAUTH_RETURN_URI"
+    'apiUri': "QQ.API_URI",
+    'platform': "QQ.PLATFORM", // web, android, ios
+    'environment': "QQ.ENVIRONMENT", // e.g. dev or prod
+    'oauthUrl': "QQ.OAUTH_URI",
+    'oauthReturnUri': "QQ.OAUTH_RETURN_URI",
+    'organizationReturnUri': "QQ.ORGANIZATION_RETURN_URI"
     });
 
     angular.module('QQ').run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
@@ -657,7 +658,7 @@ angular.module('QQ').constant('AppConfig', {
             })
 
             .state('root.link-organization', {
-                url: '/link-organization',
+                url: '/link-organization?token',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
