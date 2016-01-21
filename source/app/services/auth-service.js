@@ -24,7 +24,6 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
      * @param password|null
      */
     function logIn(username, password) {
-        var deferred = $q.defer();
         var args = arguments;
 
         if (args.length == 2) {
@@ -36,12 +35,10 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
             return $auth.login(credentials);
         }
 
-        deferred.resolve(function() {
+        return $q.defer().resolve((function() {
             var token = args[0];
             $auth.setToken(token);
-        });
-
-        return deferred.promise;
+        })()).promise;
     }
 
     function setUser(user) {
