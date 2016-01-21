@@ -8,22 +8,22 @@ function FooterController($scope, $state) {
         ctrl.FeedActive = true;
         ctrl.DealsActive = false;
         ctrl.NSActive = false;
-        ctrl.ProfileActive =false;
+        ctrl.AskActive =false;
     }else if ($state.is('root.deals')){
         ctrl.FeedActive = false;
         ctrl.DealsActive = true;
         ctrl.NSActive = false;
-        ctrl.ProfileActive =false;
+        ctrl.AskActive =false;
     }else if ($state.is('root.coming-soon')){
         ctrl.FeedActive = false;
         ctrl.DealsActive = false;
         ctrl.NSActive = true;
-        ctrl.ProfileActive =false;
+        ctrl.AskActive =false;
         var redrawNS = document.getElementById('footer-NS');
-    }else if ($state.is('root.profile')){
+    }else if ($state.is('root.ask-questions')){
         ctrl.FeedActive = false;
         ctrl.DealsActive = false;
         ctrl.NSActive = false;
-        ctrl.ProfileActive =true;
+        ctrl.AskActive =true;
     }
 }
