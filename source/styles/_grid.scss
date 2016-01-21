@@ -147,6 +147,18 @@ header {
       .all-deals, .active-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
       }
+      .virtual-team {
+        .questions {
+          @include span(100% no-gutter border-box);
+          @include push(0);
+          small {
+            @include span(7.1 of 10 no-gutter border-box);
+          }
+          .answered, .asked {
+            @include span(1.55 of 10 no-gutter);
+          }
+        }
+      }
     }
   }
 
@@ -156,12 +168,18 @@ header {
       .activity, .plays, .qq-buttons, .salesforce-button {
         @include span(100% no-gutter border-box);
       }
-    }
-  }
-
-  .profile {
-    .settings {
-      @include span(100% no-gutter border-box);
+      .virtual-team {
+        .questions {
+          @include span(10 of 12 no-gutter border-box);
+          @include push(1);
+          small {
+            @include span(7.1 of 10 no-gutter border-box);
+          }
+          .answered, .asked {
+            @include span(1.55 of 10 no-gutter);
+          }
+        }
+      }
     }
   }
 
