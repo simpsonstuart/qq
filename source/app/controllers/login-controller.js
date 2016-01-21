@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('LoginController', LoginController);
 
-function LoginController($rootScope, $scope, AuthService, UserService, $state) {
+function LoginController($scope, AuthService, UserService, $state) {
     var ctrl = this;
     ctrl.login = login;
     ctrl.LSError = localStorageSupported();
@@ -9,9 +9,11 @@ function LoginController($rootScope, $scope, AuthService, UserService, $state) {
     //display error if local storage not supported
     var errors = [];
     ctrl.errorsList = errors;
+
     if(localStorageSupported() === false) {
         errors.push("Error local storage not supported by your browser or you are using private/incognito mode!");
     }
+
     function login() {
         AuthService.logIn($scope.username, $scope.password).then(function (data) {
             UserService.profile('current').then(function (data) {

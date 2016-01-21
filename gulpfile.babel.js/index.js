@@ -35,26 +35,32 @@ const bs = browserSync.create();
 
 const config = yaml.load(fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8'));
 
+function fullPath (pathString) {
+  return path.normalize(__dirname + '/../' + pathString);
+}
+
+console.log('full path: ' + fullPath(config.paths.node_modules));
+
 var vendorJavascriptSources = [
-  config.paths.node_modules + '/moment/moment.js',
-  config.paths.node_modules + '/moment-timezone/moment-timezone.js',
-  config.paths.node_modules + '/numeral/numeral.js',
-  config.paths.node_modules + '/jquery/dist/jquery.js',
-  config.paths.node_modules + '/lodash/index.js',
-  config.paths.node_modules + '/angular/angular.js',
-  config.paths.node_modules + '/angular-ui-router/build/angular-ui-router.js',
-  config.paths.node_modules + '/ngstorage/ngStorage.js',
-  config.paths.node_modules + '/satellizer/satellizer.js',
-  config.paths.node_modules + '/angular-cache/dist/angular-cache.js'
+  fullPath(config.paths.node_modules + '/moment/moment.js'),
+  fullPath(config.paths.node_modules + '/moment-timezone/moment-timezone.js'),
+  fullPath(config.paths.node_modules + '/numeral/numeral.js'),
+  fullPath(config.paths.node_modules + '/jquery/dist/jquery.js'),
+  fullPath(config.paths.node_modules + '/lodash/index.js'),
+  fullPath(config.paths.node_modules + '/angular/angular.js'),
+  fullPath(config.paths.node_modules + '/angular-ui-router/build/angular-ui-router.js'),
+  fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
+  fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
+  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js')
 ];
 
 var appJavascriptSources = [
-  config.paths.source.application + '/IOS9Patch.js',
-  config.paths.source.application + '/qq-app.js',
-  config.paths.source.application + '/controllers/*.js',
-  config.paths.source.application + '/directives/*.js',
-  config.paths.source.application + '/middleware/*.js',
-  config.paths.source.application + '/services/*.js'
+  fullPath(config.paths.source.application + '/IOS9Patch.js'),
+  fullPath(config.paths.source.application + '/qq-app.js'),
+  fullPath(config.paths.source.application + '/controllers/*.js'),
+  fullPath(config.paths.source.application + '/directives/*.js'),
+  fullPath(config.paths.source.application + '/middleware/*.js'),
+  fullPath(config.paths.source.application + '/services/*.js')
 ];
 
 //Cordova complains about it not being a Cordova project if www does not exist
@@ -69,53 +75,53 @@ gulp.task('cordova:prepare', (done) => { cordova.prepare({}, done); });
 gulp.task('cordova:build', (done) => { cordova.build({},   done); });
 
 gulp.task('clean:www', (callback) => {
-  del([config.paths.public.root]).then(function () {
+  del([fullPath(config.paths.public.root)]).then(function () {
     callback();
   });
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(path.join(config.paths.source.fonts, config.globs.fonts))
+  return gulp.src(path.join(fullPath(config.paths.source.fonts), config.globs.fonts))
     .pipe(plumber())
-    .pipe(gulp.dest(config.paths.public.fonts));
+    .pipe(gulp.dest(fullPath(config.paths.public.fonts)));
 });
 
 gulp.task('video', () => {
-  return gulp.src(path.join(config.paths.source.video, config.globs.video))
+  return gulp.src(path.join(fullPath(config.paths.source.video), config.globs.video))
     .pipe(plumber())
-    .pipe(gulp.dest(config.paths.public.video));
+    .pipe(gulp.dest(fullPath(config.paths.public.video)));
 });
 
 gulp.task('audio', () => {
-  return gulp.src(path.join(config.paths.source.audio, config.globs.audio))
+  return gulp.src(path.join(fullPath(config.paths.source.audio), config.globs.audio))
     .pipe(plumber())
-    .pipe(gulp.dest(config.paths.public.audio));
+    .pipe(gulp.dest(fullPath(config.paths.public.audio)));
 });
 
 gulp.task('html', () => {
-  return gulp.src([path.join(config.paths.source.html, config.globs.html)])
+  return gulp.src([path.join(fullPath(config.paths.source.html), config.globs.html)])
     .pipe(filter(['**']))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.paths.public.html));
+    .pipe(gulp.dest(fullPath(config.paths.public.html)));
 });
 
 gulp.task('html:minify', () => {
-  return gulp.src(path.join(config.paths.public.html, config.globs.html))
+  return gulp.src(path.join(fullPath(config.paths.public.html), config.globs.html))
     .pipe(plumber())
     .pipe(htmlmin(config.tasks.htmlmin.options))
-    .pipe(gulp.dest(config.paths.public.html));
+    .pipe(gulp.dest(fullPath(config.paths.public.html)));
 });
 
 gulp.task('images', () => {
-  return gulp.src(path.join(config.paths.source.images, config.globs.images))
+  return gulp.src(path.join(fullPath(config.paths.source.images), config.globs.images))
     .pipe(plumber())
-    .pipe(changed(config.paths.public.images))
+    .pipe(changed(fullPath(config.paths.public.images)))
     .pipe(gulpif('*.{jpg,jpeg}',mozjpeg(config.tasks.imagemin.mozjpeg)()))
     .pipe(gulpif('*.png',pngquant(config.tasks.imagemin.options.pngquant)()))
     .pipe(gulpif('*.gif',gifsicle(config.tasks.imagemin.options.gifsicle)()))
     .pipe(gulpif('*.svg',svgo(config.tasks.imagemin.options.svgo)()))
     .pipe(gulpif('*.webp',webp(config.tasks.imagemin.options.webp)()))
-    .pipe(gulp.dest(config.paths.public.images));
+    .pipe(gulp.dest(fullPath(config.paths.public.images)));
 });
 
 gulp.task('javascript', () => {
@@ -124,45 +130,47 @@ gulp.task('javascript', () => {
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sourcemaps.write())
     .pipe(concat('vendor.js'))
-    .pipe(gulp.dest(config.paths.public.scripts));
+    .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
 
   return gulp.src(appJavascriptSources)
       .pipe(replace("QQ.API_URI", process.env.API_URI))
       .pipe(replace("QQ.PLATFORM", process.env.PLATFORM))
       .pipe(replace("QQ.ENVIRONMENT", process.env.ENVIRONMENT))
+      .pipe(replace("QQ.OAUTH_URI", process.env.OAUTH_URI))
+      .pipe(replace("QQ.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(iife())
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
       .pipe(sourcemaps.write())
       .pipe(concat('app.js'))
-      .pipe(gulp.dest(config.paths.public.scripts));
+      .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
 });
 
 gulp.task('javascript:minify', () => {
-  return gulp.src(path.join(config.paths.public.scripts, config.globs.scripts))
+  return gulp.src(path.join(fullPath(config.paths.public.scripts), config.globs.scripts))
     .pipe(plumber())
     .pipe(gulpif(config.tasks.uglify.enabled, uglify(config.tasks.uglify.options)))
-    .pipe(gulp.dest(config.paths.public.scripts));
+    .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
 });
 
 gulp.task('styles', () => {
-  return gulp.src(path.join(config.paths.source.styles, config.globs.styles))
+  return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
     .pipe(plumber())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.paths.public.styles));
+    .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 
 gulp.task('styles:production', () => {
-  return gulp.src(path.join(config.paths.source.styles, config.globs.styles))
+  return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
     .pipe(plumber())
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([cssnano(config.tasks.cssnano.options)]))
     .pipe(gulpif(config.tasks.minifycss.enabled, minifycss(config.tasks.minifycss.options)))
-    .pipe(gulp.dest(config.paths.public.styles));
+    .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 
 gulp.task('build',
@@ -202,20 +210,20 @@ gulp.task('browsersync', () => {
     open: true,
     minify: false,
     server: {
-      baseDir: './platforms/browser/www'
+      baseDir: fullPath('./platforms/browser/www')
     }
   });
 
-  gulp.watch(path.join(config.paths.source.root, '/**/*.{sass,scss,css}'), gulp.series(
+  gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{sass,scss,css}'), gulp.series(
     'styles', 'cordova:prepare', 'browsersync:reload'
   ));
-  gulp.watch(path.join(config.paths.source.root, '/**/*.{htm,html}'), gulp.series(
+  gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{htm,html}'), gulp.series(
     'html', 'cordova:prepare', 'browsersync:reload'
   ));
-  gulp.watch(path.join(config.paths.source.root, '/**/*.{js}'), gulp.series(
+  gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{js}'), gulp.series(
     'javascript', 'cordova:prepare', 'javascript:minify', 'browsersync:reload'
   ));
-  gulp.watch(path.join(config.paths.source.root, '/**/*.{jpg,jpeg,gif,svg,png}'), gulp.series(
+  gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{jpg,jpeg,gif,svg,png}'), gulp.series(
     'images', 'cordova:prepare', 'browsersync:reload'
   ));
 });

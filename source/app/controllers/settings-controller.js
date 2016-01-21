@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('SettingsController', SettingsController);
 
-function SettingsController($scope, AuthService, $state, UserService, $stateParams, ApiConfig, $http) {
+function SettingsController($scope, AuthService, $state, UserService, $stateParams) {
     var ctrl = this;
     var user_id = $stateParams.user_id;
     ctrl.password_reset = password_reset;

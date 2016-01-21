@@ -10,7 +10,8 @@ function AuthService($auth, moment, ApiService, CacheFactory) {
         logOut: logOut,
         authenticatedUser: authenticatedUser,
         createTokenExpirationTime: createTokenExpirationTime,
-        refreshToken: refreshToken
+        refreshToken: refreshToken,
+        setUser: setUser
     };
 
 
@@ -18,14 +19,15 @@ function AuthService($auth, moment, ApiService, CacheFactory) {
         return $auth.isAuthenticated()
     }
 
-    function logIn(username, password) {
-        var credentials = {
-            username: username,
-            password: password
-        };
+    function logIn(token) {
+        $auth.setToken(token);
+        createTokenExpirationTime();
 
-        return $auth.login(credentials);
-        // @todo add .catch to handle errors: https://github.com/sahat/satellizer#authloginuser-options
+        return true;
+    }
+
+    function setUser(user) {
+          return localStorage.setItem('user', user);
     }
 
     function logOut() {
