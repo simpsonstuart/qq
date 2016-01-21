@@ -97,7 +97,7 @@ h2 {
 small {
   font-size: 1.1rem;
   color: $text-light;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -1108,6 +1108,36 @@ div.profile {
     }
     &:focus {
       outline: none;
+    }
+  }
+  .unanswered-questions, .incomplete-steps {
+    background: $col-orange-highlight;
+    padding: 10px 20px;
+    border-top: 1px solid $col-grey-stroke;
+    span {
+      color: $col-orange;
+      font-size: 6.5rem;
+      font-weight: 700;
+      text-align: right;
+    }
+    .text {
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+    small {
+      text-align: left;
+      margin-bottom: 5px;
+      &.go-to {
+        color: $col-orange;
+        font-weight: 700;
+        &:after {
+          @include fa;
+          @include fa(caret-right);
+          @include fa-size(1.4rem);
+          @include fa-align(text-top);
+          @include fa-left(5px);
+        }
+      }
     }
   }
   .activity {

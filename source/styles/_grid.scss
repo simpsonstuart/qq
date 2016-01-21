@@ -56,8 +56,20 @@ header {
   }
   .details {
     @include span(75% no-gutter border-box);
-    .all-deals, .active-deals, .playbook {
+    .all-deals, .active-deals {
       @include span(50% no-gutter border-box);
+    }
+    .unanswered-questions, .incomplete-steps {
+      @include span(100% no-gutter border-box);
+      span {
+        @include span(35% no-gutter border-box);
+      }
+      .text {
+        @include span(65% no-gutter border-box)
+      }
+    }
+    .playbook {
+      @include span(100% no-gutter border-box);
     }
     .virtual-team {
       .questions {
