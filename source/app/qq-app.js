@@ -679,20 +679,10 @@ angular.module('QQ').constant('AppConfig', {
         ;
 
     $httpProvider.interceptors.push("HttpErrorInterceptor");
-
-    if (AppConfig.platform === "web") {
-        $locationProvider.html5Mode(true);
-    } else {
-        //Cordova will not work with html5mode. Temporarily disabling until we can find a new solution
-        $locationProvider.html5Mode(false);
-    }
-
-        // setup http middleware
-
-        // default state
-        $urlRouterProvider.when('', '/');
+    $locationProvider.html5Mode(false);
+    $urlRouterProvider.when('', '/');
     $urlRouterProvider.otherwise('/login');
-    });
+});
 
 
 
