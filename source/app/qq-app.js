@@ -3,14 +3,15 @@ angular.module('QQ', [
         'satellizer',
         'ngIOS9UIWebViewPatch',
         'angular-cache'
-])
+]);
 
 angular.module('QQ').constant('AppConfig', {
-        'apiUri': "http://api.quickquestions.pixelandline.net/api/",
-        'platform': "web", // web, android, ios
-        'environment': "dev", // e.g. dev or prod
-        'oauthUrl': "http://api.quickquestions.pixelandline.net/",
-        'oauthReturnUri': "http://quickquestions.pixelandline.net/"
+    'apiUri': "QQ.API_URI",
+    'platform': "QQ.PLATFORM", // web, android, ios
+    'environment': "QQ.ENVIRONMENT", // e.g. dev or prod
+    'oauthUrl': "QQ.OAUTH_URI",
+    'oauthReturnUri': "QQ.OAUTH_RETURN_URI",
+    'organizationReturnUri': "QQ.ORGANIZATION_RETURN_URI"
     });
 
     angular.module('QQ').run(function ($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
