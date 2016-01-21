@@ -4,9 +4,14 @@
 
 See `.env.json.example`.  Rename or move to `.env.json`
 
+**If you add an environment variable,** you will need to add it to the `.env.json`, the `AppConfig` in `qq-app.js`, **and**
+the `make-env-json-file.py`.
+
+The `make-env-json-file.py` is to grab the environment variables from the build server.
+
 ## Dev Environment
 
-Note that for now, the API reference in the code points to a static location, which is the url dev API.  Eventually, environment-specific configuration will be implemented using the build system.
+The build in the gulp file is dependent upon the `PLATFORM` environment variable in `.env.json`.   Acceptable values are: "web, ios, android"
 
 Ensure node/npm is installed using nvm.
 
