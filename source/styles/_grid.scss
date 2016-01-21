@@ -56,7 +56,7 @@ header {
   }
   .details {
     @include span(75% no-gutter border-box);
-    .qq-total, .qq-value, .playbook {
+    .all-deals, .active-deals, .playbook {
       @include span(50% no-gutter border-box);
     }
     .virtual-team {
@@ -132,7 +132,7 @@ header {
     }
     .details {
       @include span(100% no-gutter border-box);
-      .qq-total, .qq-value, .qualify, .campaign {
+      .all-deals, .active-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
       }
     }

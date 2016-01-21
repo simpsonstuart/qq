@@ -7,17 +7,14 @@
     </aside>
     <div class="details clearfix">
         <div class="match-height">
-            <div class="qq-total">
-                <small>Trailing 13 QQs</small>
-                <div class="questions clearfix">
-                    <div class="answered">{{ctrl.quarterAnswerCount}}</div>
-                    <div class="asked">{{ctrl.quarterQuestionCount}}</div>
-                </div>
-            </div>
-            <div class="qq-value">
-                <small>Current Quarter Deals</small>
+            <a href="#"class="all-deals">
+                <small>All My Deals</small>
+                <h2>$2,300,000</h2>
+            </a>
+            <a href="#" class="active-deals">
+                <small>Active Deals</small>
                 <h2 ng-if="ctrl.trailingCounts.deal_value">{{ctrl.formatMoney(ctrl.trailingCounts.deal_value)}}</h2>
-            </div>
+            </a>
         </div>
         <div class="activity">
             <small>Activity by week</small>
@@ -40,7 +37,7 @@
         <div class="virtual-team clearfix">
             <small>Active Virtual Team</small>
             <div ng-repeat="team_mate in ctrl.virtual_team" class="questions clearfix">
-                <small><a ui-sref="root.profile.user({user_id: team_mate.id})">{{team_mate.name}}</a></small>
+                <small>{{team_mate.name}}</small>
                 <div class="answered {{ctrl.answerCountIsZero(team_mate)}}">{{team_mate.answer_count}}</div>
                 <div class="asked">{{team_mate.question_count}}</div>
             </div>

@@ -1090,6 +1090,26 @@ div.profile {
       margin-bottom: 20px;
     }
   }
+  .all-deals, .active-deals {
+    small {
+      margin-bottom: 5px;
+      color: $col-orange;
+      font-weight: 700;
+      &:after {
+        @include fa;
+        @include fa(caret-right);
+        @include fa-size(1.4rem);
+        @include fa-align(text-top);
+        @include fa-left(5px);
+      }
+    }
+    h2 {
+      color: $text-primary;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
   .activity {
     padding: 20px 0;
     border-top: 1px solid $col-grey-stroke;
@@ -1175,7 +1195,7 @@ div.profile {
       background: $col-blue;
     }
   }
-  .qq-total, .qq-value, .playbook {
+  .all-deals, .active-deals, .playbook {
     padding-top: 20px;
     text-align: center;
   }
@@ -1195,13 +1215,7 @@ div.profile {
       }
     }
   }
-  .qq-total {
-    .questions {
-      width: 138px;
-      margin-bottom: 20px;
-    }
-  }
-  .qq-value {
+  .active-deals {
     border-left: 1px solid $col-grey-stroke;
     h2 {
       margin-bottom: 20px;
@@ -2388,11 +2402,6 @@ footer {
         &:before {
           right: -3px;
         }
-      }
-    }
-    .qq-total {
-      .questions {
-        width: 118px;
       }
     }
   }
