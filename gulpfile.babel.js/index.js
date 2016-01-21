@@ -184,10 +184,10 @@ gulp.task('build', (() => {
   ];
 
   if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
-    buildTasks.push('cordova:prepare')
+    buildTasks.push('cordova:prepare');
   }
 
-  return gulp.series.apply(gulp, buildTasks)
+  return gulp.series.apply(gulp, buildTasks);
 })());
 
 gulp.task('staging',
