@@ -20,11 +20,11 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
     }
 
     /**
-     * @param username|token
-     * @param password|null
+     * @param username
+     * @param password
+     * @returns {*}
      */
     function logIn(username, password) {
-        var deferred = $q.defer();
         var args = arguments;
 
         if (args.length == 2) {
@@ -36,10 +36,14 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
             return $auth.login(credentials);
         }
 
-        deferred.resolve(function() {
-            var token = args[0];
+        // if only a token is passed to login
+
+        var deferred = $q.defer();
+        var token = args[0];
+
+        deferred.resolve((function() {
             $auth.setToken(token);
-        });
+        })());
 
         return deferred.promise;
     }
