@@ -1,10 +1,9 @@
-<h1>Profile</h1>
+<h1>Traqq</h1>
 <div class="profile clearfix">
     <aside>
         <img ng-if="ctrl.profile.picture" src="{{ctrl.profile.picture}}">
-        <h2>{{ctrl.profile.name}}<a ui-sref="root.settings" class="settings-icon"></a></h2>
-        <p class="profile-title">{{ctrl.roleLabel}}</p>
-            <a class="deals-count" ui-sref="root.deals">{{ctrl.profile.deal_count}} deals</a>
+        <h2>{{ctrl.profile.name}}</h2>
+        <small><a>Partners</a> | <a>Targets</a> | <a>Accounts</a></small>
     </aside>
     <div class="details clearfix">
         <div class="match-height">

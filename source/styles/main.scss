@@ -1078,14 +1078,8 @@ div.profile {
       margin-bottom: 10px;
       color: $text-light;
     }
-    .district {
-      &:before {
-        @include fa;
-        @include fa(users);
-        @include fa-right(4px);
-        @include fa-size(1.1em);
-        @include fa-align(middle);
-      }
+    small {
+      line-height: 1.7rem;
     }
   }
   .details {
@@ -2591,6 +2585,15 @@ footer {
 
 /* max-width 568 --------------------------*/
 @media only screen and (max-width: 568px) {
+  div.profile {
+    aside {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
   .deal-detail {
     .qq-buttons {
       button {
