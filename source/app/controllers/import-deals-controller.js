@@ -7,6 +7,7 @@ function ImportDealsController($scope, $state, DealService) {
     //fictional deals replace with real ones in future
 
     DealService.importList().then(function (data) {
+        console.log(data);
         ctrl.deals = data;
     });
 
