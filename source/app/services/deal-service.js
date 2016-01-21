@@ -10,7 +10,8 @@ function DealService(ApiService) {
         feedDetail: feedDetail,
         questionsAndAnswersCountGroupedByWeek: questionsAndAnswersCountGroupedByWeek,
         playbooks: playbooks,
-        addPlay: addPlay
+        addPlay: addPlay,
+        importList: importList
     };
 
     function getAll(query) {
@@ -59,5 +60,9 @@ function DealService(ApiService) {
 
     function addPlay(dealId, playIds) {
         return ApiService.post('deals/' + dealId + '/plays', {ids: playIds});
+    }
+
+    function importList() {
+        return ApiService.get('deals/import');
     }
 }
