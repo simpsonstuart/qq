@@ -1,14 +1,40 @@
 angular.module('QQ')
     .controller('LoginController', LoginController);
 
-function LoginController($scope, AuthService, UserService, $state) {
+function LoginController($scope, AuthService, UserService, $state, UrlService, $window, AppConfig) {
     var ctrl = this;
+    var token = $state.params.token;
+    var newUser = $state.params.new_user;
+    var errorParams = $state.params.errors;
+    ctrl.salesforceLogin = salesforceLogin;
     ctrl.login = login;
     ctrl.LSError = localStorageSupported();
 
     //display error if local storage not supported
     var errors = [];
     ctrl.errorsList = errors;
+
+    if (errorParams) {
+        ctrl.errorsList.push(errorParams.split(','));
+    }
+
+    if (token) {
+        console.log(newUser, 'here');
+        AuthService.logIn(token).then(function () {
+            UserService.profile('current').then(function (data) {
+                var user = JSON.stringify(data);
+                AuthService.createTokenExpirationTime();
+                localStorage.setItem('user', user);
+            }).then(function () {
+                if (newUser == 'true') {
+                    $state.go('root.import-deals');
+                } else {
+                    $state.go('root.feed');
+                }
+            });
+        });
+    }
+
 
     if(localStorageSupported() === false) {
         errors.push("Error local storage not supported by your browser or you are using private/incognito mode!");
@@ -34,6 +60,14 @@ function LoginController($scope, AuthService, UserService, $state) {
             }
         });
 
+    }
+
+    function salesforceLogin() {
+        var query = {
+            "return_uri": UrlService.urlWithoutQuery()
+        };
+
+        $window.location.href = AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query);
     }
     //test if local storage is available
     function localStorageSupported() {

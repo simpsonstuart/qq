@@ -2,8 +2,8 @@
 <form class="import">
     <fieldset>
         <div ng-repeat="deal in ctrl.deals">
-            <input type="checkbox" id="{{deal.dealId}}" class="checkbox" ng-model="deal.isChecked" ng-change="deal.selected"  ng-click="ctrl.checkEnabled()" />
-            <label for="{{deal.dealId}}"></label>
+            <input type="checkbox" id="{{deal.id}}" class="checkbox" ng-model="deal.isChecked" ng-change="deal.selected"  ng-click="ctrl.checkEnabled()" />
+            <label for="{{deal.id}}"></label>
             <div class="import-details deals">
             <h2>{{deal.name}}</h2>
 
