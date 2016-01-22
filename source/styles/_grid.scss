@@ -172,7 +172,7 @@ header {
   .deal-detail {
     .details {
       @include span(100% no-gutter border-box);
-      .activity, .plays, .salesforce-button {
+      .activity, .plays, .salesforce-button, .deal-btns {
         @include span(100% no-gutter border-box);
         float: none;
       }

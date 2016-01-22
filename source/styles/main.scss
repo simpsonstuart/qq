@@ -1354,7 +1354,8 @@ div.profile {
     padding: 15px 0 0 0;
     button {
       display: block;
-      width: 300px;
+      max-width: 300px;
+      width: 90%;
       margin: 13px auto;
     }
   }
@@ -1396,7 +1397,8 @@ div.profile {
   .add-play {
     border-top: 1px solid $col-grey-stroke;
     button {
-      width: 300px;
+      max-width: 300px;
+      width: 90%;
       margin: 10px auto;
       display: block;
     }
@@ -2109,7 +2111,7 @@ footer {
     margin-bottom: 46px;
   }
 
-  .match-height.column {
+  .match-height.column, .match-height {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -2451,17 +2453,25 @@ footer {
     .details {
       border-left: none;
       .deal-btns {
-        width: 300px;
-        margin: 10px auto;
+        border-top: none;
+        padding-top: 0;
+        text-align: center;
         button {
           width: 145px;
+          display: inline-block;
           &:first-child {
             margin-right: 6px;
           }
         }
       }
-      .activity {
-        border-bottom: none;
+      .account-value, .close-date {
+        float: left;
+        width: 50%;
+        margin-top: 0;
+        box-sizing: border-box;
+      }
+      .close-date {
+        border-left: 1px solid $col-grey-stroke;
       }
       .plays {
         .questions {
