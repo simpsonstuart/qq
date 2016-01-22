@@ -22,7 +22,7 @@
         <small class="error" ng-if="registration_form.confirm_password.$error.passwordVerify && !registration_form.confirm_password.$pristine">Passwords don't match!</small>
         <input ng-model='confirm_password' type="password" name='confirm_password' id="confirm_password" placeholder='confirm password' required data-password-verify="user.password">
         </p>
-        <button class="submit" type="submit"  ng-click="submitted=true" ng-disabled="registration_form.$invalid">Register</button>
+        <button class="submit" type="submit"  ng-click="ctrl.register()" ng-disabled="registration_form.$invalid">Register</button>
     </fieldset>
 
 </form>
