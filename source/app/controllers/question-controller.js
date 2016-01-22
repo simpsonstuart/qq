@@ -8,6 +8,11 @@ function QuestionController($scope, $state, $stateParams) {
     ctrl.deal = $stateParams.deal_id;
     var deal = ctrl.deal;
 
+    //if the deal is default or null go to the ask deal page
+    if($stateParams.deal_id === "Deal ID" || $stateParams.deal_id === null){
+        $state.go('root.ask-deal');
+    }
+
     function click_addPlay() {
         ctrl.expand_show_addPlay = true;
         ctrl.showPlayExpanded = true;
@@ -15,7 +20,6 @@ function QuestionController($scope, $state, $stateParams) {
 
     //pass the dealId on to choose reps
     function click_questionSubmit() {
-        console.log(deal);
         $state.go('root.ask-reps', {deal_id: deal});
     }
 }
