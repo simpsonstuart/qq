@@ -8,7 +8,7 @@
         <form  ng-if="ctrl.showPlayExpanded != true" name="ask_question" novalidate>
         <small>Have a general question? Ask it below!</small>
         <small class="error" ng-if="ask_question.deal.$invalid && !ask_question.deal.$pristine">Question text is required</small>
-        <input name="deal" id="deal" type="text" ng-model="deal" placeholder="Begin typing..." required/>
+        <input name="deal" id="deal" type="text" ng-model="dealQuestion" placeholder="Begin typing..." required/>
         <small>Question Type</small>
         <input type="radio" name="question-type" ng-model="question_type" value="yes-no" ng-required="!question_type">Yes or no answer <br>
         <input type="radio" name="question-type" ng-model="question_type" value="text" ng-required="!question_type">Text answer
@@ -22,7 +22,7 @@
         <div ng-if="ctrl.expand_show_addPlay" class="plays">
             <div>
                 <small>Qualify</small>
-                <div ng-click="$state.go('root.ask-play-questions')" class="play-row">
+                <div ng-click="ctrl.click_playSelect()" class="play-row">
                     <p>MANT</p>
                     <a class="caret"></a>
                 </div>
