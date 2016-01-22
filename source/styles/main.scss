@@ -1358,6 +1358,24 @@ div.profile {
       width: 90%;
       margin: 13px auto;
     }
+    .deal-feed {
+      &:before {
+        @include fa;
+        @include fa(inbox);
+        @include fa-size(2rem);
+        @include fa-right(10px);
+        @include fa-align(middle);
+      }
+    }
+    .next-steps {
+      &:before {
+        @include fa;
+        @include fa(check-circle);
+        @include fa-size(2rem);
+        @include fa-right(10px);
+        @include fa-align(middle);
+      }
+    }
   }
   .plays {
     border-left: 1px solid $col-grey-stroke;
@@ -1392,7 +1410,7 @@ div.profile {
     border-top: 1px solid $col-grey-stroke;
   }
   .account-value {
-    margin-top: 32px;
+    margin-top: 19px;
   }
   .add-play {
     border-top: 1px solid $col-grey-stroke;
