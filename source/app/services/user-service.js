@@ -11,7 +11,9 @@ function UserService(ApiService) {
         register: register,
         reset_password: reset_password,
         email_change: email_change,
-        billing_change: billing_change
+        billing_change: billing_change,
+        importList: importList,
+        add: add
     };
 
     function getAll(query) {
@@ -44,5 +46,13 @@ function UserService(ApiService) {
 
     function billing_change(billing_data) {
         return ApiService.post('settings', billing_data);
+    }
+
+    function importList() {
+        return ApiService.get('users/import');
+    }
+
+    function add(userIds) {
+        return ApiService.post('users/import', {ids: userIds});
     }
 }
