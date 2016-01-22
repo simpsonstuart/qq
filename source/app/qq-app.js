@@ -536,7 +536,7 @@ angular.module('QQ').constant('AppConfig', {
                 }
             })
             .state('root.login', {
-                url: '/login',
+                url: '/login?token,new_user',
                 restricted: false,
                 data: {
                     bodyClasses: 'login grey',
