@@ -2182,6 +2182,8 @@ footer {
   }
 
   header {
+    padding-left: 10px;
+    padding-right: 10px;
     height: 46px;
     .logo {
       width: 60px;
@@ -2241,18 +2243,14 @@ footer {
     padding: 0;
     max-width: 100%;
   }
-  
-  footer nav ul {
-    width: 357px;
-  }
 
   footer nav ul li a.feed:active,
   footer nav ul li a.deals:active,
   footer nav ul li a.next:active,
   footer nav ul li a.profile:active {
-  background: #e05b03;
+    background: #e05b03;
+  }
 
-}
   .feed-filter  {
     position: absolute;
     top: 0;
