@@ -212,7 +212,7 @@ textarea {
 /* HEADER ----------------------------------
 -------------------------------------------*/
 header {
-  padding: 0 20px;
+  padding: 0;
   background: $col-orange;
   position: relative;
   &.back {
@@ -1145,11 +1145,20 @@ div.profile {
     border-top: 1px solid $col-grey-stroke;
     clear: both;
     &.new-user {
+      padding: 20px;
       p {
         text-align: center;
+        line-height: 2rem;
       }
-      button {
-        width: 145px;
+      .new-user-btns {
+        margin: 20px auto 0 auto;
+        width: 300px;
+        button {
+          width: 145px;
+          &:first-child {
+            margin-right: 6px;
+          }
+        }
       }
     }
     .graph {
