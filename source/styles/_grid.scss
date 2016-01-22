@@ -169,8 +169,9 @@ header {
   .deal-detail {
     .details {
       @include span(100% no-gutter border-box);
-      .activity, .plays, .qq-buttons, .salesforce-button {
+      .activity, .plays, .salesforce-button {
         @include span(100% no-gutter border-box);
+        float: none;
       }
       .virtual-team {
         .questions {
