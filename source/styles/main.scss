@@ -80,7 +80,14 @@ body, p {
 }
 
 main {
+  max-width: 1400px;
+  width: 100%;
   padding: 50px 0 60px 0;
+}
+
+.wrapper {
+  max-width: 1400px;
+  width: 100%;
 }
 
 h1 {
@@ -1334,64 +1341,24 @@ div.profile {
     border-left: 1px solid $col-grey-stroke;
     small {
       text-align: center;
-      display:block;
-      margin-bottom: 20px;
+      display: block;
+      margin-bottom: 10px;
     }
     h2 {
       text-align: center;
     }
   }
-  .activity {
-    padding: 20px 0;
-    border-bottom: 1px solid $col-grey-stroke;
+  .deal-btns {
+    box-sizing: border-box;
     border-top: 1px solid $col-grey-stroke;
-    .graph {
-      height: 130px;
-      position: relative;
-      width: 164px;
-      margin: 0 auto;
-    }
-    .week {
-      position: absolute;
-      bottom: -10px;
-      width: 39px;
-      margin-right: 2px;
-      p {
-        text-indent: -9999px;
-        position: relative;
-        span {
-          position: absolute;
-          text-indent: 0;
-          background: $col-red;
-          display: block;
-          width: 100%;
-          color: #fff;
-          text-align: center;
-          padding: 2px 0;
-          top: -17px;
-          font-size: 1.1rem;
-        }
-      }
-    }
-    .week.one {
-      left: 0;
-      background: $col-lt-blue;
-    }
-    .week.two {
-      left: 41px;
-      background: $col-lt-blue;
-    }
-    .week.three {
-      left: 82px;
-      background: $col-med-blue;
-    }
-    .week.four {
-      left: 123px;
-      background: $col-med-blue;
+    padding: 15px 0 0 0;
+    button {
+      display: block;
+      width: 300px;
+      margin: 13px auto;
     }
   }
   .plays {
-    border-bottom: 1px solid $col-grey-stroke;
     border-left: 1px solid $col-grey-stroke;
     small {
       background: $col-grey;
@@ -1419,22 +1386,20 @@ div.profile {
       right: 25px;
     }
   }
-  .account-value, .close-date, .forecast, .stage {
-    padding: 20px 0;
-  }
-  .close-date, .stage {
-    border-left: 1px solid $col-grey-stroke;
-  }
-  .account-value, .close-date {
+  .close-date, .account-value {
+    padding: 20px 0 15px 0;
     border-top: 1px solid $col-grey-stroke;
-    small {
-      margin-bottom: 10px;
-    }
+  }
+  .account-value {
+    margin-top: 32px;
   }
   .add-play {
-    width: 300px;
-    margin: 10px auto;
-    display: block;
+    border-top: 1px solid $col-grey-stroke;
+    button {
+      width: 300px;
+      margin: 10px auto;
+      display: block;
+    }
   }
   .salesforce-button {
     border-top: 1px solid $col-grey-stroke;
@@ -1443,17 +1408,6 @@ div.profile {
     text-align: center;
     button {
       width: 300px;
-    }
-  }
-  .qq-buttons {
-    button {
-      width: 42%;
-    }
-  }
-  .salesforce-button {
-    border-left: 1px solid $col-grey-stroke;
-    button.salesforce {
-      width: 85%;
     }
   }
 }
@@ -2430,6 +2384,7 @@ footer {
     text-align: center;
     padding: 10px 0;
     position: relative;
+    border-bottom: 1px solid $col-grey-stroke;
     .favorite-mobile {
       position: absolute;
       left: 12px;
@@ -2495,24 +2450,33 @@ footer {
     }
     .details {
       border-left: none;
-    }
-    .activity {
-      border-bottom: none;
-    }
-    .plays {
-      border-left: none;
-      .questions {
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-      }
-    }
-    .salesforce-button {
-      border-left: none;
-      padding: 20px 0;
-      button.salesforce {
+      .deal-btns {
         width: 300px;
+        margin: 10px auto;
+        button {
+          width: 145px;
+          &:first-child {
+            margin-right: 6px;
+          }
+        }
+      }
+      .activity {
+        border-bottom: none;
+      }
+      .plays {
+        .questions {
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+      }
+      .salesforce-button {
+        border-left: none;
+        padding: 20px 0;
+        button.salesforce {
+          width: 300px;
+        }
       }
     }
   }

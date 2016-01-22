@@ -13,29 +13,35 @@
         <span class="favorite"></span>
     </aside>
     <div class="details clearfix">
-        <div class="clearfix">
-            <div class="account-value">
-                <small>Account Value</small>
-                <h2 ng-bind="ctrl.account_value"></h2>
+        <div class="match-height">
+            <div class="deal-btns">
+                <button class="deal-feed">Deal Feed</button>
+                <button class="next-steps">Next Steps</button>
+                <div class="account-value">
+                    <small>Account Value</small>
+                    <h2 ng-bind="ctrl.account_value"></h2>
+                </div>
+                <div class="close-date">
+                    <small>Close Date</small>
+                    <h2 ng-bind="ctrl.close_date"></h2>
+                </div>
             </div>
-            <div class="close-date">
-                <small>Close Date</small>
-                <h2 ng-bind="ctrl.close_date"></h2>
-            </div>
-        </div>
-        <div class="plays">
-            <div ng-repeat="(playbook_name, playbook) in ctrl.playbook_counts">
-                <small>{{playbook_name}}</small>
-                <div ng-repeat="play in playbook" class="play-row">
-                    <p>{{play.play}}</p>
-                    <div class="questions clearfix">
-                        <div class="answered">{{play.answer_count}}</div>
-                        <div class="asked">{{play.question_count}}</div>
+            <div class="plays">
+                <div ng-repeat="(playbook_name, playbook) in ctrl.playbook_counts">
+                    <small>{{playbook_name}}</small>
+                    <div ng-repeat="play in playbook" class="play-row">
+                        <p>{{play.play}}</p>
+                        <div class="questions clearfix">
+                            <div class="answered">{{play.answer_count}}</div>
+                            <div class="asked">{{play.question_count}}</div>
+                        </div>
                     </div>
+                </div>
+                <div class="add-play">
+                  <button ui-sref="root.deal-set-play({deal_id: ctrl.deal.id})">Add Play</button>
                 </div>
             </div>
         </div>
-        <button class="add-play" ui-sref="root.deal-set-play({deal_id: ctrl.deal.id})">Add Play</button>
         <div class="salesforce-button">
             <button class="salesforce">View Deal in Salesforce</button>
         </div>

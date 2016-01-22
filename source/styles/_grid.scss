@@ -101,8 +101,11 @@ header {
   }
   .details {
     @include span(75% no-gutter border-box);
-    .account-value, .close-date, .stage, .forecast, .activity, .plays, .qq-buttons, .salesforce-button {
+    .deal-numbers, .plays, .deal-btns {
       @include span(50% no-gutter border-box);
+    }
+    .salesforce-button {
+      @include span(100% no-gutter border-box);
     }
   }
 }
