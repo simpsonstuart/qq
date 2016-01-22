@@ -10,9 +10,12 @@
                 class="notification">{{ctrl.sentPendingCount}}</span>Sent</a></li>
     </ul>
 </div>
-<div ng-if="ctrl.weHavePendingItems()" class="row border-top">
+<div ng-if="ctrl.weHavePendingItems()" class="row border-top flex">
     <aside>
-        <span class="hourglass"></span>
+        <div class="date">
+          <span>{{ctrl.formatDate(datestring).date()}}</span>
+          <small>{{ctrl.formatDate(datestring).format('MMM')}}</small>
+        </div>
     </aside>
     <div class="feed-detail-wrapper">
         <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)"
@@ -28,25 +31,5 @@
         </div>
     </div>
 </div>
-<div ng-class="{'border-top':ctrl.weDoNotHavePendingItems()}"
-     ng-repeat="(datestring, day) in ctrl.feedItems" class="row">
-    <aside>
-        <div class="date">
-            <span>{{ctrl.formatDate(datestring).date()}}</span>
-            <small>{{ctrl.formatDate(datestring).format('MMM')}}</small>
-        </div>
-    </aside>
-    <div class="feed-detail-wrapper">
-        <div ng-repeat="item in day" ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details clearfix">
-            <img src="{{item.from_user_picture}}">
 
-            <div class="text">
-                <h2>{{ctrl.getActivityTypeDisplayString(item)}}</h2>
-                <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
-                <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
-            </div>
-            <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
-        </div>
-    </div>
-</div>
 

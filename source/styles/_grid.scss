@@ -23,17 +23,7 @@ header {
 }
 
 
-/* FEED ----------------------------------
--------------------------------------------*/
-.row {
-  @include span(100% no-gutter border-box);
-  aside {
-    @include span(15% no-gutter border-box);
-  }
-  .feed-detail-wrapper {
-    @include span(85% no-gutter border-box);
-  }
-}
+
 
 
 
@@ -98,6 +88,11 @@ header {
   }
 }
 
+
+
+
+
+
 /* DEAL DETAIL ----------------------------
 -------------------------------------------*/
 .deal-detail {
@@ -133,7 +128,7 @@ header {
     aside {
       @include span(20% no-gutter border-box);
     }
-    .feed-detail-wrapper, .details {
+    .details {
       @include span(80% no-gutter border-box);
     }
   }
