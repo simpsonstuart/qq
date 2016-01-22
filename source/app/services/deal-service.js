@@ -11,7 +11,8 @@ function DealService(ApiService) {
         questionsAndAnswersCountGroupedByWeek: questionsAndAnswersCountGroupedByWeek,
         playbooks: playbooks,
         addPlay: addPlay,
-        importList: importList
+        importList: importList,
+        add: add
     };
 
     function getAll(query) {
@@ -64,5 +65,9 @@ function DealService(ApiService) {
 
     function importList() {
         return ApiService.get('deals/import');
+    }
+
+    function add(deals) {
+        return ApiService.post('deals/import', {ids: deals});
     }
 }

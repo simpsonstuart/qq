@@ -14,9 +14,11 @@ function ImportDealsController($scope, $state, DealService) {
     //gets selected users on finish click then goes to profile page
     ctrl.nextPressed = function () {
         ctrl.getChecked();
-        console.log(ctrl.dealsChecked);
+        var dealsToImport = _.pluck(ctrl.dealsChecked, 'id');
+        DealService.add(dealsToImport);
         //todo add logic that does something with selected deals here
         $state.go('root.import-users');
+
     };
 
     //Get checked deals by looking at is checked property added to array by angular
