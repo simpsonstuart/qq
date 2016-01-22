@@ -7,7 +7,7 @@ function RegistrationController($scope, $state, UserService) {
 
     function register() {
         UserService.register((function () {
-            return { 'email': $scope.email, 'username': $scope.username, 'password': $scope.password };
+            return { 'email': $scope.email, 'username': $scope.username, 'password': $scope.confirm_password };
         })()).then(function(){
             $state.go('root.login');
         });
