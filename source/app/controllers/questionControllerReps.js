@@ -1,7 +1,7 @@
 angular.module('QQ')
-    .controller('QuestionControllerReps', QuestionControllerReps);
+    .controller('QuestionControllerReps', QuestionController);
 
-function QuestionControllerReps($scope, $state, $stateParams) {
+function QuestionController($scope, $stateParams) {
     var ctrl = this;
     ctrl.deal = $stateParams.deal_id;
 }
