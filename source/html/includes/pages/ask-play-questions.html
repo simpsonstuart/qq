@@ -2,7 +2,7 @@
     <h1>Ask</h1>
     <div class="ask-details">
         <small>Deal</small>
-        <h1>Sony Tech Refresh</h1>
+        <h1>{{ctrl.deal}}</h1>
     </div>
     <div class="ask-info">
         <small>Select questions to ask</small>
@@ -48,6 +48,6 @@
                 <label for="play4"></label>
                 <p class="plays">Time</p>
             </div>
-        <button class="inactive" ng-click="$state.go('root.ask-reps')" type="button">Next</button>
+        <button class="inactive" ng-click="ctrl.click_dealSubmit()" type="button">Next</button>
     </div>
 </div>
