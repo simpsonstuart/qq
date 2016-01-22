@@ -2264,11 +2264,6 @@ footer {
         margin-top: 0;
         font-size: 1.4rem;
       }
-      .timestamp {
-        position: static;
-        display: block;
-        margin-top: 15px;
-      }
       .caret {
         display: block;
       }
@@ -2276,6 +2271,14 @@ footer {
         top: 24%;
         -webkit-transform: translateY(-24%);
         transform: translateY(-24%);
+      }
+    }
+    .feed-details {
+      .timestamp {
+        position: static;
+        display: block;
+        margin-top: 5px;
+        transform: none;
       }
     }
   }
@@ -2511,7 +2514,10 @@ footer {
 
   .row .feed-details {
     display: flex;
-    padding-bottom: 3px;
+    line-height: 1.8rem;
+    h2 {
+      margin-bottom: 5px;
+    }
     .text {
       width: 72%;
     }
@@ -2638,13 +2644,6 @@ footer {
         width: 40px;
         height: 40px;
       }
-    }
-  }
-
-  .feed-details {
-    line-height: 1.8rem;
-    h2 {
-      margin-bottom: 5px;
     }
   }
 
