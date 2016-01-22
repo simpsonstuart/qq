@@ -411,6 +411,9 @@ angular.module('QQ').constant('AppConfig', {
             .state('root.ask-play-questions', {
                 url: '/ask-questions/plays',
                 restricted: true,
+                params: {
+                    deal_id: "Deal ID"
+                },
                 data: {
                     headerClasses: 'back'
                 },
@@ -421,7 +424,7 @@ angular.module('QQ').constant('AppConfig', {
                     },
                     'container@root': {
                         templateUrl: 'includes/pages/ask-play-questions.html',
-                        controller: 'TestController',
+                        controller: 'askQuestionPlaysController',
                         controllerAs: 'ctrl'
                     },
                     'footer@root': {
