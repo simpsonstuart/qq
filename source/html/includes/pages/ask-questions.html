@@ -2,7 +2,7 @@
     <h1>Ask</h1>
     <div class="ask-details">
         <small>Deal</small>
-        <h1>{{deal_id}}</h1>
+        <h1>{{ctrl.deal}}</h1>
     </div>
     <div class="ask-info">
         <form  ng-if="ctrl.showPlayExpanded != true" name="ask_question" novalidate>
@@ -12,12 +12,12 @@
         <small>Question Type</small>
         <input type="radio" name="question-type" ng-model="question_type" value="yes-no" ng-required="!question_type">Yes or no answer <br>
         <input type="radio" name="question-type" ng-model="question_type" value="text" ng-required="!question_type">Text answer
-        <button class="submit" ng-click="$state.go('root.ask-reps')" type="button" ng-disabled="ask_question.$invalid">Next</button>
+        <button class="submit" ng-click="ctrl.click_questionSubmit()" type="button" ng-disabled="ask_question.$invalid">Next</button>
         </form>
         <div ng-if="ctrl.showPlayExpanded != true" class="hr">
             <p>or</p>
         </div>
-        <small ng-if="ctrl.showPlayExpanded != true">(Deal Name) Doesn't have any plays. Add plays to send related questions.</small>
+        <small ng-if="ctrl.showPlayExpanded != true">{{ctrl.deal}} Doesn't have any plays. Add plays to send related questions.</small>
         <button class="submit" ng-if="ctrl.showPlayExpanded != true"  ng-click="ctrl.click_addPlay()" type="button">Add Plays</button>
         <div ng-if="ctrl.expand_show_addPlay" class="plays">
             <div>

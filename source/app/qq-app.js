@@ -372,7 +372,7 @@ angular.module('QQ').constant('AppConfig', {
                     },
                     'container@root': {
                         templateUrl: 'includes/pages/ask-deal.html',
-                        controller: 'QuestionController',
+                        controller: 'QuestionControllerDeal',
                         controllerAs: 'ctrl'
                     },
                     'footer@root': {
@@ -385,6 +385,9 @@ angular.module('QQ').constant('AppConfig', {
             .state('root.ask-questions', {
                 url: '/ask-questions',
                 restricted: true,
+                params: {
+                    deal_id: "Deal ID"
+                },
                 data: {
                     headerClasses: 'back'
                 },
@@ -431,6 +434,9 @@ angular.module('QQ').constant('AppConfig', {
             .state('root.ask-reps', {
                 url: '/ask-reps',
                 restricted: true,
+                params: {
+                    deal_id: "Deal ID"
+                },
                 data: {
                     headerClasses: 'back'
                 },
@@ -441,7 +447,7 @@ angular.module('QQ').constant('AppConfig', {
                     },
                     'container@root': {
                         templateUrl: 'includes/pages/ask-reps.html',
-                        controller: 'MainController',
+                        controller: 'QuestionControllerReps',
                         controllerAs: 'ctrl'
                     },
                     'footer@root': {
