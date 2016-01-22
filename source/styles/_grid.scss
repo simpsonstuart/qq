@@ -62,10 +62,10 @@ header {
     .unanswered-questions, .incomplete-steps {
       @include span(100% no-gutter border-box);
       span {
-        @include span(35% no-gutter border-box);
+        @include span(45% no-gutter border-box);
       }
       .text {
-        @include span(65% no-gutter border-box)
+        @include span(55% no-gutter border-box)
       }
     }
     .playbook {
@@ -146,6 +146,15 @@ header {
       @include span(100% no-gutter border-box);
       .all-deals, .active-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
+      }
+      .unanswered-questions, .incomplete-steps {
+        @include span(100% no-gutter border-box);
+        span {
+          @include span(35% no-gutter border-box);
+        }
+        .text {
+          @include span(65% no-gutter border-box)
+        }
       }
       .virtual-team {
         .questions {
