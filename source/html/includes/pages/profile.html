@@ -30,7 +30,7 @@
             <small class="go-to">go to next steps</small>
           </div>
         </a>
-        <div class="activity">
+        <!--<div class="activity">
             <small>Activity by week</small>
             <div class="graph clearfix">
                 <div ng-repeat="(key, week) in ctrl.trailingCounts.week_counts | limitTo:13"
@@ -39,14 +39,20 @@
                     <p><span>{{week.count}}</span>Week {{key + 1}}</p>
                 </div>
             </div>
+        </div> -->
+        <div class="activity new-user">
+          <small>Activity by week</small>
+          <p>You have no activity yet! To get started, ask questions about your deals or start assigning next steps to your team.</p>
+          <div class="new-user-btns">
+            <button>Ask Questions</button>
+            <button>Assign Next Steps</button>
+          </div>
         </div>
-        <div class="match-height">
-            <div ng-repeat="(key, playbook) in ctrl.playbook_counts" class="playbook">
-                <small>{{key}}</small>
-                <ul>
-                    <li ng-repeat="play in playbook">{{play.play}}: {{play.count}}</li>
-                </ul>
-            </div>
+        <div class="playbook">
+            <small>Campaign</small>
+            <ul>
+                <li>Healthcare: 2</li>
+            </ul>
         </div>
         <div class="virtual-team clearfix">
             <small>Active Virtual Team</small>
