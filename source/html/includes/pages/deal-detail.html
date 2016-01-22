@@ -1,14 +1,14 @@
 <div class="deal-title">
-    <small ng-bind="ctrl.deal.company_name"></small>
+    <small class="account" ng-bind="ctrl.deal.company_name"></small>
     <h1 ng-bind="ctrl.deal.name"></h1>
+  <small class="deal-owner">Deal Owner: Claire Miller</small>
 </div>
 
 <div class="deal-detail clearfix">
     <aside>
         <img src="{{ctrl.deal.owner.data.picture}}">
 
-        <h2><a class="deal_owner" ng-bind="ctrl.deal.owner.data.name"></a>
-        </h2>
+        <h2 ng-bind="ctrl.deal.owner.data.name"></h2>
         <small>Deal Owner</small>
     </aside>
     <div class="details clearfix">
