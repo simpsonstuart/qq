@@ -1,27 +1,27 @@
 angular.module('QQ')
     .controller('ImportUsersController', ImportUsersController);
 
-function ImportUsersController($scope, _, $state) {
+function ImportUsersController($scope, _, $state, UserService) {
     var ctrl = this;
-    ctrl.users = [
-        {"name":"Elizabeth Hudlet", "manager":"David Thompson", "avatar":"/media/images/avatar3.png", "userId":"938253"},
-        {"name":"Tonya Williams", "manager":"Rick Sanders", "avatar":"media/images/avatar.png", "userId":"454845"},
-        {"name":"Pablo Montoya", "manager":"Nathanial Patlovich", "avatar":"/media/images/avatar2.png", "userId":"394985"}
-    ];
+
+    UserService.importList().then(function (data) {
+        console.log(data);
+        ctrl.users = data;
+    });
 
     ctrl.roles =["Admin", "Manager", "Rep"];
     ctrl.letterLimit = 1;
 
     //returns index for user then sets the user role in array based on button pressed
     ctrl.clickedRole = function(userId, role){
-    var userIndex = _.findIndex(ctrl.users, "userId", userId);
-    ctrl.users[userIndex].role= role;
-    ctrl.validate(userIndex);
+        var userIndex = _.findIndex(ctrl.users, "id", userId);
+        ctrl.users[userIndex].role= role;
+        ctrl.validate(userIndex);
     };
 
     //returns array of only selected users on finish click then goes to profile page
     ctrl.finishPressed = function () {
-        //todo add logic that does something with selected users here
+        console.log(ctrl.users);
         $state.go('root.profile');
     };
 
