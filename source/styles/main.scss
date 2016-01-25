@@ -2567,7 +2567,10 @@ footer {
       }
     }
     .details {
-      border-left:none;
+      border-left: none;
+      .match-height {
+        flex-direction: row;
+      }
     }
     .activity {
       .graph {
