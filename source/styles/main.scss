@@ -319,10 +319,6 @@ header.logo-nav {
   background: $col-grey;
 }
 
-.login form label {
-  margin-bottom: 3px;
-}
-
 .login {
   header {
     padding: 5px 0 10px 0;
@@ -339,6 +335,7 @@ header.logo-nav {
     box-sizing: border-box;
     label {
       margin-top: 10px;
+      margin-bottom: 3px;
       display: block;
     }
     button {
@@ -371,6 +368,30 @@ header.logo-nav {
 }
 
 
+.hr {
+  background: #cbcbcb;
+  height: 1px;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 20px auto 40px auto;
+  p {
+    color: #fff;
+    text-transform: uppercase;
+    background: $text-light;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 
 
@@ -513,20 +534,8 @@ form.import {
 /* COMMON STYLES --------------------------
 -------------------------------------------*/
 
-/* deal count with flag icon */
-.deals-count {
-  color: $text-primary;
-  display: inline-block;
-  &:before {
-    @include fa;
-    @include fa(flag);
-    @include fa-size(1.2rem);
-    @include fa-align(bottom);
-    margin: 0 5px 0 8px;
-  }
-}
 
-/* questions answered out of asked boxes */
+/* questions answered out of asked boxes
 .questions {
   position: absolute;
   right: 20px;
@@ -604,9 +613,9 @@ form.import {
       background: $col-red;
     }
   }
-}
+}*/
 
-/* bar graphs on list views */
+/* Bar Graphs on List Views ------------------------ */
 .row {
   .week {
     position: absolute;
@@ -641,33 +650,22 @@ form.import {
   }
 }
 
-.hr {
-  background: #cbcbcb;
-  height: 1px;
-  position: relative;
-  max-width: 400px;
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-  margin: 20px auto 40px auto;
-  p {
-    color: #fff;
-    text-transform: uppercase;
-    background: $text-light;
-    width: 36px;
-    height: 36px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 36px;
-    position: absolute;
-    top: -16px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+/* List Arrows ------------------------------------ */
+.caret {
+  position: absolute;
+  right: 5px;
+  color: $col-orange;
+  top: 25px;
+  &:before {
+    @include fa;
+    @include fa(caret-right);
+    @include fa-size(2em);
+  }
+  &:hover {
+    color: $col-orange-active;
   }
 }
+
 
 
 
@@ -1120,7 +1118,7 @@ form.import {
 
 /* DEALS LIST --------------------------
 ----------------------------------------*/
-.row.deals {
+.row.deals-list {
   display: flex;
   aside {
     position: relative;
@@ -1146,7 +1144,7 @@ form.import {
   }
   .details {
     border-left: 1px solid $col-grey-stroke;
-    padding: 20px 10px;
+    padding: 20px 0 20px 10px;
     flex-grow: 1;
     .text {
       margin-top: 8px;
@@ -1155,6 +1153,40 @@ form.import {
     h2 {
       display: inline-block;
       margin-right: 5px;
+    }
+    .close-date {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 250px;
+      small {
+        display: block;
+        background: $col-grey-alt;
+        height: 24px;
+        line-height: 24px;
+        padding-left: 10px;
+        &.overdue {
+          background: $col-red;
+          color: #fff;
+        }
+        &.caution {
+          background: #c6bd09;
+          color:#fff;
+        }
+      }
+      .deal-activity {
+        color: #fff;
+        background: $col-red;
+        position: absolute;
+        right: 15px;
+        text-align: center;
+        border-radius: 50px;
+        padding: 5px;
+        top: -10px;
+        min-width: 14px;
+        border: 1px solid #fff;
+      }
     }
   }
 }
@@ -1170,7 +1202,7 @@ a.deals-count {
   color: $col-orange;
 }
 
-div.profile {
+.profile {
   border-top: 1px solid $col-grey-stroke;
   border-bottom: 1px solid $col-grey-stroke;
   aside {
@@ -1588,22 +1620,7 @@ div.profile {
   }
 }
 
-.caret {
-  &:before {
-    position: absolute;
-    right: 10px;
-    color: $col-orange;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    @include fa;
-    @include fa(caret-right);
-    @include fa-size(2em);
-  }
-  &:hover {
-    color: $col-orange-active;
-  }
-}
+
 
 
 
@@ -2523,7 +2540,9 @@ footer {
     clear: both;
   }
 
-  .row.deals {
+  /* Deals List --------------------------------------- */
+
+  .row.deals-list {
     .details {
       .text {
         margin-top: 0;
@@ -2533,10 +2552,46 @@ footer {
         display: block;
         margin-right: 0;
       }
+      .close-date {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        small {
+          display: block;
+          background: $col-grey-alt;
+          height: 24px;
+          line-height: 24px;
+          padding-left: 10px;
+          &.overdue {
+            background: $col-red;
+            color: #fff;
+          }
+          &.caution {
+            background: #c6bd09;
+            color:#fff;
+          }
+        }
+        .deal-activity {
+          color: #fff;
+          background: $col-red;
+          position: absolute;
+          right: 5px;
+          text-align: center;
+          border-radius: 50px;
+          padding: 5px;
+          top: -10px;
+          min-width: 14px;
+          border: 1px solid #fff;
+        }
+      }
     }
   }
 
-  div.profile {
+  /* Profile / Dashboard ---------------------------------- */
+
+  .profile {
     aside {
       padding: 10px;
       text-align: left;
@@ -2554,9 +2609,6 @@ footer {
       }
       .profile-title {
         margin-bottom: 4px;
-      }
-      .deals-count:before {
-        margin-left: 0;
       }
     }
     .details {
@@ -2636,6 +2688,8 @@ footer {
       }
     }
   }
+
+  /* Deal Detail ------------------------------------ */
 
   .deal-title {
     background: $col-grey;
