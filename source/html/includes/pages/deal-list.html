@@ -2,27 +2,24 @@
 
 <div ng-repeat="deal in ctrl.deals | orderBy: 'close_date'" ng-class='{"border-top":$first}' class="row deals">
     <aside>
-        <div ng-repeat="(key, week) in deal.week_counts | limitTo:4" style="height:{{week.count}}%"
-             class="week {{ctrl.convertNumberToWord(key + 1)}}">
-            <p>Week {{key + 1}}</p>
-        </div>
+        <!-- Apply class active to deals that a user marks as favorite. Should toggle favorite and not favorite -->
+        <span class="favorite active"></span>
     </aside>
     <div class="details clearfix">
         <div class="text">
             <h2><a ui-sref="root.deals.detail({deal_id: deal.id})">{{deal.name}}</a></h2>
-
             <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
         </div>
         <div class="questions clearfix">
             <small ng-if="deal.close_date > ctrl.dateNow">closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <small class="overdue" ng-if="deal.close_date < ctrl.dateNow">Past Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <small class="caution" ng-if="deal.close_date == ctrl.dateNow">Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
-            <div class="answered">{{deal.question_answer_count.answer_count}}</div>
-            <div class="asked">{{deal.question_answer_count.question_count}}</div>
+
         </div>
         <a ui-sref="root.deals.detail({deal_id: deal.id})" class="caret"></a>
     </div>
 </div>
+
 
 
 

@@ -542,26 +542,16 @@ form.import {
     height: 24px;
     line-height: 24px;
     padding-left: 10px;
-    width: 170px;
+    width: 200px;
     margin-right: 1px;
-  }
-  .overdue {
-    background:#c63f1e;
-    height:24px;
-    line-height:24px;
-    padding-left:10px;
-    width:170px;
-    margin-right:1px;
-    color:#fff
-  }
-  .caution {
-    background: #c6bd09;
-    height:24px;
-    line-height:24px;
-    padding-left:10px;
-    width:170px;
-    margin-right:1px;
-    color:#fff
+    &.overdue {
+      background: $col-red;
+      color: #fff;
+    }
+    &.caution {
+      background: #c6bd09;
+      color:#fff;
+    }
   }
   .answered, .asked {
     height: 24px;
@@ -1131,22 +1121,33 @@ form.import {
 /* DEALS LIST --------------------------
 ----------------------------------------*/
 .row.deals {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   aside {
     position: relative;
     padding: 10px 0;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    .favorite {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(4rem);
+        color: $col-grey-stroke;
+      }
+      &.active {
+        &:before {
+          color: $col-blue;
+        }
+      }
+    }
   }
   .details {
     border-left: 1px solid $col-grey-stroke;
     padding: 20px 10px;
+    flex-grow: 1;
     .text {
       margin-top: 8px;
       width: 44%;
@@ -2940,11 +2941,7 @@ footer {
   .details {
     .questions {
       small {
-        width: 57%;
-        letter-spacing: 0;
-      }
-      .answered, .asked {
-        width: 17.5%;
+        width: 100%;
       }
     }
     .caret:before {
