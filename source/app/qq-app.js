@@ -98,7 +98,7 @@ angular.module('QQ').constant('AppConfig', {
                 },
                 views: {
                     'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
+                        templateUrl: 'includes/templates/back-header-with-nav.html',
                         controller: 'HeaderController'
                     },
                     'container@root': {
@@ -241,7 +241,7 @@ angular.module('QQ').constant('AppConfig', {
                 },
                 views: {
                     'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
+                        templateUrl: 'includes/templates/back-header-with-nav.html',
                         controller: 'HeaderController'
                     },
                     'container@root': {
@@ -393,7 +393,7 @@ angular.module('QQ').constant('AppConfig', {
                 },
                 views: {
                     'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
+                        templateUrl: 'includes/templates/back-header-with-nav.html',
                         controller: 'HeaderController'
                     },
                     'container@root': {
@@ -419,7 +419,7 @@ angular.module('QQ').constant('AppConfig', {
                 },
                 views: {
                     'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
+                        templateUrl: 'includes/templates/back-header-with-nav.html',
                         controller: 'HeaderController'
                     },
                     'container@root': {
@@ -445,7 +445,7 @@ angular.module('QQ').constant('AppConfig', {
                 },
                 views: {
                     'header@root': {
-                        templateUrl: 'includes/templates/back-header.html',
+                        templateUrl: 'includes/templates/back-header-with-nav.html',
                         controller: 'HeaderController'
                     },
                     'container@root': {
