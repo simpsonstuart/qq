@@ -1307,8 +1307,8 @@ div.profile {
 /* DEAL DETAIL ----------------------------
 -------------------------------------------*/
 .deal-title {
-  .account {
-    margin-left: 20px;
+  small {
+    margin-left: 22px;
   }
   .deal-owner {
     display: none;
@@ -1482,9 +1482,12 @@ div.profile {
 /* DEAL QUESTIONS --------------------------
 -------------------------------------------*/
 .deal-questions {
+  border-top: 1px solid $col-grey-stroke;
+  margin: 0 20px;
+  box-sizing: border-box;
   .play-header {
     border-bottom: 1px solid $col-grey-stroke;
-    padding: 10px 20px;
+    padding: 10px 0;
     position: relative;
     clear: both;
     &.border-top {
@@ -1507,6 +1510,7 @@ div.profile {
     background: $col-grey;
     float: none;
     width: 100%;
+    box-sizing: border-box;
     &:last-child {
       border-bottom: 1px solid $col-grey-stroke;
     }
@@ -1535,6 +1539,43 @@ div.profile {
   }
   .expanded {
     margin: 0 10px;
+    .deal-questions-filter {
+      padding: 10px 0;
+      border-bottom: 1px solid $col-grey-stroke;
+      display: flex;
+      a {
+        color: $text-light;
+        flex-grow: 1;
+        text-align: center;
+        &.not-asked {
+          &:before {
+            @include fa;
+            @include fa(exclamation-triangle);
+            @include fa-size(1.1em);
+            @include fa-right(5px);
+            @include fa-align(bottom);
+          }
+        }
+        &.pending {
+          &:before {
+            @include fa;
+            @include fa(commenting);
+            @include fa-size(1.1em);
+            @include fa-right(5px);
+            @include fa-align(bottom);
+          }
+        }
+        &.answered {
+          &:before {
+            @include fa;
+            @include fa(check);
+            @include fa-size(1.1em);
+            @include fa-right(5px);
+            @include fa-align(bottom);
+          }
+        }
+      }
+    }
     button {
       width: 300px;
       display: block;
@@ -2432,6 +2473,10 @@ footer {
         color: #d6d6d6;
       }
     }
+    small {
+      margin: 0 0 5px 0;
+      display: block;
+    }
     h1 {
       position: static;
       transform: none;
@@ -2525,7 +2570,10 @@ footer {
   }
 
   .deal-questions {
+    margin: 0;
+    border-top: none;
     .play-header {
+      padding-left: 20px;
       h2 {
         margin-bottom: 0;
       }
