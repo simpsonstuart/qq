@@ -44,8 +44,8 @@
           <small>Activity by week</small>
           <p>You have no activity yet! To get started, ask questions about your deals or start assigning next steps to your team.</p>
           <div class="new-user-btns">
-            <button>Ask Questions</button>
-            <button>Assign Next Steps</button>
+            <button ng-click="$state.go('root.ask-questions')">Ask Questions</button>
+            <button ng-click="$state.go('root.coming-soon')">Assign Next Steps</button>
           </div>
         </div>
         <div class="playbook">
