@@ -15,8 +15,8 @@
     <div class="details clearfix">
         <div class="match-height">
             <div class="deal-btns">
-                <button class="deal-feed">Deal Feed</button>
-                <button class="next-steps">Next Steps</button>
+                <button class="deal-feed" ng-click="$state.go('root.deals')">Deal Feed</button>
+                <button class="next-steps" ng-click="$state.go('root.coming-soon')">Next Steps</button>
                 <div class="clearfix">
                     <div class="account-value">
                         <small>Account Value</small>
@@ -45,8 +45,8 @@
             </div>
         </div>
         <div class="salesforce-button">
-            <button class="salesforce">View Deal in Salesforce</button>
-            <a class="sync" href="#">Sync with Salesforce</a>
+            <button class="salesforce" ng-click="ctrl.viewDealSalesforce()">View Deal in Salesforce</button>
+            <a class="sync" href="" ng-click="ctrl.syncWithSalesforce()">Sync with Salesforce</a>
         </div>
         <div class="virtual-team clearfix">
             <small>Extended Team</small>

@@ -68,6 +68,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
         };
 
         $window.location.href = AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query);
+
     }
     //test if local storage is available
     function localStorageSupported() {
