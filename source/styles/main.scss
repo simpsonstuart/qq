@@ -1481,6 +1481,10 @@ div.profile {
 
 /* DEAL QUESTIONS --------------------------
 -------------------------------------------*/
+.play-feed {
+  display: none;
+}
+
 .deal-questions {
   border-top: 1px solid $col-grey-stroke;
   margin: 0 20px;
@@ -1538,15 +1542,20 @@ div.profile {
     }
   }
   .expanded {
-    margin: 0 10px;
     .deal-questions-filter {
-      padding: 10px 0;
-      border-bottom: 1px solid $col-grey-stroke;
+      padding: 10px 20px;
       display: flex;
+      justify-content: flex-end;
+      border-bottom: 1px solid $col-grey-stroke;
       a {
         color: $text-light;
-        flex-grow: 1;
         text-align: center;
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid $col-grey-stroke;
+        &:first-child {
+          border-left: none;
+        }
         &.not-asked {
           &:before {
             @include fa;
@@ -1588,6 +1597,7 @@ div.profile {
       background: $col-orange-highlight;
       padding: 10px 20px;
       position: relative;
+      margin: 0 10px;
       p {
         margin-bottom: 10px;
       }
@@ -1607,7 +1617,7 @@ div.profile {
     }
     .qq-answer {
       padding: 15px 0;
-      margin: 0 40px;
+      margin: 0 50px;
       position: relative;
       border-bottom: 1px solid $col-grey-stroke;
       .timestamp {
@@ -2569,9 +2579,25 @@ footer {
     }
   }
 
+  .play-feed {
+    display: block;
+  }
+
   .deal-questions {
     margin: 0;
     border-top: none;
+    .expanded {
+      .deal-questions-filter {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        a {
+          flex-grow: 1;
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+    }
     .play-header {
       padding-left: 20px;
       h2 {
