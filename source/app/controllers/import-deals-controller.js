@@ -13,7 +13,6 @@ function ImportDealsController($scope, $state, DealService) {
     function submit() {
         var dealsToImport = _.pluck(checked(), 'id');
         DealService.add(dealsToImport).then(function (response) {
-            console.log(response);
             $state.go('root.import-users');
         });
     }
