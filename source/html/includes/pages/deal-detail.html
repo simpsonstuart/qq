@@ -48,7 +48,7 @@
             <button class="salesforce" ng-click="ctrl.viewDealSalesforce()">View Deal in Salesforce</button>
             <a class="sync" href="" ng-click="ctrl.syncWithSalesforce()">Sync with Salesforce</a>
         </div>
-        <div class="virtual-team clearfix">
+        <div class="virtual-team clearfix" ng-if="ctrl.extended_team.length">
             <small>Extended Team</small>
             <div ng-repeat="team_mate in ctrl.extended_team" class="questions clearfix">
                 <small>{{team_mate.name}}</small>
