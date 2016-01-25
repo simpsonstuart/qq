@@ -64,6 +64,8 @@ table {
 
 
 
+
+
 /* GLOBAL STYLES ---------------------------
 -------------------------------------------*/
 html {
@@ -78,7 +80,14 @@ body, p {
 }
 
 main {
+  max-width: 1400px;
+  width: 100%;
   padding: 50px 0 60px 0;
+}
+
+.wrapper {
+  max-width: 1400px;
+  width: 100%;
 }
 
 h1 {
@@ -97,7 +106,7 @@ h2 {
 small {
   font-size: 1.1rem;
   color: $text-light;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -203,6 +212,10 @@ textarea {
   color: #fff;
 }
 
+.flex {
+  display: flex;
+}
+
 
 
 
@@ -212,7 +225,7 @@ textarea {
 /* HEADER ----------------------------------
 -------------------------------------------*/
 header {
-  padding: 0 20px;
+  padding: 0;
   background: $col-orange;
   position: relative;
   &.back {
@@ -221,7 +234,7 @@ header {
   .logo {
     background: url(../media/images/logo.svg) no-repeat;
     text-indent: -9999px;
-    width: 80px;
+    width: 50px;
     height: 41px;
     display: block;
     margin: 10px 0;
@@ -708,8 +721,13 @@ form.import {
   }
 }
 
+.feed-detail-wrapper {
+  width: 100%;
+}
+
 .row {
   border-bottom: 1px solid $col-grey-stroke;
+  width: 100%;
   &.border-top {
     border-top: 1px solid $col-grey-stroke;
   }
@@ -717,21 +735,12 @@ form.import {
     padding-top: 20px;
     padding-bottom: 20px;
     position: relative;
-    .hourglass {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      &:before {
-        @include fa;
-        @include fa(hourglass-half);
-        @include fa-size(2.5em);
-        color: $text-light;
-      }
-    }
+    width: 100px;
     .date {
       position: absolute;
       top: 13px;
-      right: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
       span {
         font-size: 3.5rem;
@@ -741,6 +750,7 @@ form.import {
     }
   }
   .feed-details {
+    padding: 15px 10px 15px 0;
     &:hover {
       background: $col-orange-highlight;
       cursor: pointer;
@@ -748,7 +758,6 @@ form.import {
   }
   .feed-details, .details {
     border-left: 3px solid $col-grey-stroke;
-    padding: 20px 10px;
     position: relative;
     border-bottom: 1px solid $col-grey-stroke;
     display: block;
@@ -798,42 +807,8 @@ form.import {
   }
 }
 
-.details {
-  div.text {
-    width: 44%;
-  }
-}
 
 
-
-
-/* DISTRICT LIST -----------------------
-----------------------------------------*/
-.row.district {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  aside {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    position: relative;
-    padding: 10px 0;
-
-  }
-  .details {
-    border-left: 1px solid $col-grey-stroke;
-    .text {
-      margin-top: 12px;
-    }
-    h2 {
-      display: inline-block;
-    }
-  }
-}
 
 
 
@@ -1041,8 +1016,10 @@ form.import {
   }
   .details {
     border-left: 1px solid $col-grey-stroke;
+    padding: 20px 10px;
     .text {
       margin-top: 8px;
+      width: 44%;
     }
     h2 {
       display: inline-block;
@@ -1050,7 +1027,6 @@ form.import {
     }
   }
 }
-
 
 
 
@@ -1067,7 +1043,7 @@ div.profile {
   border-top: 1px solid $col-grey-stroke;
   border-bottom: 1px solid $col-grey-stroke;
   aside {
-    padding-top: 20px;
+    padding: 20px 15px 0 15px;
     text-align: center;
     img {
       margin-bottom: 10px;
@@ -1078,14 +1054,8 @@ div.profile {
       margin-bottom: 10px;
       color: $text-light;
     }
-    .district {
-      &:before {
-        @include fa;
-        @include fa(users);
-        @include fa-right(4px);
-        @include fa-size(1.1em);
-        @include fa-align(middle);
-      }
+    small {
+      line-height: 1.7rem;
     }
   }
   .details {
@@ -1093,13 +1063,80 @@ div.profile {
     small {
       text-align: center;
       display:block;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+    }
+  }
+  .all-deals, .active-deals {
+    small {
+      margin-bottom: 5px;
+      color: $col-orange;
+      font-weight: 700;
+      &:after {
+        @include fa;
+        @include fa(caret-right);
+        @include fa-size(1.4rem);
+        @include fa-align(text-top);
+        @include fa-left(5px);
+      }
+    }
+    h2 {
+      color: $text-primary;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  .unanswered-questions, .incomplete-steps {
+    background: $col-orange-highlight;
+    padding: 10px 20px;
+    border-top: 1px solid $col-grey-stroke;
+    span {
+      color: $col-orange;
+      font-size: 6.5rem;
+      font-weight: 700;
+      text-align: right;
+    }
+    .text {
+      padding-left: 10px;
+      margin-top: 20px;
+    }
+    small {
+      text-align: left;
+      margin-bottom: 5px;
+      &.go-to {
+        color: $col-orange;
+        font-weight: 700;
+        &:after {
+          @include fa;
+          @include fa(caret-right);
+          @include fa-size(1.4rem);
+          @include fa-align(text-top);
+          @include fa-left(5px);
+        }
+      }
     }
   }
   .activity {
     padding: 20px 0;
     border-top: 1px solid $col-grey-stroke;
     clear: both;
+    &.new-user {
+      padding: 20px;
+      p {
+        text-align: center;
+        line-height: 2rem;
+      }
+      .new-user-btns {
+        margin: 20px auto 0 auto;
+        width: 300px;
+        button {
+          width: 145px;
+          &:first-child {
+            margin-right: 6px;
+          }
+        }
+      }
+    }
     .graph {
       height: 130px;
       position: relative;
@@ -1181,7 +1218,7 @@ div.profile {
       background: $col-blue;
     }
   }
-  .qq-total, .qq-value, .playbook {
+  .all-deals, .active-deals, .playbook {
     padding-top: 20px;
     text-align: center;
   }
@@ -1201,13 +1238,7 @@ div.profile {
       }
     }
   }
-  .qq-total {
-    .questions {
-      width: 138px;
-      margin-bottom: 20px;
-    }
-  }
-  .qq-value {
+  .active-deals {
     border-left: 1px solid $col-grey-stroke;
     h2 {
       margin-bottom: 20px;
@@ -1238,7 +1269,7 @@ div.profile {
 .details .virtual-team {
   border-top: 1px solid $col-grey-stroke;
   clear: both;
-  padding: 20px 0;
+  padding: 20px;
   .questions {
     margin-bottom: 7px;
     small {
@@ -1276,8 +1307,11 @@ div.profile {
 /* DEAL DETAIL ----------------------------
 -------------------------------------------*/
 .deal-title {
-  small {
+  .account {
     margin-left: 20px;
+  }
+  .deal-owner {
+    display: none;
   }
 }
 
@@ -1292,69 +1326,58 @@ div.profile {
       max-width: 160px;
       width: 100%;
     }
+    .favorite {
+      margin-top: 15px;
+      display: block;
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(4rem);
+        color: $col-grey-stroke;
+      }
+    }
   }
   .details {
     border-left: 1px solid $col-grey-stroke;
     small {
       text-align: center;
-      display:block;
-      margin-bottom: 20px;
+      display: block;
+      margin-bottom: 10px;
     }
     h2 {
       text-align: center;
     }
   }
-  .activity {
-    padding: 20px 0;
-    border-bottom: 1px solid $col-grey-stroke;
+  .deal-btns {
+    box-sizing: border-box;
     border-top: 1px solid $col-grey-stroke;
-    .graph {
-      height: 130px;
-      position: relative;
-      width: 164px;
-      margin: 0 auto;
+    padding: 15px 0 0 0;
+    button {
+      display: block;
+      max-width: 300px;
+      width: 90%;
+      margin: 13px auto;
     }
-    .week {
-      position: absolute;
-      bottom: -10px;
-      width: 39px;
-      margin-right: 2px;
-      p {
-        text-indent: -9999px;
-        position: relative;
-        span {
-          position: absolute;
-          text-indent: 0;
-          background: $col-red;
-          display: block;
-          width: 100%;
-          color: #fff;
-          text-align: center;
-          padding: 2px 0;
-          top: -17px;
-          font-size: 1.1rem;
-        }
+    .deal-feed {
+      &:before {
+        @include fa;
+        @include fa(inbox);
+        @include fa-size(2rem);
+        @include fa-right(10px);
+        @include fa-align(middle);
       }
     }
-    .week.one {
-      left: 0;
-      background: $col-lt-blue;
-    }
-    .week.two {
-      left: 41px;
-      background: $col-lt-blue;
-    }
-    .week.three {
-      left: 82px;
-      background: $col-med-blue;
-    }
-    .week.four {
-      left: 123px;
-      background: $col-med-blue;
+    .next-steps {
+      &:before {
+        @include fa;
+        @include fa(check-circle);
+        @include fa-size(2rem);
+        @include fa-right(10px);
+        @include fa-align(middle);
+      }
     }
   }
   .plays {
-    border-bottom: 1px solid $col-grey-stroke;
     border-left: 1px solid $col-grey-stroke;
     small {
       background: $col-grey;
@@ -1382,30 +1405,44 @@ div.profile {
       right: 25px;
     }
   }
-  .account-value, .close-date, .forecast, .stage {
-    padding: 20px 0;
+  .close-date, .account-value {
+    padding: 20px 0 15px 0;
+    border-top: 1px solid $col-grey-stroke;
   }
-  .close-date, .stage {
-    border-left: 1px solid $col-grey-stroke;
+  .account-value {
+    margin-top: 19px;
   }
-  .account-value, .close-date {
-    border-bottom: 1px solid $col-grey-stroke;
+  .add-play {
+    border-top: 1px solid $col-grey-stroke;
+    button {
+      max-width: 300px;
+      width: 90%;
+      margin: 27px auto 10px auto;
+      display: block;
+    }
   }
-  .qq-buttons, .salesforce-button {
+  .salesforce-button {
     border-top: 1px solid $col-grey-stroke;
     padding: 30px 0;
     background: $col-grey;
     text-align: center;
-  }
-  .qq-buttons {
     button {
-      width: 42%;
+      width: 300px;
     }
   }
-  .salesforce-button {
-    border-left: 1px solid $col-grey-stroke;
-    button.salesforce {
-      width: 85%;
+  .sync {
+    display: block;
+    margin-top: 20px;
+    font-weight: 700;
+    color: #4bb5e9;
+    &:before {
+      @include fa;
+      @include fa(refresh);
+      @include fa-size(1.2em);
+      margin-right: 5px;
+    }
+    &:hover {
+      color: #48a5d3;
     }
   }
 }
@@ -1873,9 +1910,6 @@ button.submit {
     color: #f77600 !important;
   }
 }
-.deal_owner {
-  color: #f77600 !important;
-}
 .settings {
   border-left: 1px solid $col-grey-stroke;
   .row {
@@ -2110,7 +2144,7 @@ footer {
     margin-bottom: 46px;
   }
 
-  .match-height.column {
+  .match-height.column, .match-height {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -2127,9 +2161,11 @@ footer {
   }
 
   header {
+    padding-left: 10px;
+    padding-right: 10px;
     height: 46px;
     .logo {
-      width: 60px;
+      width: 43px;
       height: 36px;
       margin: 5px 0;
     }
@@ -2141,7 +2177,7 @@ footer {
       padding-left: 20px;
       .logo {
         top: 0;
-        right: 20px;
+        right: 10px;
         left: inherit;
         -webkit-transform: none;
         transform: none;
@@ -2186,18 +2222,14 @@ footer {
     padding: 0;
     max-width: 100%;
   }
-  
-  footer nav ul {
-    width: 357px;
-  }
 
   footer nav ul li a.feed:active,
   footer nav ul li a.deals:active,
   footer nav ul li a.next:active,
   footer nav ul li a.profile:active {
-  background: #e05b03;
+    background: #e05b03;
+  }
 
-}
   .feed-filter  {
     position: absolute;
     top: 0;
@@ -2240,11 +2272,7 @@ footer {
     .feed-details, .details {
       h2 {
         margin-top: 0;
-      }
-      .timestamp {
-        position: static;
-        display: block;
-        margin-top: 15px;
+        font-size: 1.4rem;
       }
       .caret {
         display: block;
@@ -2255,6 +2283,14 @@ footer {
         transform: translateY(-24%);
       }
     }
+    .feed-details {
+      .timestamp {
+        position: static;
+        display: block;
+        margin-top: 5px;
+        transform: none;
+      }
+    }
   }
 
   .questions {
@@ -2262,26 +2298,6 @@ footer {
     -webkit-transform: none;
     transform: none;
     clear: both;
-  }
-
-  .row.district {
-    .details {
-      img {
-        width: 40px;
-        height: 40px;
-      }
-      .text {
-        margin-top: 0;
-        margin-bottom: 8px;
-        width: 85%;
-      }
-      h2, .deals-count {
-        display: block;
-      }
-      .deals-count:before {
-        margin-left: 0;
-      }
-    }
   }
 
   .row.deals {
@@ -2396,25 +2412,48 @@ footer {
         }
       }
     }
-    .qq-total {
-      .questions {
-        width: 118px;
-      }
-    }
   }
 
   .deal-title {
     background: $col-grey;
     text-align: center;
     padding: 10px 0;
+    position: relative;
+    border-bottom: 1px solid $col-grey-stroke;
+    .favorite-mobile {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(3.5rem);
+        color: #d6d6d6;
+      }
+    }
     h1 {
       position: static;
       transform: none;
       color: $text-primary;
-      margin-top: 5px;
+      width: 70%;
+      margin: 0 auto;
     }
-    small {
+    .account {
+      position: absolute;
+      top: -34px;
+      color: #fff;
+      text-transform: none;
+      font-size: 1.8rem;
+      letter-spacing: 0;
+      left: 50%;
+      transform: translateX(-50%);
       margin-left: 0;
+    }
+    .deal-owner {
+      margin: 10px auto 0 auto;
+      display: block;
+      width: 70%;
     }
   }
 
@@ -2438,49 +2477,49 @@ footer {
         display: none;
       }
       h2 {
-        position: absolute;
-        top: 13px;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-        font-size: 1.8rem;
-        a {
-          color: #fff;
-          &:hover {
-            color: #fff;
-          }
-        }
+        display: none;
+      }
+      .favorite {
+        display: none;
       }
     }
     .details {
       border-left: none;
-    }
-    .activity {
-      border-bottom: none;
-    }
-    .plays {
-      border-left: none;
-      .questions {
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+      .deal-btns {
+        border-top: none;
+        padding-top: 0;
+        text-align: center;
+        button {
+          width: 145px;
+          display: inline-block;
+          &:first-child {
+            margin-right: 6px;
+          }
+        }
       }
-    }
-    .qq-buttons, .salesforce-button {
-      padding: 20px 0;
-    }
-    .qq-buttons {
-      button {
-        width: 35%;
+      .account-value, .close-date {
+        float: left;
+        width: 50%;
+        margin-top: 0;
+        box-sizing: border-box;
       }
-    }
-    .salesforce-button {
-      border-left: none;
-      border-top: none;
-      padding-top: 0;
-      button.salesforce {
-        width: 70.5%;
+      .close-date {
+        border-left: 1px solid $col-grey-stroke;
+      }
+      .plays {
+        .questions {
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+      }
+      .salesforce-button {
+        border-left: none;
+        padding: 20px 0;
+        button.salesforce {
+          width: 300px;
+        }
       }
     }
   }
@@ -2508,6 +2547,17 @@ footer {
         padding: 10px;
         margin: 0 20px;
       }
+    }
+  }
+
+  .row .feed-details {
+    display: flex;
+    line-height: 1.8rem;
+    h2 {
+      margin-bottom: 5px;
+    }
+    .text {
+      width: 72%;
     }
   }
 
@@ -2591,18 +2641,25 @@ footer {
 
 /* max-width 568 --------------------------*/
 @media only screen and (max-width: 568px) {
+  div.profile {
+    aside {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .row {
+    aside {
+      width: 60px;
+    }
+  }
+
   .deal-detail {
     .qq-buttons {
       button {
         width: 44.5%;
-      }
-    }
-    .salesforce-button {
-      border-left: none;
-      border-top: none;
-      padding-top: 0;
-      button.salesforce {
-        width: 90%;
       }
     }
   }
@@ -2611,20 +2668,7 @@ footer {
 /* max-width 420 --------------------------*/
 @media only screen and (max-width: 420px) {
   .row {
-    .week.one, .week.two, .week.three, .week.four {
-      width: 11px;
-    }
-    aside {
-      .hourglass {
-        top: 15px;
-        right: 15px;
-      }
-      .date {
-        top: 8px;
-        right: 12px;
-      }
-    }
-    .feed-details, .details {
+    .details {
       padding: 15px 10px;
       img {
         width: 40px;
@@ -2672,9 +2716,6 @@ footer {
   }
   a:hover {
     color: $col-orange-active;
-  }
-  .a.deal_owner {
-    color: #f77600 !important;
   }
 }
 

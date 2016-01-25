@@ -23,17 +23,7 @@ header {
 }
 
 
-/* FEED ----------------------------------
--------------------------------------------*/
-.row {
-  @include span(100% no-gutter border-box);
-  aside {
-    @include span(15% no-gutter border-box);
-  }
-  .feed-detail-wrapper {
-    @include span(85% no-gutter border-box);
-  }
-}
+
 
 
 
@@ -56,8 +46,20 @@ header {
   }
   .details {
     @include span(75% no-gutter border-box);
-    .qq-total, .qq-value, .playbook {
+    .all-deals, .active-deals {
       @include span(50% no-gutter border-box);
+    }
+    .unanswered-questions, .incomplete-steps {
+      @include span(100% no-gutter border-box);
+      span {
+        @include span(45% no-gutter border-box);
+      }
+      .text {
+        @include span(55% no-gutter border-box)
+      }
+    }
+    .playbook {
+      @include span(100% no-gutter border-box);
     }
     .virtual-team {
       .questions {
@@ -86,6 +88,11 @@ header {
   }
 }
 
+
+
+
+
+
 /* DEAL DETAIL ----------------------------
 -------------------------------------------*/
 .deal-detail {
@@ -94,8 +101,11 @@ header {
   }
   .details {
     @include span(75% no-gutter border-box);
-    .account-value, .close-date, .stage, .forecast, .activity, .plays, .qq-buttons, .salesforce-button {
+    .deal-numbers, .plays, .deal-btns {
       @include span(50% no-gutter border-box);
+    }
+    .salesforce-button {
+      @include span(100% no-gutter border-box);
     }
   }
 }
@@ -121,7 +131,7 @@ header {
     aside {
       @include span(20% no-gutter border-box);
     }
-    .feed-detail-wrapper, .details {
+    .details {
       @include span(80% no-gutter border-box);
     }
   }
@@ -132,8 +142,29 @@ header {
     }
     .details {
       @include span(100% no-gutter border-box);
-      .qq-total, .qq-value, .qualify, .campaign {
+      .all-deals, .active-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
+      }
+      .unanswered-questions, .incomplete-steps {
+        @include span(100% no-gutter border-box);
+        span {
+          @include span(35% no-gutter border-box);
+        }
+        .text {
+          @include span(65% no-gutter border-box)
+        }
+      }
+      .virtual-team {
+        .questions {
+          @include span(100% no-gutter border-box);
+          @include push(0);
+          small {
+            @include span(7.1 of 10 no-gutter border-box);
+          }
+          .answered, .asked {
+            @include span(1.55 of 10 no-gutter);
+          }
+        }
       }
     }
   }
@@ -141,15 +172,22 @@ header {
   .deal-detail {
     .details {
       @include span(100% no-gutter border-box);
-      .activity, .plays, .qq-buttons, .salesforce-button {
+      .activity, .plays, .salesforce-button, .deal-btns {
         @include span(100% no-gutter border-box);
+        float: none;
       }
-    }
-  }
-
-  .profile {
-    .settings {
-      @include span(100% no-gutter border-box);
+      .virtual-team {
+        .questions {
+          @include span(10 of 12 no-gutter border-box);
+          @include push(1);
+          small {
+            @include span(7.1 of 10 no-gutter border-box);
+          }
+          .answered, .asked {
+            @include span(1.55 of 10 no-gutter);
+          }
+        }
+      }
     }
   }
 

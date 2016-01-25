@@ -1,25 +1,30 @@
 <div class="deal-title">
-    <small ng-bind="ctrl.deal.company_name"></small>
+    <span class="favorite-mobile"></span>
+    <small class="account" ng-bind="ctrl.deal.company_name"></small>
     <h1 ng-bind="ctrl.deal.name"></h1>
+    <small class="deal-owner">Deal Owner: Claire Miller</small>
 </div>
 
 <div class="deal-detail clearfix">
     <aside>
         <img src="{{ctrl.deal.owner.data.picture}}">
-
-        <h2><a class="deal_owner" ng-bind="ctrl.deal.owner.data.name"></a>
-        </h2>
+        <h2 ng-bind="ctrl.deal.owner.data.name"></h2>
         <small>Deal Owner</small>
+        <span class="favorite"></span>
     </aside>
     <div class="details clearfix">
-        <div class="match-height column">
-            <div class="activity">
-                <!-- include qqs asked and aswered for deal -->
-                <small>Total QQs Asked & Answered by week</small>
-                <div class="graph clearfix">
-                    <div ng-repeat="(key, week) in ctrl.weekCounts | limitTo:4" style="height:{{week.count}}%"
-                         class="week {{ctrl.convertNumberToWord(key + 1)}}">
-                        <p><span>{{week.count}}</span>Week {{key + 1}}</p>
+        <div class="match-height">
+            <div class="deal-btns">
+                <button class="deal-feed">Deal Feed</button>
+                <button class="next-steps">Next Steps</button>
+                <div class="clearfix">
+                    <div class="account-value">
+                        <small>Account Value</small>
+                        <h2 ng-bind="ctrl.account_value"></h2>
+                    </div>
+                    <div class="close-date">
+                        <small>Close Date</small>
+                        <h2 ng-bind="ctrl.close_date"></h2>
                     </div>
                 </div>
             </div>
@@ -34,34 +39,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="add-play">
+                  <button ui-sref="root.deal-set-play({deal_id: ctrl.deal.id})">Add Play</button>
+                </div>
             </div>
-        </div>
-        <div class="match-height">
-            <div class="account-value">
-                <small>Account Value</small>
-                <h2 ng-bind="ctrl.account_value"></h2>
-            </div>
-            <div class="close-date">
-                <small>Close Date</small>
-                <h2 ng-bind="ctrl.close_date"></h2>
-            </div>
-        </div>
-        <div class="match-height">
-            <div class="forecast">
-                <small>forecast</small>
-                <h2 ng-bind="ctrl.deal.forecast"></h2>
-            </div>
-            <div class="stage">
-                <small>Stage</small>
-                <h2 ng-bind="ctrl.deal.stage"></h2>
-            </div>
-        </div>
-        <div class="qq-buttons">
-            <button ui-sref="root.deal-set-play({deal_id: ctrl.deal.id})">Add Play</button>
-            <button ui-sref="root.deal-feed({deal_id: ctrl.deal.id})">View Answers</button>
         </div>
         <div class="salesforce-button">
             <button class="salesforce">View Deal in Salesforce</button>
+            <a class="sync" href="#">Sync with Salesforce</a>
         </div>
         <div class="virtual-team clearfix">
             <small>Extended Team</small>
