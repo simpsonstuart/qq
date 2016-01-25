@@ -2,23 +2,14 @@
 <form class="import">
     <fieldset>
         <div class="clearfix" ng-repeat="user in ctrl.users">
-            <input type="checkbox" id="user_{{user.id}}" ng-model="user.isChecked" ng-change="user.selected" ng-click="ctrl.checkEnabled(user.id)" class="checkbox"/>
+            <input type="checkbox" id="user_{{user.id}}" ng-model="user.isChecked" ng-change="user.selected" class="checkbox"/>
             <label for="user_{{user.id}}"></label>
             <img src="{{user.avatar}}"/>
 
             <div class="import-details users">
                 <h2>{{user.name}}</h2>
-                <small>Manager | {{user.manager}}</small>
-            </div>
-            <h2 class="permissions" ng-if="user.role && user.isChecked">{{user.role | limitTo:ctrl.letterLimit}}</h2>
-
-            <div class="permissions" ng-if="user.isChecked && !user.role">
-                <small>Select User's Permissions</small>
-                <div class="clearfix">
-                    <button ng-repeat="role in ctrl.roles" ng-click="ctrl.clickedRole(user.id, role);">{{role}}</button>
-                </div>
             </div>
         </div>
-        <button class="submit" type="submit" ng-click="ctrl.finishPressed()" ng-disabled="ctrl.isDisabled != false">Finish</button>
+        <button class="submit" type="submit" ng-click="ctrl.submit()" ng-disabled="ctrl.submittable()">Finish</button>
     </fieldset>
 </form>
