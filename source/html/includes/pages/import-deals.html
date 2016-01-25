@@ -12,6 +12,6 @@
             </div>
             <h2 class="amount">{{deal.amount}}</h2>
         </div>
-        <button class="submit" type="submit" ng-click="ctrl.nextPressed()" ng-disabled="ctrl.isDisabled != false">Next</button>
+        <button class="submit" type="submit" ng-click="ctrl.submit()" ng-disabled="ctrl.submittable()">Next</button>
     </fieldset>
 </form>

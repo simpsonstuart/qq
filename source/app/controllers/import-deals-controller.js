@@ -3,36 +3,26 @@ angular.module('QQ')
 
 function ImportDealsController($scope, $state, DealService) {
     var ctrl = this;
-
-    //fictional deals replace with real ones in future
+    ctrl.submit = submit;
+    ctrl.submittable = submittable;
 
     DealService.importList().then(function (data) {
         ctrl.deals = data;
     });
 
-    //gets selected users on finish click then goes to profile page
-    ctrl.nextPressed = function () {
-        ctrl.getChecked();
-        var dealsToImport = _.pluck(ctrl.dealsChecked, 'id');
-        DealService.add(dealsToImport);
-        //todo add logic that does something with selected deals here
-        $state.go('root.import-users');
+    function submit() {
+        var dealsToImport = _.pluck(checked(), 'id');
+        DealService.add(dealsToImport).then(function (response) {
+            console.log(response);
+            $state.go('root.import-users');
+        });
+    }
 
-    };
+    function submittable() {
+       return !_.some(checked(), 'isChecked');
+    }
 
-    //Get checked deals by looking at is checked property added to array by angular
-    ctrl.getChecked = function () {
-           ctrl.dealsChecked = _.filter(ctrl.deals, "isChecked");
-    };
-
-    //check if at least one deal is checked and set state of finish button
-    ctrl.checkEnabled = function() {
-        ctrl.getChecked();
-        if(_.some(ctrl.dealsChecked, 'isChecked')) {
-            ctrl.isDisabled = false;
-        }
-        else {
-            ctrl.isDisabled = true;
-        }
-    };
+    function checked() {
+        return _.filter(ctrl.deals, "isChecked");
+    }
 }
