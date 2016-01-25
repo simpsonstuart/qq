@@ -2571,77 +2571,71 @@ footer {
       .match-height {
         flex-direction: row;
       }
-    }
-    .activity {
-      .graph {
-        width: 310px;
+      .activity {
+        .graph {
+          width: 310px;
+        }
+        .week {
+          width: 22px;
+        }
+        .week.one {
+          left: 0;
+          background: $col-lt-blue;
+        }
+        .week.two {
+          left: 24px;
+          background: $col-lt-blue;
+        }
+        .week.three {
+          left: 48px;
+          background: $col-med-blue;
+        }
+        .week.four {
+          left: 72px;
+          background: $col-blue;
+        }
+        .week.five {
+          left: 96px;
+          background: $col-blue;
+        }
+        .week.six {
+          left: 120px;
+          background: $col-lt-blue;
+        }
+        .week.seven {
+          left: 144px;
+          background: $col-blue;
+        }
+        .week.eight {
+          left: 168px;
+          background: $col-blue;
+        }
+        .week.nine {
+          left: 192px;
+          background: $col-med-blue;
+        }
+        .week.ten {
+          left: 216px;
+          background: $col-med-blue;
+        }
+        .week.eleven {
+          left: 240px;
+          background: $col-lt-blue;
+        }
+        .week.twelve {
+          left: 264px;
+          background: $col-lt-blue;
+        }
+        .week.thirteen {
+          left: 288px;
+          background: $col-blue;
+        }
       }
-      .week {
-        width: 22px;
-      }
-      .week.one {
-        left: 0;
-        background: $col-lt-blue;
-      }
-      .week.two {
-        left: 24px;
-        background: $col-lt-blue;
-      }
-      .week.three {
-        left: 48px;
-        background: $col-med-blue;
-      }
-      .week.four {
-        left: 72px;
-        background: $col-blue;
-      }
-      .week.five {
-        left: 96px;
-        background: $col-blue;
-      }
-      .week.six {
-        left: 120px;
-        background: $col-lt-blue;
-      }
-      .week.seven {
-        left: 144px;
-        background: $col-blue;
-      }
-      .week.eight {
-        left: 168px;
-        background: $col-blue;
-      }
-      .week.nine {
-        left: 192px;
-        background: $col-med-blue;
-      }
-      .week.ten {
-        left: 216px;
-        background: $col-med-blue;
-      }
-      .week.eleven {
-        left: 240px;
-        background: $col-lt-blue;
-      }
-      .week.twelve {
-        left: 264px;
-        background: $col-lt-blue;
-      }
-      .week.thirteen {
-        left: 288px;
-        background: $col-blue;
-      }
-    }
-    .questions {
-      .answered, .asked {
-        height: 24px;
-        line-height: 24px;
-        width: 50px;
-      }
-      .answered {
-        margin-right: 6px;
-        &:before {
-          right: -3px;
+      .questions {
+        .answered, .asked {
+          height: 34px;
+          line-height: 34px;
+          width: 50px;
         }
       }
     }
