@@ -51,7 +51,7 @@
         <div class="virtual-team clearfix" ng-if="ctrl.extended_team.length">
             <small>Extended Team</small>
             <div ng-repeat="team_mate in ctrl.extended_team" class="questions clearfix">
-                <small><a>{{team_mate.name}}</a></small>
+                <small>{{team_mate.name}}</small>
                 <div class="answered {{ctrl.answerCountIsZero(team_mate)}}">{{team_mate.answer_count}}</div>
                 <div class="asked">{{team_mate.question_count}}</div>
             </div>
