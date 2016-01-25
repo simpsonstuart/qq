@@ -866,6 +866,10 @@ form.import {
       &:last-child {
         border-bottom: none;
       }
+      .caret {
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
   .answer {
@@ -1510,18 +1514,12 @@ form.import {
       margin-bottom: 5px;
       margin-left: 20px;
     }
-    .send-qq {
-      margin-left: 20px;
-      display: inline-block;
-      &:after {
-        @include fa;
-        @include fa(share);
-        @include fa-size(1.2em);
-        margin-left: 5px;
-      }
-    }
     .questions {
+      display: flex;
+      position: absolute;
       right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
   .close-date, .account-value {
@@ -1605,12 +1603,6 @@ form.import {
       margin-top: 5px;
       margin-bottom: 0;
     }
-    .green {
-      color: $col-green;
-    }
-    .dk-green {
-      color: $col-dk-green;
-    }
   }
   .row {
     position: relative;
@@ -1643,6 +1635,13 @@ form.import {
         @include fa-align(bottom);
         color: $col-orange;
       }
+    }
+    .questions {
+      display: flex;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
   .expanded {
