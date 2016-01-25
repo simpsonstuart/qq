@@ -21,10 +21,11 @@
                 </div>
             </div>
             <div ng-show="ctrl.checkExpansion(play_name, sub_play.child_play)" class="expanded" id="money">
+                <!-- Filter should toggle on and off -->
                 <div class="deal-questions-filter">
                   <a href="#" class="not-asked">Not Asked</a>
                   <a href="#" class="pending">Pending Answer</a>
-                  <a href="#" class="answered">Answered</a>
+                  <a href="#" class="answered active">Answered</a>
                 </div>
                 <button ui-sref="root.ask-play-questions">Ask {{sub_play.child_play}} Questions</button>
 

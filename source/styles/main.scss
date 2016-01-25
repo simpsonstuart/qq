@@ -1554,8 +1554,13 @@ div.profile {
         margin-left: 10px;
         padding-left: 10px;
         border-left: 1px solid $col-grey-stroke;
+        transition: all 0.1s ease;
         &:first-child {
           border-left: none;
+        }
+        &.active, &:hover {
+          font-weight: 700;
+          text-decoration: underline;
         }
         &.not-asked {
           &:before {
@@ -1564,6 +1569,9 @@ div.profile {
             @include fa-size(1.1em);
             @include fa-right(5px);
             @include fa-align(bottom);
+          }
+          &:hover, &.active {
+            color: $col-red;
           }
         }
         &.pending {
@@ -1582,6 +1590,9 @@ div.profile {
             @include fa-size(1.1em);
             @include fa-right(5px);
             @include fa-align(bottom);
+          }
+          &:hover, &.active {
+            color: $col-green;
           }
         }
       }
