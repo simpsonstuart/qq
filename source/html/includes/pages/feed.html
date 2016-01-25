@@ -20,7 +20,7 @@
     <div class="feed-detail-wrapper">
         <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)"
              class="feed-details clearfix pending">
-            <img src="{{item.from_user_picture}}">
+            <img ng-src="{{item.from_user_picture}}">
 
             <div class="text">
                 <h2>{{ctrl.getActivityTypeDisplayString(item)}}</h2>
