@@ -3,34 +3,34 @@
     <aside>
         <img ng-if="ctrl.profile.picture" src="{{ctrl.profile.picture}}">
         <h2>{{ctrl.profile.name}}</h2>
-        <small><a>Partners</a> | <a>Targets</a> | <a>Accounts</a></small>
+        <small><a href="#">Partners</a> | <a href="#">Targets</a> | <a href="#">Accounts</a></small>
     </aside>
     <div class="details clearfix">
         <div class="match-height">
-            <a href="#"class="all-deals">
+            <a href=""class="all-deals" ng-click="$state.go('root.deals')">
                 <small>All My Deals</small>
-                <h2>$2,300,000</h2>
+                <h2>{{ctrl.formatMoney(ctrl.allMyDeals)}}</h2>
             </a>
-            <a href="#" class="active-deals">
+            <a href="" class="active-deals" ng-click="$state.go('root.deals')">
                 <small>Active Deals</small>
-                <h2>$450,000</h2>
+                <h2>{{ctrl.formatMoney(ctrl.activeDeals)}}</h2>
             </a>
         </div>
-        <a href="#" class="unanswered-questions">
-            <span>8</span>
+        <a href="" class="unanswered-questions" ng-click="$state.go('root.feed')">
+            <span>{{ctrl.unansweredQuestions}}</span>
             <div class="text">
                 <small>unanswered questions</small>
                 <small class="go-to">go to feed</small>
             </div>
         </a>
-        <a href="#" class="incomplete-steps">
-          <span>13</span>
+        <a href="" class="incomplete-steps" ng-click="$state.go('root.coming-soon')">
+          <span>{{ctrl.incompleteNextSteps}}</span>
           <div class="text">
             <small>Incomplete next steps</small>
             <small class="go-to">go to next steps</small>
           </div>
         </a>
-        <!--<div class="activity">
+        <div class="activity" ng-if="ctrl.trailingCounts.week_counts.length">
             <small>Activity by week</small>
             <div class="graph clearfix">
                 <div ng-repeat="(key, week) in ctrl.trailingCounts.week_counts | limitTo:13"
@@ -39,8 +39,8 @@
                     <p><span>{{week.count}}</span>Week {{key + 1}}</p>
                 </div>
             </div>
-        </div> -->
-        <div class="activity new-user">
+        </div>
+        <div class="activity new-user" ng-if="!ctrl.trailingCounts.week_counts.length">
           <small>Activity by week</small>
           <p>You have no activity yet! To get started, ask questions about your deals or start assigning next steps to your team.</p>
           <div class="new-user-btns">
@@ -48,14 +48,19 @@
             <button ng-click="$state.go('root.coming-soon')">Assign Next Steps</button>
           </div>
         </div>
-        <div class="playbook">
+        <div class="playbook" ng-if="ctrl.playbook_counts.length">
             <small>Campaign</small>
-            <ul>
-                <li>Healthcare: 2</li>
+            <ul ng-repeat="(key, playbook) in ctrl.playbook_counts" class="playbook">
+                <li ng-repeat="play in playbook">{{play.play}}: {{play.count}}</li>
             </ul>
         </div>
-      <!-- Virtual team is not present on new user dashboard -->
-        <div class="virtual-team clearfix">
+        <div class="playbook" ng-if="!ctrl.playbook_counts.length">
+            <small>Campaign</small>
+            <ul class="playbook">
+                <li>No campaigns added yet!</li>
+            </ul>
+        </div>
+        <div class="virtual-team clearfix" ng-if="ctrl.virtual_team.length">
             <small>Active Virtual Team</small>
             <div ng-repeat="team_mate in ctrl.virtual_team" class="questions clearfix">
                 <small>{{team_mate.name}}</small>
