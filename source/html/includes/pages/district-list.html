@@ -10,7 +10,7 @@
         </div>
     </aside>
     <div class="details clearfix">
-        <img src="{{user.picture}}">
+        <img ng-src="{{user.picture}}">
         <div class="text">
             <h2><a ui-sref="root.profile.user({user_id: user.id})">{{user.name}}</a></h2>
             <small class="deals-count">{{user.deal_count}} Deals</small>

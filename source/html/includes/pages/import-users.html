@@ -4,7 +4,7 @@
         <div class="clearfix" ng-repeat="user in ctrl.users">
             <input type="checkbox" id="user_{{user.id}}" ng-model="user.isChecked" ng-change="user.selected" class="checkbox"/>
             <label for="user_{{user.id}}"></label>
-            <img src="{{user.avatar}}"/>
+            <img ng-src="{{user.avatar}}"/>
 
             <div class="import-details users">
                 <h2>{{user.name}}</h2>
