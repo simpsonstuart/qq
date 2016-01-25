@@ -1542,6 +1542,7 @@ div.profile {
     }
   }
   .expanded {
+    border-bottom: 1px solid $col-grey-stroke;
     .deal-questions-filter {
       padding: 10px 20px;
       display: flex;
@@ -1594,23 +1595,49 @@ div.profile {
     .qq {
       border-top: 1px solid $col-grey-stroke;
       border-bottom: 1px solid $col-grey-stroke;
-      background: $col-orange-highlight;
+      border-right: 1px solid $col-grey-stroke;
+      border-left: 3px solid $col-grey-stroke;
+      background: #eaeaea;
       padding: 10px 20px;
       position: relative;
       margin: 0 10px;
       p {
         margin-bottom: 10px;
+        &.answered:before {
+          @include fa;
+          @include fa(check);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $col-green;
+        }
+        &.pending:before {
+          @include fa;
+          @include fa(commenting);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $text-light;
+        }
+        &.not-asked:before {
+          @include fa;
+          @include fa(exclamation-triangle);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $col-red;
+        }
       }
       .share {
         position: absolute;
         right: 20px;
-        top: 15%;
+        top: 10px;
         -webkit-transform: translateY(-15%);
         transform: translateY(-15%);
         &:before {
           @include fa;
           @include fa(share);
-          @include fa-size(1.5em);
+          @include fa-size(1.2em);
           color: $col-orange;
         }
       }
@@ -1620,18 +1647,22 @@ div.profile {
       margin: 0 50px;
       position: relative;
       border-bottom: 1px solid $col-grey-stroke;
-      .timestamp {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+      border-left: 3px solid $col-grey-stroke;
+      &.pending p {
+        color: $text-light;
       }
-      &.no-border {
+      &:last-child {
         border-bottom: none;
       }
-      .no-reply {
-        color: $text-light;
+      small {
+        display: block;
+        margin-top: 7px;
+        a {
+          color: $text-light;
+          &:hover {
+            color: $col-orange;
+          }
+        }
       }
     }
     .qq-comment {
@@ -2619,7 +2650,7 @@ footer {
       }
       .qq-answer {
         padding: 10px;
-        margin: 0 20px;
+        margin: 0 11px 0 30px;
       }
     }
   }

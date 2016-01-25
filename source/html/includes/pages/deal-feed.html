@@ -30,16 +30,31 @@
 
                 <div ng-repeat="question in ctrl.questionsForPlay(playbook_name, play_name, sub_play.child_play)">
                     <div class="qq">
-                        <p>{{question.question}}</p>
+                        <p class="answered">{{question.question}}</p>
                         <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
                         </small>
                         <a ui-sref="root.ask-reps" class="share"></a>
                     </div>
-
+                    <div class="qq">
+                      <p class="pending">{{question.question}}</p>
+                      <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
+                      </small>
+                      <a ui-sref="root.ask-reps" class="share"></a>
+                    </div>
+                    <div class="qq">
+                      <p class="not-asked">{{question.question}}</p>
+                      <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
+                      </small>
+                      <a ui-sref="root.ask-reps" class="share"></a>
+                    </div>
                     <div ng-repeat="answer in question.answers">
                         <div class="qq-answer">
-                            <p>{{answer.answer_user_name}} {{ctrl.formatAnswer(answer.answer)}}</p>
-                            <small class="timestamp">{{ctrl.formatDate(answer.answer_date)}}</small>
+                            <p><strong>{{answer.answer_user_name}}</strong> {{ctrl.formatAnswer(answer.answer)}}</p>
+                            <small class="timestamp">{{ctrl.formatDate(answer.answer_date)}} | <a href="#">Comment</a></small>
+                        </div>
+                        <div class="qq-answer pending">
+                          <p><strong>Username</strong> has not replied</p>
+                          <small><a href="#">Send reminder</a></small>
                         </div>
                         <div ng-repeat="comment in answer.comments" class="qq-comment">
                             <p class="comment-icon">{{comment.comment_user_name}} commented</p>
