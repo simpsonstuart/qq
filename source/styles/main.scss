@@ -824,7 +824,7 @@ form.import {
     text-align: center;
     margin: 0 0 20px 0;
   }
-  &-info, &-reps {
+  &-info, &-reps, .answer {
     max-width: 400px;
     width: 100%;
     margin: 0 auto;
@@ -901,6 +901,83 @@ form.import {
       border-bottom: 1px solid $col-grey-stroke;
       &:last-child {
         border-bottom: none;
+      }
+    }
+  }
+  .answer {
+    border-top: none;
+    small {
+      margin: 25px 0 10px 0;
+    }
+    form {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+      input.radio {
+        position: absolute;
+        margin-left: -9999px;
+        visibility: hidden;
+      }
+      label {
+        position: relative;
+        outline: none;
+        display: block;
+        cursor: pointer;
+        background: $col-green;
+        width: 220px;
+        height: 35px;
+        line-height: 35px;
+        color: #fff;
+        margin: 0 auto 10px auto;
+        text-align: center;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border-bottom: none;
+        padding: 0;
+        float: none;
+        &:hover {
+          background: $col-dk-green;
+        }
+      }
+      input[type=radio]:checked + label:before {
+        @include fa;
+        @include fa(check);
+        @include fa-size(1.3em);
+        @include fa-align(middle);
+        width: 22px;
+        height: 20px;
+        padding-top: 2px;
+        color: $col-green;
+        background: #fff;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: absolute;
+        left: 10px;
+        top: 6px;
+      }
+      input[type=text] {
+        width: 280px;
+        display: block;
+        margin: 0 auto;
+        height: 38px;
+        box-sizing: border-box;
+        padding: 5px;
+        border: 1px solid $col-grey-stroke;
+      }
+      textarea {
+        width: 280px;
+        margin: 25px auto;
+        height: 75px;
+        display: block;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .submit {
+        width: 280px;
+        margin: 0 auto 30px auto;
+        display: block;
       }
     }
   }
@@ -991,6 +1068,59 @@ form.import {
   }
 }
 
+
+/* tabs */
+.ask {
+  .tabs {
+    max-width: 400px;
+    width: 100%;
+    float: none;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .tabs:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .tabs input[type=radio] {
+    display:none;
+  }
+  .tabs label {
+    display: block;
+    float: left;
+    width: 50%;
+    color: $col-orange;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid $col-grey-stroke;
+    padding: 10px 0;
+    background: $col-orange-highlight;
+    box-sizing: border-box;
+  }
+  .tab-content {
+    display: none;
+    width: 100%;
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color:#ffffff;
+  }
+  .tabs [id^="tab"]:checked + label {
+    background: #fff;
+    border-bottom: none;
+    color: $text-light;
+  }
+  #tab1:checked ~ #tab-content1,
+  #tab2:checked ~ #tab-content2 {
+    display: block;
+  }
+  label[for=tab1] {
+    border-right: 1px solid $col-grey-stroke;
+  }
+}
 
 
 
@@ -1560,7 +1690,6 @@ div.profile {
         }
         &.active, &:hover {
           font-weight: 700;
-          text-decoration: underline;
         }
         &.not-asked {
           &:before {
@@ -1654,8 +1783,8 @@ div.profile {
       }
     }
     .qq-answer {
-      padding: 15px 0;
-      margin: 0 50px;
+      padding: 15px;
+      margin: 0 11px 0 40px;
       position: relative;
       border-bottom: 1px solid $col-grey-stroke;
       border-left: 3px solid $col-grey-stroke;
@@ -2563,6 +2692,13 @@ footer {
         transform: none;
         color: $text-primary;
       }
+    }
+    .tabs {
+      max-width: inherit;
+    }
+    .tab-content {
+      float: none;
+      clear: both;
     }
   }
 
