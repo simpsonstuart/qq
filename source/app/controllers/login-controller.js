@@ -19,7 +19,6 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
     }
 
     if (token) {
-        console.log(newUser, 'here');
         AuthService.logIn(token).then(function () {
             UserService.profile('current').then(function (data) {
                 var user = JSON.stringify(data);
@@ -29,7 +28,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
                 if (newUser == 'true') {
                     $state.go('root.import-deals');
                 } else {
-                    $state.go('root.feed');
+                    $state.go('root.profile');
                 }
             });
         });
@@ -48,7 +47,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
                 localStorage.setItem('user', user);
             }).then(function () {
                 // wait until the user is stored to go to feed
-                $state.go('root.feed');
+                $state.go('root.profile');
             });
         }).catch(function (response) {
             //if we get an an error 401 display an error and reset forms
