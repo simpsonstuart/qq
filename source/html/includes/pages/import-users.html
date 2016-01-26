@@ -1,15 +1,17 @@
 <small class="import-title">Select Users to add to your Traqq team</small>
 <form class="import">
     <fieldset>
+        <div ng-if="ctrl.noUsersToImport()">
+            <h2>There are no users to import</h2>
+        </div>
         <div class="clearfix" ng-repeat="user in ctrl.users">
             <input type="checkbox" id="user_{{user.id}}" ng-model="user.isChecked" ng-change="user.selected" class="checkbox"/>
             <label for="user_{{user.id}}"></label>
             <img ng-src="{{user.avatar}}"/>
-
             <div class="import-details users">
                 <h2>{{user.name}}</h2>
             </div>
         </div>
-        <button class="submit" type="submit" ng-click="ctrl.submit()" ng-disabled="ctrl.submittable()">Finish</button>
+        <button class="submit" type="submit" ng-click="ctrl.submit()">Submit</button>
     </fieldset>
 </form>
