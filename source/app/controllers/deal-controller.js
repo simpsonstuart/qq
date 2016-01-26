@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('DealController', DealController);
 
-function DealController($scope, DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state) {
+function DealController($scope, DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state, $window) {
     var ctrl = this;
 
     ctrl.dealId = $stateParams.deal_id;
@@ -13,6 +13,8 @@ function DealController($scope, DealService, $stateParams, numeral, DateAndTimeS
     ctrl.convertNumberToWord = NumberService.numberToWord;
     ctrl.goToQuestions = goToQuestions;
     ctrl.goToSendQuestionGroup = goToSendQuestionGroup;
+    ctrl.syncWithSalesforce = syncWithSalesforce;
+    ctrl.viewDealSalesforce = viewDealSalesforce;
 
 
     DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
@@ -22,6 +24,7 @@ function DealController($scope, DealService, $stateParams, numeral, DateAndTimeS
         ctrl.extended_team   = data.extended_team.data;
         ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
         ctrl.account_value   = ctrl.formatMoney(ctrl.deal.account_value);
+        ctrl.dealSalesforceLink = data.salesforce_id;
     });
 
 
@@ -45,5 +48,14 @@ function DealController($scope, DealService, $stateParams, numeral, DateAndTimeS
 
      function goToSendQuestionGroup() {
         $state.go("root.send-question-group", {deal_id: ctrl.deal.id});
+    };
+
+    function syncWithSalesforce() {
+        //add salesforce sync logic here
+    };
+
+    //redirect user too the deal in salesforce
+    function viewDealSalesforce() {
+        $window.location.href = "https://na34"+ ".salesforce.com/"+ ctrl.dealSalesforceLink;
     };
 }

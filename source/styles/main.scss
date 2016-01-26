@@ -319,10 +319,6 @@ header.logo-nav {
   background: $col-grey;
 }
 
-.login form label {
-  margin-bottom: 3px;
-}
-
 .login {
   header {
     padding: 5px 0 10px 0;
@@ -339,6 +335,7 @@ header.logo-nav {
     box-sizing: border-box;
     label {
       margin-top: 10px;
+      margin-bottom: 3px;
       display: block;
     }
     button {
@@ -371,6 +368,30 @@ header.logo-nav {
 }
 
 
+.hr {
+  background: #cbcbcb;
+  height: 1px;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 20px auto 40px auto;
+  p {
+    color: #fff;
+    text-transform: uppercase;
+    background: $text-light;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 
 
@@ -513,56 +534,9 @@ form.import {
 /* COMMON STYLES --------------------------
 -------------------------------------------*/
 
-/* deal count with flag icon */
-.deals-count {
-  color: $text-primary;
-  display: inline-block;
-  &:before {
-    @include fa;
-    @include fa(flag);
-    @include fa-size(1.2rem);
-    @include fa-align(bottom);
-    margin: 0 5px 0 8px;
-  }
-}
 
 /* questions answered out of asked boxes */
 .questions {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  small, div {
-    display: block;
-    float: left;
-  }
-  small {
-    background: $col-grey-alt;
-    height: 24px;
-    line-height: 24px;
-    padding-left: 10px;
-    width: 170px;
-    margin-right: 1px;
-  }
-  .overdue {
-    background:#c63f1e;
-    height:24px;
-    line-height:24px;
-    padding-left:10px;
-    width:170px;
-    margin-right:1px;
-    color:#fff
-  }
-  .caution {
-    background: #c6bd09;
-    height:24px;
-    line-height:24px;
-    padding-left:10px;
-    width:170px;
-    margin-right:1px;
-    color:#fff
-  }
   .answered, .asked {
     height: 24px;
     line-height: 24px;
@@ -616,7 +590,8 @@ form.import {
   }
 }
 
-/* bar graphs on list views */
+
+/* Bar Graphs on List Views ------------------------ */
 .row {
   .week {
     position: absolute;
@@ -651,33 +626,22 @@ form.import {
   }
 }
 
-.hr {
-  background: #cbcbcb;
-  height: 1px;
-  position: relative;
-  max-width: 400px;
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-  margin: 20px auto 40px auto;
-  p {
-    color: #fff;
-    text-transform: uppercase;
-    background: $text-light;
-    width: 36px;
-    height: 36px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 36px;
-    position: absolute;
-    top: -16px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+/* List Arrows ------------------------------------ */
+.caret {
+  position: absolute;
+  right: 5px;
+  color: $col-orange;
+  top: 25px;
+  &:before {
+    @include fa;
+    @include fa(caret-right);
+    @include fa-size(2em);
+  }
+  &:hover {
+    color: $col-orange-active;
   }
 }
+
 
 
 
@@ -824,7 +788,7 @@ form.import {
     text-align: center;
     margin: 0 0 20px 0;
   }
-  &-info, &-reps {
+  &-info, &-reps, .answer {
     max-width: 400px;
     width: 100%;
     margin: 0 auto;
@@ -901,6 +865,87 @@ form.import {
       border-bottom: 1px solid $col-grey-stroke;
       &:last-child {
         border-bottom: none;
+      }
+      .caret {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .answer {
+    border-top: none;
+    small {
+      margin: 25px 0 10px 0;
+    }
+    form {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+      input.radio {
+        position: absolute;
+        margin-left: -9999px;
+        visibility: hidden;
+      }
+      label {
+        position: relative;
+        outline: none;
+        display: block;
+        cursor: pointer;
+        background: $col-green;
+        width: 220px;
+        height: 35px;
+        line-height: 35px;
+        color: #fff;
+        margin: 0 auto 10px auto;
+        text-align: center;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border-bottom: none;
+        padding: 0;
+        float: none;
+        &:hover {
+          background: $col-dk-green;
+        }
+      }
+      input[type=radio]:checked + label:before {
+        @include fa;
+        @include fa(check);
+        @include fa-size(1.3em);
+        @include fa-align(middle);
+        width: 22px;
+        height: 20px;
+        padding-top: 2px;
+        color: $col-green;
+        background: #fff;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: absolute;
+        left: 10px;
+        top: 6px;
+      }
+      input[type=text] {
+        width: 280px;
+        display: block;
+        margin: 0 auto;
+        height: 38px;
+        box-sizing: border-box;
+        padding: 5px;
+        border: 1px solid $col-grey-stroke;
+      }
+      textarea {
+        width: 280px;
+        margin: 25px auto;
+        height: 75px;
+        display: block;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .submit {
+        width: 280px;
+        margin: 0 auto 30px auto;
+        display: block;
       }
     }
   }
@@ -992,6 +1037,59 @@ form.import {
 }
 
 
+/* tabs */
+.ask {
+  .tabs {
+    max-width: 400px;
+    width: 100%;
+    float: none;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .tabs:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .tabs input[type=radio] {
+    display:none;
+  }
+  .tabs label {
+    display: block;
+    float: left;
+    width: 50%;
+    color: $col-orange;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid $col-grey-stroke;
+    padding: 10px 0;
+    background: $col-orange-highlight;
+    box-sizing: border-box;
+  }
+  .tab-content {
+    display: none;
+    width: 100%;
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color:#ffffff;
+  }
+  .tabs [id^="tab"]:checked + label {
+    background: #fff;
+    border-bottom: none;
+    color: $text-light;
+  }
+  #tab1:checked ~ #tab-content1,
+  #tab2:checked ~ #tab-content2 {
+    display: block;
+  }
+  label[for=tab1] {
+    border-right: 1px solid $col-grey-stroke;
+  }
+}
+
 
 
 
@@ -1000,23 +1098,34 @@ form.import {
 
 /* DEALS LIST --------------------------
 ----------------------------------------*/
-.row.deals {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+.row.deals-list {
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   aside {
     position: relative;
     padding: 10px 0;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    .favorite {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(4rem);
+        color: $col-grey-stroke;
+      }
+      &.active {
+        &:before {
+          color: $col-blue;
+        }
+      }
+    }
   }
   .details {
     border-left: 1px solid $col-grey-stroke;
-    padding: 20px 10px;
+    padding: 20px 0 20px 10px;
+    flex-grow: 1;
     .text {
       margin-top: 8px;
       width: 44%;
@@ -1024,6 +1133,40 @@ form.import {
     h2 {
       display: inline-block;
       margin-right: 5px;
+    }
+    .close-date {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 250px;
+      small {
+        display: block;
+        background: $col-grey-alt;
+        height: 24px;
+        line-height: 24px;
+        padding-left: 10px;
+        &.overdue {
+          background: $col-red;
+          color: #fff;
+        }
+        &.caution {
+          background: #c6bd09;
+          color:#fff;
+        }
+      }
+      .deal-activity {
+        color: #fff;
+        background: $col-red;
+        position: absolute;
+        right: 15px;
+        text-align: center;
+        border-radius: 50px;
+        padding: 5px;
+        top: -10px;
+        min-width: 14px;
+        border: 1px solid #fff;
+      }
     }
   }
 }
@@ -1035,11 +1178,7 @@ form.import {
 
 /* PROFILE ---------------------------------
 -------------------------------------------*/
-a.deals-count {
-  color: $col-orange;
-}
-
-div.profile {
+.profile {
   border-top: 1px solid $col-grey-stroke;
   border-bottom: 1px solid $col-grey-stroke;
   aside {
@@ -1062,48 +1201,14 @@ div.profile {
     border-left: 1px solid $col-grey-stroke;
     small {
       text-align: center;
-      display:block;
+      display: block;
       margin-bottom: 15px;
     }
-  }
-  .all-deals, .active-deals {
-    small {
-      margin-bottom: 5px;
-      color: $col-orange;
-      font-weight: 700;
-      &:after {
-        @include fa;
-        @include fa(caret-right);
-        @include fa-size(1.4rem);
-        @include fa-align(text-top);
-        @include fa-left(5px);
-      }
-    }
-    h2 {
-      color: $text-primary;
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-  .unanswered-questions, .incomplete-steps {
-    background: $col-orange-highlight;
-    padding: 10px 20px;
-    border-top: 1px solid $col-grey-stroke;
-    span {
-      color: $col-orange;
-      font-size: 6.5rem;
-      font-weight: 700;
-      text-align: right;
-    }
-    .text {
-      padding-left: 10px;
-      margin-top: 20px;
-    }
-    small {
-      text-align: left;
-      margin-bottom: 5px;
-      &.go-to {
+    .all-deals, .active-deals {
+      padding-top: 20px;
+      text-align: center;
+      small {
+        margin-bottom: 5px;
         color: $col-orange;
         font-weight: 700;
         &:after {
@@ -1114,127 +1219,143 @@ div.profile {
           @include fa-left(5px);
         }
       }
-    }
-  }
-  .activity {
-    padding: 20px 0;
-    border-top: 1px solid $col-grey-stroke;
-    clear: both;
-    &.new-user {
-      padding: 20px;
-      p {
-        text-align: center;
-        line-height: 2rem;
+      h2 {
+        color: $text-primary;
       }
-      .new-user-btns {
-        margin: 20px auto 0 auto;
-        width: 300px;
-        button {
-          width: 145px;
-          &:first-child {
-            margin-right: 6px;
+      &:focus {
+        outline: none;
+      }
+    }
+    .unanswered-questions, .incomplete-steps {
+      background: $col-orange-highlight;
+      padding: 10px 20px;
+      border-top: 1px solid $col-grey-stroke;
+      span {
+        color: $col-orange;
+        font-size: 6.5rem;
+        font-weight: 700;
+        text-align: right;
+      }
+      .text {
+        padding-left: 10px;
+        margin-top: 20px;
+      }
+      small {
+        text-align: left;
+        margin-bottom: 5px;
+        &.go-to {
+          color: $col-orange;
+          font-weight: 700;
+          &:after {
+            @include fa;
+            @include fa(caret-right);
+            @include fa-size(1.4rem);
+            @include fa-align(text-top);
+            @include fa-left(5px);
           }
         }
       }
     }
-    .graph {
-      height: 130px;
-      position: relative;
-      width: 533px;
-      margin: 0 auto;
-    }
-    .week {
-      position: absolute;
-      bottom: -10px;
-      width: 39px;
-      margin-right: 2px;
-      p {
-        text-indent: -9999px;
-        position: relative;
-        span {
-          position: absolute;
-          text-indent: 0;
-          background: $col-red;
-          display: block;
-          width: 100%;
-          color: #fff;
+    .activity {
+      padding: 20px 0;
+      border-top: 1px solid $col-grey-stroke;
+      clear: both;
+      &.new-user {
+        padding: 20px;
+        p {
           text-align: center;
-          padding: 2px 0;
-          top: -17px;
-          font-size: 1.1rem;
+          line-height: 2rem;
+        }
+        .new-user-btns {
+          margin: 20px auto 0 auto;
+          width: 300px;
+          button {
+            width: 145px;
+            &:first-child {
+              margin-right: 6px;
+            }
+          }
         }
       }
-    }
-    .week.one {
-      left: 0;
-      background: $col-lt-blue;
-    }
-    .week.two {
-      left: 41px;
-      background: $col-lt-blue;
-    }
-    .week.three {
-      left: 82px;
-      background: $col-med-blue;
-    }
-    .week.four {
-      left: 123px;
-      background: $col-blue;
-    }
-    .week.five {
-      left: 164px;
-      background: $col-blue;
-    }
-    .week.six {
-      left: 205px;
-      background: $col-lt-blue;
-    }
-    .week.seven {
-      left: 246px;
-      background: $col-blue;
-    }
-    .week.eight {
-      left: 287px;
-      background: $col-blue;
-    }
-    .week.nine {
-      left: 328px;
-      background: $col-med-blue;
-    }
-    .week.ten {
-      left: 369px;
-      background: $col-med-blue;
-    }
-    .week.eleven {
-      left: 410px;
-      background: $col-lt-blue;
-    }
-    .week.twelve {
-      left: 451px;
-      background: $col-lt-blue;
-    }
-    .week.thirteen {
-      left: 492px;
-      background: $col-blue;
-    }
-  }
-  .all-deals, .active-deals, .playbook {
-    padding-top: 20px;
-    text-align: center;
-  }
-  .questions {
-    position: static;
-    transform: none;
-    margin: 0 auto;
-    .answered, .asked {
-      height: 34px;
-      line-height: 34px;
-      width: 65px;
-    }
-    .answered {
-      margin-right: 8px;
-      &:before {
-        right: -5px;
+      .graph {
+        height: 130px;
+        position: relative;
+        width: 533px;
+        margin: 0 auto;
+      }
+      .week {
+        position: absolute;
+        bottom: -10px;
+        width: 39px;
+        margin-right: 2px;
+        p {
+          text-indent: -9999px;
+          position: relative;
+          span {
+            position: absolute;
+            text-indent: 0;
+            background: $col-red;
+            display: block;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            padding: 2px 0;
+            top: -17px;
+            font-size: 1.1rem;
+          }
+        }
+      }
+      .week.one {
+        left: 0;
+        background: $col-lt-blue;
+      }
+      .week.two {
+        left: 41px;
+        background: $col-lt-blue;
+      }
+      .week.three {
+        left: 82px;
+        background: $col-med-blue;
+      }
+      .week.four {
+        left: 123px;
+        background: $col-blue;
+      }
+      .week.five {
+        left: 164px;
+        background: $col-blue;
+      }
+      .week.six {
+        left: 205px;
+        background: $col-lt-blue;
+      }
+      .week.seven {
+        left: 246px;
+        background: $col-blue;
+      }
+      .week.eight {
+        left: 287px;
+        background: $col-blue;
+      }
+      .week.nine {
+        left: 328px;
+        background: $col-med-blue;
+      }
+      .week.ten {
+        left: 369px;
+        background: $col-med-blue;
+      }
+      .week.eleven {
+        left: 410px;
+        background: $col-lt-blue;
+      }
+      .week.twelve {
+        left: 451px;
+        background: $col-lt-blue;
+      }
+      .week.thirteen {
+        left: 492px;
+        background: $col-blue;
       }
     }
   }
@@ -1246,6 +1367,8 @@ div.profile {
   }
   .playbook{
     border-top: 1px solid $col-grey-stroke;
+    text-align: center;
+    padding-top: 20px;
     li {
       border-top: 1px solid $col-grey-stroke;
       width: 80%;
@@ -1261,12 +1384,9 @@ div.profile {
       }
     }
   }
-  .border-left {
-    border-left: 1px solid $col-grey-stroke;
-  }
 }
 
-.details .virtual-team {
+.virtual-team {
   border-top: 1px solid $col-grey-stroke;
   clear: both;
   padding: 20px;
@@ -1277,15 +1397,12 @@ div.profile {
       height: 34px;
       line-height: 34px;
       margin-bottom: 10px;
+      background: $col-grey;
+      padding-left: 10px;
       a {
         color: $text-light;
       }
     }
-  }
-  .questions {
-    position: static;
-    transform: none;
-    margin: 0 auto;
     .answered, .asked {
       height: 34px;
       line-height: 34px;
@@ -1297,6 +1414,7 @@ div.profile {
         right: -5px;
       }
     }
+
   }
 }
 
@@ -1347,6 +1465,11 @@ div.profile {
     h2 {
       text-align: center;
     }
+    .virtual-team {
+      div small {
+        text-align: left;
+      }
+    }
   }
   .deal-btns {
     box-sizing: border-box;
@@ -1391,18 +1514,12 @@ div.profile {
       margin-bottom: 5px;
       margin-left: 20px;
     }
-    .send-qq {
-      margin-left: 20px;
-      display: inline-block;
-      &:after {
-        @include fa;
-        @include fa(share);
-        @include fa-size(1.2em);
-        margin-left: 5px;
-      }
-    }
     .questions {
+      display: flex;
+      position: absolute;
       right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
   .close-date, .account-value {
@@ -1457,22 +1574,7 @@ div.profile {
   }
 }
 
-.caret {
-  &:before {
-    position: absolute;
-    right: 10px;
-    color: $col-orange;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    @include fa;
-    @include fa(caret-right);
-    @include fa-size(2em);
-  }
-  &:hover {
-    color: $col-orange-active;
-  }
-}
+
 
 
 
@@ -1481,6 +1583,10 @@ div.profile {
 
 /* DEAL QUESTIONS --------------------------
 -------------------------------------------*/
+.play-feed {
+  display: none;
+}
+
 .deal-questions {
   border-top: 1px solid $col-grey-stroke;
   margin: 0 20px;
@@ -1496,12 +1602,6 @@ div.profile {
     h2 {
       margin-top: 5px;
       margin-bottom: 0;
-    }
-    .green {
-      color: $col-green;
-    }
-    .dk-green {
-      color: $col-dk-green;
     }
   }
   .row {
@@ -1536,17 +1636,34 @@ div.profile {
         color: $col-orange;
       }
     }
+    .questions {
+      display: flex;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
   .expanded {
-    margin: 0 10px;
+    border-bottom: 1px solid $col-grey-stroke;
     .deal-questions-filter {
-      padding: 10px 0;
-      border-bottom: 1px solid $col-grey-stroke;
+      padding: 10px 20px;
       display: flex;
+      justify-content: flex-end;
+      border-bottom: 1px solid $col-grey-stroke;
       a {
         color: $text-light;
-        flex-grow: 1;
         text-align: center;
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid $col-grey-stroke;
+        transition: all 0.1s ease;
+        &:first-child {
+          border-left: none;
+        }
+        &.active, &:hover {
+          font-weight: 700;
+        }
         &.not-asked {
           &:before {
             @include fa;
@@ -1554,6 +1671,9 @@ div.profile {
             @include fa-size(1.1em);
             @include fa-right(5px);
             @include fa-align(bottom);
+          }
+          &:hover, &.active {
+            color: $col-red;
           }
         }
         &.pending {
@@ -1573,6 +1693,9 @@ div.profile {
             @include fa-right(5px);
             @include fa-align(bottom);
           }
+          &:hover, &.active {
+            color: $col-green;
+          }
         }
       }
     }
@@ -1585,43 +1708,74 @@ div.profile {
     .qq {
       border-top: 1px solid $col-grey-stroke;
       border-bottom: 1px solid $col-grey-stroke;
-      background: $col-orange-highlight;
+      border-right: 1px solid $col-grey-stroke;
+      border-left: 3px solid $col-grey-stroke;
+      background: #eaeaea;
       padding: 10px 20px;
       position: relative;
+      margin: 0 10px;
       p {
         margin-bottom: 10px;
+        &.answered:before {
+          @include fa;
+          @include fa(check);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $col-green;
+        }
+        &.pending:before {
+          @include fa;
+          @include fa(commenting);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $text-light;
+        }
+        &.not-asked:before {
+          @include fa;
+          @include fa(exclamation-triangle);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $col-red;
+        }
       }
       .share {
         position: absolute;
         right: 20px;
-        top: 15%;
+        top: 10px;
         -webkit-transform: translateY(-15%);
         transform: translateY(-15%);
         &:before {
           @include fa;
           @include fa(share);
-          @include fa-size(1.5em);
+          @include fa-size(1.2em);
           color: $col-orange;
         }
       }
     }
     .qq-answer {
-      padding: 15px 0;
-      margin: 0 40px;
+      padding: 15px;
+      margin: 0 11px 0 40px;
       position: relative;
       border-bottom: 1px solid $col-grey-stroke;
-      .timestamp {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+      border-left: 3px solid $col-grey-stroke;
+      &.pending p {
+        color: $text-light;
       }
-      &.no-border {
+      &:last-child {
         border-bottom: none;
       }
-      .no-reply {
-        color: $text-light;
+      small {
+        display: block;
+        margin-top: 7px;
+        a {
+          color: $text-light;
+          &:hover {
+            color: $col-orange;
+          }
+        }
       }
     }
     .qq-comment {
@@ -2341,7 +2495,9 @@ footer {
     clear: both;
   }
 
-  .row.deals {
+  /* Deals List --------------------------------------- */
+
+  .row.deals-list {
     .details {
       .text {
         margin-top: 0;
@@ -2351,10 +2507,46 @@ footer {
         display: block;
         margin-right: 0;
       }
+      .close-date {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        small {
+          display: block;
+          background: $col-grey-alt;
+          height: 24px;
+          line-height: 24px;
+          padding-left: 10px;
+          &.overdue {
+            background: $col-red;
+            color: #fff;
+          }
+          &.caution {
+            background: #c6bd09;
+            color:#fff;
+          }
+        }
+        .deal-activity {
+          color: #fff;
+          background: $col-red;
+          position: absolute;
+          right: 5px;
+          text-align: center;
+          border-radius: 50px;
+          padding: 5px;
+          top: -10px;
+          min-width: 14px;
+          border: 1px solid #fff;
+        }
+      }
     }
   }
 
-  div.profile {
+  /* Profile / Dashboard ---------------------------------- */
+
+  .profile {
     aside {
       padding: 10px;
       text-align: left;
@@ -2373,87 +2565,83 @@ footer {
       .profile-title {
         margin-bottom: 4px;
       }
-      .deals-count:before {
-        margin-left: 0;
-      }
     }
     .details {
-      border-left:none;
-    }
-    .activity {
-      .graph {
-        width: 310px;
+      border-left: none;
+      .match-height {
+        flex-direction: row;
       }
-      .week {
-        width: 22px;
+      .activity {
+        .graph {
+          width: 310px;
+        }
+        .week {
+          width: 22px;
+        }
+        .week.one {
+          left: 0;
+          background: $col-lt-blue;
+        }
+        .week.two {
+          left: 24px;
+          background: $col-lt-blue;
+        }
+        .week.three {
+          left: 48px;
+          background: $col-med-blue;
+        }
+        .week.four {
+          left: 72px;
+          background: $col-blue;
+        }
+        .week.five {
+          left: 96px;
+          background: $col-blue;
+        }
+        .week.six {
+          left: 120px;
+          background: $col-lt-blue;
+        }
+        .week.seven {
+          left: 144px;
+          background: $col-blue;
+        }
+        .week.eight {
+          left: 168px;
+          background: $col-blue;
+        }
+        .week.nine {
+          left: 192px;
+          background: $col-med-blue;
+        }
+        .week.ten {
+          left: 216px;
+          background: $col-med-blue;
+        }
+        .week.eleven {
+          left: 240px;
+          background: $col-lt-blue;
+        }
+        .week.twelve {
+          left: 264px;
+          background: $col-lt-blue;
+        }
+        .week.thirteen {
+          left: 288px;
+          background: $col-blue;
+        }
       }
-      .week.one {
-        left: 0;
-        background: $col-lt-blue;
-      }
-      .week.two {
-        left: 24px;
-        background: $col-lt-blue;
-      }
-      .week.three {
-        left: 48px;
-        background: $col-med-blue;
-      }
-      .week.four {
-        left: 72px;
-        background: $col-blue;
-      }
-      .week.five {
-        left: 96px;
-        background: $col-blue;
-      }
-      .week.six {
-        left: 120px;
-        background: $col-lt-blue;
-      }
-      .week.seven {
-        left: 144px;
-        background: $col-blue;
-      }
-      .week.eight {
-        left: 168px;
-        background: $col-blue;
-      }
-      .week.nine {
-        left: 192px;
-        background: $col-med-blue;
-      }
-      .week.ten {
-        left: 216px;
-        background: $col-med-blue;
-      }
-      .week.eleven {
-        left: 240px;
-        background: $col-lt-blue;
-      }
-      .week.twelve {
-        left: 264px;
-        background: $col-lt-blue;
-      }
-      .week.thirteen {
-        left: 288px;
-        background: $col-blue;
-      }
-    }
-    .questions {
-      .answered, .asked {
-        height: 24px;
-        line-height: 24px;
-        width: 50px;
-      }
-      .answered {
-        margin-right: 6px;
-        &:before {
-          right: -3px;
+      .questions {
+        .answered, .asked {
+          height: 34px;
+          line-height: 34px;
+          width: 50px;
         }
       }
     }
   }
+
+  /* Deal Detail ------------------------------------ */
 
   .deal-title {
     background: $col-grey;
@@ -2512,6 +2700,13 @@ footer {
         color: $text-primary;
       }
     }
+    .tabs {
+      max-width: inherit;
+    }
+    .tab-content {
+      float: none;
+      clear: both;
+    }
   }
 
   .deal-detail {
@@ -2569,9 +2764,25 @@ footer {
     }
   }
 
+  .play-feed {
+    display: block;
+  }
+
   .deal-questions {
     margin: 0;
     border-top: none;
+    .expanded {
+      .deal-questions-filter {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        a {
+          flex-grow: 1;
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+    }
     .play-header {
       padding-left: 20px;
       h2 {
@@ -2593,7 +2804,7 @@ footer {
       }
       .qq-answer {
         padding: 10px;
-        margin: 0 20px;
+        margin: 0 11px 0 30px;
       }
     }
   }
@@ -2736,11 +2947,7 @@ footer {
   .details {
     .questions {
       small {
-        width: 57%;
-        letter-spacing: 0;
-      }
-      .answered, .asked {
-        width: 17.5%;
+        width: 100%;
       }
     }
     .caret:before {
