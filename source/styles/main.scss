@@ -280,6 +280,11 @@ header {
             @include fa(flag);
             @include fa-size(1.6em);
           }
+          &.favorites:before {
+            @include fa;
+            @include fa(star);
+            @include fa-size(1.6em);
+          }
           &.next:before {
             @include fa;
             @include fa(check-circle);
@@ -288,6 +293,11 @@ header {
           &.ask:before {
             @include fa;
             @include fa(comment);
+            @include fa-size(1.6em);
+          }
+          &.more:before {
+            @include fa;
+            @include fa(ellipsis-h);
             @include fa-size(1.6em);
           }
         }
