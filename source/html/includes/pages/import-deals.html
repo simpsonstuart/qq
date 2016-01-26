@@ -13,7 +13,7 @@
             <p>Owner | {{deal.owner}}</p>
             <small>Close {{deal.closeDate}}</small>
             </div>
-            <h2 class="amount">{{deal.amount}}</h2>
+            <h2 class="amount">{{ctrl.formatMoney(deal.amount)}}</h2>
         </div>
         <button class="submit" type="submit" ng-click="ctrl.submit()">Submit</button>
     </fieldset>

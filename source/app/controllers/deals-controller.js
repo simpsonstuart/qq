@@ -6,9 +6,9 @@ function DealsController($scope, AuthService, DealService, UserService, numeral,
 
     ctrl.formatDate = DateAndTimeService.formatDate;
     ctrl.convertNumberToWord = NumberService.numberToWord;
+    ctrl.formatMoney = NumberService.formatMoney;
     ctrl.timeToClose = DateAndTimeService.daysTill;
     ctrl.dateNow = new Date().toJSON().slice(0,10);
-    ctrl.formatMoney = formatMoney;
 
     if ($stateParams.user_id) {
         UserService.get($stateParams.user_id, 'include=role').then(function (data) {
@@ -32,8 +32,4 @@ function DealsController($scope, AuthService, DealService, UserService, numeral,
     }()).then(function (data) {
         ctrl.deals = data;
     });
-
-    function formatMoney(integer) {
-        return numeral(integer).format('$0,0');
-    };
 }

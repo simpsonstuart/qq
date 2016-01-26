@@ -1,10 +1,11 @@
 angular.module('QQ')
     .controller('ImportDealsController', ImportDealsController);
 
-function ImportDealsController($state, DealService) {
+function ImportDealsController($state, DealService, NumberService) {
     var ctrl = this;
     ctrl.submit = submit;
     ctrl.noDealsToImport = noDealsToImport;
+    ctrl.formatMoney = NumberService.formatMoney;
     ctrl.deals = [];
     ctrl.dealsRetrieved = false;
 
