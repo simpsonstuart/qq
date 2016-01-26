@@ -8,10 +8,7 @@ function ImportUsersController($scope, _, $state, UserService) {
     ctrl.users = [];
     ctrl.usersRetrieved = false;
 
-    UserService.importList().then(function (data) {
-        ctrl.users = data;
-        ctrl.usersRetrieved = true;
-    });
+    activate();
 
     function submit () {
         var usersToImport = _.pluck(_.filter(ctrl.users, "isChecked"), 'id');
@@ -26,5 +23,12 @@ function ImportUsersController($scope, _, $state, UserService) {
 
     function noUsersToImport() {
         return ctrl.users.length < 1 && ctrl.usersRetrieved;
+    }
+
+    function activate() {
+        UserService.importList().then(function (data) {
+            ctrl.users = data;
+            ctrl.usersRetrieved = true;
+        });
     }
 }

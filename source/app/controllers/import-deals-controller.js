@@ -9,10 +9,7 @@ function ImportDealsController($state, DealService, NumberService) {
     ctrl.deals = [];
     ctrl.dealsRetrieved = false;
 
-    DealService.importList().then(function (data) {
-        ctrl.deals = data;
-        ctrl.dealsRetrieved = true;
-    });
+    activate();
 
     function submit() {
         var dealsToImport = _.pluck(checked(), 'id');
@@ -32,5 +29,12 @@ function ImportDealsController($state, DealService, NumberService) {
 
     function noDealsToImport() {
         return ctrl.deals.length < 1 && ctrl.dealsRetrieved;
+    }
+
+    function activate() {
+        DealService.importList().then(function (data) {
+            ctrl.deals = data;
+            ctrl.dealsRetrieved = true;
+        });
     }
 }

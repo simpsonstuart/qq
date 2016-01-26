@@ -14,6 +14,8 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
     ctrl.click_billing = click_billing;
     ctrl.click_email = click_email;
 
+    activate();
+
     function password_reset() {
         return UserService.reset_password({
                 'current_password': $scope.current_password, 'new_password': $scope.new_password_confirm})
@@ -48,16 +50,6 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
             });
     }
 
-    UserService.profile(function () {
-        return user_id ? user_id : 'current';
-    }()).then(function (data) {
-        ctrl.profile = data;
-        ctrl.virtual_team = ctrl.profile.virtual_team.data;
-        ctrl.isAdmin = ctrl.isRole('admin');
-        ctrl.isSalesRep = ctrl.isRole('sales-rep');
-        ctrl.roleLabel = ctrl.profile.role.data.label;
-    });
-
     function isRole(user_role) {
         return ctrl.profile.role.data.name == user_role
     }
@@ -91,5 +83,17 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
 
     function click_account_type() {
         ctrl.expand_show_account_type = !ctrl.expand_show_account_type;
+    }
+
+    function activate() {
+        UserService.profile(function () {
+            return user_id ? user_id : 'current';
+        }()).then(function (data) {
+            ctrl.profile = data;
+            ctrl.virtual_team = ctrl.profile.virtual_team.data;
+            ctrl.isAdmin = ctrl.isRole('admin');
+            ctrl.isSalesRep = ctrl.isRole('sales-rep');
+            ctrl.roleLabel = ctrl.profile.role.data.label;
+        });
     }
 }

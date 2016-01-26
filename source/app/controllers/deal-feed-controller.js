@@ -12,9 +12,12 @@ function DealFeedController($scope, DealService, DateAndTimeService, _, $statePa
     ctrl.formatAnswer = formatAnswer;
     ctrl.formatDate = formatDate;
 
+    activate();
+
+
     function questionsForPlay(playbook, parentPlay, childPlay) {
         return objectGet(ctrl.feedDetail, [playbook, parentPlay, childPlay]);
-    };
+    }
 
     function toggle(category, type) {
         var key = category + '-' + type;
@@ -23,7 +26,7 @@ function DealFeedController($scope, DealService, DateAndTimeService, _, $statePa
         }
 
         types[key] = !types[key];
-    };
+    }
 
     function checkExpansion(category, type) {
         var key = category + '-' + type;
@@ -33,21 +36,8 @@ function DealFeedController($scope, DealService, DateAndTimeService, _, $statePa
         }
 
         return types[key];
-    };
+    }
 
-
-
-    DealService.get(ctrl.deal_id).then(function (data) {
-        ctrl.deal = data;
-    });
-
-    DealService.feed($stateParams.deal_id).then(function (data) {
-        ctrl.feed = data;
-    }).then(function (data) {
-        DealService.feedDetail($stateParams.deal_id).then(function (data) {
-            ctrl.feedDetail = data;
-        });
-    });
 
 
     function objectGet(obj, properties) {
@@ -72,7 +62,7 @@ function DealFeedController($scope, DealService, DateAndTimeService, _, $statePa
         }
 
         return 'No Reply'
-    };
+    }
 
     function formatDate(date, format) {
         if (!date) {
@@ -83,5 +73,19 @@ function DealFeedController($scope, DealService, DateAndTimeService, _, $statePa
             return DateAndTimeService.formatDate(date).format(format);
         }
         return DateAndTimeService.formatDate(date).format("MMM D");
+    }
+
+    function activate() {
+        DealService.get(ctrl.deal_id).then(function (data) {
+            ctrl.deal = data;
+        });
+
+        DealService.feed($stateParams.deal_id).then(function (data) {
+            ctrl.feed = data;
+        }).then(function (data) {
+            DealService.feedDetail($stateParams.deal_id).then(function (data) {
+                ctrl.feedDetail = data;
+            });
+        });
     }
 }

@@ -14,30 +14,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
     var errors = [];
     ctrl.errorsList = errors;
 
-    if (errorParams) {
-        ctrl.errorsList.push(errorParams.split(','));
-    }
-
-    if (token) {
-        AuthService.logIn(token).then(function () {
-            UserService.profile('current').then(function (data) {
-                var user = JSON.stringify(data);
-                AuthService.createTokenExpirationTime();
-                localStorage.setItem('user', user);
-            }).then(function () {
-                if (newUser == 'true') {
-                    $state.go('root.import-deals');
-                } else {
-                    $state.go('root.profile');
-                }
-            });
-        });
-    }
-
-
-    if(localStorageSupported() === false) {
-        errors.push("Error local storage not supported by your browser or you are using private/incognito mode!");
-    }
+    activate();
 
     function login() {
         AuthService.logIn($scope.username, $scope.password).then(function (data) {
@@ -83,5 +60,32 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
             return false;
         }
 
+    }
+
+    function activate() {
+        if (errorParams) {
+            ctrl.errorsList.push(errorParams.split(','));
+        }
+
+        if (token) {
+            AuthService.logIn(token).then(function () {
+                UserService.profile('current').then(function (data) {
+                    var user = JSON.stringify(data);
+                    AuthService.createTokenExpirationTime();
+                    localStorage.setItem('user', user);
+                }).then(function () {
+                    if (newUser == 'true') {
+                        $state.go('root.import-deals');
+                    } else {
+                        $state.go('root.profile');
+                    }
+                });
+            });
+        }
+
+
+        if(localStorageSupported() === false) {
+            errors.push("Error local storage not supported by your browser or you are using private/incognito mode!");
+        }
     }
 }
