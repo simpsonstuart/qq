@@ -21,49 +21,24 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
     ctrl.showPending = showPending;
     ctrl.getActivityTypeDisplayString = getActivityTypeDisplayString;
 
+    activate();
+
     function goToDeal(dealId, event) {
         event.preventDefault();
         event.stopPropagation();
 
         $state.go('root.deals.detail', {deal_id: dealId});
-    };
-
-    if (!AuthService.loggedIn()) {
-        $state.go('root.login');
     }
-
-    $q.all([
-        ActivityService.pendingCounts().then(function (data) {
-            ctrl.inboxPendingCount = data.inboxPendingCount;
-            ctrl.sentPendingCount = data.sentPendingCount;
-        }),
-        ActivityService.getInboxPending().then(function (data) {
-            ctrl.inboxPending = data;
-            ctrl.pendingItems = ctrl.inboxPending;
-        }),
-        ActivityService.getInbox().then(function (data) {
-            ctrl.inboxItems = ctrl.getItemsGroupedByDay(data);
-            ctrl.feedItems = ctrl.inboxItems;
-        }),
-    ]).then(function () {
-        ActivityService.getSentPending().then(function (data) {
-            ctrl.sentPendingItems = data;
-        });
-
-        ActivityService.getSent().then(function (data) {
-            ctrl.sentItems = ctrl.getItemsGroupedByDay(data);
-        });
-    });
 
     function getItemsGroupedByDay(data) {
         return _.groupBy(data, function (item) {
             return moment(item.timestamp).format("YYYY-MM-DD");
         });
-    };
+    }
 
     function formatDate(date) {
         return moment(date);
-    };
+    }
 
     function weHavePendingItems() {
         if (ctrl.pendingItems === undefined || ctrl.pendingItems == null) {
@@ -71,7 +46,7 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
         }
 
         return ctrl.pendingItems.length > 0;
-    };
+    }
 
     function weDoNotHavePendingItems() {
         if (ctrl.pendingItems === undefined || ctrl.pendingItems == null) {
@@ -79,11 +54,11 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
         }
 
         return ctrl.pendingItems.length < 1;
-    };
+    }
 
     function goToAnswer(deal_id) {
         $state.go('root.answer-question', {deal_id: deal_id});
-    };
+    }
 
     function clickSent() {
         ctrl.feedItems = null;
@@ -93,22 +68,18 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
 
         ctrl.pendingItems = ctrl.sentPendingItems;
         ctrl.feedItems = ctrl.sentItems;
-    };
+    }
 
     function clickInbox() {
         ctrl.sentActive = false;
         ctrl.inboxActive = true;
         ctrl.pendingItems = ctrl.inboxPending;
         ctrl.feedItems = ctrl.inboxItems;
-    };
+    }
 
     function showPending() {
-        if (ctrl.weHavePendingItems() && !ctrl.showSent()) {
-            return true;
-        }
-
-        return false;
-    };
+        return !!(ctrl.weHavePendingItems() && !ctrl.showSent());
+    }
 
     function getActivityTypeDisplayString(item) {
         var sent = function () {
@@ -173,6 +144,34 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
 
             return "Commented";
         }
+    }
 
+    function activate() {
+        if (!AuthService.loggedIn()) {
+            $state.go('root.login');
+        }
+
+        $q.all([
+            ActivityService.pendingCounts().then(function (data) {
+                ctrl.inboxPendingCount = data.inboxPendingCount;
+                ctrl.sentPendingCount = data.sentPendingCount;
+            }),
+            ActivityService.getInboxPending().then(function (data) {
+                ctrl.inboxPending = data;
+                ctrl.pendingItems = ctrl.inboxPending;
+            }),
+            ActivityService.getInbox().then(function (data) {
+                ctrl.inboxItems = ctrl.getItemsGroupedByDay(data);
+                ctrl.feedItems = ctrl.inboxItems;
+            }),
+        ]).then(function () {
+            ActivityService.getSentPending().then(function (data) {
+                ctrl.sentPendingItems = data;
+            });
+
+            ActivityService.getSent().then(function (data) {
+                ctrl.sentItems = ctrl.getItemsGroupedByDay(data);
+            });
+        });
     }
 }

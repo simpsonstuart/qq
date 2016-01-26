@@ -1,27 +1,40 @@
 angular.module('QQ')
     .controller('ImportDealsController', ImportDealsController);
 
-function ImportDealsController($scope, $state, DealService) {
+function ImportDealsController($state, DealService, NumberService) {
     var ctrl = this;
     ctrl.submit = submit;
-    ctrl.submittable = submittable;
+    ctrl.noDealsToImport = noDealsToImport;
+    ctrl.formatMoney = NumberService.formatMoney;
+    ctrl.deals = [];
+    ctrl.dealsRetrieved = false;
 
-    DealService.importList().then(function (data) {
-        ctrl.deals = data;
-    });
+    activate();
 
     function submit() {
         var dealsToImport = _.pluck(checked(), 'id');
-        DealService.add(dealsToImport).then(function (response) {
-            $state.go('root.import-users');
-        });
-    }
 
-    function submittable() {
-       return !_.some(checked(), 'isChecked');
+        if (dealsToImport.length > 0) {
+            DealService.add(dealsToImport).then(function (response) {
+                $state.go('root.import-users');
+            });
+        } else {
+            $state.go('root.import-users');
+        }
     }
 
     function checked() {
         return _.filter(ctrl.deals, "isChecked");
+    }
+
+    function noDealsToImport() {
+        return ctrl.deals.length < 1 && ctrl.dealsRetrieved;
+    }
+
+    function activate() {
+        DealService.importList().then(function (data) {
+            ctrl.deals = data;
+            ctrl.dealsRetrieved = true;
+        });
     }
 }

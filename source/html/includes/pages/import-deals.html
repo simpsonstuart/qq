@@ -1,6 +1,9 @@
 <small class="import-title">Select Deals you want to add to Traqq</small>
 <form class="import">
     <fieldset>
+        <div ng-if="ctrl.noDealsToImport()">
+            <h2>There are no deals to import</h2>
+        </div>
         <div ng-repeat="deal in ctrl.deals">
             <input type="checkbox" id="{{deal.id}}" class="checkbox" ng-model="deal.isChecked" ng-change="deal.selected"  ng-click="ctrl.checkEnabled()" />
             <label for="{{deal.id}}"></label>
@@ -10,8 +13,8 @@
             <p>Owner | {{deal.owner}}</p>
             <small>Close {{deal.closeDate}}</small>
             </div>
-            <h2 class="amount">{{deal.amount}}</h2>
+            <h2 class="amount">{{ctrl.formatMoney(deal.amount)}}</h2>
         </div>
-        <button class="submit" type="submit" ng-click="ctrl.submit()" ng-disabled="ctrl.submittable()">Next</button>
+        <button class="submit" type="submit" ng-click="ctrl.submit()">Submit</button>
     </fieldset>
 </form>

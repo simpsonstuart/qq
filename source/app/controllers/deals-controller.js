@@ -6,34 +6,34 @@ function DealsController($scope, AuthService, DealService, UserService, numeral,
 
     ctrl.formatDate = DateAndTimeService.formatDate;
     ctrl.convertNumberToWord = NumberService.numberToWord;
+    ctrl.formatMoney = NumberService.formatMoney;
     ctrl.timeToClose = DateAndTimeService.daysTill;
     ctrl.dateNow = new Date().toJSON().slice(0,10);
-    ctrl.formatMoney = formatMoney;
 
-    if ($stateParams.user_id) {
-        UserService.get($stateParams.user_id, 'include=role').then(function (data) {
-            console.log(data);
-            if (data.role.data.name === 'admin') {
+    activate();
+
+    function activate() {
+        if ($stateParams.user_id) {
+            UserService.get($stateParams.user_id, 'include=role').then(function (data) {
+                console.log(data);
+                if (data.role.data.name === 'admin') {
+                    ctrl.dealsForLabel = 'Organization Deals';
+                } else {
+                    ctrl.dealsForLabel = "Deals for " + data.name;
+                }
+            });
+        } else {
+            if (AuthService.authenticatedUser().role.data.name === 'admin') {
                 ctrl.dealsForLabel = 'Organization Deals';
             } else {
-                ctrl.dealsForLabel = "Deals for " + data.name;
+                ctrl.dealsForLabel = 'My Deals';
             }
-        });
-    } else {
-        if (AuthService.authenticatedUser().role.data.name === 'admin') {
-            ctrl.dealsForLabel = 'Organization Deals';
-        } else {
-            ctrl.dealsForLabel = 'My Deals';
         }
+
+        DealService.getAll(function () {
+            return $stateParams.user_id ? 'user_id=' + $stateParams.user_id : null;
+        }()).then(function (data) {
+            ctrl.deals = data;
+        });
     }
-
-    DealService.getAll(function () {
-        return $stateParams.user_id ? 'user_id=' + $stateParams.user_id : null;
-    }()).then(function (data) {
-        ctrl.deals = data;
-    });
-
-    function formatMoney(integer) {
-        return numeral(integer).format('$0,0');
-    };
 }

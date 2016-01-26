@@ -14,31 +14,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
     var errors = [];
     ctrl.errorsList = errors;
 
-    if (errorParams) {
-        ctrl.errorsList.push(errorParams.split(','));
-    }
-
-    if (token) {
-        console.log(newUser, 'here');
-        AuthService.logIn(token).then(function () {
-            UserService.profile('current').then(function (data) {
-                var user = JSON.stringify(data);
-                AuthService.createTokenExpirationTime();
-                localStorage.setItem('user', user);
-            }).then(function () {
-                if (newUser == 'true') {
-                    $state.go('root.import-deals');
-                } else {
-                    $state.go('root.feed');
-                }
-            });
-        });
-    }
-
-
-    if(localStorageSupported() === false) {
-        errors.push("Error local storage not supported by your browser or you are using private/incognito mode!");
-    }
+    activate();
 
     function login() {
         AuthService.logIn($scope.username, $scope.password).then(function (data) {
@@ -48,7 +24,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
                 localStorage.setItem('user', user);
             }).then(function () {
                 // wait until the user is stored to go to feed
-                $state.go('root.feed');
+                $state.go('root.profile');
             });
         }).catch(function (response) {
             //if we get an an error 401 display an error and reset forms
@@ -84,5 +60,32 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
             return false;
         }
 
+    }
+
+    function activate() {
+        if (errorParams) {
+            ctrl.errorsList.push(errorParams.split(','));
+        }
+
+        if (token) {
+            AuthService.logIn(token).then(function () {
+                UserService.profile('current').then(function (data) {
+                    var user = JSON.stringify(data);
+                    AuthService.createTokenExpirationTime();
+                    localStorage.setItem('user', user);
+                }).then(function () {
+                    if (newUser == 'true') {
+                        $state.go('root.import-deals');
+                    } else {
+                        $state.go('root.profile');
+                    }
+                });
+            });
+        }
+
+
+        if(localStorageSupported() === false) {
+            errors.push("Error local storage not supported by your browser or you are using private/incognito mode!");
+        }
     }
 }
