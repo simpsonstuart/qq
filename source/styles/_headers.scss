@@ -1,0 +1,342 @@
+/* DEFAULT HEADER --------------------------
+-------------------------------------------*/
+header {
+  padding: 0;
+  background: $col-orange;
+  position: relative;
+  .logo {
+    background: url(../media/images/logo.svg) no-repeat;
+    text-indent: -9999px;
+    width: 50px;
+    height: 41px;
+    display: block;
+    margin: 10px 0;
+  }
+  nav {
+    ul {
+      float: right;
+      li {
+        text-align: center;
+        float: left;
+        &.more:hover {
+          .more-nav {
+            display: block;
+          }
+        }
+        a {
+          color: #fff;
+          display: block;
+          padding: 10px 27px;
+          &:hover, &.active {
+            background: $col-orange-active;
+            color: #fff;
+          }
+          &:before {
+            display: block !important;
+            margin-bottom: 5px;
+          }
+          &.feed:before {
+            @include fa;
+            @include fa(inbox);
+            @include fa-size(1.6em);
+          }
+          &.deals:before {
+            @include fa;
+            @include fa(flag);
+            @include fa-size(1.6em);
+          }
+          &.next:before {
+            @include fa;
+            @include fa(check-circle);
+            @include fa-size(1.6em);
+          }
+          &.ask:before {
+            @include fa;
+            @include fa(comment);
+            @include fa-size(1.6em);
+          }
+          &.more-icon {
+            &:before {
+              @include fa;
+              @include fa(ellipsis-h);
+              @include fa-size(1.6em);
+            }
+          }
+        }
+      }
+    }
+  }
+  .more-nav {
+    display: none;
+    background: #646464;
+    position: absolute;
+    z-index: 1;
+    right: 30px;
+    top: 65px;
+    &:before {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 12px solid #646464;
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: 22px;
+    }
+    li {
+      float: none;
+      text-align: left;
+      border-bottom: 1px solid #747474;
+      &:last-child {
+        border-bottom: none;
+        a {
+          padding: 14px 15px;
+        }
+      }
+      a {
+        padding: 10px 15px;
+        &:hover, &.active {
+          color: $col-orange;
+          background: none;
+        }
+        &:before {
+          display: inline-block !important;
+        }
+        &.favorites:before {
+          @include fa;
+          @include fa(star);
+          @include fa-size(1.3em);
+          @include fa-right(7px);
+        }
+        &.settings {
+          border-left: none;
+          &:before {
+            @include fa;
+            @include fa(cog);
+            @include fa-size(1.3em);
+            @include fa-right(7px);
+          }
+        }
+        &.sync {
+          color: #4bb5e9;
+          &:before {
+            @include fa;
+            @include fa(refresh);
+            @include fa-size(1.3em);
+            @include fa-right(7px);
+          }
+          &:hover {
+            color: $col-orange;
+          }
+        }
+        &.logout {
+          background: #545454;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* BACK HEADER ----------------------------
+-------------------------------------------*/
+header.back {
+  height: 62px;
+  .back-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    &:before {
+      @include fa;
+      @include fa(caret-left);
+      @include fa-size(2em);
+      color: #fff;
+    }
+  }
+}
+
+
+
+/* HAMBURGER MENU --------------------------
+-------------------------------------------*/
+.mobile-nav input,
+.mobile-nav label {
+  display: none;
+}
+
+.mobile-nav label {
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  transition: .4s;
+}
+
+.mobile-nav label:hover {
+   cursor: pointer;
+}
+
+.mobile-nav label:before {
+  @include fa;
+  @include fa(bars);
+  @include fa-size(3rem);
+  @include fa-right(7px);
+  color: #fff;
+}
+
+.mobile-nav {
+  display: none;
+  ul {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: #646464;
+  }
+  li {
+    float: none;
+    text-align: left;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #747474;
+    &:last-child {
+      a {
+        padding: 18px 15px;
+      }
+    }
+    a {
+      display: block;
+      padding: 12px 15px;
+      color: #fff;
+      &:hover, &.active {
+        color: $col-orange;
+        background: none;
+      }
+      &:before {
+        display: inline-block !important;
+      }
+      &.home:before {
+        @include fa;
+        @include fa(home);
+        @include fa-size(2rem);
+        @include fa-right(7px);
+      }
+      &.deals:before {
+        @include fa;
+        @include fa(flag);
+        @include fa-size(2rem);
+        @include fa-right(7px);
+      }
+      &.favorites:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(2rem);
+        @include fa-right(7px);
+      }
+      &.feed:before {
+        @include fa;
+        @include fa(inbox);
+        @include fa-size(2rem);
+        @include fa-right(7px);
+      }
+      &.next-steps:before {
+        @include fa;
+        @include fa(check-circle);
+        @include fa-size(2rem);
+        @include fa-right(7px);
+      }
+      &.ask {
+        text-align: left;
+        &:before {
+          @include fa;
+          @include fa(comment);
+          @include fa-size(2rem);
+          @include fa-right(7px);
+        }
+      }
+      &.settings {
+        border-left: none;
+        &:before {
+          @include fa;
+          @include fa(cog);
+          @include fa-size(2rem);
+          @include fa-right(7px);
+        }
+      }
+      &.sync {
+        color: #4bb5e9;
+        &:hover {
+          color: $col-orange;
+        }
+        &:before {
+          @include fa;
+          @include fa(refresh);
+          @include fa-size(2rem);
+          @include fa-right(7px);
+        }
+      }
+      &.logout {
+        background: #545454;
+      }
+    }
+  }
+}
+
+
+
+/* LOGIN SCREENS HEADER --------------------
+-------------------------------------------*/
+header.logo-nav {
+  padding: 10px 0;
+  .logo {
+    background: url(../media/images/logo.svg) no-repeat;
+    margin: 0 auto;
+    float: none;
+    width: 80px;
+    height: 50px;
+  }
+}
+
+
+
+
+/* MEDIA QUERIES ---------------------------
+-------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  header {
+    .mobile-nav {
+      display: block;
+    }
+    .mobile-nav ul {
+      display: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    }
+
+    .mobile-nav li {
+      flex: none;
+      width: 100%;
+      border-bottom: solid 1px #777;
+    }
+
+    .mobile-nav input[type="checkbox"]:checked + ul {
+      display: block;
+      width: 280px;
+    }
+
+    .mobile-nav label {
+      display: block;
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 <div class="wrapper">
     <a class="logo" ui-sref="root.profile">Traqq</a>
-    <nav role="navigation">
+    <nav class="main-nav" role="navigation">
         <ul class="clearfix">
             <li><a ui-sref-active-eq="active" class="feed" ui-sref="root.feed">Feed</a></li>
             <li><a ui-sref-active-eq="active" class="deals" ui-sref="root.deals">Deals</a></li>
@@ -16,4 +16,20 @@
             </li>
         </ul>
     </nav>
+    <nav class="mobile-nav" role="navigation">
+      <input type="checkbox" id="css-toggle-menu" name="css-toggle-menu">
+        <ul>
+            <li><a class="home" href="#">Home</a></li>
+            <li><a class="deals" href="#">Deals</a></li>
+            <li><a class="favorites" href="#">Favorites</a></li>
+            <li><a class="feed" href="#">Feed</a></li>
+            <li><a class="next-steps" href="#">Next Steps</a></li>
+            <li><a class="ask" href="#">Ask</a></li>
+            <li><a class="settings" href="#">Settings</a></li>
+            <li><a class="sync" href="#">Sync with Salesforce</a></li>
+            <li><a class="logout" href="#">Logout</a></li>
+        </ul>
+      <label for="css-toggle-menu" id="css-toggle-menu"></label>
+    </nav>
+
 </div>
