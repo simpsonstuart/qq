@@ -13,15 +13,7 @@ function DealSetPlayController($scope, $stateParams, DealService, _) {
     ctrl.addPlay = addPlay;
     ctrl.setSelected = setSelected;
 
-    DealService.get($stateParams.deal_id).then(function (data) {
-        ctrl.deal = data;
-        ctrl.deal_name = data.name;
-        ctrl.company = data.company_name
-    });
-
-    DealService.playbooks($stateParams.deal_id).then(function (data) {
-        ctrl.playbooks = data;
-    });
+    activate();
 
     function activePlays(plays) {
         return _.filter(plays, function (play) {
@@ -52,5 +44,17 @@ function DealSetPlayController($scope, $stateParams, DealService, _) {
 
     function setSelected(playbook_name) {
         ctrl.selectedPlayInPlaybook[playbook_name] = ctrl.selected;
+    }
+
+    function activate() {
+        DealService.get($stateParams.deal_id).then(function (data) {
+            ctrl.deal = data;
+            ctrl.deal_name = data.name;
+            ctrl.company = data.company_name
+        });
+
+        DealService.playbooks($stateParams.deal_id).then(function (data) {
+            ctrl.playbooks = data;
+        });
     }
 }
