@@ -20,14 +20,14 @@
       <input type="checkbox" id="css-toggle-menu" name="css-toggle-menu">
         <ul>
             <li><a class="home" href="#">Home</a></li>
-            <li><a class="deals" href="#">Deals</a></li>
+            <li><a class="deals" ui-sref="root.deals">Deals</a></li>
             <li><a class="favorites" href="#">Favorites</a></li>
-            <li><a class="feed" href="#">Feed</a></li>
-            <li><a class="next-steps" href="#">Next Steps</a></li>
-            <li><a class="ask" href="#">Ask</a></li>
-            <li><a class="settings" href="#">Settings</a></li>
-            <li><a class="sync" href="#">Sync with Salesforce</a></li>
-            <li><a class="logout" href="#">Logout</a></li>
+            <li><a class="feed" ui-sref="root.feed">Feed</a></li>
+            <li><a class="next-steps" ui-sref="root.coming-soon">Next Steps</a></li>
+            <li><a class="ask" ui-sref="root.ask-deal">Ask</a></li>
+            <li><a class="settings" ui-sref="root.settings">Settings</a></li>
+            <li><a class="sync" href="#" ng-click="ctrl.syncSalesforce()">Sync with Salesforce</a></li>
+            <li><a class="logout" href="#" ng-click="ctrl.logOut()">Logout</a></li>
         </ul>
       <label for="css-toggle-menu" id="css-toggle-menu"></label>
     </nav>
