@@ -16,11 +16,10 @@ function ImportDealsController($state, DealService, NumberService) {
 
         if (dealsToImport.length > 0) {
             DealService.add(dealsToImport).then(function (response) {
-                $state.go('root.import-users');
+                console.log('imported deals');
             });
-        } else {
-            $state.go('root.import-users');
         }
+            $state.go('root.profile');
     }
 
     function checked() {
