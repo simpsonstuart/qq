@@ -720,6 +720,14 @@ form.import {
 }
 
 .feed {
+  #tab-content2 {
+    .feed-details {
+      padding-left: 10px;
+    }
+  }
+}
+
+.feed {
   .row {
     border-bottom: 1px solid $col-grey-stroke;
     width: 100%;
@@ -2425,12 +2433,26 @@ form.import {
       &-filter {
         display: flex;
         justify-content: center;
-        padding: 10px 0;
+        padding: 25px 0 10px 0;
         a {
-          flex-grow: 1;
-          margin-left: 0;
-          padding-left: 0;
           border-left: none;
+        }
+      }
+      .row {
+        .feed-details {
+          display: flex;
+          h2 {
+            margin-top: 0;
+          }
+          .timestamp {
+            position: static;
+            transform: none;
+          }
+          .caret {
+            display: block;
+            top: 50%;
+            transform: translateY(-50%);
+          }
         }
       }
     }
@@ -2788,9 +2810,6 @@ form.import {
           justify-content: center;
           padding: 10px 0;
           a {
-            flex-grow: 1;
-            margin-left: 0;
-            padding-left: 0;
             border-left: none;
           }
         }

@@ -6,9 +6,9 @@
 <div class="feed">
   <div class="tabs">
       <input type="radio" name="tabs" id="tab1" checked >
-      <label for="tab1">Inbox</label>
+      <label for="tab1"><small>Inbox</small></label>
       <input type="radio" name="tabs" id="tab2">
-      <label for="tab2">Sent</label>
+      <label for="tab2"><small>Sent</small></label>
       <div id="tab-content1" class="row tab-content">
           <div class="feed-filter">
               <a href="#" class="questions">Questions</a>
@@ -37,7 +37,7 @@
               </div>
           </div>
       </div>
-      <div id="tab-content2" class="row border-top tab-content">
+      <div id="tab-content2" class="row tab-content">
           <aside>
               <div class="date">
                   <span>{{ctrl.formatDate(datestring).date()}}</span>
@@ -48,7 +48,7 @@
               <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)"
                    class="feed-details clearfix">
                   <div class="text">
-                      <h2>{{ctrl.getActivityTypeDisplayString(item)}}</h2>
+                      <h2>You asked Claire Miller</h2>
                       <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
                       <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
                   </div>
