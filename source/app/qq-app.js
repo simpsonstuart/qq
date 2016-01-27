@@ -69,8 +69,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             url: '/deals/:deal_id/answer-question/',
             restricted: true,
             params: {
-                deal_id: 'Deal ID',
-                deal_name: 'Deal Name'
+                deal_id: 'Deal ID'
             },
             data: {
                 headerClasses: 'back',

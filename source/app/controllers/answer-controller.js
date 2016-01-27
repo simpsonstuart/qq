@@ -1,12 +1,17 @@
 angular.module('QQ')
     .controller('AnswerController', AnswerController);
-     AnswerController.$inject = ['$scope'];
+     AnswerController.$inject = ['$scope','$stateParams','DealService'];
 
-function AnswerController($scope, $stateParams) {
+function AnswerController($scope, $stateParams, DealService) {
     var ctrl = this;
     ctrl.textAnswer = textAnswer;
     ctrl.YesNoAnswer = YesNoAnswer;
-    ctrl.deal = $stateParams.deal_name;
+    ctrl.dealId = $stateParams.deal_id;
+
+
+    DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
+        ctrl.deal            = data;
+    });
 
         //fictional questions
          ctrl.questions = [

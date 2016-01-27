@@ -1,6 +1,6 @@
   <div class="deal-title">
-    <small>Sony</small>
-    <h1>{{ctrl.deal}}</h1>
+    <small>{{ctrl.deal.company_name}}</small>
+    <h1>{{ctrl.deal.name}}</h1>
     </div>
     <div class="answer" ng-repeat="question in ctrl.questions track by $index">
     <h1>Question {{$index +1}} of {{ctrl.questions.length}}</h1>

@@ -2,7 +2,7 @@
     <h1>Ask</h1>
     <div class="ask-details">
         <small>Deal</small>
-        <h1>{{ctrl.deal}}</h1>
+        <h1>{{ctrl.deal.name}}</h1>
     </div>
     <div class="ask-info">
         <form  ng-if="ctrl.showPlayExpanded != true" name="ask_question" novalidate>
@@ -17,7 +17,7 @@
         <div ng-if="ctrl.showPlayExpanded != true" class="hr">
             <p>or</p>
         </div>
-        <small ng-if="ctrl.showPlayExpanded != true">{{ctrl.deal}} Doesn't have any plays. Add plays to send related questions.</small>
+        <small ng-if="ctrl.showPlayExpanded != true">{{ctrl.deal.name}} Doesn't have any plays. Add plays to send related questions.</small>
         <button class="submit" ng-if="ctrl.showPlayExpanded != true"  ng-click="ctrl.click_addPlay()" type="button">Add Plays</button>
         <div ng-if="ctrl.expand_show_addPlay" class="plays">
             <div>
