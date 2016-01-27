@@ -620,15 +620,10 @@ form.import {
   .tabs label {
     display: block;
     float: left;
-    width: 50%;
     color: $col-orange;
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    border-bottom: 1px solid $col-grey-stroke;
-    padding: 10px 0;
-    background: $col-orange-highlight;
-    box-sizing: border-box;
   }
   .tab-content {
     display: none;
@@ -638,19 +633,25 @@ form.import {
     box-sizing: border-box;
     background-color: #ffffff;
   }
-  .tabs [id^="tab"]:checked + label {
+  .tabs [id^="tab"]:checked + label small {
     background: #fff;
     border-bottom: none;
-    color: $text-light;
+    color: $col-orange;
+    font-weight: bold;
   }
   #tab1:checked ~ #tab-content1 {
     display: block;
   }
   #tab2:checked ~ #tab-content2 {
     display: flex;
+    border-top: 1px solid $col-grey-stroke;
+    margin-top: 10px;
   }
   label[for=tab1] {
     border-right: 1px solid $col-grey-stroke;
+    margin-left: 21px;
+    padding-right: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -660,6 +661,8 @@ form.import {
     display: flex;
     justify-content: flex-end;
     border-bottom: 1px solid $col-grey-stroke;
+    border-top: 1px solid $col-grey-stroke;
+    margin-top: 10px;
     a {
       color: $text-light;
       text-align: center;
@@ -2455,6 +2458,8 @@ form.import {
         display: flex;
         justify-content: center;
         padding: 25px 0 10px 0;
+        border-top: none;
+        margin-top: 0;
         a {
           border-left: none;
         }
@@ -2475,6 +2480,41 @@ form.import {
             transform: translateY(-50%);
           }
         }
+      }
+      .tabs label {
+        display: block;
+        float: left;
+        width: 50%;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid $col-grey-stroke;
+        padding: 10px 0;
+        background: $col-orange-highlight;
+        box-sizing: border-box;
+        small {
+          color: $col-orange;
+        }
+      }
+      .tabs [id^="tab"]:checked + label {
+        background: #fff;
+        border-bottom: none;
+        small {
+          color: $text-light;
+          font-weight: normal;
+        }
+      }
+      #tab1:checked ~ #tab-content1 {
+        display: block;
+      }
+      #tab2:checked ~ #tab-content2 {
+        border-top: none;
+        margin-top: 0;
+      }
+      label[for=tab1] {
+        margin-left: 0;
+        padding-right: 0;
+        margin-right: 0;
       }
     }
 
