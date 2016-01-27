@@ -68,6 +68,10 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
         .state('root.answer-question', {
             url: '/deals/:deal_id/answer-question/',
             restricted: true,
+            params: {
+                deal_id: 'Deal ID',
+                deal_name: 'Deal Name'
+            },
             data: {
                 headerClasses: 'back',
                 footerClasses: 'prev-next clearfix'
@@ -86,9 +90,6 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                     templateUrl: 'includes/templates/footer-pending.html',
                     controller: 'AnswerController'
                 }
-            },
-            params: {
-                deal_id: 'Deal ID'
             }
         })
         .state('root.deals.detail', {

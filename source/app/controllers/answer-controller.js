@@ -2,10 +2,11 @@ angular.module('QQ')
     .controller('AnswerController', AnswerController);
      AnswerController.$inject = ['$scope'];
 
-function AnswerController($scope) {
+function AnswerController($scope, $stateParams) {
     var ctrl = this;
     ctrl.textAnswer = textAnswer;
     ctrl.YesNoAnswer = YesNoAnswer;
+    ctrl.deal = $stateParams.deal_name;
 
         //fictional questions
          ctrl.questions = [
@@ -18,10 +19,12 @@ function AnswerController($scope) {
     function YesNoAnswer(questionId, selection, comment) {
 
         ctrl.answer = selection;
-        console.log(ctrl.questions);
     }
 
     function textAnswer(questionId, answer, comment) {
-        ctrl.answer = answer;
+            ctrl.answer       = answer;
+            ctrl.lastQuestion = questionId;
+            ctrl.isAnswered  = questionId;
+
     }
 }

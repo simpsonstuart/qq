@@ -1,13 +1,13 @@
   <div class="deal-title">
     <small>Sony</small>
-    <h1>Sony Tech Refresh</h1>
+    <h1>{{ctrl.deal}}</h1>
     </div>
     <div class="answer" ng-repeat="question in ctrl.questions track by $index">
     <h1>Question {{$index +1}} of {{ctrl.questions.length}}</h1>
     <small>Asked by {{question.askedBy}} | {{question.askedDate}}</small>
     <h2>{{question.question}}</h2>
-    <form name="questionForm" ng-if="!question.yesNoSelection">
-        <fieldset ng-if="question.questionType == 'YesNo'" name="yesNoField">
+    <form name="questionForm">
+        <fieldset ng-if="question.questionType == 'YesNo' && !question.yesNoSelection" name="yesNoField">
             <div>
                 <input type="radio" class="radio" name="yesNo+{{$index}}" value="Yes" id="yes+{{question.questionId}}" ng-model="question.yesNoSelection" ng-click="yesNoSelection = true" ng-model-options="{updateOn: 'submit'}"/>
                 <label for="yes+{{question.questionId}}">Yes</label>
@@ -25,19 +25,23 @@
             </div>
             <button class="submit" type="submit" ng-click="ctrl.YesNoAnswer(question.questionId, question.yesNoSelection)" ng-disabled="!yesNoSelection">Submit</button>
         </fieldset>
-        <fieldset ng-if="question.questionType== 'Text'" name="textAnswer">
+        <fieldset ng-if="question.questionType == 'Text' && ctrl.isAnswered != question.questionId" name="textAnswer">
             <div>
-                <input type="text" name="textAnswerInput" ng-model="textAnswerInput" required placeholder="Enter answer" required/>
+                <input type="text" name="textAnswerInput" ng-model="question.textAnswerInput" placeholder="Enter answer" required/>
             </div>
             <div>
                 <textarea placeholder="Comments..."></textarea>
             </div>
-            <button class="submit" type="submit" ng-disabled="questionForm.$invalid" ng-click="ctrl.textAnswer(question.questionId, textAnswerInput)">Submit</button>
+            <button class="submit" type="submit" ng-disabled="!question.textAnswerInput" ng-click="ctrl.textAnswer(question.questionId, question.textAnswerInput)">Submit</button>
         </fieldset>
     </form>
-        <div name="Answered+{{question.questionId}}" ng-if="question.yesNoSelection" >
+        <div name="Answered+{{question.questionId}}" ng-if="question.yesNoSelection">
         <small>You Answered</small>
         <h1>{{question.yesNoSelection}}</h1>
+        </div>
+        <div name="Answered+{{question.questionId}}" ng-if="ctrl.isAnswered == question.questionId">
+            <small>You Answered</small>
+            <h1>{{question.textAnswerInput}}</h1>
         </div>
     </div>
 

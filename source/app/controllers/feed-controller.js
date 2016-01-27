@@ -56,8 +56,8 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
         return ctrl.pendingItems.length < 1;
     }
 
-    function goToAnswer(deal_id) {
-        $state.go('root.answer-question', {deal_id: deal_id});
+    function goToAnswer(deal_id, deal_name) {
+        $state.go('root.answer-question', {deal_id: deal_id, deal_name: deal_name});
     }
 
     function clickSent() {
