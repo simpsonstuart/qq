@@ -50,13 +50,13 @@
         </div>
         <div class="playbook" ng-if="ctrl.playbook_counts.length">
             <small>Campaign</small>
-            <ul ng-repeat="(key, playbook) in ctrl.playbook_counts" class="playbook">
+            <ul ng-repeat="(key, playbook) in ctrl.playbook_counts" class="play">
                 <li ng-repeat="play in playbook">{{play.play}}: {{play.count}}</li>
             </ul>
         </div>
         <div class="playbook" ng-if="!ctrl.playbook_counts.length">
             <small>Campaign</small>
-            <ul class="playbook">
+            <ul class="play">
                 <li>No campaigns added yet!</li>
             </ul>
         </div>
