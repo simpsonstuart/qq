@@ -1233,39 +1233,74 @@ form.import {
 
 
 
-  /* PROFILE ---------------------------------
-  -------------------------------------------*/
-  .profile {
-    border-top: 1px solid $col-grey-stroke;
-    border-bottom: 1px solid $col-grey-stroke;
-    aside {
-      padding: 20px 15px 0 15px;
+/* PROFILE ---------------------------------
+-------------------------------------------*/
+.profile {
+  border-top: 1px solid $col-grey-stroke;
+  border-bottom: 1px solid $col-grey-stroke;
+  aside {
+    padding: 20px 15px 0 15px;
+    text-align: center;
+    img {
+      margin-bottom: 10px;
+      max-width: 160px;
+      width: 100%;
+    }
+    .profile-title {
+      margin-bottom: 10px;
+      color: $text-light;
+    }
+    small {
+      line-height: 1.7rem;
+    }
+  }
+  .details {
+    border-left: 1px solid $col-grey-stroke;
+    small {
       text-align: center;
-      img {
-        margin-bottom: 10px;
-        max-width: 160px;
-        width: 100%;
-      }
-      .profile-title {
-        margin-bottom: 10px;
-        color: $text-light;
-      }
+      display: block;
+      margin-bottom: 15px;
+    }
+    .all-deals, .active-deals {
+      padding-top: 20px;
+      text-align: center;
       small {
-        line-height: 1.7rem;
+        margin-bottom: 5px;
+        color: $col-orange;
+        font-weight: 700;
+        &:after {
+          @include fa;
+          @include fa(caret-right);
+          @include fa-size(1.4rem);
+          @include fa-align(text-top);
+          @include fa-left(5px);
+        }
+      }
+      h2 {
+        color: $text-primary;
+      }
+      &:focus {
+        outline: none;
       }
     }
-    .details {
-      border-left: 1px solid $col-grey-stroke;
-      small {
-        text-align: center;
-        display: block;
-        margin-bottom: 15px;
+    .unanswered-questions, .incomplete-steps {
+      background: $col-orange-highlight;
+      padding: 10px 20px;
+      border-top: 1px solid $col-grey-stroke;
+      span {
+        color: $col-orange;
+        font-size: 6.5rem;
+        font-weight: 700;
+        text-align: right;
       }
-      .all-deals, .active-deals {
-        padding-top: 20px;
-        text-align: center;
-        small {
-          margin-bottom: 5px;
+      .text {
+        padding-left: 10px;
+        margin-top: 20px;
+      }
+      small {
+        text-align: left;
+        margin-bottom: 5px;
+        &.go-to {
           color: $col-orange;
           font-weight: 700;
           &:after {
@@ -1276,204 +1311,169 @@ form.import {
             @include fa-left(5px);
           }
         }
-        h2 {
-          color: $text-primary;
-        }
-        &:focus {
-          outline: none;
-        }
-      }
-      .unanswered-questions, .incomplete-steps {
-        background: $col-orange-highlight;
-        padding: 10px 20px;
-        border-top: 1px solid $col-grey-stroke;
-        span {
-          color: $col-orange;
-          font-size: 6.5rem;
-          font-weight: 700;
-          text-align: right;
-        }
-        .text {
-          padding-left: 10px;
-          margin-top: 20px;
-        }
-        small {
-          text-align: left;
-          margin-bottom: 5px;
-          &.go-to {
-            color: $col-orange;
-            font-weight: 700;
-            &:after {
-              @include fa;
-              @include fa(caret-right);
-              @include fa-size(1.4rem);
-              @include fa-align(text-top);
-              @include fa-left(5px);
-            }
-          }
-        }
-      }
-      .activity {
-        padding: 20px 0;
-        border-top: 1px solid $col-grey-stroke;
-        clear: both;
-        &.new-user {
-          padding: 20px;
-          p {
-            text-align: center;
-            line-height: 2rem;
-          }
-          .new-user-btns {
-            margin: 20px auto 0 auto;
-            width: 300px;
-            button {
-              width: 145px;
-              &:first-child {
-                margin-right: 6px;
-              }
-            }
-          }
-        }
-        .graph {
-          height: 130px;
-          position: relative;
-          width: 533px;
-          margin: 0 auto;
-        }
-        .week {
-          position: absolute;
-          bottom: -10px;
-          width: 39px;
-          margin-right: 2px;
-          p {
-            text-indent: -9999px;
-            position: relative;
-            span {
-              position: absolute;
-              text-indent: 0;
-              background: $col-red;
-              display: block;
-              width: 100%;
-              color: #fff;
-              text-align: center;
-              padding: 2px 0;
-              top: -17px;
-              font-size: 1.1rem;
-            }
-          }
-        }
-        .week.one {
-          left: 0;
-          background: $col-lt-blue;
-        }
-        .week.two {
-          left: 41px;
-          background: $col-lt-blue;
-        }
-        .week.three {
-          left: 82px;
-          background: $col-med-blue;
-        }
-        .week.four {
-          left: 123px;
-          background: $col-blue;
-        }
-        .week.five {
-          left: 164px;
-          background: $col-blue;
-        }
-        .week.six {
-          left: 205px;
-          background: $col-lt-blue;
-        }
-        .week.seven {
-          left: 246px;
-          background: $col-blue;
-        }
-        .week.eight {
-          left: 287px;
-          background: $col-blue;
-        }
-        .week.nine {
-          left: 328px;
-          background: $col-med-blue;
-        }
-        .week.ten {
-          left: 369px;
-          background: $col-med-blue;
-        }
-        .week.eleven {
-          left: 410px;
-          background: $col-lt-blue;
-        }
-        .week.twelve {
-          left: 451px;
-          background: $col-lt-blue;
-        }
-        .week.thirteen {
-          left: 492px;
-          background: $col-blue;
-        }
       }
     }
-    .active-deals {
-      border-left: 1px solid $col-grey-stroke;
-      h2 {
+    .activity {
+      padding: 20px 0;
+      border-top: 1px solid $col-grey-stroke;
+      clear: both;
+      &.new-user {
+        padding: 20px;
+        p {
+          text-align: center;
+          line-height: 2rem;
+        }
+        .new-user-btns {
+          margin: 20px auto 0 auto;
+          width: 300px;
+          button {
+            width: 145px;
+            &:first-child {
+              margin-right: 6px;
+            }
+          }
+        }
+      }
+      .graph {
+        height: 130px;
+        position: relative;
+        width: 533px;
+        margin: 0 auto;
+      }
+      .week {
+        position: absolute;
+        bottom: -10px;
+        width: 39px;
+        margin-right: 2px;
+        p {
+          text-indent: -9999px;
+          position: relative;
+          span {
+            position: absolute;
+            text-indent: 0;
+            background: $col-red;
+            display: block;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            padding: 2px 0;
+            top: -17px;
+            font-size: 1.1rem;
+          }
+        }
+      }
+      .week.one {
+        left: 0;
+        background: $col-lt-blue;
+      }
+      .week.two {
+        left: 41px;
+        background: $col-lt-blue;
+      }
+      .week.three {
+        left: 82px;
+        background: $col-med-blue;
+      }
+      .week.four {
+        left: 123px;
+        background: $col-blue;
+      }
+      .week.five {
+        left: 164px;
+        background: $col-blue;
+      }
+      .week.six {
+        left: 205px;
+        background: $col-lt-blue;
+      }
+      .week.seven {
+        left: 246px;
+        background: $col-blue;
+      }
+      .week.eight {
+        left: 287px;
+        background: $col-blue;
+      }
+      .week.nine {
+        left: 328px;
+        background: $col-med-blue;
+      }
+      .week.ten {
+        left: 369px;
+        background: $col-med-blue;
+      }
+      .week.eleven {
+        left: 410px;
+        background: $col-lt-blue;
+      }
+      .week.twelve {
+        left: 451px;
+        background: $col-lt-blue;
+      }
+      .week.thirteen {
+        left: 492px;
+        background: $col-blue;
+      }
+    }
+  }
+  .active-deals {
+    border-left: 1px solid $col-grey-stroke;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+  .playbook{
+    border-top: 1px solid $col-grey-stroke;
+    text-align: center;
+    padding-top: 20px;
+    li {
+      border-top: 1px solid $col-grey-stroke;
+      width: 80%;
+      margin: 0 auto;
+      padding: 8px 0;
+      font-size: 1.8rem;
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      &:last-child {
         margin-bottom: 20px;
       }
     }
-    .playbook{
-      border-top: 1px solid $col-grey-stroke;
-      text-align: center;
-      padding-top: 20px;
-      li {
-        border-top: 1px solid $col-grey-stroke;
-        width: 80%;
-        margin: 0 auto;
-        padding: 8px 0;
-        font-size: 1.8rem;
-        &:first-child {
-          border-top: none;
-          padding-top: 0;
-        }
-        &:last-child {
-          margin-bottom: 20px;
-        }
+  }
+}
+
+.virtual-team {
+  border-top: 1px solid $col-grey-stroke;
+  clear: both;
+  padding: 20px;
+  .questions {
+    margin-bottom: 7px;
+    small {
+      text-align: left;
+      height: 34px;
+      line-height: 34px;
+      margin-bottom: 10px;
+      background: $col-grey;
+      padding-left: 10px;
+      a {
+        color: $text-light;
       }
     }
-  }
-
-  .virtual-team {
-    border-top: 1px solid $col-grey-stroke;
-    clear: both;
-    padding: 20px;
-    .questions {
-      margin-bottom: 7px;
-      small {
-        text-align: left;
-        height: 34px;
-        line-height: 34px;
-        margin-bottom: 10px;
-        background: $col-grey;
-        padding-left: 10px;
-        a {
-          color: $text-light;
-        }
-      }
-      .answered, .asked {
-        height: 34px;
-        line-height: 34px;
-        width: 65px;
-      }
-      .answered {
-        margin-right: 8px;
-        &:before {
-          right: -5px;
-        }
-      }
-
+    .answered, .asked {
+      height: 34px;
+      line-height: 34px;
+      width: 65px;
     }
+    .answered {
+      margin-right: 8px;
+      &:before {
+        right: -5px;
+      }
+    }
+
   }
+}
 
 
 
@@ -1526,6 +1526,9 @@ form.import {
         div small {
           text-align: left;
         }
+      }
+      .caret {
+        top: 15px;
       }
     }
     .deal-btns {
