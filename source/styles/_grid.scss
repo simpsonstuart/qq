@@ -178,8 +178,8 @@ header {
       }
       .virtual-team {
         .questions {
-          @include span(10 of 12 no-gutter border-box);
-          @include push(1);
+          @include span(100% no-gutter border-box);
+          @include push(0);
           small {
             @include span(7.1 of 10 no-gutter border-box);
           }
