@@ -9,9 +9,9 @@
             <li class="more"><a ui-sref-active-eq="active" class="more-icon">More</a>
                 <ul class="more-nav">
                   <li><a ui-sref-active-eq="active" class="favorites">Favorites</a></li>
-                  <li><a ui-sref-active-eq="active" class="settings">Settings</a></li>
-                  <li><a ui-sref-active-eq="active" class="sync">Sync with Salesforce</a></li>
-                  <li><a ui-sref-active-eq="active" class="logout">Logout</a></li>
+                  <li><a ui-sref-active-eq="active" class="settings" ui-sref="root.settings">Settings</a></li>
+                  <li><a ui-sref-active-eq="active" class="sync" ng-click="ctrl.syncSalesforce()" href="#">Sync with Salesforce</a></li>
+                  <li><a ui-sref-active-eq="active" class="logout" ng-click="ctrl.logOut()" href="#">Logout</a></li>
                 </ul>
             </li>
         </ul>

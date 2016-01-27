@@ -78,7 +78,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/answer.html',
@@ -103,7 +104,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-detail.html',
@@ -122,7 +124,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-list.html',
@@ -145,7 +148,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-list.html',
@@ -174,7 +178,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-feed.html',
@@ -194,7 +199,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/district-list.html',
@@ -217,7 +223,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/district-list.html',
@@ -246,7 +253,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-set-play.html',
@@ -273,7 +281,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-play-select-questions.html',
@@ -296,7 +305,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/send-question-group.html',
@@ -322,7 +332,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/send-question.html',
@@ -352,7 +363,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-play-questions-select-recipients.html',
@@ -372,7 +384,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/ask-deal.html',
@@ -398,7 +411,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/ask-questions.html',
@@ -424,7 +438,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/ask-play-questions.html',
@@ -450,7 +465,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/ask-reps.html',
@@ -470,7 +486,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/coming-soon.html',
@@ -493,7 +510,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/import-back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/import-deals.html',
@@ -516,7 +534,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/feed.html',
@@ -539,7 +558,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/import-back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/import-users.html',
@@ -558,7 +578,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/logo-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/login.html',
@@ -577,7 +598,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/logo-nav.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/salesforce-login.html',
@@ -592,7 +614,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/profile.html',
@@ -617,7 +640,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/registration.html',
@@ -635,7 +659,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/settings.html',
@@ -659,7 +684,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 'header@root': {
                     templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController'
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/link-organization.html',
