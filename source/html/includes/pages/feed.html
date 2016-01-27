@@ -1,34 +1,61 @@
 <!--<a class="logo" href="#">Traqq</a>-->
 
 <div class="feed-headerbar clearfix">
-    <h1>My Feed</h1>
-    <ul class="feed-filter"
-        ng-if="ctrl.inboxPendingCount && ctrl.sentPendingCount && (ctrl.pendingItems || ctrl.feedItems)">
-        <li><a ng-class="{active: ctrl.inboxActive}" href="#" ng-click="ctrl.clickInbox()"><span
-                class="notification">{{ctrl.inboxPendingCount}}</span>Inbox</a></li>
-        <li><a ng-class="{active: ctrl.sentActive}" href="#" ng-click="ctrl.clickSent()"><span
-                class="notification">{{ctrl.sentPendingCount}}</span>Sent</a></li>
-    </ul>
+  <h1>My Feed</h1>
 </div>
-<div ng-if="ctrl.weHavePendingItems()" class="row border-top flex">
-    <aside>
-        <div class="date">
-          <span>{{ctrl.formatDate(datestring).date()}}</span>
-          <small>{{ctrl.formatDate(datestring).format('MMM')}}</small>
-        </div>
-    </aside>
-    <div class="feed-detail-wrapper">
-        <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id, item.deal_name)"
-             class="feed-details clearfix pending">
-            <img ng-src="{{item.from_user_picture}}">
+<div class="feed">
+  <div class="tabs">
+      <input type="radio" name="tabs" id="tab1" checked >
+      <label for="tab1"><small>Inbox</small></label>
+      <input type="radio" name="tabs" id="tab2">
+      <label for="tab2"><small>Sent</small></label>
+      <div id="tab-content1" class="row tab-content">
+          <div class="feed-filter">
+              <a href="#" class="questions">Questions</a>
+              <a href="#" class="comments">Comments</a>
+              <a href="#" class="reminders active">Reminders</a>
+          </div>
+          <div class="flex">
+              <aside>
+                  <div class="date">
+                      <span>{{ctrl.formatDate(datestring).date()}}</span>
+                      <small>{{ctrl.formatDate(datestring).format('MMM')}}</small>
+                  </div>
+              </aside>
+              <div class="feed-detail-wrapper">
+                  <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)"
+                       class="feed-details clearfix pending">
+                      <img ng-src="{{item.from_user_picture}}">
 
-            <div class="text">
-                <h2>{{ctrl.getActivityTypeDisplayString(item)}}</h2>
-                <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
-                <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
-            </div>
-            <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
-        </div>
+                      <div class="text">
+                          <h2>{{ctrl.getActivityTypeDisplayString(item)}}</h2>
+                          <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
+                          <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
+                      </div>
+                      <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div id="tab-content2" class="row tab-content">
+          <aside>
+              <div class="date">
+                  <span>{{ctrl.formatDate(datestring).date()}}</span>
+                  <small>{{ctrl.formatDate(datestring).format('MMM')}}</small>
+              </div>
+          </aside>
+          <div class="feed-detail-wrapper">
+              <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)"
+                   class="feed-details clearfix">
+                  <div class="text">
+                      <h2>You asked Claire Miller</h2>
+                      <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
+                      <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
+                  </div>
+                  <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+              </div>
+          </div>
+      </div>
     </div>
 </div>
 
