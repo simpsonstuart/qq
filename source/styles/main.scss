@@ -758,7 +758,7 @@ form.import {
       }
     }
     .feed-details {
-      padding: 10px 10px 10px 0;
+      padding: 12px 10px 12px 0;
       &:hover {
         background: $col-orange-highlight;
         cursor: pointer;
@@ -784,6 +784,9 @@ form.import {
           padding: 0 4px;
           margin-left: 3px;
         }
+      }
+      .timestamp {
+        margin-top: 0;
       }
     }
     .feed-details, .details {
@@ -2907,7 +2910,7 @@ form.import {
       display: flex;
       line-height: 1.8rem;
       h2 {
-        margin-bottom: 5px;
+        margin-bottom: 8px;
       }
       .text {
         width: 72%;
@@ -3008,7 +3011,7 @@ form.import {
         .feed-details {
           display: flex;
           h2 {
-            margin-top: 0;
+            font-size: 1.4rem;
           }
           img {
             width: 35px;
