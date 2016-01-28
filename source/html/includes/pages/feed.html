@@ -23,7 +23,7 @@
                   </div>
               </aside>
               <div class="feed-detail-wrapper">
-                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details clearfix pending">
+                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
                       <img src="media/images/avatar3.png">
                       <div class="text">
                           <p>Commented on your comment</p>
@@ -33,7 +33,7 @@
                       </div>
                       <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
                   </div>
-                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details clearfix pending">
+                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
                       <img src="media/images/avatar.png">
                       <div class="text">
                           <p class="reminder">Reminded You <span>1</span></p>
@@ -43,7 +43,7 @@
                       </div>
                       <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
                   </div>
-                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details clearfix pending">
+                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
                       <img src="media/images/avatar.png">
                       <div class="text">
                           <p>Asked You</p>
@@ -64,14 +64,33 @@
               </div>
           </aside>
           <div class="feed-detail-wrapper">
-              <div ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)"
-                   class="feed-details clearfix">
+              <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details">
+                  <img src="media/images/avatar3.png">
                   <div class="text">
-                      <h2>You asked Claire Miller</h2>
-                      <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
+                      <p>Commented on your comment</p>
+                      <h2>$2,000,000 seems low.</h2>
+                      <a href="deal-detail">Sony Tech Refresh</a>
                       <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
                   </div>
-                  <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+              </div>
+              <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details">
+                  <img src="media/images/avatar.png">
+                  <div class="text">
+                      <p class="reminder">Reminded You <span>1</span></p>
+                      <h2>Have you met the economic buyer?</h2>
+                      <a href="deal-detail">Sony Tech Refresh</a>
+                      <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
+                  </div>
+              </div>
+              <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details sent-answered">
+                  <span></span>
+                  <div class="text">
+                      <p>Asked You</p>
+                      <h2>Do you know what the budget is for this really expensive deal?</h2>
+                      <a href="deal-detail">Sony Tech Refresh</a>
+                      <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
+                  </div>
+                 <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
               </div>
           </div>
       </div>

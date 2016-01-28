@@ -567,37 +567,7 @@ form.import {
 -------------------------------------------*/
 .feed-headerbar {
   > h1 {
-    float: left;
     margin: 0 0 20px 20px;
-  }
-}
-
-.INBOX_OUTBOX  {
-  float: right;
-  margin-top: 15px;
-  li {
-    float: left;
-    margin: 0 20px;
-    a {
-      color: $text-primary;
-      &:hover {
-        color: $col-orange;
-      }
-      &.active {
-        color: $col-orange;
-      }
-    }
-    .notification {
-      background: $col-orange;
-      margin-right: 3px;
-      padding: 2px 8px;
-      display: inline-block;
-      text-align: center;
-      color: #fff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-    }
   }
 }
 
@@ -728,6 +698,12 @@ form.import {
   #tab-content2 {
     .feed-details {
       padding-left: 10px;
+      &:hover {
+        background: #fff;
+      }
+    }
+    .feed-details.sent-answered:hover {
+      background: $col-orange-highlight;
     }
   }
 }
@@ -739,428 +715,431 @@ form.import {
     &.border-top {
       border-top: 1px solid $col-grey-stroke;
     }
-    aside {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      position: relative;
-      width: 100px;
-      .date {
-        position: absolute;
-        top: 13px;
-        left: 50%;
-        transform: translateX(-50%);
+  }
+  aside {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    width: 100px;
+    .date {
+      position: absolute;
+      top: 13px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      span {
+        font-size: 3.5rem;
+        color: $text-light;
+        display: block;
+      }
+    }
+  }
+  .feed-details {
+    padding: 12px 10px 12px 0;
+    border-left: 3px solid $col-grey-stroke;
+    position: relative;
+    border-bottom: 1px solid $col-grey-stroke;
+    display: flex;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      cursor: pointer;
+      background: $col-orange-highlight;
+    }
+    &.sent {
+      padding-left: 10px;
+    }
+    .text {
+      width: 68%;
+    }
+    img {
+      margin-right: 10px;
+      width: 60px;
+      height: 60px;
+    }
+    p {
+      line-height: 18px;
+      font-weight: 700;
+      &.reminder {
+        color: $col-blue;
+      }
+      span {
+        color: #fff;
+        background: $col-blue;
+        height: 17px;
+        min-width: 10px;
+        border-radius: 15px;
+        display: inline-block;
+        font-size: 1.2rem;
         text-align: center;
-        span {
-          font-size: 3.5rem;
-          color: $text-light;
-          display: block;
-        }
+        padding: 0 4px;
+        margin-left: 3px;
       }
     }
-    .feed-details {
-      padding: 12px 10px 12px 0;
-      &:hover {
-        background: $col-orange-highlight;
-        cursor: pointer;
-      }
-      &.sent {
-        padding-left: 10px;
-      }
-      p {
-        line-height: 18px;
-        font-weight: 700;
-        &.reminder {
-          color: $col-blue;
-        }
-        span {
-          color: #fff;
-          background: $col-blue;
-          height: 17px;
-          min-width: 10px;
-          border-radius: 15px;
-          display: inline-block;
-          font-size: 1.2rem;
-          text-align: center;
-          padding: 0 4px;
-          margin-left: 3px;
-        }
-      }
-      .timestamp {
-        margin-top: 0;
-      }
+    .timestamp {
+      margin-top: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 20px;
     }
-    .feed-details, .details {
-      border-left: 3px solid $col-grey-stroke;
-      position: relative;
-      border-bottom: 1px solid $col-grey-stroke;
-      display: block;
-      &:last-child {
-        border-bottom: none;
-      }
-      img {
-        float: left;
-        margin-right: 10px;
-        width: 60px;
-        height: 60px;
-      }
-
-      .timestamp {
+    .caret {
+      display: none;
+      &:before {
         position: absolute;
+        right: 10px;
+        color: $col-orange;
         top: 50%;
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
-        right: 20px;
+        @include fa;
+        @include fa(caret-right);
+        @include fa-size(1.7em);
       }
-      .caret {
-        display: none;
+    }
+    &.pending {
+      background: $col-orange-highlight;
+      border-left: 3px solid #fdc999;
+    }
+    &.sent-answered {
+      background: $col-orange-highlight;
+      span {
+        width: 60px;
+        margin-right: 10px;
+        margin-top: -5px;
+        text-align: center;
         &:before {
-          position: absolute;
-          right: 10px;
-          color: $col-orange;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-          @include fa;
-          @include fa(caret-right);
-          @include fa-size(1.7em);
-        }
-      }
-      &.pending {
-        background: $col-orange-highlight;
-        border-left: 3px solid #fdc999;
-      }
-    }
-  }
-}
-
-.feed-details {
-  div.text {
-    width: 95%;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-  /* ASK A QUESTION -------------------------
-  -------------------------------------------*/
-  .ask {
-    text-align: center;
-    h1 {
-      text-align: center;
-      margin: 0 0 20px 0;
-    }
-    &-info, &-reps, .answer {
-      max-width: 400px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0;
-      box-sizing: border-box;
-      input {
-        margin-bottom: 0;
-      }
-    }
-    button {
-      width: 280px;
-      margin: 20px auto 0 auto;
-      display: block;
-      &.inactive {
-        background: $col-grey;
-        border: 1px solid $col-grey-stroke;
-        color: #b5b5b5;
-      }
-    }
-    .ask-details {
-      max-width: 400px;
-      width: 100%;
-      background: $col-grey;
-      text-align: center;
-      padding: 0;
-      margin: 0 auto;
-      box-sizing: border-box;
-      border-top: 1px solid $col-grey-stroke;
-      border-bottom: 1px solid $col-grey-stroke;
-      small {
-        margin: 15px 0 5px 0;
-      }
-      h1 {
-        margin: 5px 0 20px 0;
-        font-size: 1.8rem;
-      }
-      p {
-        margin-bottom: 10px;
-        &.more {
-          color: $col-orange;
-        }
-        &:last-child {
-          margin-bottom: 15px;
-        }
-      }
-    }
-    small {
-      margin: 25px 0 5px 0;
-      display: block;
-      line-height: 1.8rem;
-      &.error {
-        margin: 0 0 -5px 0;
-        line-height: inherit;
-      }
-    }
-    input[type="radio"] {
-      margin-top: 10px;
-    }
-    .hr {
-      margin: 40px auto;
-    }
-    .plays {
-      text-align: left;
-      margin-top: 20px;
-      small {
-        background: #e5e5e5;
-        padding: 1px 20px;
-        border-bottom: 1px solid #dbdbdb;
-        border-top: 1px solid #dbdbdb;
-        margin: 0;
-      }
-      .play-row {
-        padding: 20px;
-        border-bottom: 1px solid $col-grey-stroke;
-        &:last-child {
-          border-bottom: none;
-        }
-        .caret {
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-    }
-    .answer {
-      border-top: none;
-      small {
-        margin: 25px 0 10px 0;
-      }
-      form {
-        max-width: 450px;
-        width: 100%;
-        margin: 0 auto;
-        input.radio {
-          position: absolute;
-          margin-left: -9999px;
-          visibility: hidden;
-        }
-        label {
-          position: relative;
-          outline: none;
-          display: block;
-          cursor: pointer;
-          background: $col-green;
-          width: 220px;
-          height: 35px;
-          line-height: 35px;
-          color: #fff;
-          margin: 0 auto 10px auto;
-          text-align: center;
-          -webkit-border-radius: 5px;
-          -moz-border-radius: 5px;
-          border-radius: 5px;
-          border-bottom: none;
-          padding: 0;
-          float: none;
-          &:hover {
-            background: $col-dk-green;
-          }
-        }
-        input[type=radio]:checked + label:before {
           @include fa;
           @include fa(check);
-          @include fa-size(1.3em);
-          @include fa-align(middle);
-          width: 22px;
-          height: 20px;
-          padding-top: 2px;
+          @include fa-size(3rem);
           color: $col-green;
-          background: #fff;
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          border-radius: 50%;
-          position: absolute;
-          left: 10px;
-          top: 6px;
         }
-        input[type=text] {
-          width: 280px;
-          display: block;
-          margin: 0 auto;
-          height: 38px;
-          box-sizing: border-box;
-          padding: 5px;
-          border: 1px solid $col-grey-stroke;
-        }
-        textarea {
-          width: 280px;
-          margin: 25px auto;
-          height: 75px;
-          display: block;
-          padding: 10px;
-          box-sizing: border-box;
-        }
-        .submit {
-          width: 280px;
-          margin: 0 auto 30px auto;
-          display: block;
-        }
-      }
-    }
-    &-reps {
-      text-align: left;
-      small {
-        text-align: center;
-      }
-      .rep-list {
-        width: 100%;
       }
     }
   }
+}
 
-  .play-questions {
-    text-align: left;
-    border-bottom: 1px solid $col-grey-stroke;
-    padding: 10px 0;
-    &:nth-child(2) {
-      border-top: 1px solid $col-grey-stroke;
+
+
+
+
+
+
+
+
+/* ASK A QUESTION -------------------------
+-------------------------------------------*/
+.ask {
+  text-align: center;
+  h1 {
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+  &-info, &-reps, .answer {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    input {
+      margin-bottom: 0;
     }
-    .plays {
-      margin: 0 0 0 35px;
+  }
+  button {
+    width: 280px;
+    margin: 20px auto 0 auto;
+    display: block;
+    &.inactive {
+      background: $col-grey;
+      border: 1px solid $col-grey-stroke;
+      color: #b5b5b5;
+    }
+  }
+  .ask-details {
+    max-width: 400px;
+    width: 100%;
+    background: $col-grey;
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-top: 1px solid $col-grey-stroke;
+    border-bottom: 1px solid $col-grey-stroke;
+    small {
+      margin: 15px 0 5px 0;
+    }
+    h1 {
+      margin: 5px 0 20px 0;
       font-size: 1.8rem;
     }
-    input.checkbox {
-      position: absolute;
-      margin-left: -9999px;
-      visibility: hidden;
+    p {
+      margin-bottom: 10px;
+      &.more {
+        color: $col-orange;
+      }
+      &:last-child {
+        margin-bottom: 15px;
+      }
     }
-    label {
-      position: relative;
-      outline: none;
-      user-select: none;
-      display: block;
-      cursor: pointer;
-      &:before, &:after {
+  }
+  small {
+    margin: 25px 0 5px 0;
+    display: block;
+    line-height: 1.8rem;
+    &.error {
+      margin: 0 0 -5px 0;
+      line-height: inherit;
+    }
+  }
+  input[type="radio"] {
+    margin-top: 10px;
+  }
+  .hr {
+    margin: 40px auto;
+  }
+  .plays {
+    text-align: left;
+    margin-top: 20px;
+    small {
+      background: #e5e5e5;
+      padding: 1px 20px;
+      border-bottom: 1px solid #dbdbdb;
+      border-top: 1px solid #dbdbdb;
+      margin: 0;
+    }
+    .play-row {
+      padding: 20px;
+      border-bottom: 1px solid $col-grey-stroke;
+      &:last-child {
+        border-bottom: none;
+      }
+      .caret {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .answer {
+    border-top: none;
+    small {
+      margin: 25px 0 10px 0;
+    }
+    form {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+      input.radio {
         position: absolute;
-        top: -3px;
-        left: 0;
-        width: 22px;
-        height: 22px;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
+        margin-left: -9999px;
+        visibility: hidden;
       }
-      &:before {
-        content: '';
-        border: 1px solid $col-grey-stroke;
-        backface-visibility: hidden;
+      label {
+        position: relative;
+        outline: none;
+        display: block;
+        cursor: pointer;
+        background: $col-green;
+        width: 220px;
+        height: 35px;
+        line-height: 35px;
+        color: #fff;
+        margin: 0 auto 10px auto;
+        text-align: center;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border-bottom: none;
+        padding: 0;
+        float: none;
+        &:hover {
+          background: $col-dk-green;
+        }
       }
-      &:after {
+      input[type=radio]:checked + label:before {
         @include fa;
         @include fa(check);
         @include fa-size(1.3em);
         @include fa-align(middle);
-        color: #fff;
-        padding-top: 2px;
+        width: 22px;
         height: 20px;
-        background: $col-green;
-        backface-visibility: hidden;
-        border: 1px solid $col-green;
-        opacity: 0;
-        text-align: center;
-      }
-    }
-    input.checkbox:checked + label:after {
-      opacity: 1;
-    }
-    .expanded {
-      margin: 10px 0 -10px 35px;
-      div {
-        border-bottom: 1px solid $col-grey-stroke;
-        &:last-child {
-          border-bottom: none;
-        }
-        .border-bottom {
-          border-bottom: 1px solid $col-grey-stroke;
-        }
-        .question {
-          margin-left: 33px;
-          padding: 10px 0;
-        }
-      }
-      label:before, label:after {
+        padding-top: 2px;
+        color: $col-green;
+        background: #fff;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: absolute;
+        left: 10px;
         top: 6px;
       }
-    }
-  }
-
-
-  /* tabs */
-  .ask {
-    .tabs {
-      max-width: 400px;
-      width: 100%;
-      float: none;
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      small {
-        margin: 0;
+      input[type=text] {
+        width: 280px;
+        display: block;
+        margin: 0 auto;
+        height: 38px;
+        box-sizing: border-box;
+        padding: 5px;
+        border: 1px solid $col-grey-stroke;
+      }
+      textarea {
+        width: 280px;
+        margin: 25px auto;
+        height: 75px;
+        display: block;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .submit {
+        width: 280px;
+        margin: 0 auto 30px auto;
+        display: block;
       }
     }
-    .tabs:after {
-      content: '';
-      display: table;
-      clear: both;
-    }
-    .tabs input[type=radio] {
-      display:none;
-    }
-    .tabs label {
-      display: block;
-      float: left;
-      width: 50%;
-      color: $col-orange;
-      text-decoration: none;
+  }
+  &-reps {
+    text-align: left;
+    small {
       text-align: center;
-      cursor: pointer;
-      border-bottom: 1px solid $col-grey-stroke;
-      padding: 10px 0;
-      background: $col-orange-highlight;
-      box-sizing: border-box;
     }
-    .tab-content {
-      display: none;
+    .rep-list {
       width: 100%;
-      float: left;
-      padding: 15px;
-      box-sizing: border-box;
-      background-color:#ffffff;
-    }
-    .tabs [id^="tab"]:checked + label {
-      background: #fff;
-      border-bottom: none;
-      color: $text-light;
-    }
-    #tab1:checked ~ #tab-content1,
-    #tab2:checked ~ #tab-content2 {
-      display: block;
-    }
-    label[for=tab1] {
-      border-right: 1px solid $col-grey-stroke;
     }
   }
+}
+
+.play-questions {
+  text-align: left;
+  border-bottom: 1px solid $col-grey-stroke;
+  padding: 10px 0;
+  &:nth-child(2) {
+    border-top: 1px solid $col-grey-stroke;
+  }
+  .plays {
+    margin: 0 0 0 35px;
+    font-size: 1.8rem;
+  }
+  input.checkbox {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+  label {
+    position: relative;
+    outline: none;
+    user-select: none;
+    display: block;
+    cursor: pointer;
+    &:before, &:after {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+    &:before {
+      content: '';
+      border: 1px solid $col-grey-stroke;
+      backface-visibility: hidden;
+    }
+    &:after {
+      @include fa;
+      @include fa(check);
+      @include fa-size(1.3em);
+      @include fa-align(middle);
+      color: #fff;
+      padding-top: 2px;
+      height: 20px;
+      background: $col-green;
+      backface-visibility: hidden;
+      border: 1px solid $col-green;
+      opacity: 0;
+      text-align: center;
+    }
+  }
+  input.checkbox:checked + label:after {
+    opacity: 1;
+  }
+  .expanded {
+    margin: 10px 0 -10px 35px;
+    div {
+      border-bottom: 1px solid $col-grey-stroke;
+      &:last-child {
+        border-bottom: none;
+      }
+      .border-bottom {
+        border-bottom: 1px solid $col-grey-stroke;
+      }
+      .question {
+        margin-left: 33px;
+        padding: 10px 0;
+      }
+    }
+    label:before, label:after {
+      top: 6px;
+    }
+  }
+}
+
+
+/* tabs */
+.ask {
+  .tabs {
+    max-width: 400px;
+    width: 100%;
+    float: none;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    small {
+      margin: 0;
+    }
+  }
+  .tabs:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .tabs input[type=radio] {
+    display:none;
+  }
+  .tabs label {
+    display: block;
+    float: left;
+    width: 50%;
+    color: $col-orange;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid $col-grey-stroke;
+    padding: 10px 0;
+    background: $col-orange-highlight;
+    box-sizing: border-box;
+  }
+  .tab-content {
+    display: none;
+    width: 100%;
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color:#ffffff;
+  }
+  .tabs [id^="tab"]:checked + label {
+    background: #fff;
+    border-bottom: none;
+    color: $text-light;
+  }
+  #tab1:checked ~ #tab-content1,
+  #tab2:checked ~ #tab-content2 {
+    display: block;
+  }
+  label[for=tab1] {
+    border-right: 1px solid $col-grey-stroke;
+  }
+}
 
 
 
@@ -1173,7 +1152,7 @@ form.import {
 
 /* DEALS LIST --------------------------
 ----------------------------------------*/
-.row.deals-list {
+.deals-list {
   display: flex;
   border-bottom: 1px solid $col-grey-stroke;
   border-top: 1px solid $col-grey-stroke;
@@ -1280,7 +1259,7 @@ form.import {
       line-height: 1.7rem;
     }
   }
-  .details {
+  .profile-details {
     border-left: 1px solid $col-grey-stroke;
     small {
       text-align: center;
@@ -1505,390 +1484,390 @@ form.import {
 
 
 
-  /* DEAL DETAIL ----------------------------
-  -------------------------------------------*/
-  .deal-title {
-    small {
-      margin-left: 22px;
-    }
-    .deal-owner {
-      display: none;
-    }
+/* DEAL DETAIL ----------------------------
+-------------------------------------------*/
+.deal-title {
+  small {
+    margin-left: 22px;
   }
-
-  .deal-detail {
-    border-bottom: 1px solid $col-grey-stroke;
-    aside {
-      padding-top: 20px;
-      text-align: center;
-      border-top: 1px solid $col-grey-stroke;
-      img {
-        margin-bottom: 10px;
-        max-width: 160px;
-        width: 100%;
-      }
-      .favorite {
-        margin-top: 15px;
-        display: block;
-        &:before {
-          @include fa;
-          @include fa(star);
-          @include fa-size(4rem);
-          color: $col-grey-stroke;
-        }
-      }
-    }
-    .details {
-      border-left: 1px solid $col-grey-stroke;
-      small {
-        text-align: center;
-        display: block;
-        margin-bottom: 10px;
-      }
-      h2 {
-        text-align: center;
-      }
-      .virtual-team {
-        div small {
-          text-align: left;
-        }
-      }
-      .caret {
-        top: 12px;
-      }
-    }
-    .deal-btns {
-      box-sizing: border-box;
-      border-top: 1px solid $col-grey-stroke;
-      padding: 15px 0 0 0;
-      button {
-        display: block;
-        max-width: 300px;
-        width: 90%;
-        margin: 13px auto;
-      }
-      .deal-feed {
-        &:before {
-          @include fa;
-          @include fa(inbox);
-          @include fa-size(2rem);
-          @include fa-right(10px);
-          @include fa-align(middle);
-        }
-      }
-      .next-steps {
-        &:before {
-          @include fa;
-          @include fa(check-circle);
-          @include fa-size(2rem);
-          @include fa-right(10px);
-          @include fa-align(middle);
-        }
-      }
-    }
-    .plays {
-      border-left: 1px solid $col-grey-stroke;
-      small {
-        background: $col-grey;
-        padding: 5px 20px;
-        text-align: left;
-        border-bottom: 1px solid $col-grey-stroke;
-        border-top: 1px solid $col-grey-stroke;
-        margin-bottom: 0;
-      }
-      p {
-        margin-bottom: 5px;
-        margin-left: 20px;
-      }
-      .questions {
-        display: flex;
-        position: absolute;
-        right: 25px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    }
-    .close-date, .account-value {
-      padding: 20px 0 15px 0;
-      border-top: 1px solid $col-grey-stroke;
-    }
-    .account-value {
-      margin-top: 19px;
-    }
-    .add-play {
-      border-top: 1px solid $col-grey-stroke;
-      button {
-        max-width: 300px;
-        width: 90%;
-        margin: 27px auto 10px auto;
-        display: block;
-      }
-    }
-    .salesforce-button {
-      border-top: 1px solid $col-grey-stroke;
-      padding: 30px 0;
-      background: $col-grey;
-      text-align: center;
-      button {
-        width: 300px;
-      }
-    }
-    .sync {
-      display: block;
-      margin-top: 20px;
-      font-weight: 700;
-      color: #4bb5e9;
-      &:before {
-        @include fa;
-        @include fa(refresh);
-        @include fa-size(1.2em);
-        margin-right: 5px;
-      }
-      &:hover {
-        color: #48a5d3;
-      }
-    }
-  }
-
-  .play-row {
-    position: relative;
-    display: block;
-    padding: 15px 0;
-    &:hover {
-      background: $col-orange-highlight;
-      cursor: pointer;
-    }
-  }
-
-
-
-
-
-
-
-
-  /* DEAL QUESTIONS --------------------------
-  -------------------------------------------*/
-  .play-feed {
+  .deal-owner {
     display: none;
   }
+}
 
-  .deal-questions {
+.deal-detail {
+  border-bottom: 1px solid $col-grey-stroke;
+  aside {
+    padding-top: 20px;
+    text-align: center;
     border-top: 1px solid $col-grey-stroke;
-    margin: 0 20px;
-    box-sizing: border-box;
-    .play-header {
-      border-bottom: 1px solid $col-grey-stroke;
-      padding: 10px 0;
-      position: relative;
-      clear: both;
-      &.border-top {
-        border-top: 1px solid $col-grey-stroke;
-      }
-      h2 {
-        margin-top: 5px;
-        margin-bottom: 0;
-      }
-    }
-    .row {
-      position: relative;
-      padding: 10px 20px;
-      background: $col-grey;
-      float: none;
+    img {
+      margin-bottom: 10px;
+      max-width: 160px;
       width: 100%;
-      box-sizing: border-box;
-      &:last-child {
-        border-bottom: 1px solid $col-grey-stroke;
-      }
-      h2 {
-        margin-bottom: 0;
-        a {
-          color: $text-primary;
-        }
-        a:before {
-          @include fa;
-          @include fa(plus-circle);
-          @include fa-size(1.3em);
-          @include fa-right(7px);
-          @include fa-align(bottom);
-          color: $col-orange;
-        }
-        a.active:before {
-          @include fa;
-          @include fa(minus-circle);
-          @include fa-size(1.3em);
-          @include fa-right(7px);
-          @include fa-align(bottom);
-          color: $col-orange;
-        }
-      }
-      .questions {
-        display: flex;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+    }
+    .favorite {
+      margin-top: 15px;
+      display: block;
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(4rem);
+        color: $col-grey-stroke;
       }
     }
-    .expanded {
+  }
+  .deal-details {
+    border-left: 1px solid $col-grey-stroke;
+    small {
+      text-align: center;
+      display: block;
+      margin-bottom: 10px;
+    }
+    h2 {
+      text-align: center;
+    }
+    .virtual-team {
+      div small {
+        text-align: left;
+      }
+    }
+    .caret {
+      top: 12px;
+    }
+  }
+  .deal-btns {
+    box-sizing: border-box;
+    border-top: 1px solid $col-grey-stroke;
+    padding: 15px 0 0 0;
+    button {
+      display: block;
+      max-width: 300px;
+      width: 90%;
+      margin: 13px auto;
+    }
+    .deal-feed {
+      &:before {
+        @include fa;
+        @include fa(inbox);
+        @include fa-size(2rem);
+        @include fa-right(10px);
+        @include fa-align(middle);
+      }
+    }
+    .next-steps {
+      &:before {
+        @include fa;
+        @include fa(check-circle);
+        @include fa-size(2rem);
+        @include fa-right(10px);
+        @include fa-align(middle);
+      }
+    }
+  }
+  .plays {
+    border-left: 1px solid $col-grey-stroke;
+    small {
+      background: $col-grey;
+      padding: 5px 20px;
+      text-align: left;
       border-bottom: 1px solid $col-grey-stroke;
-      .deal-questions-filter {
-        padding: 10px 20px;
-        display: flex;
-        justify-content: flex-end;
-        border-bottom: 1px solid $col-grey-stroke;
-        a {
-          color: $text-light;
-          text-align: center;
-          margin-left: 10px;
-          padding-left: 10px;
-          border-left: 1px solid $col-grey-stroke;
-          transition: all 0.1s ease;
-          &:first-child {
-            border-left: none;
-            margin-left: 0;
-            padding-left: 0;
-          }
-          &.active, &:hover {
-            font-weight: 700;
-          }
-          &.not-asked {
-            &:before {
-              @include fa;
-              @include fa(exclamation-triangle);
-              @include fa-size(1.1em);
-              @include fa-right(5px);
-              @include fa-align(bottom);
-            }
-            &:hover, &.active {
-              color: $col-red;
-            }
-          }
-          &.pending {
-            &:before {
-              @include fa;
-              @include fa(commenting);
-              @include fa-size(1.1em);
-              @include fa-right(5px);
-              @include fa-align(bottom);
-            }
-          }
-          &.answered {
-            &:before {
-              @include fa;
-              @include fa(check);
-              @include fa-size(1.1em);
-              @include fa-right(5px);
-              @include fa-align(bottom);
-            }
-            &:hover, &.active {
-              color: $col-green;
-            }
-          }
-        }
+      border-top: 1px solid $col-grey-stroke;
+      margin-bottom: 0;
+    }
+    p {
+      margin-bottom: 5px;
+      margin-left: 20px;
+    }
+    .questions {
+      display: flex;
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .close-date, .account-value {
+    padding: 20px 0 15px 0;
+    border-top: 1px solid $col-grey-stroke;
+  }
+  .account-value {
+    margin-top: 19px;
+  }
+  .add-play {
+    border-top: 1px solid $col-grey-stroke;
+    button {
+      max-width: 300px;
+      width: 90%;
+      margin: 27px auto 10px auto;
+      display: block;
+    }
+  }
+  .salesforce-button {
+    border-top: 1px solid $col-grey-stroke;
+    padding: 30px 0;
+    background: $col-grey;
+    text-align: center;
+    button {
+      width: 300px;
+    }
+  }
+  .sync {
+    display: block;
+    margin-top: 20px;
+    font-weight: 700;
+    color: #4bb5e9;
+    &:before {
+      @include fa;
+      @include fa(refresh);
+      @include fa-size(1.2em);
+      margin-right: 5px;
+    }
+    &:hover {
+      color: #48a5d3;
+    }
+  }
+}
+
+.play-row {
+  position: relative;
+  display: block;
+  padding: 15px 0;
+  &:hover {
+    background: $col-orange-highlight;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+
+
+
+/* DEAL QUESTIONS --------------------------
+-------------------------------------------*/
+.play-feed {
+  display: none;
+}
+
+.deal-questions {
+  border-top: 1px solid $col-grey-stroke;
+  margin: 0 20px;
+  box-sizing: border-box;
+  .play-header {
+    border-bottom: 1px solid $col-grey-stroke;
+    padding: 10px 0;
+    position: relative;
+    clear: both;
+    &.border-top {
+      border-top: 1px solid $col-grey-stroke;
+    }
+    h2 {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+  .row {
+    position: relative;
+    padding: 10px 20px;
+    background: $col-grey;
+    float: none;
+    width: 100%;
+    box-sizing: border-box;
+    &:last-child {
+      border-bottom: 1px solid $col-grey-stroke;
+    }
+    h2 {
+      margin-bottom: 0;
+      a {
+        color: $text-primary;
       }
-      button {
-        width: 300px;
-        display: block;
-        margin: 10px auto;
+      a:before {
+        @include fa;
+        @include fa(plus-circle);
+        @include fa-size(1.3em);
+        @include fa-right(7px);
+        @include fa-align(bottom);
+        color: $col-orange;
+      }
+      a.active:before {
+        @include fa;
+        @include fa(minus-circle);
+        @include fa-size(1.3em);
+        @include fa-right(7px);
+        @include fa-align(bottom);
+        color: $col-orange;
+      }
+    }
+    .questions {
+      display: flex;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  .expanded {
+    border-bottom: 1px solid $col-grey-stroke;
+    .deal-questions-filter {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-end;
+      border-bottom: 1px solid $col-grey-stroke;
+      a {
+        color: $text-light;
         text-align: center;
-      }
-      .qq {
-        border-top: 1px solid $col-grey-stroke;
-        border-bottom: 1px solid $col-grey-stroke;
-        border-right: 1px solid $col-grey-stroke;
-        border-left: 3px solid $col-grey-stroke;
-        background: #eaeaea;
-        padding: 10px 20px;
-        position: relative;
-        margin: 0 10px;
-        p {
-          margin-bottom: 10px;
-          &.answered:before {
-            @include fa;
-            @include fa(check);
-            @include fa-size(1.1em);
-            @include fa-right(5px);
-            @include fa-align(bottom);
-            color: $col-green;
-          }
-          &.pending:before {
-            @include fa;
-            @include fa(commenting);
-            @include fa-size(1.1em);
-            @include fa-right(5px);
-            @include fa-align(bottom);
-            color: $text-light;
-          }
-          &.not-asked:before {
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid $col-grey-stroke;
+        transition: all 0.1s ease;
+        &:first-child {
+          border-left: none;
+          margin-left: 0;
+          padding-left: 0;
+        }
+        &.active, &:hover {
+          font-weight: 700;
+        }
+        &.not-asked {
+          &:before {
             @include fa;
             @include fa(exclamation-triangle);
             @include fa-size(1.1em);
             @include fa-right(5px);
             @include fa-align(bottom);
+          }
+          &:hover, &.active {
             color: $col-red;
           }
         }
-        .share {
-          position: absolute;
-          right: 20px;
-          top: 10px;
-          -webkit-transform: translateY(-15%);
-          transform: translateY(-15%);
+        &.pending {
           &:before {
             @include fa;
-            @include fa(share);
-            @include fa-size(1.2em);
+            @include fa(commenting);
+            @include fa-size(1.1em);
+            @include fa-right(5px);
+            @include fa-align(bottom);
+          }
+        }
+        &.answered {
+          &:before {
+            @include fa;
+            @include fa(check);
+            @include fa-size(1.1em);
+            @include fa-right(5px);
+            @include fa-align(bottom);
+          }
+          &:hover, &.active {
+            color: $col-green;
+          }
+        }
+      }
+    }
+    button {
+      width: 300px;
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+    }
+    .qq {
+      border-top: 1px solid $col-grey-stroke;
+      border-bottom: 1px solid $col-grey-stroke;
+      border-right: 1px solid $col-grey-stroke;
+      border-left: 3px solid $col-grey-stroke;
+      background: #eaeaea;
+      padding: 10px 20px;
+      position: relative;
+      margin: 0 10px;
+      p {
+        margin-bottom: 10px;
+        &.answered:before {
+          @include fa;
+          @include fa(check);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $col-green;
+        }
+        &.pending:before {
+          @include fa;
+          @include fa(commenting);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $text-light;
+        }
+        &.not-asked:before {
+          @include fa;
+          @include fa(exclamation-triangle);
+          @include fa-size(1.1em);
+          @include fa-right(5px);
+          @include fa-align(bottom);
+          color: $col-red;
+        }
+      }
+      .share {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        -webkit-transform: translateY(-15%);
+        transform: translateY(-15%);
+        &:before {
+          @include fa;
+          @include fa(share);
+          @include fa-size(1.2em);
+          color: $col-orange;
+        }
+      }
+    }
+    .qq-answer {
+      padding: 15px;
+      margin: 0 11px 0 40px;
+      position: relative;
+      border-bottom: 1px solid $col-grey-stroke;
+      border-left: 3px solid $col-grey-stroke;
+      &.pending p {
+        color: $text-light;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      small {
+        display: block;
+        margin-top: 7px;
+        a {
+          color: $text-light;
+          &:hover {
             color: $col-orange;
           }
         }
       }
-      .qq-answer {
-        padding: 15px;
-        margin: 0 11px 0 40px;
-        position: relative;
-        border-bottom: 1px solid $col-grey-stroke;
-        border-left: 3px solid $col-grey-stroke;
-        &.pending p {
-          color: $text-light;
-        }
-        &:last-child {
-          border-bottom: none;
-        }
-        small {
-          display: block;
-          margin-top: 7px;
-          a {
-            color: $text-light;
-            &:hover {
-              color: $col-orange;
-            }
-          }
-        }
+    }
+    .qq-comment {
+      padding: 10px 20px 20px 20px;
+      margin: 0 20px;
+      border-bottom: 1px solid $col-grey-stroke;
+      p {
+        margin-bottom: 10px;
+        font-style: italic;
+        color: $text-light;
+        line-height: 20px;
       }
-      .qq-comment {
-        padding: 10px 20px 20px 20px;
-        margin: 0 20px;
-        border-bottom: 1px solid $col-grey-stroke;
-        p {
-          margin-bottom: 10px;
-          font-style: italic;
-          color: $text-light;
-          line-height: 20px;
-        }
-        p.comment-icon {
-          font-style: normal;
-          &:before {
-            @include fa;
-            @include fa(comment);
-            @include fa-size(1.1em);
-            @include fa-align(baseline);
-            margin-right: 5px;
-          }
+      p.comment-icon {
+        font-style: normal;
+        &:before {
+          @include fa;
+          @include fa(comment);
+          @include fa-size(1.1em);
+          @include fa-align(baseline);
+          margin-right: 5px;
         }
       }
     }
   }
+}
 
 
 
@@ -1896,1206 +1875,1115 @@ form.import {
 
 
 
-  /* ANSWER QQ ------------------------------
-  -------------------------------------------*/
-  .answer, .set-play {
-    border-top: 1px solid $col-grey-stroke;
-    padding-top: 30px;
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      margin-left: 0;
+/* ANSWER QQ ------------------------------
+-------------------------------------------*/
+.answer, .set-play {
+  border-top: 1px solid $col-grey-stroke;
+  padding-top: 30px;
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+  small {
+    text-align: center;
+    display: block;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+.answer {
+  small {
+    margin-bottom: 40px;
+  }
+  form {
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+    input.radio {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden;
     }
-    small {
+    label {
+      position: relative;
+      outline: none;
+      display: block;
+      cursor: pointer;
+      background: $col-green;
+      width: 220px;
+      height: 35px;
+      line-height: 35px;
+      color: #fff;
+      margin: 0 auto 10px auto;
       text-align: center;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      &:hover {
+        background: $col-dk-green;
+      }
+    }
+    input[type=radio]:checked + label:before {
+      @include fa;
+      @include fa(check);
+      @include fa-size(1.3em);
+      @include fa-align(middle);
+      width: 22px;
+      height: 20px;
+      padding-top: 2px;
+      color: $col-green;
+      background: #fff;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      position: absolute;
+      left: 10px;
+      top: 6px;
+    }
+    input[type=text] {
+      width: 280px;
+      display: block;
+      margin: 0 auto;
+      height: 38px;
+      box-sizing: border-box;
+      padding: 5px;
+      border: 1px solid $col-grey-stroke;
+    }
+    textarea {
+      width: 280px;
+      margin: 25px auto;
+      height: 75px;
+      display: block;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .submit {
+      width: 280px;
+      margin: 0 auto 30px auto;
       display: block;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
+  }
+  &.date {
+    fieldset {
+      margin: 0 auto 20px auto;
+      width: 280px;
+      display: block;
+      select {
+        width: 90px;
+        height: 30px;
+      }
     }
   }
+}
 
-  .answer {
-    small {
-      margin-bottom: 40px;
-    }
-    form {
-      max-width: 450px;
-      width: 100%;
-      margin: 0 auto;
-      input.radio {
-        position: absolute;
-        margin-left: -9999px;
-        visibility: hidden;
-      }
-      label {
-        position: relative;
+
+
+
+
+/* SET PLAY -------------------------------
+-------------------------------------------*/
+.set-play {
+  small {
+    margin-bottom: 20px;
+  }
+  form {
+    select {
+      width: 280px;
+      margin: 0 auto 10px auto;
+      display: block;
+      border: 1px solid $col-grey-stroke;
+      height: 36px;
+      color: $text-light;
+      font-size: 1.4rem;
+      &:focus {
         outline: none;
-        display: block;
-        cursor: pointer;
-        background: $col-green;
-        width: 220px;
-        height: 35px;
-        line-height: 35px;
-        color: #fff;
-        margin: 0 auto 10px auto;
-        text-align: center;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        &:hover {
-          background: $col-dk-green;
+      }
+    }
+  }
+}
+
+button.submit {
+  width: 280px;
+  margin: 20px auto 30px auto;
+  display: block;
+}
+
+
+
+
+
+/* SEND QUESTION ---------------------------
+-------------------------------------------*/
+.send-question {
+  padding: 0 20px;
+  .question {
+    margin-bottom: 40px;
+    h2 {
+      font-size: 3rem;
+    }
+  }
+  form {
+    margin: 5px 0 40px 0;
+    width: 100%;
+    max-width: inherit;
+    fieldset {
+      div {
+        border-bottom: 1px solid $col-grey-stroke;
+        padding: 10px 0;
+        &:first-child {
+          border-top: 1px solid $col-grey-stroke;
         }
       }
-      input[type=radio]:checked + label:before {
+      .plays {
+        margin: 0 0 0 35px;
+        font-size: 1.8rem;
+      }
+    }
+    .question {
+      margin: 0 0 0 35px;
+      font-size: 1.8rem;
+    }
+    input.checkbox {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden;
+    }
+    label {
+      position: relative;
+      outline: none;
+      user-select: none;
+      display: block;
+      cursor: pointer;
+      &:before, &:after {
+        position: absolute;
+        top: -3px;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+      }
+      &:before {
+        content: '';
+        border: 1px solid $col-grey-stroke;
+        backface-visibility: hidden;
+      }
+      &:after {
         @include fa;
         @include fa(check);
         @include fa-size(1.3em);
         @include fa-align(middle);
-        width: 22px;
-        height: 20px;
+        color: #fff;
         padding-top: 2px;
-        color: $col-green;
-        background: #fff;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        position: absolute;
-        left: 10px;
-        top: 6px;
-      }
-      input[type=text] {
-        width: 280px;
-        display: block;
-        margin: 0 auto;
-        height: 38px;
-        box-sizing: border-box;
-        padding: 5px;
-        border: 1px solid $col-grey-stroke;
-      }
-      textarea {
-        width: 280px;
-        margin: 25px auto;
-        height: 75px;
-        display: block;
-        padding: 10px;
-        box-sizing: border-box;
-      }
-      .submit {
-        width: 280px;
-        margin: 0 auto 30px auto;
-        display: block;
+        height: 20px;
+        background: $col-green;
+        backface-visibility: hidden;
+        border: 1px solid $col-green;
+        opacity: 0;
+        text-align: center;
       }
     }
-    &.date {
-      fieldset {
-        margin: 0 auto 20px auto;
-        width: 280px;
-        display: block;
-        select {
-          width: 90px;
-          height: 30px;
-        }
-      }
+    input.checkbox:checked + label:after{
+      opacity: 1;
     }
   }
+}
 
-
-
-
-
-  /* SET PLAY -------------------------------
-  -------------------------------------------*/
-  .set-play {
-    small {
-      margin-bottom: 20px;
-    }
-    form {
-      select {
-        width: 280px;
-        margin: 0 auto 10px auto;
-        display: block;
-        border: 1px solid $col-grey-stroke;
-        height: 36px;
-        color: $text-light;
-        font-size: 1.4rem;
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-  }
-
-  button.submit {
-    width: 280px;
-    margin: 20px auto 30px auto;
-    display: block;
-  }
-
-
-
-
-
-  /* SEND QUESTION ---------------------------
-  -------------------------------------------*/
-  .send-question {
-    padding: 0 20px;
-    .question {
-      margin-bottom: 40px;
-      h2 {
-        font-size: 3rem;
-      }
-    }
-    form {
-      margin: 5px 0 40px 0;
-      width: 100%;
-      max-width: inherit;
-      fieldset {
-        div {
-          border-bottom: 1px solid $col-grey-stroke;
-          padding: 10px 0;
-          &:first-child {
-            border-top: 1px solid $col-grey-stroke;
-          }
-        }
-        .plays {
-          margin: 0 0 0 35px;
-          font-size: 1.8rem;
-        }
-      }
-      .question {
-        margin: 0 0 0 35px;
-        font-size: 1.8rem;
-      }
-      input.checkbox {
-        position: absolute;
-        margin-left: -9999px;
-        visibility: hidden;
-      }
-      label {
-        position: relative;
-        outline: none;
-        user-select: none;
-        display: block;
-        cursor: pointer;
-        &:before, &:after {
-          position: absolute;
-          top: -3px;
-          left: 0;
-          width: 22px;
-          height: 22px;
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          border-radius: 50%;
-        }
-        &:before {
-          content: '';
-          border: 1px solid $col-grey-stroke;
-          backface-visibility: hidden;
-        }
-        &:after {
-          @include fa;
-          @include fa(check);
-          @include fa-size(1.3em);
-          @include fa-align(middle);
-          color: #fff;
-          padding-top: 2px;
-          height: 20px;
-          background: $col-green;
-          backface-visibility: hidden;
-          border: 1px solid $col-green;
-          opacity: 0;
-          text-align: center;
-        }
-      }
-      input.checkbox:checked + label:after{
-        opacity: 1;
-      }
-    }
-  }
-
-  .reps {
-    margin-top: 5px;
-    li {
-      font-size: 1.8rem;
-      border-top: 1px solid $col-grey-stroke;
-      padding: 10px 0;
-      position: relative;
-      &:last-child {
-        border-bottom: 1px solid $col-grey-stroke;
-      }
-      .delete {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        &:before {
-          @include fa;
-          @include fa(times);
-          @include fa-size(1.5em);
-          @include fa-align(middle);
-          color: $col-red;
-        }
-      }
-      .add-rep {
-        color: $col-green;
-        &:before {
-          @include fa;
-          @include fa(plus);
-          @include fa-size(1em);
-          @include fa-align(baseline);
-          @include fa-right(7px);
-        }
-        &:hover {
-          color: $col-dk-green;
-        }
-      }
-    }
-  }
-
-  .rep-list {
-    width: 50%;
-    border-left: 1px solid $col-grey-stroke;
-    border-right: 1px solid $col-grey-stroke;
-    max-height: 197px;
-    overflow-y: auto;
-    li {
-      cursor: pointer;
-      font-size: 1.8rem;
+.reps {
+  margin-top: 5px;
+  li {
+    font-size: 1.8rem;
+    border-top: 1px solid $col-grey-stroke;
+    padding: 10px 0;
+    position: relative;
+    &:last-child {
       border-bottom: 1px solid $col-grey-stroke;
-      background: $col-grey;
-      padding: 10px 0 10px 15px;
+    }
+    .delete {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      &:before {
+        @include fa;
+        @include fa(times);
+        @include fa-size(1.5em);
+        @include fa-align(middle);
+        color: $col-red;
+      }
+    }
+    .add-rep {
+      color: $col-green;
+      &:before {
+        @include fa;
+        @include fa(plus);
+        @include fa-size(1em);
+        @include fa-align(baseline);
+        @include fa-right(7px);
+      }
       &:hover {
-        background: $col-orange-highlight;
+        color: $col-dk-green;
       }
     }
   }
+}
 
-
-
-
-
-
-  /* SETTINGS -------------------------------
-  -------------------------------------------*/
-  .settings-icon {
-    &:before {
-      @include fa;
-      @include fa(cog);
-      @include fa-size(2.5rem);
-      @include fa-align(middle);
-      @include fa-left(5px);
-      line-height: 20px;
-    }
+.rep-list {
+  width: 50%;
+  border-left: 1px solid $col-grey-stroke;
+  border-right: 1px solid $col-grey-stroke;
+  max-height: 197px;
+  overflow-y: auto;
+  li {
+    cursor: pointer;
+    font-size: 1.8rem;
+    border-bottom: 1px solid $col-grey-stroke;
+    background: $col-grey;
+    padding: 10px 0 10px 15px;
     &:hover {
-      color: #f77600 !important;
+      background: $col-orange-highlight;
     }
   }
-  .settings {
-    border-left: 1px solid $col-grey-stroke;
-    .row {
-      padding: 15px 20px;
-      position: relative;
-      &:last-child {
-        border-bottom: none;
-      }
-      small {
-        margin-bottom: 5px;
-        display: block;
-      }
-      h2 {
-        margin-bottom: 0;
-      }
-      .edit {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-      }
-      &.btns {
-        background: $col-grey;
-        button {
-          width: 280px;
-          display: block;
-          margin-bottom: 10px;
-          &:last-child {
-            margin-bottom: 0;
-          }
-          &.sign-out {
-            background: $col-red;
-            border-color: #b3391b;
-            &:hover {
-              background: #b3391b;
-            }
-          }
-        }
-      }
+}
+
+
+
+
+
+
+/* SETTINGS -------------------------------
+-------------------------------------------*/
+.settings-icon {
+  &:before {
+    @include fa;
+    @include fa(cog);
+    @include fa-size(2.5rem);
+    @include fa-align(middle);
+    @include fa-left(5px);
+    line-height: 20px;
+  }
+  &:hover {
+    color: #f77600 !important;
+  }
+}
+.settings {
+  border-left: 1px solid $col-grey-stroke;
+  .row {
+    padding: 15px 20px;
+    position: relative;
+    &:last-child {
+      border-bottom: none;
     }
-    .edit-expanded {
-      padding: 15px 20px 20px 20px;
+    small {
+      margin-bottom: 5px;
+      display: block;
+    }
+    h2 {
+      margin-bottom: 0;
+    }
+    .edit {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    &.btns {
       background: $col-grey;
-      border-bottom: 1px solid $col-grey-stroke;
-      clear: both;
-      small {
-        display: block;
-        margin-bottom: 15px;
-        &.error {
-          margin: 0 0 -5px 0;
-          width: 280px;
-          box-sizing: border-box;
-        }
-      }
-      input {
-        height: 38px;
-        box-sizing: border-box;
-        padding: 5px;
-        border: 1px solid #dbdbdb;
-        margin-bottom: 10px;
-        width: 280px;
-      }
       button {
         width: 280px;
         display: block;
-      }
-    }
-  }
-
-
-
-
-
-  /* FOOTER ----------------------------------
-  -------------------------------------------*/
-  footer.nav {
-    display: none;
-  }
-  footer {
-    padding: 0;
-    background: $col-orange;
-    height: 56px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    nav {
-      ul {
-        width: 320px;
-        margin: 0 auto;
-        li {
-          text-align: center;
-          float: left;
-          &:nth-child(3) a {
-            padding: 7px 14px;
-          }
-          a {
-            color: #fff;
-            display: block;
-            padding: 7px 21px;
-            &.active {
-              background: #e05b03;
-              color: #fff;
-            }
-            &:before {
-              display: block !important;
-              margin-bottom: 2px;
-            }
-            &.feed:before {
-              @include fa;
-              @include fa(inbox);
-              @include fa-size(1.3em);
-            }
-            &.deals:before {
-              @include fa;
-              @include fa(flag);
-              @include fa-size(1.3em);
-            }
-            &.next:before {
-              @include fa;
-              @include fa(check-circle);
-              @include fa-size(1.3em);
-            }
-            &.ask:before {
-              @include fa;
-              @include fa(comment);
-              @include fa-size(1.3em);
-            }
-          }
-        }
-      }
-    }
-    &.prev-next {
-      a {
-        color: #fff;
-        line-height: 46px;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        &:hover {
-          color: #fff;
-        }
-        &.prev {
-          left: 20px;
-          &:before {
-            @include fa;
-            @include fa(caret-left);
-            @include fa-size(1.5em);
-            @include fa-right(7px);
-            @include fa-align(middle);
-            padding-bottom: 4px;
-          }
-        }
-        &.next {
-          right: 20px;
-          &:after {
-            @include fa;
-            @include fa(caret-right);
-            @include fa-size(1.5em);
-            @include fa-left(7px);
-            @include fa-align(middle);
-            padding-bottom: 3px;
-          }
-        }
-      }
-      .pending {
-        background: $col-orange-active;
-        color: #fff;
-        text-align: center;
-        padding: 10px 15px;
-        width: 90px;
-        margin: 0 auto;
-        h2 {
+        margin-bottom: 10px;
+        &:last-child {
           margin-bottom: 0;
         }
-        small {
-          color: #fff;
-        }
-      }
-    }
-  }
-  /* ERROR STYLES ------------
-  ----------------------------*/
-  .Report_Label{
-    padding: 10px;
-    padding-left: 22px;
-  }
-
-  .error-list {
-    background: #dc4526;
-    padding: 5px;
-    display: block;
-    text-align: center;
-    color: #fff;
-    border-top: solid 3px $col-grey;
-  }
-
-
-  /* RETINA IMAGES --------------------------
-  -------------------------------------------*/
-  @media (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi) {
-    button .salesforce:before {
-      background: url(../media/images/salesforce-logo@2x.png) no-repeat;
-      background-size: 100% auto;
-    }
-  }
-
-
-
-
-
-  /* MEDIA QUERIES --------------------------
-  -------------------------------------------*/
-
-  /* min-width 768 --------------------------*/
-  @media only screen and (min-width: 768px) {
-    .Report_Label {
-      display: none;
-    }
-
-    .Report_Label_Non_Mobile {
-      padding: 10px;
-      padding-left: 23px;
-    }
-  }
-
-  /* max-width 767 --------------------------*/
-  @media only screen and (max-width: 767px) {
-    body {
-      margin-bottom: 46px;
-    }
-
-    .match-height.column, .match-height {
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-    }
-
-    .Report_Label {
-      padding: 10px;
-      background: #e5e5e5;
-      text-align: center;
-    }
-
-    .Report_Label_Non_Mobile {
-      display: none;
-    }
-
-    header {
-      padding-left: 10px;
-      padding-right: 10px;
-      height: 46px;
-      .logo {
-        width: 43px;
-        height: 36px;
-        margin: 5px 0;
-        float: right;
-      }
-      .main-nav {
-        display: none;
-      }
-      &.back {
-        height: 46px;
-        padding-left: 20px;
-        .logo {
-          top: 0;
-          right: 10px;
-          left: inherit;
-          -webkit-transform: none;
-          transform: none;
-          position: absolute;
-        }
-        .back-btn {
-          display: block;
-        }
-      }
-    }
-
-    .feed-headerbar h1 {
-      display: none;
-    }
-    .feed {
-      &-filter {
-        display: flex;
-        justify-content: center;
-        padding: 25px 0 10px 0;
-        border-top: none;
-        margin-top: 0;
-        a {
-          border-left: none;
-        }
-      }
-      .row {
-        .feed-details {
-          display: flex;
-          h2 {
-            margin-top: 0;
-          }
-          .timestamp {
-            position: static;
-            transform: none;
-          }
-          .caret {
-            display: block;
-            top: 50%;
-            transform: translateY(-50%);
+        &.sign-out {
+          background: $col-red;
+          border-color: #b3391b;
+          &:hover {
+            background: #b3391b;
           }
         }
       }
-      .tabs label {
-        display: block;
-        float: left;
-        width: 50%;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-        border-bottom: 1px solid $col-grey-stroke;
-        padding: 10px 0;
-        background: $col-orange-highlight;
+    }
+  }
+  .edit-expanded {
+    padding: 15px 20px 20px 20px;
+    background: $col-grey;
+    border-bottom: 1px solid $col-grey-stroke;
+    clear: both;
+    small {
+      display: block;
+      margin-bottom: 15px;
+      &.error {
+        margin: 0 0 -5px 0;
+        width: 280px;
         box-sizing: border-box;
-        small {
-          color: $col-orange;
-        }
-      }
-      .tabs [id^="tab"]:checked + label {
-        background: #fff;
-        border-bottom: none;
-        small {
-          color: $text-light;
-          font-weight: normal;
-        }
-      }
-      #tab1:checked ~ #tab-content1 {
-        display: block;
-      }
-      #tab2:checked ~ #tab-content2 {
-        border-top: none;
-        margin-top: 0;
-      }
-      label[for=tab1] {
-        margin-left: 0;
-        padding-right: 0;
-        margin-right: 0;
       }
     }
-
-    h1 {
-      position: absolute;
-      top: 13px;
-      color: #fff;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
-      font-size: 1.8rem;
-      margin: 0;
+    input {
+      height: 38px;
+      box-sizing: border-box;
+      padding: 5px;
+      border: 1px solid #dbdbdb;
+      margin-bottom: 10px;
+      width: 280px;
     }
-
-    .ask {
-      &-details {
-        max-width: 100%;
-      }
-      .ask-info {
-        padding: 0 20px;
-      }
-      &.deal {
-        .ask-info {
-          padding: 30px 20px;
-        }
-      }
-    }
-
-    main {
-      padding: 0;
-      max-width: 100%;
-    }
-
-    footer nav ul li a.feed:active,
-    footer nav ul li a.deals:active,
-    footer nav ul li a.next:active,
-    footer nav ul li a.profile:active {
-      background: #e05b03;
-    }
-    .row {
-      .week.one, .week.two, .week.three, .week.four {
-        width: 15px;
-      }
-      .feed-details, .details {
-        h2 {
-          margin-top: 0;
-          &:first-child {
-            font-size: 1.4rem;
-          }
-        }
-        .caret {
-          display: block;
-        }
-        .caret:before {
-          top: 24%;
-          -webkit-transform: translateY(-24%);
-          transform: translateY(-24%);
-        }
-      }
-      .feed-details {
-        .timestamp {
-          position: static;
-          display: block;
-          margin-top: 5px;
-          transform: none;
-        }
-      }
-    }
-
-    .questions {
-      position: static;
-      -webkit-transform: none;
-      transform: none;
-      clear: both;
-    }
-
-    /* Deals List --------------------------------------- */
-
-    .row.deals-list {
-      border-top: none;
-      .details {
-        .text {
-          margin-top: 0;
-          width: 85%;
-        }
-        h2 {
-          display: block;
-          margin-right: 0;
-        }
-        .close-date {
-          position: relative;
-          right: 0;
-          top: 0;
-          transform: none;
-          width: 100%;
-          .deal-activity {
-            right: 5px;
-          }
-        }
-        .caret {
-          display: block;
-        }
-      }
-    }
-
-    /* Profile / Dashboard ---------------------------------- */
-
-    .profile {
-      aside {
-        padding: 10px;
-        text-align: left;
-        background: $col-grey;
-        border-bottom: 1px solid $col-grey-stroke;
-        h2 {
-          margin-bottom: 4px;
-        }
-        img {
-          width: 60px;
-          height: 60px;
-          float: left;
-          margin-right: 10px;
-          margin-bottom: 0;
-        }
-        .profile-title {
-          margin-bottom: 4px;
-        }
-      }
-      .details {
-        border-left: none;
-        .match-height {
-          flex-direction: row;
-        }
-        .activity {
-          .graph {
-            width: 310px;
-          }
-          .week {
-            width: 22px;
-          }
-          .week.one {
-            left: 0;
-            background: $col-lt-blue;
-          }
-          .week.two {
-            left: 24px;
-            background: $col-lt-blue;
-          }
-          .week.three {
-            left: 48px;
-            background: $col-med-blue;
-          }
-          .week.four {
-            left: 72px;
-            background: $col-blue;
-          }
-          .week.five {
-            left: 96px;
-            background: $col-blue;
-          }
-          .week.six {
-            left: 120px;
-            background: $col-lt-blue;
-          }
-          .week.seven {
-            left: 144px;
-            background: $col-blue;
-          }
-          .week.eight {
-            left: 168px;
-            background: $col-blue;
-          }
-          .week.nine {
-            left: 192px;
-            background: $col-med-blue;
-          }
-          .week.ten {
-            left: 216px;
-            background: $col-med-blue;
-          }
-          .week.eleven {
-            left: 240px;
-            background: $col-lt-blue;
-          }
-          .week.twelve {
-            left: 264px;
-            background: $col-lt-blue;
-          }
-          .week.thirteen {
-            left: 288px;
-            background: $col-blue;
-          }
-        }
-        .questions {
-          .answered, .asked {
-            height: 34px;
-            line-height: 34px;
-            width: 50px;
-          }
-        }
-      }
-    }
-
-    /* Deal Detail ------------------------------------ */
-
-    .deal-title {
-      background: $col-grey;
-      text-align: center;
-      padding: 10px 0;
-      position: relative;
-      border-bottom: 1px solid $col-grey-stroke;
-      .favorite-mobile {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        &:before {
-          @include fa;
-          @include fa(star);
-          @include fa-size(3.5rem);
-          color: #d6d6d6;
-        }
-      }
-      small {
-        margin: 0 0 5px 0;
-        display: block;
-      }
-      h1 {
-        position: static;
-        transform: none;
-        color: $text-primary;
-        width: 70%;
-        margin: 0 auto;
-      }
-      .account {
-        position: absolute;
-        top: -34px;
-        color: #fff;
-        text-transform: none;
-        font-size: 1.8rem;
-        letter-spacing: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-left: 0;
-      }
-      .deal-owner {
-        margin: 10px auto 0 auto;
-        display: block;
-        width: 70%;
-      }
-    }
-
-    .ask {
-      .ask-details {
-        width: 100%;
-        max-width: none;
-        h1 {
-          position: static;
-          transform: none;
-          color: $text-primary;
-        }
-      }
-      .tabs {
-        max-width: inherit;
-      }
-      .tab-content {
-        float: none;
-        clear: both;
-      }
-    }
-
-    .deal-detail {
-      aside {
-        padding: 0;
-        border-top: none;
-        img, small {
-          display: none;
-        }
-        h2 {
-          display: none;
-        }
-        .favorite {
-          display: none;
-        }
-      }
-      .details {
-        border-left: none;
-        .deal-btns {
-          border-top: none;
-          padding-top: 0;
-          text-align: center;
-          button {
-            width: 145px;
-            display: inline-block;
-            &:first-child {
-              margin-right: 6px;
-            }
-          }
-        }
-        .account-value, .close-date {
-          float: left;
-          width: 50%;
-          margin-top: 0;
-          box-sizing: border-box;
-        }
-        .close-date {
-          border-left: 1px solid $col-grey-stroke;
-        }
-        .plays {
-          .questions {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-          }
-        }
-        .salesforce-button {
-          border-left: none;
-          padding: 20px 0;
-          button.salesforce {
-            width: 300px;
-          }
-        }
-      }
-    }
-
-    .play-feed {
+    button {
+      width: 280px;
       display: block;
     }
+  }
+}
 
-    .deal-questions {
-      margin: 0;
-      border-top: none;
-      .expanded {
-        .deal-questions-filter {
-          display: flex;
-          justify-content: center;
-          padding: 10px 0;
-          a {
-            border-left: none;
+
+
+
+
+/* FOOTER ----------------------------------
+-------------------------------------------*/
+footer.nav {
+  display: none;
+}
+footer {
+  padding: 0;
+  background: $col-orange;
+  height: 56px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  nav {
+    ul {
+      width: 320px;
+      margin: 0 auto;
+      li {
+        text-align: center;
+        float: left;
+        &:nth-child(3) a {
+          padding: 7px 14px;
+        }
+        a {
+          color: #fff;
+          display: block;
+          padding: 7px 21px;
+          &.active {
+            background: #e05b03;
+            color: #fff;
           }
-        }
-      }
-      .play-header {
-        padding-left: 20px;
-        h2 {
-          margin-bottom: 0;
-        }
-      }
-      .questions {
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-      }
-      .expanded {
-        .qq {
-          padding: 10px;
-          .share {
-            right: 10px;
+          &:before {
+            display: block !important;
+            margin-bottom: 2px;
           }
-        }
-        .qq-answer {
-          padding: 10px;
-          margin: 0 11px 0 30px;
+          &.feed:before {
+            @include fa;
+            @include fa(inbox);
+            @include fa-size(1.3em);
+          }
+          &.deals:before {
+            @include fa;
+            @include fa(flag);
+            @include fa-size(1.3em);
+          }
+          &.next:before {
+            @include fa;
+            @include fa(check-circle);
+            @include fa-size(1.3em);
+          }
+          &.ask:before {
+            @include fa;
+            @include fa(comment);
+            @include fa-size(1.3em);
+          }
         }
       }
     }
+  }
+  &.prev-next {
+    a {
+      color: #fff;
+      line-height: 46px;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      &:hover {
+        color: #fff;
+      }
+      &.prev {
+        left: 20px;
+        &:before {
+          @include fa;
+          @include fa(caret-left);
+          @include fa-size(1.5em);
+          @include fa-right(7px);
+          @include fa-align(middle);
+          padding-bottom: 4px;
+        }
+      }
+      &.next {
+        right: 20px;
+        &:after {
+          @include fa;
+          @include fa(caret-right);
+          @include fa-size(1.5em);
+          @include fa-left(7px);
+          @include fa-align(middle);
+          padding-bottom: 3px;
+        }
+      }
+    }
+    .pending {
+      background: $col-orange-active;
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      width: 90px;
+      margin: 0 auto;
+      h2 {
+        margin-bottom: 0;
+      }
+      small {
+        color: #fff;
+      }
+    }
+  }
+}
+/* ERROR STYLES ------------
+----------------------------*/
+.Report_Label{
+  padding: 10px;
+  padding-left: 22px;
+}
 
-    .row .feed-details {
+.error-list {
+  background: #dc4526;
+  padding: 5px;
+  display: block;
+  text-align: center;
+  color: #fff;
+  border-top: solid 3px $col-grey;
+}
+
+
+/* RETINA IMAGES --------------------------
+-------------------------------------------*/
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  button .salesforce:before {
+    background: url(../media/images/salesforce-logo@2x.png) no-repeat;
+    background-size: 100% auto;
+  }
+}
+
+
+
+
+
+/* MEDIA QUERIES --------------------------
+-------------------------------------------*/
+
+
+/* min-width 768 --------------------------*/
+@media only screen and (min-width: 768px) {
+  .Report_Label {
+    display: none;
+  }
+
+  .Report_Label_Non_Mobile {
+    padding: 10px;
+    padding-left: 23px;
+  }
+}
+
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+
+  body {
+    margin-bottom: 46px;
+  }
+
+  main {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  h1 {
+    position: absolute;
+    top: 13px;
+    color: #fff;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  .match-height.column, .match-height {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .Report_Label {
+    padding: 10px;
+    background: #e5e5e5;
+    text-align: center;
+  }
+
+  .Report_Label_Non_Mobile {
+    display: none;
+  }
+
+
+/* FEED ------------------------------------
+--------------------------------------------*/
+  .feed-headerbar h1 {
+    display: none;
+  }
+
+  .feed {
+    &-filter {
+      display: flex;
+      justify-content: center;
+      padding: 25px 0 10px 0;
+      border-top: none;
+      margin-top: 0;
+      a {
+        border-left: none;
+      }
+    }
+    .feed-details {
       display: flex;
       line-height: 1.8rem;
       h2 {
+        margin-top: 0;
         margin-bottom: 8px;
       }
       .text {
         width: 72%;
       }
+      .timestamp {
+        position: static;
+        transform: none;
+        display: block;
+      }
+      .caret {
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
+    .tabs label {
+      display: block;
+      float: left;
+      width: 50%;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: 1px solid $col-grey-stroke;
+      padding: 10px 0;
+      background: $col-orange-highlight;
+      box-sizing: border-box;
+      small {
+        color: $col-orange;
+      }
+    }
+    .tabs [id^="tab"]:checked + label {
+      background: #fff;
+      border-bottom: none;
+      small {
+        color: $text-light;
+        font-weight: normal;
+      }
+    }
+    #tab1:checked ~ #tab-content1 {
+      display: block;
+    }
+    #tab2:checked ~ #tab-content2 {
+      border-top: none;
+      margin-top: 0;
+    }
+    label[for=tab1] {
+      margin-left: 0;
+      padding-right: 0;
+      margin-right: 0;
+    }
+  }
 
-    .login {
+
+  /* ASK ------------------------------------
+  --------------------------------------------*/
+  .ask.deal {
+    .ask-info {
+      padding: 30px 20px;
+    }
+  }
+
+  .ask {
+    .ask-details {
+      padding: 0 20px;
+      box-sizing: border-box;
+      max-width: none;
       h1 {
         position: static;
         transform: none;
         color: $text-primary;
-        margin: 25px 0 15px 0;
-        font-size: 2rem;
-      }
-      footer.nav {
-        display: none;
       }
     }
-
-    .import-title,
-    .login form.import {
-      margin-top: 20px;
+    .ask-info {
+      padding: 0 20px;
     }
-
-    .answer {
-      small {
-        margin-top: 30px;
-      }
+    .tabs {
+      max-width: inherit;
     }
+    .tab-content {
+      float: none;
+      clear: both;
+    }
+  }
 
-    .send-question {
-      margin-top: 20px;
-      form {
-        fieldset {
-          p.question {
-            font-size: 1.4rem;
-          }
-        }
-      }
-      div.question {
-        margin: 0 0 20px 0;
-        h2 {
-          font-size: 1.8rem;
-          margin-top: 5px;
-        }
-      }
-      .reps {
-        li {
+  .send-question {
+    margin-top: 20px;
+    form {
+      fieldset {
+        p.question {
           font-size: 1.4rem;
         }
       }
     }
-
-    .rep-list {
-      width: 100%;
+    div.question {
+      margin: 0 0 20px 0;
+      h2 {
+        font-size: 1.8rem;
+        margin-top: 5px;
+      }
+    }
+    .reps {
       li {
         font-size: 1.4rem;
       }
     }
+  }
 
-    .settings {
-      .row.btns {
-        background: $col-grey;
-        button {
-          margin: 0 auto 10px auto;
+  .rep-list {
+    width: 100%;
+    li {
+      font-size: 1.4rem;
+    }
+  }
+
+
+  /* DEALS LIST -------------------------------
+   --------------------------------------------*/
+  .deals-list {
+    border-top: none;
+    .details {
+      .text {
+        margin-top: 0;
+        width: 85%;
+      }
+      h2 {
+        display: block;
+        margin-right: 0;
+      }
+      .close-date {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        .deal-activity {
+          right: 5px;
         }
       }
-    }
-
-    footer {
-      height: 46px;
-      &.nav {
+      .caret {
         display: block;
       }
-      &.prev-next {
-        .pending {
-          padding: 5px 0 10px 0;
-        }
-      }
     }
   }
 
 
-
-  /* max-width 568 --------------------------*/
-  @media only screen and (max-width: 568px) {
-    div.profile {
-      aside {
-        img {
-          width: 40px;
-          height: 40px;
-        }
+  /* PROFILE ------------------------------------
+   --------------------------------------------*/
+  .profile {
+    aside {
+      padding: 10px;
+      text-align: left;
+      background: $col-grey;
+      border-bottom: 1px solid $col-grey-stroke;
+      h2 {
+        margin-bottom: 4px;
       }
-    }
-
-    .feed {
-      .row {
-        .feed-details {
-          display: flex;
-          h2 {
-            font-size: 1.4rem;
-          }
-          img {
-            width: 35px;
-            height: 35px;
-            margin-right: 5px;
-          }
-          .timestamp {
-            position: static;
-            transform: none;
-            margin-top: 0;
-          }
-          .caret {
-            display: block;
-            top: 50%;
-            transform: translateY(-50%);
-          }
-        }
-      }
-    }
-
-    .row.deals-list, .feed .row {
-      aside {
+      img {
         width: 60px;
+        height: 60px;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 0;
+      }
+      .profile-title {
+        margin-bottom: 4px;
       }
     }
-
-    .deal-detail {
-      .qq-buttons {
-        button {
-          width: 44.5%;
+    .profile-details {
+      border-left: none;
+      .match-height {
+        flex-direction: row;
+      }
+      .activity {
+        .graph {
+          width: 310px;
+        }
+        .week {
+          width: 22px;
+        }
+        .week.one {
+          left: 0;
+          background: $col-lt-blue;
+        }
+        .week.two {
+          left: 24px;
+          background: $col-lt-blue;
+        }
+        .week.three {
+          left: 48px;
+          background: $col-med-blue;
+        }
+        .week.four {
+          left: 72px;
+          background: $col-blue;
+        }
+        .week.five {
+          left: 96px;
+          background: $col-blue;
+        }
+        .week.six {
+          left: 120px;
+          background: $col-lt-blue;
+        }
+        .week.seven {
+          left: 144px;
+          background: $col-blue;
+        }
+        .week.eight {
+          left: 168px;
+          background: $col-blue;
+        }
+        .week.nine {
+          left: 192px;
+          background: $col-med-blue;
+        }
+        .week.ten {
+          left: 216px;
+          background: $col-med-blue;
+        }
+        .week.eleven {
+          left: 240px;
+          background: $col-lt-blue;
+        }
+        .week.twelve {
+          left: 264px;
+          background: $col-lt-blue;
+        }
+        .week.thirteen {
+          left: 288px;
+          background: $col-blue;
         }
       }
-    }
-  }
-
-  /* max-width 420 --------------------------*/
-  @media only screen and (max-width: 420px) {
-    .row {
-      .details {
-        padding: 15px 10px;
-        img {
-          width: 40px;
-          height: 40px;
-        }
-      }
-    }
-
-    .details .plays {
       .questions {
         .answered, .asked {
-          width: 55px;
+          height: 34px;
+          line-height: 34px;
+          width: 50px;
         }
       }
     }
+  }
 
-    .details {
-      .questions {
-        small {
-          width: 100%;
-        }
-      }
-      .caret:before {
-        top: 13%;
-        -webkit-transform: translateY(-13%);
-        transform: translateY(-13%);
+
+  /* DEAL DETAIL ------------------------------
+  --------------------------------------------*/
+  .deal-title {
+    background: $col-grey;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    border-bottom: 1px solid $col-grey-stroke;
+    .favorite-mobile {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(3.5rem);
+        color: #d6d6d6;
       }
     }
-    .deal-detail {
+    small {
+      margin: 0 0 5px 0;
+      display: block;
+    }
+    h1 {
+      position: static;
+      transform: none;
+      color: $text-primary;
+      width: 70%;
+      margin: 0 auto;
+    }
+    .account {
+      position: absolute;
+      top: -34px;
+      color: #fff;
+      text-transform: none;
+      font-size: 1.8rem;
+      letter-spacing: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-left: 0;
+    }
+    .deal-owner {
+      margin: 10px auto 0 auto;
+      display: block;
+      width: 70%;
+    }
+  }
+
+  .deal-detail {
+    aside {
+      padding: 0;
+      border-top: none;
+      img, small {
+        display: none;
+      }
       h2 {
-        font-size: 1.4rem;
+        display: none;
+      }
+      .favorite {
+        display: none;
       }
     }
-
-
+    .deal-details {
+      border-left: none;
+      .deal-btns {
+        border-top: none;
+        padding-top: 0;
+        text-align: center;
+        button {
+          width: 145px;
+          display: inline-block;
+          &:first-child {
+            margin-right: 6px;
+          }
+        }
+      }
+      .account-value, .close-date {
+        float: left;
+        width: 50%;
+        margin-top: 0;
+        box-sizing: border-box;
+      }
+      .close-date {
+        border-left: 1px solid $col-grey-stroke;
+      }
+      .plays {
+        .questions {
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+      }
+      .salesforce-button {
+        border-left: none;
+        padding: 20px 0;
+        button.salesforce {
+          width: 300px;
+        }
+      }
+    }
   }
 
-  @media only screen and (min-width: 800px) {
-    footer nav ul li a:hover {
-      background: $col-orange-active;
+
+  /* PLAY FEED -------------------------------
+  --------------------------------------------*/
+  .play-feed {
+    display: block;
+  }
+
+  .deal-questions {
+    margin: 0;
+    border-top: none;
+    .expanded {
+      .deal-questions-filter {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        a {
+          border-left: none;
+        }
+      }
     }
-    a:hover {
-      color: $col-orange-active;
+    .play-header {
+      padding-left: 20px;
+      h2 {
+        margin-bottom: 0;
+      }
+    }
+    .questions {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    .expanded {
+      .qq {
+        padding: 10px;
+        .share {
+          right: 10px;
+        }
+      }
+      .qq-answer {
+        padding: 10px;
+        margin: 0 11px 0 30px;
+      }
     }
   }
+
+
+  /* LOGIN -----------------------------------
+  --------------------------------------------*/
+  .login {
+    h1 {
+      position: static;
+      transform: none;
+      color: $text-primary;
+      margin: 25px 0 15px 0;
+      font-size: 2rem;
+    }
+    footer.nav {
+      display: none;
+    }
+  }
+
+  .import-title,
+  .login form.import {
+    margin-top: 20px;
+  }
+
+
+  /* ANSWER ----------------------------------
+  --------------------------------------------*/
+  .answer {
+    small {
+      margin-top: 30px;
+    }
+  }
+
+
+  /* SETTINGS --------------------------------
+  --------------------------------------------*/
+  .settings {
+    .row.btns {
+      background: $col-grey;
+      button {
+        margin: 0 auto 10px auto;
+      }
+    }
+  }
+
+
+  /* FOOTER ----------------------------------
+  --------------------------------------------*/
+  footer {
+    height: 46px;
+    &.nav {
+      display: block;
+    }
+    &.prev-next {
+      .pending {
+        padding: 5px 0 10px 0;
+      }
+    }
+  }
+
+}
+
+
+/* max-width 568 --------------------------*/
+@media only screen and (max-width: 568px) {
+  .profile {
+    aside {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .feed {
+    .row {
+      .feed-details {
+        display: flex;
+        h2 {
+          font-size: 1.4rem;
+        }
+        img {
+          width: 35px;
+          height: 35px;
+          margin-right: 5px;
+        }
+        .timestamp {
+          position: static;
+          transform: none;
+          margin-top: 0;
+        }
+        .caret {
+          display: block;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  .deals-list,
+  .feed .row {
+    aside {
+      width: 60px;
+    }
+  }
+
+}
+
+
+/* max-width 420 --------------------------*/
+@media only screen and (max-width: 420px) {
+  .deals-list {
+    .details {
+      padding: 15px 10px;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .deal-detail {
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+}
 
 
 

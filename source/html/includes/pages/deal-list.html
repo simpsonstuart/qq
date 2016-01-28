@@ -1,17 +1,17 @@
 <h1>My Deals</h1>
 
-<div ng-repeat="deal in ctrl.deals | orderBy: 'close_date'" class="row deals-list">
+<div class="deals-list">
     <aside>
         <!-- Apply class active to deals that a user marks as favorite. Should toggle favorite and not favorite -->
         <span class="favorite active"></span>
     </aside>
     <div class="details clearfix">
         <div class="text">
-            <h2><a ui-sref="root.deals.detail({deal_id: deal.id})">{{deal.name}}</a></h2>
+            <h2><a ui-sref="root.deals.detail({deal_id: deal.id})">Sony Tech Refresh</a></h2>
             <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
         </div>
         <div class="close-date clearfix">
-            <small ng-if="deal.close_date > ctrl.dateNow">closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>
+            <small>closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <small class="overdue" ng-if="deal.close_date < ctrl.dateNow">Past Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <small class="caution" ng-if="deal.close_date == ctrl.dateNow">Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <span class="deal-activity">12</span>
