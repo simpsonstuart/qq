@@ -758,13 +758,32 @@ form.import {
       }
     }
     .feed-details {
-      padding: 15px 10px 15px 0;
+      padding: 10px 10px 10px 0;
       &:hover {
         background: $col-orange-highlight;
         cursor: pointer;
       }
       &.sent {
         padding-left: 10px;
+      }
+      p {
+        line-height: 18px;
+        font-weight: 700;
+        &.reminder {
+          color: $col-blue;
+        }
+        span {
+          color: #fff;
+          background: $col-blue;
+          height: 17px;
+          min-width: 10px;
+          border-radius: 15px;
+          display: inline-block;
+          font-size: 1.2rem;
+          text-align: center;
+          padding: 0 4px;
+          margin-left: 3px;
+        }
       }
     }
     .feed-details, .details {
@@ -781,9 +800,7 @@ form.import {
         width: 60px;
         height: 60px;
       }
-      h2 {
-        margin-top: 5px;
-      }
+
       .timestamp {
         position: absolute;
         top: 50%;
@@ -2982,6 +2999,32 @@ form.import {
         img {
           width: 40px;
           height: 40px;
+        }
+      }
+    }
+
+    .feed {
+      .row {
+        .feed-details {
+          display: flex;
+          h2 {
+            margin-top: 0;
+          }
+          img {
+            width: 35px;
+            height: 35px;
+            margin-right: 5px;
+          }
+          .timestamp {
+            position: static;
+            transform: none;
+            margin-top: 0;
+          }
+          .caret {
+            display: block;
+            top: 50%;
+            transform: translateY(-50%);
+          }
         }
       }
     }
