@@ -695,19 +695,6 @@ form.import {
 }
 
 .feed {
-  #tab-content2 {
-    .feed-details {
-      &:hover {
-        background: #fff;
-      }
-    }
-    .feed-details.sent-answered:hover {
-      background: $col-orange-highlight;
-    }
-  }
-}
-
-.feed {
   .row {
     border-bottom: 1px solid $col-grey-stroke;
     width: 100%;
@@ -744,7 +731,6 @@ form.import {
     }
     &:hover {
       cursor: pointer;
-      background: $col-orange-highlight;
     }
     &.sent {
       padding-left: 10px;
@@ -825,10 +811,19 @@ form.import {
 
 /* DEAL FEED ------------------------------
 -------------------------------------------*/
+.deal-feed-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  h1 {
+    margin: 0;
+  }
+}
+
 .search {
   width: 300px;
-  margin-left: 20px;
   position: relative;
+  margin-top: 5px;
   span {
     position: absolute;
     top: 8px;
@@ -846,7 +841,15 @@ form.import {
   }
 }
 
-
+/* Shares styles with .feed */
+.feed.deal {
+  .feed-filter {
+    padding-top: 10px;
+  }
+  h2 {
+    margin-bottom: 5px;
+  }
+}
 
 
 
@@ -2493,7 +2496,7 @@ footer {
         margin-bottom: 8px;
       }
       .text {
-        width: 72%;
+        width: 78%;
       }
       .timestamp {
         position: static;
@@ -2540,6 +2543,33 @@ footer {
       margin-left: 0;
       padding-right: 0;
       margin-right: 0;
+    }
+  }
+
+
+  /* DEAL FEED --------------------------------
+    --------------------------------------------*/
+  .deal-feed-title {
+    background: $col-grey;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    border-bottom: 1px solid $col-grey-stroke;
+    display: block;
+    small {
+      margin: 0 0 5px 0;
+      display: block;
+    }
+    h1 {
+      position: static;
+      transform: none;
+      color: $text-primary;
+      width: 70%;
+      margin: 0 auto;
+    }
+    .search {
+      margin: 10px auto 0 auto;
+      height: 39px;
     }
   }
 
@@ -2956,38 +2986,45 @@ footer {
   }
 
   .feed {
-    .row {
-      .feed-details {
-        display: flex;
-        h2 {
-          font-size: 1.4rem;
-        }
-        img {
+    .feed-details {
+      display: flex;
+      h2 {
+        font-size: 1.4rem;
+      }
+      img {
+        width: 35px;
+        height: 35px;
+        margin-right: 5px;
+      }
+      .timestamp {
+        position: static;
+        transform: none;
+        margin-top: 0;
+      }
+      .text {
+        width: 80%;
+      }
+      .caret {
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &.sent-answered {
+        span {
           width: 35px;
-          height: 35px;
           margin-right: 5px;
-        }
-        .timestamp {
-          position: static;
-          transform: none;
           margin-top: 0;
-        }
-        .caret {
-          display: block;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-        &.sent-answered {
-          span {
-            width: 35px;
-            margin-right: 5px;
-            margin-top: 0;
-            &:before {
-              @include fa-size(2rem);
-            }
+          &:before {
+            @include fa-size(2rem);
           }
         }
       }
+    }
+  }
+
+  .feed.deal {
+    h2 {
+      line-height: 1.8rem;
     }
   }
 
@@ -3009,6 +3046,14 @@ footer {
       img {
         width: 40px;
         height: 40px;
+      }
+    }
+  }
+
+  .feed {
+    .feed-details {
+      .text {
+        width: 74%;
       }
     }
   }
