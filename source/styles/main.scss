@@ -823,6 +823,33 @@ form.import {
 
 
 
+/* DEAL FEED ------------------------------
+-------------------------------------------*/
+.search {
+  width: 300px;
+  margin-left: 20px;
+  position: relative;
+  span {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    &:before {
+      @include fa;
+      @include fa(search);
+      @include fa-size(2rem);
+      color: $text-light;
+    }
+  }
+  input {
+    border-radius: 100px;
+    padding-left: 35px;
+  }
+}
+
+
+
+
+
 
 
 
