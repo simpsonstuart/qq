@@ -1,72 +1,68 @@
-<h1 class="play-feed">MANT Feed</h1>
+<h1 class="play-feed">Deal Feed</h1>
 <div class="deal-title">
     <small ng-bind="ctrl.deal.company_name"></small>
     <h1 ng-bind="ctrl.deal.name"></h1>
 </div>
-<div class="deal-questions">
-    <div ng-repeat="(playbook_name, playbook) in ctrl.feed">
-        <div ng-repeat="(play_name, play) in playbook">
-            <div class="play-header" ng-class= "{border-top:$first}">
-            <small>{{playbook_name}}</small>
-            <h2>{{play_name}}</h2>
-        </div>
-        <div ng-repeat="sub_play in play.data">
-            <div class="row">
-                <h2><a class="accordion" ng-class="{ active: ctrl.checkExpansion(play_name, sub_play.child_play) }"
-                       ng-click="ctrl.toggle(play_name, sub_play.child_play)">{{sub_play.child_play}}</a></h2>
+<div class="feed">
 
-                <div class="questions clearfix">
-                    <div class="answered">{{sub_play.child_answer_count}}</div>
-                    <div class="asked">{{sub_play.child_question_count}}</div>
-                </div>
+    <div class="row">
+      <div class="feed-filter">
+        <a href="#" class="questions">Questions</a>
+        <a href="#" class="comments">Comments</a>
+        <a href="#" class="reminders active">Reminders</a>
+      </div>
+      <div class="flex">
+        <aside>
+          <div class="date">
+            <span>23</span>
+            <small>jan</small>
+          </div>
+        </aside>
+        <div class="feed-detail-wrapper">
+          <div class="feed-details clearfix pending">
+            <img ng-src="{{item.from_user_picture}}">
+            <div class="text">
+              <h2>Asked you a question</h2>
+              <a href="#">Sony Tech Refresh</a>
+              <small class="timestamp">Just Now</small>
             </div>
-            <div ng-show="ctrl.checkExpansion(play_name, sub_play.child_play)" class="expanded" id="money">
-                <!-- Filter should toggle on and off -->
-                <div class="deal-questions-filter">
-                  <a href="#" class="not-asked">Not Asked</a>
-                  <a href="#" class="pending">Pending Answer</a>
-                  <a href="#" class="answered active">Answered</a>
-                </div>
-                <button ui-sref="root.ask-play-questions">Ask {{sub_play.child_play}} Questions</button>
-
-                <div ng-repeat="question in ctrl.questionsForPlay(playbook_name, play_name, sub_play.child_play)">
-                    <div class="qq">
-                        <p class="answered">{{question.question}}</p>
-                        <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
-                        </small>
-                        <a ui-sref="root.ask-reps" class="share"></a>
-                    </div>
-                    <div class="qq">
-                      <p class="pending">{{question.question}}</p>
-                      <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
-                      </small>
-                      <a ui-sref="root.ask-reps" class="share"></a>
-                    </div>
-                    <div class="qq">
-                      <p class="not-asked">{{question.question}}</p>
-                      <small>By {{question.questioner_user_name}} | {{ctrl.formatDate(question.question_date)}}
-                      </small>
-                      <a ui-sref="root.ask-reps" class="share"></a>
-                    </div>
-                    <div ng-repeat="answer in question.answers">
-                        <div class="qq-answer">
-                            <p><strong>{{answer.answer_user_name}}</strong> {{ctrl.formatAnswer(answer.answer)}}</p>
-                            <small class="timestamp">{{ctrl.formatDate(answer.answer_date)}} | <a href="#">Comment</a></small>
-                        </div>
-                        <div class="qq-answer pending">
-                          <p><strong>Username</strong> has not replied</p>
-                          <small><a href="#">Send reminder</a></small>
-                        </div>
-                        <div ng-repeat="comment in answer.comments" class="qq-comment">
-                            <p class="comment-icon">{{comment.comment_user_name}} commented</p>
-
-                            <p>{{comment.comment}}</p>
-                            <small class="timestamp">{{ctrl.formatDate(comment.comment_date)}}</small>
-                        </div>
-                    </div>
-                </div>
+            <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+          </div>
+          <div class="feed-details clearfix sent">
+            <div class="text">
+              <h2>You asked Mark Leder a question</h2>
+              <a href="#">Sony Tech Refresh</a>
+              <small class="timestamp">2 hours ago</small>
             </div>
+          </div>
+          <div class="feed-details clearfix">
+            <img ng-src="{{item.from_user_picture}}">
+            <div class="text">
+              <h2>Sent you a reminder</h2>
+              <a href="#">Sony</a>
+              <small class="timestamp">3 hours ago</small>
+            </div>
+            <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+          </div>
+          <div class="feed-details clearfix pending">
+            <img ng-src="{{item.from_user_picture}}">
+            <div class="text">
+              <h2>Sent Claire Miller 3 questions</h2>
+              <a href="#">Sony Tech</a>
+              <small class="timestamp">10 hours ago</small>
+            </div>
+            <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+          </div>
+          <div class="feed-details clearfix pending">
+            <img ng-src="{{item.from_user_picture}}">
+            <div class="text">
+              <h2>commented on Dan Richton's answer</h2>
+              <a href="#">Sony Tech</a>
+              <small class="timestamp">10 hours ago</small>
+            </div>
+            <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-</div>
+  </div>

@@ -763,6 +763,9 @@ form.import {
         background: $col-orange-highlight;
         cursor: pointer;
       }
+      &.sent {
+        padding-left: 10px;
+      }
     }
     .feed-details, .details {
       border-left: 3px solid $col-grey-stroke;
@@ -1531,7 +1534,7 @@ form.import {
         }
       }
       .caret {
-        top: 15px;
+        top: 12px;
       }
     }
     .deal-btns {
