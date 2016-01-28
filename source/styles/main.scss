@@ -697,7 +697,6 @@ form.import {
 .feed {
   #tab-content2 {
     .feed-details {
-      padding-left: 10px;
       &:hover {
         background: #fff;
       }
@@ -2950,6 +2949,16 @@ footer {
           display: block;
           top: 50%;
           transform: translateY(-50%);
+        }
+        &.sent-answered {
+          span {
+            width: 35px;
+            margin-right: 5px;
+            margin-top: 0;
+            &:before {
+              @include fa-size(2rem);
+            }
+          }
         }
       }
     }
