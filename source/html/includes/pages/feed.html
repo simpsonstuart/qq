@@ -11,11 +11,11 @@
       <label for="tab2"><small>Sent</small></label>
       <div id="tab-content1" class="row tab-content">
           <div class="feed-filter">
-              <a href="#" class="questions">Questions</a>
-              <a href="#" class="comments">Comments</a>
-              <a href="#" class="reminders active">Reminders</a>
+              <a href="" ng-click="ctrl.questionsShow()" ng-class="{active: ctrl.questionsActive}" class="questions">Questions</a>
+              <a href="" ng-click="ctrl.commentsShow()" ng-class="{active: ctrl.commentsActive}" class="comments">Comments</a>
+              <a href="" ng-click="ctrl.remindersShow()" ng-class="{active: ctrl.remindersActive}" class="reminders">Reminders</a>
           </div>
-          <div class="flex">
+          <div class="flex" ng-if="ctrl.remindersActive">
               <aside>
                   <div class="date">
                       <span>{{ctrl.formatDate(datestring).date()}}</span>
@@ -23,17 +23,37 @@
                   </div>
               </aside>
               <div class="feed-detail-wrapper">
-                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
-                      <img src="media/images/avatar3.png">
+                  <div  ng-repeat="item in ctrl.pendingItems" ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
+                      <img ng-src="{{item.from_user_picture}}">
                       <div class="text">
-                          <p>Commented on your comment</p>
-                          <h2>$2,000,000 seems low.</h2>
-                          <a href="deal-detail">Sony Tech Refresh</a>
+                          <p ng-if="ctrl.getActivityTypeDisplayString(item) != 'Reminded You'">{{item.from_user_name}} {{ctrl.getActivityTypeDisplayString(item)}}</p>
+                          <p class="reminder" ng-if="item.status == 'reminder'">{{item.from_user_name}} {{ctrl.getActivityTypeDisplayString(item)}} <span>{{ctrl.reminderCount(item)}}</span></p>
+                          <h2> Why is this still a placeholder?{{item.questionText}}</h2>
+                          <a ng-click="ctrl.goToDeal(item.deal_id, $event)">{{item.deal_name}}</a>
                           <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
                       </div>
                       <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
                   </div>
-                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
+              </div>
+      </div>
+          <div class="flex" ng-if="ctrl.commentsActive">
+          <div class="feed-detail-wrapper">
+              <div ng-click="ctrl.goToAnswer(item.deal_id)" ng-if="crl.questionsActive" class="feed-details pending">
+                  <img src="media/images/avatar.png">
+                  <div class="text">
+                      <p class="reminder">Reminded You <span>1</span></p>
+                      <h2>Have you met the economic buyer?</h2>
+                      <a href="deal-detail">Sony Tech Refresh</a>
+                      <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
+                  </div>
+                  <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
+              </div>
+          </div>
+          </div>
+
+          <div class="flex" ng-if="ctrl.remindersActive">
+              <div class="feed-detail-wrapper">
+                  <div ng-click="ctrl.goToAnswer(item.deal_id)" ng-if="crl.questionsActive" class="feed-details pending">
                       <img src="media/images/avatar.png">
                       <div class="text">
                           <p class="reminder">Reminded You <span>1</span></p>
@@ -43,20 +63,10 @@
                       </div>
                       <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
                   </div>
-                  <div ng-click="ctrl.goToAnswer(item.deal_id)" class="feed-details pending">
-                      <img src="media/images/avatar.png">
-                      <div class="text">
-                          <p>Asked You</p>
-                          <h2>Do you know what the budget is for this really expensive deal?</h2>
-                          <a href="deal-detail">Sony Tech Refresh</a>
-                          <small class="timestamp">{{ctrl.formatDate(item.timestamp).fromNow()}}</small>
-                      </div>
-                      <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
-                  </div>
               </div>
           </div>
-      </div>
-      <div id="tab-content2" class="row tab-content">
+
+      <div id="tab-content2" class="row tab-content" >
           <aside>
               <div class="date">
                   <span>{{ctrl.formatDate(datestring).date()}}</span>
