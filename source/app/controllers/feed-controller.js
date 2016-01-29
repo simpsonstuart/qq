@@ -184,11 +184,11 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
                 ctrl.inboxPending = data;
                 ctrl.pendingItems = ctrl.inboxPending;
                 ctrl.commentItems = ctrl.inboxPending;
+                ctrl.questionItems = ctrl.inboxPending;
             }),
             ActivityService.getInbox().then(function (data) {
                 ctrl.inboxItems = ctrl.getItemsGroupedByDay(data);
                 ctrl.feedItems = ctrl.getItemsGroupedByDay(data);
-                ctrl.questionsItems = {};
             })
         ]).then(function () {
             ActivityService.getSentPending().then(function (data) {
