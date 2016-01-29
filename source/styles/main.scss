@@ -1199,6 +1199,7 @@ form.import {
       top: 50%;
       transform: translate(-50%, -50%);
       display: block;
+      cursor: pointer;
       &:before {
         @include fa;
         @include fa(star);
