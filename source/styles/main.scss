@@ -2434,8 +2434,8 @@ footer {
 /* max-width 767 --------------------------*/
 @media only screen and (max-width: 767px) {
 
-  body {
-    margin-bottom: 46px;
+  body, html {
+    height: 100%;
   }
 
   main {
