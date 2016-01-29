@@ -34,7 +34,6 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
                 username: arguments[1],
                 password: arguments[0]
             };
-
             return $auth.login(credentials);
         }
 
