@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('ProfileController', ProfileController);
 
-function ProfileController($scope, $state, $stateParams, UserService, NumberService, DateAndTimeService) {
+function ProfileController($state, $stateParams, UserService, NumberService, DateAndTimeService, AuthService) {
     var ctrl = this;
     var user_id = $stateParams.user_id;
 
