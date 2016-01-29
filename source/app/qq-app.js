@@ -139,35 +139,8 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 }
             }
         })
-        .state('root.deals.user', {
-            url: '/owner/:user_id',
-            restricted: true,
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/deal-list.html',
-                    controller: 'DealsController',
-                    controllerAs: 'ctrl',
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            },
-            params: {
-                user_id: 'User Id'
-            }
-        })
-        .state('root.deal-feed', {
-            url: '/deals/:deal_id/feed',
+        .state('root.deals.feed', {
+            url: '/:deal_id/feed',
             restricted: true,
             params: {
                 deal_id: 'Deal ID'
@@ -193,12 +166,12 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 }
             }
         })
-        .state('root.play-feed', {
-            url: '/deals/:deal_id/play/:play_id/feed',
+        .state('root.deals.play', {
+            url: '/:deal_id/plays/:play_id',
             restricted: true,
             params: {
-                deal_id: 'Deal ID',
-                play_id: 'Play Id'
+                deal_id: 'play_id',
+                play_id: 'play_id'
             },
             data: {
                 headerClasses: 'back'
@@ -267,7 +240,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             },
             params: {
                 user_id: 'User ID'
-            },
+            }
         })
         .state('root.deal-set-play', {
             url: '/deals/:deal_id/set-play',
@@ -376,7 +349,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             },
             params: {
                 deal_id: 'Deal ID'
-            },
+            }
         })
         .state('root.deal-play-questions-select-recipients', {
             url: '/deals/:deal_id/plays/:play_id/questions/recipients',
@@ -648,7 +621,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             },
             views: {
                 'header@root': {
-                    templateUrl: 'includes/templates/back-header.html',
+                    templateUrl: 'includes/templates/back-header-with-nav.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },

@@ -1,11 +1,10 @@
 angular.module('QQ')
     .controller('DealFeedController', DealFeedController);
 
-function DealFeedController($scope, DealService, DateAndTimeService, _, $stateParams) {
+function DealFeedController(DealService, DateAndTimeService,$stateParams) {
     var ctrl = this;
     var types = [];
 
-    ctrl.deal_id = $stateParams.deal_id;
     ctrl.toggle = toggle;
     ctrl.checkExpansion = checkExpansion;
     ctrl.questionsForPlay = questionsForPlay;
@@ -76,6 +75,8 @@ function DealFeedController($scope, DealService, DateAndTimeService, _, $statePa
     }
 
     function activate() {
+        ctrl.deal_id = $stateParams.deal_id;
+
         DealService.get(ctrl.deal_id).then(function (data) {
             ctrl.deal = data;
         });
