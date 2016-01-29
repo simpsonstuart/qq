@@ -193,6 +193,34 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 }
             }
         })
+        .state('root.play-feed', {
+            url: '/deals/:deal_id/play/:play_id/feed',
+            restricted: true,
+            params: {
+                deal_id: 'Deal ID',
+                play_id: 'Play Id'
+            },
+            data: {
+                headerClasses: 'back'
+            },
+            views: {
+                'header@root': {
+                    templateUrl: 'includes/templates/back-header.html',
+                    controller: 'HeaderController',
+                    controllerAs: 'ctrl'
+                },
+                'container@root': {
+                    templateUrl: 'includes/pages/play-feed.html',
+                    controller: 'DealFeedController',
+                    controllerAs: 'ctrl',
+                },
+                'footer@root': {
+                    templateUrl: 'includes/templates/default-footer.html',
+                    controller: 'FooterController',
+                    controllerAs: 'ctrl'
+                }
+            }
+        })
         .state('root.district', {
             url: '/district',
             restricted: true,

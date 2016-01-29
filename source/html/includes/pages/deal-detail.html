@@ -15,7 +15,7 @@
     <div class="deal-details clearfix">
         <div class="match-height">
             <div class="deal-btns">
-                <button class="deal-feed" ng-click="$state.go('root.deals')">Deal Feed</button>
+                <button class="deal-feed" ng-click="$state.go('root.deal-feed')">Deal Feed</button>
                 <button class="next-steps" ng-click="$state.go('root.coming-soon')">Next Steps</button>
                 <div class="clearfix">
                     <div class="account-value">
@@ -31,13 +31,13 @@
             <div class="plays">
                 <div ng-repeat="(playbook_name, playbook) in ctrl.playbook_counts">
                     <small>{{playbook_name}}</small>
-                    <div ng-repeat="play in playbook" class="play-row">
+                    <div ui-sref="root.play-feed({deal_id: ctrl.deal.id, play_id: play.id})" ng-repeat="play in playbook" class="play-row">
                         <p>{{play.play}}</p>
                         <div class="questions clearfix">
                             <div class="answered">{{play.answer_count}}</div>
                             <div class="asked">{{play.question_count}}</div>
                         </div>
-                        <a ui-sref="root.deals.detail({deal_id: deal.id})" class="caret"></a>
+                        <a ui-sref="root.play-feed({deal_id: ctrl.deal.id, play_id: play.id})" class="caret"></a>
                     </div>
                 </div>
                 <div class="add-play">
