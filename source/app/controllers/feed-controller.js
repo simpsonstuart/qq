@@ -24,8 +24,6 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
     ctrl.questionsShow = questionShow;
     ctrl.commentsShow = commentsShow;
     ctrl.remindersShow = remindersShow;
-    ctrl.questionsActive = false;
-    ctrl.commentsActive= false;
     ctrl.remindersActive = true;
 
     activate();
@@ -47,23 +45,19 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
         return moment(date);
     }
 
+    //toggles the various filters
     function questionShow(){
-        ctrl.questionsActive = true;
-        ctrl.commentsActive= false;
-        ctrl.remindersActive = false;
+        ctrl.questionsActive = !ctrl.questionsActive;
     }
 
     function commentsShow(){
-        ctrl.questionsActive = false;
-        ctrl.commentsActive= true;
-        ctrl.remindersActive = false;
+        ctrl.commentsActive = !ctrl.commentsActive;
     }
 
     function remindersShow(){
-        ctrl.questionsActive = false;
-        ctrl.commentsActive= false;
-        ctrl.remindersActive = true;
+        ctrl.remindersActive = !ctrl.remindersActive;
     }
+    //
 
     function weHavePendingItems() {
         if (ctrl.pendingItems === undefined || ctrl.pendingItems == null) {
@@ -189,11 +183,13 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
             ActivityService.getInboxPending().then(function (data) {
                 ctrl.inboxPending = data;
                 ctrl.pendingItems = ctrl.inboxPending;
+                ctrl.commentItems = ctrl.inboxPending;
             }),
             ActivityService.getInbox().then(function (data) {
                 ctrl.inboxItems = ctrl.getItemsGroupedByDay(data);
-                ctrl.feedItems = ctrl.inboxItems;
-            }),
+                ctrl.feedItems = ctrl.getItemsGroupedByDay(data);
+                ctrl.questionsItems = {};
+            })
         ]).then(function () {
             ActivityService.getSentPending().then(function (data) {
                 ctrl.sentPendingItems = data;
