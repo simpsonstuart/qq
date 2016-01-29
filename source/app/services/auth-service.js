@@ -20,24 +20,25 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
     }
 
     /**
-     * @param username
-     * @param password
+     * This login works both for token based auth and username/password based auth
+     *
+     * @param password|token
+     * @param username|null
      * @returns {*}
      */
-    function logIn(username, password) {
+    function logIn(password, username) {
         var args = arguments;
 
         if (args.length == 2) {
             var credentials = {
-                username: arguments[0],
-                password: arguments[1]
+                username: arguments[1],
+                password: arguments[0]
             };
 
             return $auth.login(credentials);
         }
 
-        // if only a token is passed to login
-
+        // if only a token is passed to login then we ignore the username which is args[1]
         var deferred = $q.defer();
         var token = args[0];
 
