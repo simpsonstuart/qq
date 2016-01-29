@@ -1,7 +1,23 @@
+<ul class="mobile-nav">
+  <li><a class="home" href="#">Home</a></li>
+  <li><a class="deals" href="#">Deals</a></li>
+  <li><a class="favorites" href="#">Favorites</a></li>
+  <li><a class="feed" href="#">Feed</a></li>
+  <li><a class="next-steps" href="#">Next Steps</a></li>
+  <li><a class="ask" href="#">Ask</a></li>
+  <li><a class="settings" href="#">Settings</a></li>
+  <li><a class="sync" href="#">Sync with Salesforce</a></li>
+  <li><a class="logout" href="#">Logout</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
 <header ng-class="$state.current.data.headerClasses" ui-view="header"></header>
 
 <main ui-view="container"></main>
 
 <footer ng-class="$state.current.data.footerClasses" ui-view="footer"></footer>
-
+</div>
 

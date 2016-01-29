@@ -621,7 +621,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             },
             views: {
                 'header@root': {
-                    templateUrl: 'includes/templates/back-header.html',
+                    templateUrl: 'includes/templates/back-header-with-nav.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },
