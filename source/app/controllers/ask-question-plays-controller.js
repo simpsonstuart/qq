@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('askQuestionPlaysController', QuestionController);
 
-function QuestionController($scope, $stateParams, $state, DealService, event) {
+function QuestionController($scope, $stateParams, $state, DealService) {
     var ctrl = this;
     ctrl.click_askSubmit = click_askSubmit;
     ctrl.dealId = $stateParams.deal_id;
