@@ -2441,6 +2441,12 @@ footer {
     height: 100%;
   }
 
+  .hide-hamburger {
+    label[for="nav-trigger"] {
+      display: none;
+    }
+  }
+
   main {
     padding: 0;
     max-width: 100%;
