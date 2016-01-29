@@ -232,6 +232,9 @@ textarea {
 ------------------------------------------------*/
 .login.grey {
   background: $col-grey;
+  .site-wrap {
+    background: $col-grey;
+  }
 }
 
 .login {
