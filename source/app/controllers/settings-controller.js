@@ -7,11 +7,8 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
     ctrl.password_reset = password_reset;
     ctrl.email_change = email_change;
     ctrl.billing_change = billing_change;
-    ctrl.click_account_type = click_account_type;
     ctrl.logOut = logOut;
-    ctrl.isRole = isRole;
     ctrl.click_password = click_password;
-    ctrl.click_billing = click_billing;
     ctrl.click_email = click_email;
 
     activate();
@@ -75,25 +72,12 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
         $scope.email_form.$setPristine(true);
     }
 
-    function click_billing() {
-
-        ctrl.expand_show_billing = !ctrl.expand_show_billing;
-        $scope.CCNumber = '';
-    }
-
-    function click_account_type() {
-        ctrl.expand_show_account_type = !ctrl.expand_show_account_type;
-    }
-
     function activate() {
         UserService.profile(function () {
             return user_id ? user_id : 'current';
         }()).then(function (data) {
             ctrl.profile = data;
             ctrl.virtual_team = ctrl.profile.virtual_team.data;
-            ctrl.isAdmin = ctrl.isRole('admin');
-            ctrl.isSalesRep = ctrl.isRole('sales-rep');
-            ctrl.roleLabel = ctrl.profile.role.data.label;
         });
     }
 }

@@ -61,34 +61,6 @@
                 </fieldset>
             </form>
         </div>
-        <div ng-if="ctrl.isAdmin" class="row">
-            <small>Account Type</small>
-            <h2>{{ctrl.profile.account_type}}</h2>
-            <a href="#settings" class="edit" ng-click="ctrl.click_account_type()">edit</a>
-        </div>
-        <div  ng-if="ctrl.expand_show_account_type" class="edit-expanded">
-        <input type="radio" name="Business" value="male" checked> Business
-        <br>
-        <input type="radio" name="Premium" value="female"> Premium
-        <br>
-        <input type="radio" name="Basic" value="female"> Basic
-        <button>Change Type</button>
-        </div>
-
-
-        <div ng-if="ctrl.isAdmin"  class="row">
-        <small>Billing</small>
-            <h2>xxxx-xxxx-xxxx-6836</h2>
-            <a href="#settings" class="edit" ng-click="ctrl.click_billing()">edit</a>
-        </div>
-        <div  ng-if="ctrl.expand_show_billing" class="edit-expanded">
-            <form name="cc_form" ng-submit="ctrl.billing_change()">
-            <label for="username">Update Billing Info</label>
-            <input type="password" name="CCNumber" id="username" ng-model="CCNumber" required placeholder="XXXX-XXXX-XXXX-XXXX"/>
-            <button type="submit" ng-disabled="cc_form.$invalid">Update</button>
-            </form>
-        </div>
-
         <div class="row"><small>Other</small></div>
         <div class="row btns">
             <button ng-hide="ctrl.isSalesRep" ui-sref="root.import-deals">Import Deals</button>
