@@ -1539,13 +1539,19 @@ form.import {
       width: 100%;
     }
     .favorite {
-      margin-top: 15px;
       display: block;
+      width: 40px;
+      margin: 15px auto 0 auto;
+      cursor: pointer;
+      transition: color 0.4s ease;
+      color: $col-grey-stroke;
       &:before {
         @include fa;
         @include fa(star);
         @include fa-size(4rem);
-        color: $col-grey-stroke;
+      }
+      &.active, &:hover {
+        color: $col-blue;
       }
     }
   }
@@ -2786,11 +2792,16 @@ footer {
       left: 12px;
       top: 50%;
       transform: translateY(-50%);
+      color: #d6d6d6;
+      transition: color 0.4s ease;
+      cursor: pointer;
       &:before {
         @include fa;
         @include fa(star);
         @include fa-size(3.5rem);
-        color: #d6d6d6;
+      }
+      &.active, &:hover {
+        color: $col-blue;
       }
     }
     small {
