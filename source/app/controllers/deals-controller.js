@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('DealsController', DealsController);
 
-function DealsController($scope, AuthService, DealService, UserService, numeral, DateAndTimeService, NumberService, $stateParams) {
+function DealsController(DealService, DateAndTimeService, NumberService) {
     var ctrl = this;
 
     ctrl.formatDate = DateAndTimeService.formatDate;
@@ -9,31 +9,20 @@ function DealsController($scope, AuthService, DealService, UserService, numeral,
     ctrl.formatMoney = NumberService.formatMoney;
     ctrl.timeToClose = DateAndTimeService.daysTill;
     ctrl.dateNow = new Date().toJSON().slice(0,10);
+    ctrl.favorite = favorite;
 
     activate();
 
     function activate() {
-        if ($stateParams.user_id) {
-            UserService.get($stateParams.user_id, 'include=role').then(function (data) {
-                console.log(data);
-                if (data.role.data.name === 'admin') {
-                    ctrl.dealsForLabel = 'Organization Deals';
-                } else {
-                    ctrl.dealsForLabel = "Deals for " + data.name;
-                }
-            });
-        } else {
-            if (AuthService.authenticatedUser().role.data.name === 'admin') {
-                ctrl.dealsForLabel = 'Organization Deals';
-            } else {
-                ctrl.dealsForLabel = 'My Deals';
-            }
-        }
+        ctrl.dealsForLabel = 'My Deals';
 
-        DealService.getAll(function () {
-            return $stateParams.user_id ? 'user_id=' + $stateParams.user_id : null;
-        }()).then(function (data) {
+        DealService.getAll().then(function (data) {
             ctrl.deals = data;
         });
+    }
+
+    function favorite(deal) {
+        DealService.favorite(deal.id);
+        deal.favorite = !deal.favorite;
     }
 }
