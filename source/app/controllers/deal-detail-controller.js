@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('DealDetailController', DealDetailController);
 
-function DealDetailController(DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state, $window) {
+function DealDetailController(DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state, $window, AuthService) {
     var ctrl = this;
 
     ctrl.dealId = $stateParams.deal_id;
@@ -46,9 +46,10 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
         //add salesforce sync logic here
     }
 
-    //redirect user to the deal in salesforce
     function viewDealSalesforce() {
-        $window.location.href = "https://na34"+ ".salesforce.com/"+ ctrl.dealSalesforceLink;
+        if (AuthService.authenticatedUser().salesforce_instance_url) {
+            $window.location.href = AuthService.authenticatedUser().salesforce_instance_url + '/' + ctrl.deal.salesforce_id;
+        }
     }
 
     function favorite() {
@@ -64,7 +65,6 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
             ctrl.extended_team   = data.extended_team.data;
             ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
             ctrl.account_value   = ctrl.formatMoney(ctrl.deal.account_value);
-            ctrl.dealSalesforceLink = data.salesforce_id;
         });
     }
 }
