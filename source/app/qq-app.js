@@ -109,7 +109,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 },
                 'container@root': {
                     templateUrl: 'includes/pages/deal-detail.html',
-                    controller: 'DealController',
+                    controller: 'DealDetailController',
                     controllerAs: 'ctrl'
                 },
                 'footer@root': {

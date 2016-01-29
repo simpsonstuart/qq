@@ -33,7 +33,7 @@ function DealService(ApiService) {
     }
 
     function favorite(dealId) {
-        ApiService.post('deals/' + dealId + '/favorite', []);
+        return ApiService.post('deals/' + dealId + '/favorite', []);
     }
 
     function questionsAndAnswersCountGroupedByWeek(data) {
