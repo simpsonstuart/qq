@@ -20,6 +20,13 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
     ctrl.clickInbox = clickInbox;
     ctrl.showPending = showPending;
     ctrl.getActivityTypeDisplayString = getActivityTypeDisplayString;
+    ctrl.reminderCount = getReminderCount;
+    ctrl.questionsShow = questionShow;
+    ctrl.commentsShow = commentsShow;
+    ctrl.remindersShow = remindersShow;
+    ctrl.questionsActive = false;
+    ctrl.commentsActive= false;
+    ctrl.remindersActive = true;
 
     activate();
 
@@ -38,6 +45,24 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
 
     function formatDate(date) {
         return moment(date);
+    }
+
+    function questionShow(){
+        ctrl.questionsActive = true;
+        ctrl.commentsActive= false;
+        ctrl.remindersActive = false;
+    }
+
+    function commentsShow(){
+        ctrl.questionsActive = false;
+        ctrl.commentsActive= true;
+        ctrl.remindersActive = false;
+    }
+
+    function remindersShow(){
+        ctrl.questionsActive = false;
+        ctrl.commentsActive= false;
+        ctrl.remindersActive = true;
     }
 
     function weHavePendingItems() {
@@ -81,6 +106,11 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
         return !!(ctrl.weHavePendingItems() && !ctrl.showSent());
     }
 
+    function getReminderCount(item){
+        //todo add logic to get reminder count
+        return '3';
+    }
+
     function getActivityTypeDisplayString(item) {
         var sent = function () {
             return item.from_user_id == ctrl.user.id;
@@ -106,14 +136,14 @@ function FeedController($scope, ActivityService, _, moment, AuthService, $state,
 
             if (status('reminder')) {
                 if (received) {
-                    return "Sent a reminder to you";
+                    return "Reminded You";
                 }
 
                 return "Sent a reminder";
             }
 
             if (received) {
-                return 'Asked you a question';
+                return 'Asked You';
             }
 
             return 'Sent a question';

@@ -12,7 +12,7 @@ function FooterController($scope, $state) {
             ctrl.FeedActive = true;
             ctrl.DealsActive = false;
             ctrl.NSActive = false;
-            ctrl.AskActive =false;
+            ctrl.AskActive = false;
         }else if ($state.is('root.deals')){
             ctrl.FeedActive = false;
             ctrl.DealsActive = true;
@@ -23,7 +23,6 @@ function FooterController($scope, $state) {
             ctrl.DealsActive = false;
             ctrl.NSActive = true;
             ctrl.AskActive =false;
-            var redrawNS = document.getElementById('footer-NS');
         }else if ($state.is('root.ask-questions')){
             ctrl.FeedActive = false;
             ctrl.DealsActive = false;
