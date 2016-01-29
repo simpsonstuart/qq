@@ -2,8 +2,7 @@
 
 <div ng-repeat="deal in ctrl.deals" class="deals-list">
     <aside>
-        <!-- Apply class active to deals that a user marks as favorite. Should toggle favorite and not favorite -->
-        <span ng-click="ctrl.favorite(deal)" class="favorite deal." ng-class="{ active: deal.favorite }"></span>
+        <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: deal.favorite }"></span>
     </aside>
     <div class="details clearfix">
         <div class="text">

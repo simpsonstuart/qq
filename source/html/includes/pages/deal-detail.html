@@ -10,7 +10,7 @@
         <img ng-src="{{ctrl.deal.owner.data.picture}}">
         <h2 ng-bind="ctrl.deal.owner.data.name"></h2>
         <small>Deal Owner</small>
-        <span class="favorite"></span>
+        <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: ctrl.deal.favorite }"></span>
     </aside>
     <div class="deal-details clearfix">
         <div class="match-height">

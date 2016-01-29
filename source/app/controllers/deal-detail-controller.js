@@ -1,7 +1,7 @@
 angular.module('QQ')
-    .controller('DealController', DealController);
+    .controller('DealDetailController', DealDetailController);
 
-function DealController($scope, DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state, $window) {
+function DealDetailController(DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state, $window) {
     var ctrl = this;
 
     ctrl.dealId = $stateParams.deal_id;
@@ -15,6 +15,7 @@ function DealController($scope, DealService, $stateParams, numeral, DateAndTimeS
     ctrl.goToSendQuestionGroup = goToSendQuestionGroup;
     ctrl.syncWithSalesforce = syncWithSalesforce;
     ctrl.viewDealSalesforce = viewDealSalesforce;
+    ctrl.favorite = favorite;
 
     activate();
 
@@ -48,6 +49,11 @@ function DealController($scope, DealService, $stateParams, numeral, DateAndTimeS
     //redirect user to the deal in salesforce
     function viewDealSalesforce() {
         $window.location.href = "https://na34"+ ".salesforce.com/"+ ctrl.dealSalesforceLink;
+    }
+
+    function favorite() {
+        DealService.favorite(ctrl.deal.id);
+        ctrl.deal.favorite = !ctrl.deal.favorite;
     }
 
     function activate() {
