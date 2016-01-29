@@ -36,7 +36,7 @@ function QQRun($http, CacheFactory, $rootScope, $location, $state, AuthService, 
         }
         if (next.name == 'root.login' && AuthService.loggedIn()) {
             event.preventDefault();
-            $state.go('root.feed');
+            $state.go('root.profile');
         }
 
         AuthService.refreshToken();
@@ -62,7 +62,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             views: {
                 '': {
                     templateUrl: 'includes/templates/root.html'
-                },
+                }
             }
         })
         .state('root.answer-question', {
