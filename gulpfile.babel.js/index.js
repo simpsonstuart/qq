@@ -51,7 +51,9 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/angular-ui-router/build/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
   fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
-  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js')
+  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
+  fullPath(config.paths.node_modules + '/ionic-npm/js/ionic.bundle.js')
+
 ];
 
 var appJavascriptSources = [
