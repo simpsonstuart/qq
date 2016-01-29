@@ -40,11 +40,11 @@ header {
 
 /* PROFILE --------------------------------
 -------------------------------------------*/
-.profile, .deal-detail {
+.profile {
   aside {
     @include span(25% no-gutter border-box);
   }
-  .details {
+  .profile-details {
     @include span(75% no-gutter border-box);
     .all-deals, .active-deals {
       @include span(50% no-gutter border-box);
@@ -99,7 +99,7 @@ header {
   aside {
     @include span(25% no-gutter border-box);
   }
-  .details {
+  .deal-details {
     @include span(75% no-gutter border-box);
     .deal-numbers, .plays, .deal-btns {
       @include span(50% no-gutter border-box);
@@ -107,11 +107,20 @@ header {
     .salesforce-button {
       @include span(100% no-gutter border-box);
     }
+    .virtual-team {
+      .questions {
+        @include span(10 of 12 no-gutter border-box);
+        @include push(1);
+        small {
+          @include span(7.1 of 10 no-gutter border-box);
+        }
+        .answered, .asked {
+          @include span(1.55 of 10 no-gutter);
+        }
+      }
+    }
   }
 }
-
-
-
 
 
 
@@ -140,7 +149,7 @@ header {
     aside {
       @include span(100% no-gutter border-box);
     }
-    .details {
+    .profile-details {
       @include span(100% no-gutter border-box);
       .all-deals, .active-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
@@ -170,7 +179,7 @@ header {
   }
 
   .deal-detail {
-    .details {
+    .deal-details {
       @include span(100% no-gutter border-box);
       .activity, .plays, .salesforce-button, .deal-btns {
         @include span(100% no-gutter border-box);
@@ -194,8 +203,26 @@ header {
 }
 
 @media only screen and (max-width: 320px) {
-  .profile, .deal-detail {
-    .details {
+  .deal-detail {
+    .deal-details {
+      .virtual-team {
+        .questions {
+          @include span(100% no-gutter border-box);
+          @include push(0);
+          @include pad(10px);
+          small {
+            @include span(8 no-gutter border-box);
+          }
+          .answered, .asked {
+            @include span(2 no-gutter border-box);
+          }
+        }
+      }
+    }
+  }
+
+  .profile {
+    .profile-details {
       .virtual-team {
         .questions {
           @include span(100% no-gutter border-box);

@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('ProfileController', ProfileController);
 
-function ProfileController($scope, $state, $stateParams, UserService, NumberService, DateAndTimeService) {
+function ProfileController($state, $stateParams, UserService, NumberService, DateAndTimeService, AuthService) {
     var ctrl = this;
     var user_id = $stateParams.user_id;
 
@@ -52,24 +52,19 @@ function ProfileController($scope, $state, $stateParams, UserService, NumberServ
     }
 
     function activate() {
-        UserService.profile(function () {
-            return user_id ? user_id : 'current';
-        }()).then(function (data) {
-            ctrl.profile = data;
-            ctrl.activeDeals = "230000";
-            ctrl.allMyDeals = "2301000";
-            ctrl.unansweredQuestions = "57";
-            ctrl.incompleteNextSteps = "15";
-            ctrl.trailingCounts = ctrl.profile.trailing_counts;
-            ctrl.quarterAnswerCount = ctrl.trailingCounts.questions_and_answers[0].answer_count;
-            ctrl.quarterQuestionCount = ctrl.trailingCounts.questions_and_answers[0].question_count;
-            ctrl.playbook_counts = ctrl.profile.playbook_counts.data;
-            ctrl.virtual_team = ctrl.profile.virtual_team.data;
-            ctrl.isManager = ctrl.isRole('manager');
-            ctrl.roleLabel = ctrl.profile.role.data.label;
-            ctrl.setProfileForName();
-            //if its my profile load my deals otherwise load the other persons deals
-            ctrl.MyDeals = !!$state.is('root.profile');
-        });
+
+        ctrl.profile = AuthService.authenticatedUser();
+        ctrl.activeDeals = ctrl.profile.active_deals_amount.data.amount;
+        ctrl.allMyDeals = ctrl.profile.all_deals_amount.data.amount;
+        ctrl.unansweredQuestions = ctrl.profile.unanswered_questions.data.count;
+        ctrl.incompleteNextSteps = ctrl.profile.incomplete_next_steps.data.count;
+        ctrl.trailingCounts = ctrl.profile.trailing_counts;
+        ctrl.quarterAnswerCount = ctrl.trailingCounts.questions_and_answers[0].answer_count;
+        ctrl.quarterQuestionCount = ctrl.trailingCounts.questions_and_answers[0].question_count;
+        ctrl.playbook_counts = ctrl.profile.playbook_counts.data;
+        ctrl.virtual_team = ctrl.profile.virtual_team.data;
+        ctrl.setProfileForName();
+        //if its my profile load my deals otherwise load the other persons deals
+        ctrl.MyDeals = !!$state.is('root.profile');
     }
 }

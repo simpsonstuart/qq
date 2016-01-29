@@ -17,7 +17,7 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
     activate();
 
     function login() {
-        AuthService.logIn($scope.username, $scope.password).then(function (data) {
+        AuthService.logIn($scope.password, $scope.username).then(function (data) {
             UserService.profile('current').then(function (data) {
                 var user = JSON.stringify(data);
                 AuthService.createTokenExpirationTime();

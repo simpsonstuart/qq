@@ -12,7 +12,8 @@ function DealService(ApiService) {
         playbooks: playbooks,
         addPlay: addPlay,
         importList: importList,
-        add: add
+        add: add,
+        favorite: favorite
     };
 
     function getAll(query) {
@@ -29,6 +30,10 @@ function DealService(ApiService) {
 
     function feedDetail(dealId) {
         return ApiService.get('deals/' + dealId + '/feed/detail');
+    }
+
+    function favorite(dealId) {
+        ApiService.post('deals/' + dealId + '/favorite', []);
     }
 
     function questionsAndAnswersCountGroupedByWeek(data) {

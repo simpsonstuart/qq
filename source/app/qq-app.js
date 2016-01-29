@@ -549,25 +549,6 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 }
             }
         })
-        .state('root.import-users', {
-            url: '/users/import/',
-            restricted: true,
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/import-back-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/import-users.html',
-                    controller: 'ImportUsersController',
-                    controllerAs: 'ctrl'
-                }
-            }
-        })
         .state('root.login', {
             url: '/login?token,new_user',
             restricted: false,
