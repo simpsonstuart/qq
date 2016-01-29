@@ -46,7 +46,7 @@
                       <a ng-click="ctrl.goToAnswer(item.deal_id)" class="caret"></a>
                   </div>
 
-                  <div  ng-repeat="item in ctrl.questionsItems | filter: {status: 'comments'}" ng-click="ctrl.goToAnswer(item.deal_id)" ng-if="ctrl.questionsActive" class="feed-details pending">
+                  <div  ng-repeat="item in ctrl.questionItems | filter: {status: 'comments'}" ng-click="ctrl.goToAnswer(item.deal_id)" ng-if="ctrl.questionsActive" class="feed-details pending">
                       <img ng-src="{{item.from_user_picture}}">
                       <div class="text">
                           <p ng-if="ctrl.getActivityTypeDisplayString(item) != 'Reminded You'">{{item.from_user_name}} {{ctrl.getActivityTypeDisplayString(item)}}</p>
