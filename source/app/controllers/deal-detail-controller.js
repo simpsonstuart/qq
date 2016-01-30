@@ -43,7 +43,14 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
     }
 
     function syncWithSalesforce() {
-        //add salesforce sync logic here
+        if (ctrl.deal.salesforce_id) {
+            DealService.syncWithSalesforce(ctrl.deal).then(function (data) {
+                data = data.data;
+                ctrl.close_date      = ctrl.formatDate(data.close_date).format('M/D/YYYY');
+                ctrl.account_value   = ctrl.formatMoney(data.account_value);
+                ctrl.deal.name = data.name;
+            });
+        }
     }
 
     function viewDealSalesforce() {

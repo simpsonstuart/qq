@@ -13,7 +13,8 @@ function DealService(ApiService) {
         addPlay: addPlay,
         importList: importList,
         add: add,
-        favorite: favorite
+        favorite: favorite,
+        syncWithSalesforce: syncWithSalesforce
     };
 
     function getAll(query) {
@@ -34,6 +35,10 @@ function DealService(ApiService) {
 
     function favorite(dealId) {
         return ApiService.post('deals/' + dealId + '/favorite', []);
+    }
+
+    function syncWithSalesforce(deal) {
+        return ApiService.post('deals/' + deal.id + '/sync', deal);
     }
 
     function questionsAndAnswersCountGroupedByWeek(data) {
