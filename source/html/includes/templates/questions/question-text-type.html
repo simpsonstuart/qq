@@ -1,0 +1,9 @@
+<fieldset name="textAnswer">
+    <div>
+        <input type="text" name="textAnswerInput" ng-model="question.textAnswerInput" placeholder="Enter answer" required/>
+    </div>
+    <div>
+        <textarea placeholder="Comments..."></textarea>
+    </div>
+    <button class="submit" type="submit" ng-disabled="!question.textAnswerInput" ng-click="ctrl.textAnswer(question.questionId, question.textAnswerInput)">Submit</button>
+</fieldset>
