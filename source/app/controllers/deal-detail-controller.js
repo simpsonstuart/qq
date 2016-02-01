@@ -67,7 +67,6 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
     function activate() {
         DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
             ctrl.deal            = data;
-            ctrl.weekCounts      = ctrl.deal.week_counts;
             ctrl.playbook_counts = data.playbook_counts.data;
             ctrl.extended_team   = data.extended_team.data;
             ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
