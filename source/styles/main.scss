@@ -1883,6 +1883,19 @@ form.import {
           }
         }
       }
+      .reminded {
+        span {
+          color: #fff;
+          background: $col-blue;
+          height: 10px;
+          min-width: 10px;
+          border-radius: 15px;
+          display: inline-block;
+          text-align: center;
+          padding: 4px;
+          margin-left: 3px;
+        }
+      }
     }
     .qq-comment {
       padding: 10px 20px 20px 20px;
