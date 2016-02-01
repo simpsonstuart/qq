@@ -2793,6 +2793,26 @@ footer {
   }
 
 
+  /* ANSWER -----------------------------------
+  --------------------------------------------*/
+  .answer {
+    margin-left: 20px;
+    margin-right: 20px;
+    &:first-child {
+      border-top: none;
+    }
+    h1 {
+      position: static;
+      transform: none;
+      color: $text-primary;
+      margin-bottom: 0;
+    }
+    small {
+      margin-top: 10px;
+    }
+  }
+
+
   /* DEAL DETAIL ------------------------------
   --------------------------------------------*/
   .deal-title {
@@ -2969,15 +2989,6 @@ footer {
   .import-title,
   .login form.import {
     margin-top: 20px;
-  }
-
-
-  /* ANSWER ----------------------------------
-  --------------------------------------------*/
-  .answer {
-    small {
-      margin-top: 30px;
-    }
   }
 
 
