@@ -6,6 +6,8 @@ function AnswerController($scope, $stateParams, DealService) {
     var ctrl = this;
     ctrl.textAnswer = textAnswer;
     ctrl.boolAnswer = boolAnswer;
+    ctrl.dateAnswer = dateAnswer;
+    ctrl.showAnswered = showAnswered;
     ctrl.dealId = $stateParams.deal_id;
     ctrl.getTemplate = getTemplate;
 
@@ -16,21 +18,40 @@ function AnswerController($scope, $stateParams, DealService) {
 
         //fictional questions
          ctrl.questions = [
-            {"question":"Is the funding available now?", "askedBy":"Travis Jones", "questionType":"bool", "askedDate":"1/17/2016", "questionId":"3535"},
-            {"question":"When will sr3 be ready?", "askedBy":"Dawn Anderson", "questionType":"text", "askedDate":"2/23/2015", "questionId":"2343"},
-            {"question":"How much is project magenta worth?", "askedBy":"David Hewitt", "questionType":"bool", "askedDate":"8/17/2015", "questionId":"3635"},
-            {"question":"Has proposal e3 been met in accordance to proposition 68?", "askedBy":"Jackson Davis", "questionType":"text", "askedDate":"1/11/2016", "questionId":"897"}
+             {"question":"Is the funding available now?", "askedBy":"Travis Jones", "questionType":"bool", "askedDate":"1/17/2016", "questionId":"3535"},
+             {"question":"How much is s3 worth?", "askedBy":"Dawn Anderson", "questionType":"amount", "askedDate":"2/23/2015", "questionId":"2343"},
+             {"question":"What is the best course of action for project magenta?", "askedBy":"David Hewitt", "questionType":"text", "askedDate":"8/17/2015", "questionId":"3635"},
+             {"question":"What is the close date for E3 Ch2mill?", "askedBy":"Jackson Davis", "questionType":"date", "askedDate":"1/11/2016", "questionId":"897"},
+             {"question":"Is starbucks server upgrade complete?", "askedBy":"Blake Simpson", "questionType":"bool", "askedDate":"2/1/2016", "questionId":"397"},
+             {"question":"Did the dell modulator repair close??", "askedBy":"Sara Thorp", "questionType":"bool", "askedDate":"2/3/2016", "questionId":"592"}
         ];
 
     function boolAnswer(questionId, selection, comment) {
 
-            ctrl.boolAnswered = questionId;
+
     }
 
     function textAnswer(questionId, answer, comment) {
             ctrl.answer       = answer;
             ctrl.isAnswered  = questionId;
 
+    }
+
+    function dateAnswer(questionId, answer, comment) {
+        ctrl.answer       = answer;
+        ctrl.dateAnswered  = questionId;
+
+    }
+
+    function showAnswered(question) {
+
+        if(_.has(question, 'boolSelection')) {
+            return "true";
+        }else
+        {
+            return "false";
+
+        }
     }
 
     //set question template based on question type
@@ -45,6 +66,7 @@ function AnswerController($scope, $stateParams, DealService) {
 
         } else if (questionType === 'text'){
             return "includes/templates/questions/question-text-type.html";
+
         } else if (questionType === 'amount'){
             return "includes/templates/questions/question-amount-type.html";
         }

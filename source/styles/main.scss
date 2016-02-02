@@ -2006,6 +2006,31 @@ form.import {
       padding: 5px;
       border: 1px solid $col-grey-stroke;
     }
+    input[type=number] {
+      width: 280px;
+      display: block;
+      margin: 0 auto;
+      height: 38px;
+      box-sizing: border-box;
+      padding: 5px;
+      border: 1px solid #dbdbdb;
+    }
+    input[type=date] {
+      width: 280px;
+      display: block;
+      margin: 0 auto;
+      height: 38px;
+      box-sizing: border-box;
+      padding: 5px;
+      border: 1px solid #dbdbdb;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      &:hover {
+        background-color: lighten(#898989, 40%);
+        color: darken(#333, 10%);
+        cursor: pointer;
+      }
+    }
     textarea {
       width: 280px;
       margin: 25px auto;
