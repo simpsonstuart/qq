@@ -48,8 +48,9 @@ function AuthService($auth, moment, ApiService, CacheFactory, $q) {
         return deferred.promise;
     }
 
-    function setUser(user) {
-          return localStorage.setItem('user', user);
+    function setUser(userObject) {
+        var user = JSON.stringify(userObject);
+        return localStorage.setItem('user', user);
     }
 
     function logOut() {

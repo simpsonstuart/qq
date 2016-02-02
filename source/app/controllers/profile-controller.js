@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('ProfileController', ProfileController);
 
-function ProfileController($state, $stateParams, NumberService, DateAndTimeService, AuthService) {
+function ProfileController($state, $stateParams, NumberService, DateAndTimeService, AuthService, UserService) {
     var ctrl = this;
     var user_id = $stateParams.user_id;
 
@@ -53,16 +53,19 @@ function ProfileController($state, $stateParams, NumberService, DateAndTimeServi
 
     function activate() {
 
-        ctrl.profile = AuthService.authenticatedUser();
-        ctrl.activeDeals = ctrl.profile.active_deals_amount.data.amount;
-        ctrl.allMyDeals = ctrl.profile.all_deals_amount.data.amount;
-        ctrl.unansweredQuestions = ctrl.profile.unanswered_questions.data.count;
-        ctrl.incompleteNextSteps = ctrl.profile.incomplete_next_steps.data.count;
-        ctrl.trailingCounts = ctrl.profile.trailing_counts;
-        ctrl.quarterAnswerCount = ctrl.trailingCounts.questions_and_answers[0].answer_count;
-        ctrl.quarterQuestionCount = ctrl.trailingCounts.questions_and_answers[0].question_count;
-        ctrl.playbook_counts = ctrl.profile.playbook_counts.data;
-        ctrl.virtual_team = ctrl.profile.virtual_team.data;
+        UserService.profile('current').then(function (userObject) {
+            AuthService.setUser(userObject);
+            ctrl.profile = userObject;
+            ctrl.activeDeals = ctrl.profile.active_deals_amount.data.amount;
+            ctrl.allMyDeals = ctrl.profile.all_deals_amount.data.amount;
+            ctrl.unansweredQuestions = ctrl.profile.unanswered_questions.data.count;
+            ctrl.incompleteNextSteps = ctrl.profile.incomplete_next_steps.data.count;
+            ctrl.trailingCounts = ctrl.profile.trailing_counts;
+            ctrl.quarterAnswerCount = ctrl.trailingCounts.questions_and_answers[0].answer_count;
+            ctrl.quarterQuestionCount = ctrl.trailingCounts.questions_and_answers[0].question_count;
+            ctrl.playbook_counts = ctrl.profile.playbook_counts.data;
+            ctrl.virtual_team = ctrl.profile.virtual_team.data;
+        });
         ctrl.setProfileForName();
         //if its my profile load my deals otherwise load the other persons deals
         ctrl.MyDeals = !!$state.is('root.profile');

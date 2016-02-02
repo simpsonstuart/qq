@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('ImportDealsController', ImportDealsController);
 
-function ImportDealsController($state, DealService, NumberService) {
+function ImportDealsController($state, DealService, NumberService, UserService, AuthService) {
     var ctrl = this;
     ctrl.submit = submit;
     ctrl.noDealsToImport = noDealsToImport;
@@ -16,7 +16,7 @@ function ImportDealsController($state, DealService, NumberService) {
 
         if (dealsToImport.length > 0) {
             DealService.add(dealsToImport).then(function (response) {
-                console.log('imported deals');
+                console.log('deals imported');
             });
         }
             $state.go('root.profile');
