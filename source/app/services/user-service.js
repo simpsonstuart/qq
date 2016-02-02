@@ -25,7 +25,7 @@ function UserService(ApiService) {
     }
 
     function profile(user_id) {
-        return ApiService.get('users/' + user_id, 'include=playbook_counts,virtual_team,active_deals_amount,all_deals_amount,unanswered_questions,incomplete_next_steps');
+        return ApiService.get('users/' + user_id, 'include=playbook_counts,virtual_team,active_deals_amount,all_deals_amount,unanswered_questions,incomplete_next_steps,campaign_counts');
     }
 
     function get(user_id) {

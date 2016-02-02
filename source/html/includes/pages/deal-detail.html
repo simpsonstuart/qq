@@ -31,13 +31,18 @@
             <div class="plays">
                 <div ng-repeat="(playbook_name, playbook) in ctrl.playbook_counts">
                     <small>{{playbook_name}}</small>
-                    <div ui-sref="root.deals.play({deal_id: ctrl.deal.id, play_id: play.play_id})"  ng-repeat="play in playbook" class="play-row">
+                    <div
+                            class="play-row"
+                            ng-class='{"play-row-hover": ctrl.showAnswerQuestionForPlaybookName(playbook_name)}'
+                            ng-repeat="play in playbook"
+                            ng-click="ctrl.goToPlayFeed(playbook_name, play.play_id)"
+                    >
                         <p>{{play.play}}</p>
-                        <div class="questions clearfix">
+                        <div ng-if="ctrl.showAnswerQuestionForPlaybookName(playbook_name)" class="questions clearfix">
                             <div class="answered">{{play.answer_count}}</div>
                             <div class="asked">{{play.question_count}}</div>
                         </div>
-                        <a ui-sref="root.deals.play({deal_id: ctrl.deal.id, play_id: play.play_id})" class="caret"></a>
+                        <a ng-if="ctrl.showAnswerQuestionForPlaybookName(playbook_name)" ui-sref="root.deals.play({deal_id: ctrl.deal.id, play_id: play.play_id})" class="caret"></a>
                     </div>
                 </div>
                 <div class="add-play">

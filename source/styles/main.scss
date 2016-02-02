@@ -1673,6 +1673,9 @@ form.import {
   position: relative;
   display: block;
   padding: 15px 0;
+}
+
+.play-row-hover {
   &:hover {
     background: $col-orange-highlight;
     cursor: pointer;
@@ -2212,7 +2215,7 @@ button.submit {
   }
 }
 
-.rep-list {
+.rep-list, .dropdown {
   width: 50%;
   border-left: 1px solid $col-grey-stroke;
   border-right: 1px solid $col-grey-stroke;
@@ -2230,7 +2233,12 @@ button.submit {
   }
 }
 
-
+.dropdown {
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
 
 
 
@@ -2819,6 +2827,26 @@ footer {
   }
 
 
+  /* ANSWER -----------------------------------
+  --------------------------------------------*/
+  .answer {
+    margin-left: 20px;
+    margin-right: 20px;
+    &:first-child {
+      border-top: none;
+    }
+    h1 {
+      position: static;
+      transform: none;
+      color: $text-primary;
+      margin-bottom: 0;
+    }
+    small {
+      margin-top: 10px;
+    }
+  }
+
+
   /* DEAL DETAIL ------------------------------
   --------------------------------------------*/
   .deal-title {
@@ -2995,15 +3023,6 @@ footer {
   .import-title,
   .login form.import {
     margin-top: 20px;
-  }
-
-
-  /* ANSWER ----------------------------------
-  --------------------------------------------*/
-  .answer {
-    small {
-      margin-top: 30px;
-    }
   }
 
 
