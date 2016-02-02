@@ -194,54 +194,6 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 }
             }
         })
-        .state('root.district', {
-            url: '/district',
-            restricted: true,
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/district-list.html',
-                    controller: 'DistrictController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            }
-        })
-        .state('root.district.user', {
-            url: '/:user_id',
-            restricted: true,
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/district-list.html',
-                    controller: 'DistrictController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            },
-            params: {
-                user_id: 'User ID'
-            }
-        })
         .state('root.deal-set-play', {
             url: '/deals/:deal_id/set-play',
             restricted: true,
@@ -322,7 +274,7 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             },
             params: {
                 deal_id: 'Deal ID'
-            },
+            }
         })
         .state('root.send-question', {
             url: '/deals/:deal_id/send-question',
