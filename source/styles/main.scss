@@ -2186,7 +2186,7 @@ button.submit {
   }
 }
 
-.rep-list {
+.rep-list, .dropdown {
   width: 50%;
   border-left: 1px solid $col-grey-stroke;
   border-right: 1px solid $col-grey-stroke;
@@ -2204,7 +2204,12 @@ button.submit {
   }
 }
 
-
+.dropdown {
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
 
 
 
