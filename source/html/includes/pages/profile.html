@@ -57,7 +57,8 @@
         <div class="playbook" ng-if="!ctrl.playbook_counts.length">
             <small>Campaign</small>
             <ul class="play">
-                <li>No campaigns added yet!</li>
+                <li ng-if="ctrl.campaignCounts.length == 0">No campaigns added yet!</li>
+                <li ng-repeat="(playName, count) in ctrl.campaignCounts">{{ctrl.campaignPlayString(playName, count)}}</li>
             </ul>
         </div>
         <div class="virtual-team clearfix" ng-if="ctrl.virtual_team.length">
