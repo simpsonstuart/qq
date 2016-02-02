@@ -5,6 +5,11 @@
         <small>Which deal are your questions associated with?</small>
         <small ng-if="ask_deal.deal.$invalid && !ask_deal.deal.$pristine" class="error">This field is required</small>
         <input name="deal" id="deal" type="text" ng-model="dealValue" placeholder="Enter deal name" required/>
+        <ul class="dropdown">
+            <li>Sony</li>
+            <li>Sony Tech Refresh</li>
+            <li>Sony Tech</li>
+        </ul>
         <button type="button" ng-click="ctrl.click_dealSubmit(dealValue)" ng-disabled="ask_deal.$invalid">Next</button>
         </form>
     </div>
