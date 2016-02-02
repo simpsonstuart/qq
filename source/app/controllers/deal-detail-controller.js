@@ -16,13 +16,22 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
     ctrl.syncWithSalesforce = syncWithSalesforce;
     ctrl.viewDealSalesforce = viewDealSalesforce;
     ctrl.favorite = favorite;
-    ctrl.showAnswerQuestionCount = showAnswerQuestionCount;
+    ctrl.showAnswerQuestionForPlaybookName = showAnswerQuestionForPlaybookName;
+    ctrl.goToPlayFeed = goToPlayFeed;
 
     activate();
 
 
     function formatMoney(integer) {
         return numeral(integer).format('$0,0');
+    }
+
+    function goToPlayFeed(playbookName, playId) {
+        if (false == showAnswerQuestionForPlaybookName(playbookName)) {
+            return false;
+        } else {
+            $state.go('root.deals.play', {deal_id: ctrl.deal.id, play_id: playId});
+        }
     }
 
     function sortQuestionAnswers(data) {
@@ -35,7 +44,7 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
         };
     }
 
-    function showAnswerQuestionCount(playbook_name) {
+    function showAnswerQuestionForPlaybookName(playbook_name) {
         return playbook_name.toLowerCase() != 'campaign';
     }
 
