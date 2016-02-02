@@ -1,3 +1,7 @@
+<h1>Question {{$index +1}} of {{ctrl.questions.length}}</h1>
+<small>Asked by {{question.askedBy}} | {{question.askedDate}}</small>
+<h2>{{question.question}}</h2>
+<form name="questionForm" ng-hide="!ctrl.isAnswered && ctrl.isAnswered == question.questionId">
 <fieldset name="textAnswer">
     <div>
         <input type="text" name="textAnswerInput" ng-model="question.textAnswerInput" placeholder="Enter answer" required/>
@@ -7,3 +11,8 @@
     </div>
     <button class="submit" type="submit" ng-disabled="!question.textAnswerInput" ng-click="ctrl.textAnswer(question.questionId, question.textAnswerInput)">Submit</button>
 </fieldset>
+</form>
+<div name="Answered+{{question.questionId}}" ng-if="ctrl.isAnswered == question.questionId">
+    <small>You Answered</small>
+    <h1>{{question.textAnswerInput}}</h1>
+</div>
