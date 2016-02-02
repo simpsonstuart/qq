@@ -1,27 +1,27 @@
     <h1>Question {{$index +1}} of {{ctrl.questions.length}}</h1>
     <small>Asked by {{question.askedBy}} | {{question.askedDate}}</small>
     <h2>{{question.question}}</h2>
-    <form name="questionForm" ng-hide="ctrl.boolAnswered == question.questionId">
+    <form name="questionForm" ng-hide="ctrl.boolAnswered && question.boolSelection">
         <fieldset name="yesNoField">
             <div>
-                <input type="radio" class="radio" name="yesNo+{{$index}}" value="Yes" id="yes+{{question.questionId}}" ng-model="question.yesNoSelection" ng-click="yesNoSelection = true"/>
+                <input type="radio" class="radio" name="yesNo+{{$index}}" value="Yes" id="yes+{{question.questionId}}" ng-model="question.boolSelection" ng-click="boolSelection = true"/>
                 <label for="yes+{{question.questionId}}">Yes</label>
             </div>
             <div>
-                <input type="radio" class="radio" name="yesNo+{{$index}}" value="No" id="no+{{question.questionId}}" ng-model="question.yesNoSelection" ng-click="yesNoSelection = true"/>
+                <input type="radio" class="radio" name="yesNo+{{$index}}" value="No" id="no+{{question.questionId}}" ng-model="question.boolSelection" ng-click="boolSelection = true"/>
                 <label for="no+{{question.questionId}}">No</label>
             </div>
             <div>
-                <input type="radio" class="radio" name="yesNo+{{$index}}" value="Unknown" id="unknown+{{question.questionId}}" ng-model="question.yesNoSelection" ng-click="yesNoSelection = true"/>
+                <input type="radio" class="radio" name="yesNo+{{$index}}" value="Unknown" id="unknown+{{question.questionId}}" ng-model="question.boolSelection" ng-click="boolSelection = true"/>
                 <label for="unknown+{{question.questionId}}">Unknown</label>
             </div>
             <div>
                 <textarea placeholder="Comments..."></textarea>
             </div>
-            <button class="submit" type="submit" ng-click="ctrl.boolAnswer(question.questionId, question.yesNoSelection)" ng-disabled="!yesNoSelection">Submit</button>
+            <button class="submit" type="submit" ng-click="ctrl.boolAnswer(question.questionId, question.yesNoSelection)" ng-disabled="!boolSelection">Submit</button>
         </fieldset>
     </form>
-    <div name="Answered+{{question.questionId}}" ng-if="ctrl.boolAnswered == question.questionId">
+    <div name="Answered+{{question.questionId}}" ng-if="ctrl.boolAnswered && question.boolSelection">
         <small>You Answered</small>
-        <h1>{{question.yesNoSelection}}</h1>
+        <h1>{{question.boolSelection}}</h1>
     </div>
