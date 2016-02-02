@@ -61,7 +61,9 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
             },
             views: {
                 '': {
-                    templateUrl: 'includes/templates/root.html'
+                    templateUrl: 'includes/templates/root.html',
+                    controller: 'RootController',
+                    controllerAs: 'ctrl'
                 }
             }
         })
