@@ -18,10 +18,9 @@ function LoginController($scope, AuthService, UserService, $state, UrlService, $
 
     function login() {
         AuthService.logIn($scope.password, $scope.username).then(function (data) {
-            UserService.profile('current').then(function (data) {
-                var user = JSON.stringify(data);
+            UserService.profile('current').then(function (userObject) {
                 AuthService.createTokenExpirationTime();
-                localStorage.setItem('user', user);
+                localStorage.setItem('user', userObject);
             }).then(function () {
                 // wait until the user is stored to go to feed
                 $state.go('root.profile');

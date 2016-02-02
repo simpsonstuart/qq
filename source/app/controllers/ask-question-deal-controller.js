@@ -1,7 +1,7 @@
 angular.module('QQ')
-    .controller('QuestionControllerDeal', QuestionController);
+    .controller('DealQuestionController', DealQuestionController);
 
-function QuestionController($scope, $state) {
+function DealQuestionController($scope, $state) {
     var ctrl = this;
     ctrl.click_dealSubmit = click_dealSubmit;
 
