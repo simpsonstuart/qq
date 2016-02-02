@@ -29,7 +29,6 @@ function AnswerController($scope, $stateParams, DealService) {
 
     function textAnswer(questionId, answer, comment) {
             ctrl.answer       = answer;
-            ctrl.lastQuestion = questionId;
             ctrl.isAnswered  = questionId;
 
     }
@@ -46,6 +45,8 @@ function AnswerController($scope, $stateParams, DealService) {
 
         } else if (questionType === 'text'){
             return "includes/templates/questions/question-text-type.html";
+        } else if (questionType === 'amount'){
+            return "includes/templates/questions/question-amount-type.html";
         }
     }
 }
