@@ -5,7 +5,7 @@ angular.module('QQ')
 function AnswerController($scope, $stateParams, DealService) {
     var ctrl = this;
     ctrl.textAnswer = textAnswer;
-    ctrl.YesNoAnswer = YesNoAnswer;
+    ctrl.boolAnswer = boolAnswer;
     ctrl.dealId = $stateParams.deal_id;
     ctrl.getTemplate = getTemplate;
 
@@ -22,9 +22,9 @@ function AnswerController($scope, $stateParams, DealService) {
             {"question":"Has proposal e3 been met in accordance to proposition 68?", "askedBy":"Jackson Davis", "questionType":"text", "askedDate":"1/11/2016", "questionId":"897"}
         ];
 
-    function YesNoAnswer(questionId, selection, comment) {
+    function boolAnswer(questionId, selection, comment) {
 
-        ctrl.answer = selection;
+            ctrl.boolAnswered = questionId;
     }
 
     function textAnswer(questionId, answer, comment) {
@@ -34,8 +34,8 @@ function AnswerController($scope, $stateParams, DealService) {
 
     }
 
+    //set question template based on question type
     function getTemplate(questionType) {
-        //set question template based on question type
         if (questionType === 'bool') {
             return "includes/templates/questions/question-bool-type.html";
         } else if (questionType === 'amount') {
@@ -43,6 +43,9 @@ function AnswerController($scope, $stateParams, DealService) {
 
         } else if (questionType === 'date'){
             return "includes/templates/questions/question-date-type.html";
+
+        } else if (questionType === 'text'){
+            return "includes/templates/questions/question-text-type.html";
         }
     }
 }
