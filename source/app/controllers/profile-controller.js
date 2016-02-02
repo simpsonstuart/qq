@@ -14,6 +14,7 @@ function ProfileController($state, $stateParams, NumberService, DateAndTimeServi
     ctrl.isRole = isRole;
     ctrl.setProfileForName = setProfileForName;
     ctrl.goToDistrict = goToDistrict;
+    ctrl.campaignPlayString = campaignPlayString;
 
     activate();
 
@@ -51,6 +52,10 @@ function ProfileController($state, $stateParams, NumberService, DateAndTimeServi
         }
     }
 
+    function campaignPlayString(playName, count) {
+        return playName.toUpperCase() + ': ' + count;
+    }
+
     function activate() {
 
         UserService.profile('current').then(function (userObject) {
@@ -65,7 +70,9 @@ function ProfileController($state, $stateParams, NumberService, DateAndTimeServi
             ctrl.quarterQuestionCount = ctrl.trailingCounts.questions_and_answers[0].question_count;
             ctrl.playbook_counts = ctrl.profile.playbook_counts.data;
             ctrl.virtual_team = ctrl.profile.virtual_team.data;
+            ctrl.campaignCounts = ctrl.profile.campaign_counts.data;
         });
+
         ctrl.setProfileForName();
         //if its my profile load my deals otherwise load the other persons deals
         ctrl.MyDeals = !!$state.is('root.profile');
