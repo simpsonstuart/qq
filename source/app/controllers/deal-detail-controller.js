@@ -16,6 +16,7 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
     ctrl.syncWithSalesforce = syncWithSalesforce;
     ctrl.viewDealSalesforce = viewDealSalesforce;
     ctrl.favorite = favorite;
+    ctrl.showAnswerQuestionCount = showAnswerQuestionCount;
 
     activate();
 
@@ -32,6 +33,10 @@ function DealDetailController(DealService, $stateParams, numeral, DateAndTimeSer
         return {
             height: count + '%'
         };
+    }
+
+    function showAnswerQuestionCount(playbook_name) {
+        return playbook_name.toLowerCase() != 'campaign';
     }
 
     function goToQuestions() {
