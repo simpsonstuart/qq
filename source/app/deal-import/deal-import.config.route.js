@@ -7,7 +7,9 @@
             url: '/deals/import/',
             restricted: true,
             data: {
-                headerClasses: 'back'
+                headerClasses: 'back',
+                footerClasses: 'nav',
+                pageTitle:     'Traqq'
             },
             views: {
                 'header': {
@@ -16,7 +18,7 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/deal-import.html',
+                    templateUrl: 'views/deal-import/deal-import.html',
                     controller: 'DealImport',
                     controllerAs: 'ctrl'
                 },

@@ -6,6 +6,10 @@
         $stateProvider.state('next-steps', {
             url: '/next-steps',
             restricted: true,
+            data: {
+                footerClasses: 'nav',
+                pageTitle:     'Traqq'
+            },
             views: {
                 'header': {
                     templateUrl: 'views/layouts/default-header.html',
@@ -13,7 +17,7 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/coming-soon.html',
+                    templateUrl: 'views/next-steps/coming-soon.html',
                     controller: 'NextSteps',
                     controllerAs: 'ctrl'
                 },

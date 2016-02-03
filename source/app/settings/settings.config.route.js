@@ -7,7 +7,9 @@
                 url: '/settings',
                 restricted: true,
                 data: {
-                    headerClasses: 'back'
+                    headerClasses: 'back',
+                    footerClasses: 'nav',
+                    pageTitle:     'Traqq'
                 },
                 views: {
                     'header': {
@@ -16,7 +18,7 @@
                         controllerAs: 'ctrl'
                     },
                     'container': {
-                        templateUrl: 'views/settings.html',
+                        templateUrl: 'views/settings/settings.html',
                         controller: 'Settings',
                         controllerAs: 'ctrl'
                     },

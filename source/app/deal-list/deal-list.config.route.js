@@ -6,6 +6,10 @@
         $stateProvider.state('deal-list', {
             url: '/deals',
             restricted: true,
+            data: {
+                footerClasses: 'nav',
+                pageTitle:     'Traqq'
+            },
             views: {
                 'header': {
                     templateUrl: 'views/layouts/default-header.html',
@@ -13,7 +17,7 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/deal-list.html',
+                    templateUrl: 'views/deal-list/deal-list.html',
                     controller: 'DealList',
                     controllerAs: 'ctrl'
                 },

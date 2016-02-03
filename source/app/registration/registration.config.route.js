@@ -8,7 +8,8 @@
             restricted: false,
             data: {
                 bodyClasses: 'login grey',
-                headerClasses: 'back'
+                headerClasses: 'back',
+                pageTitle:     'Traqq'
             },
             views: {
                 'header': {
@@ -17,7 +18,7 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/registration.html',
+                    templateUrl: 'views/registration/registration.html',
                     controller: 'Registration',
                     controllerAs: 'ctrl'
                 }

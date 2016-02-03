@@ -10,7 +10,7 @@
                 bodyClasses:   '',
                 headerClasses: '',
                 footerClasses: 'nav',
-                pageTitle:     'app'
+                pageTitle:     'Traqq'
             },
             views: {
                 'header': {

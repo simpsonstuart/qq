@@ -8,7 +8,9 @@
             restricted: false,
             data: {
                 bodyClasses: 'login grey',
-                headerClasses: 'logo-nav'
+                headerClasses: 'logo-nav',
+                footerClasses: 'nav',
+                pageTitle:     'Traqq'
             },
             views: {
                 'header': {

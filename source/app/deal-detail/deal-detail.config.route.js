@@ -10,7 +10,9 @@
                 deal_id: 'Deal ID'
             },
             data: {
-                headerClasses: 'back'
+                headerClasses: 'back',
+                footerClasses: 'nav',
+                pageTitle:     'Traqq'
             },
             views: {
                 'header': {
@@ -19,7 +21,7 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/deal-detail.html',
+                    templateUrl: 'views/deal-detail/deal-detail.html',
                     controller: 'DealDetail',
                     controllerAs: 'ctrl'
                 },
