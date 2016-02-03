@@ -11,13 +11,13 @@
                 headerClasses: 'logo-nav'
             },
             views: {
-                'header@root': {
+                'header': {
                     templateUrl: 'views/layouts/logo-nav.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },
-                'container@root': {
-                    templateUrl: 'views/login.html',
+                'container': {
+                    templateUrl: 'views/login/login.html',
                     controller: 'LoginController',
                     controllerAs: 'ctrl'
                 }

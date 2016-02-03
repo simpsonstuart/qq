@@ -13,17 +13,17 @@
                 pageTitle:     'app'
             },
             views: {
-                'header@root': {
+                'header': {
                     templateUrl: 'views/layouts/default-header.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },
-                'container@root': {
+                'container': {
                     templateUrl: 'views/dashboard/dashboard.html',
                     controller: 'Dashboard',
                     controllerAs: 'ctrl'
                 },
-                'footer@root': {
+                'footer': {
                     templateUrl: 'views/layouts/default-footer.html',
                     controller: 'FooterController',
                     controllerAs: 'ctrl'

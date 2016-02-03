@@ -7,17 +7,17 @@
             url: '/next-steps',
             restricted: true,
             views: {
-                'header@root': {
+                'header': {
                     templateUrl: 'views/layouts/default-header.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },
-                'container@root': {
+                'container': {
                     templateUrl: 'views/coming-soon.html',
                     controller: 'NextSteps',
                     controllerAs: 'ctrl'
                 },
-                'footer@root': {
+                'footer': {
                     templateUrl: 'views/layouts/default-footer.html',
                     controller: 'FooterController',
                     controllerAs: 'ctrl'

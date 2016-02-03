@@ -11,12 +11,12 @@
                 headerClasses: 'back'
             },
             views: {
-                'header@root': {
+                'header': {
                     templateUrl: 'views/layouts/back-header-with-nav.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },
-                'container@root': {
+                'container': {
                     templateUrl: 'views/registration.html',
                     controller: 'Registration',
                     controllerAs: 'ctrl'

@@ -10,17 +10,17 @@
                     headerClasses: 'back'
                 },
                 views: {
-                    'header@root': {
+                    'header': {
                         templateUrl: 'views/layouts/back-header-with-nav.html',
                         controller: 'HeaderController',
                         controllerAs: 'ctrl'
                     },
-                    'container@root': {
+                    'container': {
                         templateUrl: 'views/settings.html',
                         controller: 'Settings',
                         controllerAs: 'ctrl'
                     },
-                    'footer@root': {
+                    'footer': {
                         templateUrl: 'views/layouts/default-footer.html',
                         controller: 'FooterController',
                         controllerAs: 'ctrl'

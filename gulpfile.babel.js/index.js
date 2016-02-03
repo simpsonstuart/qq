@@ -140,6 +140,7 @@ gulp.task('javascript', () => {
   return gulp.src(
       [
         fullPath(config.paths.source.application + '/app.js'),
+        path.join(fullPath(config.paths.source.application), 'services/*.js'),
         path.join(fullPath(config.paths.source.application), 'layouts/*.js'),
         path.join(fullPath(config.paths.source.application), 'common/common.module.js'),
         path.join(fullPath(config.paths.source.application), 'common/*.js'),
