@@ -3,7 +3,7 @@ paths:
   node_modules: "./node_modules"
   source:
     root: "./source"
-    html: "./source/html"
+    html: "./source/layout"
     views: "./source/views"
     fonts: "./source/fonts"
     application: "./source/app"

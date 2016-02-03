@@ -52,17 +52,11 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
   fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
   fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
-  fullPath(config.paths.node_modules + '/ionic-npm/js/ionic.js')
+  fullPath(config.paths.node_modules + '/ionic-npm/js/ionic.js'),
+  fullPath(config.paths.source.root + '/vendor/IOS9Patch.js')
 ];
+console.log(path.join(fullPath(config.paths.source.application), config.globs.scripts));
 
-var appJavascriptSources = [
-  fullPath(config.paths.source.application + '/IOS9Patch.js'),
-  fullPath(config.paths.source.application + '/qq-app.js'),
-  fullPath(config.paths.source.application + '/controllers/*.js'),
-  fullPath(config.paths.source.application + '/directives/*.js'),
-  fullPath(config.paths.source.application + '/middleware/*.js'),
-  fullPath(config.paths.source.application + '/services/*.js')
-];
 
 //Cordova complains about it not being a Cordova project if www does not exist
 if (! fs.existsSync('./www')) fs.mkdirSync('./www');
@@ -100,7 +94,17 @@ gulp.task('audio', () => {
 });
 
 gulp.task('html', () => {
-  return gulp.src([path.join(fullPath(config.paths.source.html), config.globs.html)])
+  gulp.src([
+        path.join(fullPath(config.paths.source.html), config.globs.html),
+        path.join(fullPath(config.paths.source.application), config.globs.html),
+      ])
+      .pipe(filter(['**']))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest(fullPath(config.paths.public.views)));
+
+  return gulp.src([
+      config.paths.source.root + '/index.html'
+    ])
     .pipe(filter(['**']))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(fullPath(config.paths.public.html)));
@@ -133,14 +137,37 @@ gulp.task('javascript', () => {
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
 
-  return gulp.src(appJavascriptSources)
-      .pipe(replace("QQ.API_URI", process.env.API_URI))
-      .pipe(replace("QQ.PLATFORM", process.env.PLATFORM))
-      .pipe(replace("QQ.ENVIRONMENT", process.env.ENVIRONMENT))
-      .pipe(replace("QQ.OAUTH_URI", process.env.OAUTH_URI))
-      .pipe(replace("QQ.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
-      .pipe(replace("QQ.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
-      .pipe(iife())
+  return gulp.src(
+      [
+        fullPath(config.paths.source.application + '/app.js'),
+        path.join(fullPath(config.paths.source.application), 'layouts/*.js'),
+        path.join(fullPath(config.paths.source.application), 'common/common.module.js'),
+        path.join(fullPath(config.paths.source.application), 'common/*.js'),
+        path.join(fullPath(config.paths.source.application), 'dashboard/dashboard.module.js'),
+        path.join(fullPath(config.paths.source.application), 'dashboard/*.js'),
+        path.join(fullPath(config.paths.source.application), 'deal-detail/deal-detail.module.js'),
+        path.join(fullPath(config.paths.source.application), 'deal-detail/*.js'),
+        path.join(fullPath(config.paths.source.application), 'deal-import/deal-import.module.js'),
+        path.join(fullPath(config.paths.source.application), 'deal-import/*.js'),
+        path.join(fullPath(config.paths.source.application), 'deal-list/deal-list.module.js'),
+        path.join(fullPath(config.paths.source.application), 'deal-list/*.js'),
+        path.join(fullPath(config.paths.source.application), 'login/login.module.js'),
+        path.join(fullPath(config.paths.source.application), 'login/*.js'),
+        path.join(fullPath(config.paths.source.application), 'next-steps/next-steps.module.js'),
+        path.join(fullPath(config.paths.source.application), 'next-steps/*.js'),
+        path.join(fullPath(config.paths.source.application), 'registration/registration.module.js'),
+        path.join(fullPath(config.paths.source.application), 'registration/*.js'),
+        path.join(fullPath(config.paths.source.application), 'settings/settings.module.js'),
+        path.join(fullPath(config.paths.source.application), 'settings/*.js'),
+      ]
+  )
+      .pipe(replace("app.API_URI", process.env.API_URI))
+      .pipe(replace("app.PLATFORM", process.env.PLATFORM))
+      .pipe(replace("app.ENVIRONMENT", process.env.ENVIRONMENT))
+      .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
+      .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
+      .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
+      //.pipe(iife())
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
@@ -211,7 +238,7 @@ gulp.task('production',
 
 gulp.task('browsersync', () => {
   var baseDir;
-  console.log(process.env.PLATFORM)
+  console.log(process.env.PLATFORM);
   if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
     baseDir = './platforms/browser/www';
   } else if (process.env.PLATFORM == 'web') {

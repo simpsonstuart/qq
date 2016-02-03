@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <a class="back-btn" href="#" back-button></a>
+    <a class="logo" ui-sref="dashboard">Traqq</a>
+    <nav class="main-nav" role="navigation">
+        <ul class="clearfix">
+            <li><a ui-sref-active-eq="active" class="deals" ui-sref="deal-list">Deals</a></li>
+            <li><a ui-sref-active-eq="active" class="next" ui-sref="next-steps">Next Step</a></li>
+            <li class="more"><a ui-sref-active-eq="active" class="more-icon">More</a>
+                <ul class="more-nav">
+                    <li><a ui-sref-active-eq="active" class="favorites">Favorites</a></li>
+                    <li><a ui-sref-active-eq="active" class="settings" ui-sref="settings">Settings</a></li>
+                    <li><a ui-sref-active-eq="active" class="sync" ng-click="ctrl.syncSalesforce()" href="#">Sync with Salesforce</a></li>
+                    <li><a ui-sref-active-eq="active" class="logout" ng-click="ctrl.logOut()" href="#">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+

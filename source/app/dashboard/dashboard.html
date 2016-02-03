@@ -1,0 +1,27 @@
+<h1>Traqq</h1>
+<div class="profile clearfix">
+    <aside>
+        <img ng-if="ctrl.profile.picture" ng-src="{{ctrl.profile.picture}}">
+        <h2>{{ctrl.profile.name}}</h2>
+        <small><a href="#">Partners</a> | <a href="#">Targets</a> | <a href="#">Accounts</a></small>
+    </aside>
+    <div class="profile-details clearfix">
+        <div class="match-height">
+            <a href=""class="all-deals" ng-click="$state.go('deal-list')">
+                <small>All My Deals</small>
+                <h2>{{ctrl.formatMoney(ctrl.allMyDeals)}}</h2>
+            </a>
+            <a href="" class="active-deals" ng-click="$state.go('deal-list')">
+                <small>Active Deals</small>
+                <h2>{{ctrl.formatMoney(ctrl.activeDeals)}}</h2>
+            </a>
+        </div>
+        <a href="" class="incomplete-steps" ng-click="$state.go('next-steps')">
+          <span>{{ctrl.incompleteNextSteps}}</span>
+          <div class="text">
+            <small>Incomplete next steps</small>
+            <small class="go-to">go to next steps</small>
+          </div>
+        </a>
+    </div>
+</div>
