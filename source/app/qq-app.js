@@ -67,33 +67,6 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 }
             }
         })
-        .state('root.answer-question', {
-            url: '/deals/:deal_id/answer-question/',
-            restricted: true,
-            params: {
-                deal_id: 'Deal ID'
-            },
-            data: {
-                headerClasses: 'back',
-                footerClasses: 'prev-next clearfix'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/answer.html',
-                    controller: 'AnswerController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/footer-pending.html',
-                    controller: 'AnswerController'
-                }
-            }
-        })
         .state('root.deals.detail', {
             url: '/:deal_id',
             restricted: true,
@@ -278,33 +251,6 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 deal_id: 'Deal ID'
             }
         })
-        .state('root.send-question', {
-            url: '/deals/:deal_id/send-question',
-            restricted: true,
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/send-question.html',
-                    controller: 'QuestionController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            },
-            params: {
-                deal_id: 'Deal ID'
-            }
-        })
         .state('root.deal-play-questions-select-recipients', {
             url: '/deals/:deal_id/plays/:play_id/questions/recipients',
             restricted: true,
@@ -324,108 +270,6 @@ function QQConfig(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, 
                 'container@root': {
                     templateUrl: 'includes/pages/deal-play-questions-select-recipients.html',
                     controller: 'DealPlayQuestionsSelectRecipientsController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            }
-        })
-        .state('root.ask-deal', {
-            url: '/ask-deal',
-            restricted: true,
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/default-header.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/ask-deal.html',
-                    controller: 'DealQuestionController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            }
-        })
-        .state('root.ask-questions', {
-            url: '/ask-questions',
-            restricted: true,
-            params: {
-                deal_id: "Deal ID"
-            },
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/ask-questions.html',
-                    controller: 'QuestionController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            }
-        })
-        .state('root.ask-play-questions', {
-            url: '/ask-questions/plays',
-            restricted: true,
-            params: {
-                deal_id: "Deal ID"
-            },
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/ask-play-questions.html',
-                    controller: 'askQuestionPlaysController',
-                    controllerAs: 'ctrl'
-                },
-                'footer@root': {
-                    templateUrl: 'includes/templates/default-footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'ctrl'
-                }
-            }
-        })
-        .state('root.ask-reps', {
-            url: '/ask-reps',
-            restricted: true,
-            params: {
-                deal_id: "Deal ID"
-            },
-            data: {
-                headerClasses: 'back'
-            },
-            views: {
-                'header@root': {
-                    templateUrl: 'includes/templates/back-header-with-nav.html',
-                    controller: 'HeaderController',
-                    controllerAs: 'ctrl'
-                },
-                'container@root': {
-                    templateUrl: 'includes/pages/ask-reps.html',
-                    controller: 'QuestionControllerReps',
                     controllerAs: 'ctrl'
                 },
                 'footer@root': {
