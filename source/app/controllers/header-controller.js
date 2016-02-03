@@ -1,7 +1,7 @@
 angular.module('QQ')
     .controller('HeaderController', HeaderController);
 
-function HeaderController($scope, AuthService, $state) {
+function HeaderController(AuthService, $state) {
     var ctrl = this;
     ctrl.logOut = logOut;
     ctrl.syncSalesforce = syncSalesforce;

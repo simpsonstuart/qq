@@ -47,9 +47,6 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
             });
     }
 
-    function isRole(user_role) {
-        return ctrl.profile.role.data.name == user_role
-    }
 
     function logOut() {
         AuthService.logOut();
@@ -77,7 +74,6 @@ function SettingsController($scope, AuthService, $state, UserService, $statePara
             return user_id ? user_id : 'current';
         }()).then(function (data) {
             ctrl.profile = data;
-            ctrl.virtual_team = ctrl.profile.virtual_team.data;
         });
     }
 }

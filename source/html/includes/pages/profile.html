@@ -16,13 +16,6 @@
                 <h2>{{ctrl.formatMoney(ctrl.activeDeals)}}</h2>
             </a>
         </div>
-        <a href="" class="unanswered-questions" ng-click="$state.go('root.feed')">
-            <span>{{ctrl.unansweredQuestions}}</span>
-            <div class="text">
-                <small>unanswered questions</small>
-                <small class="go-to">go to feed</small>
-            </div>
-        </a>
         <a href="" class="incomplete-steps" ng-click="$state.go('root.coming-soon')">
           <span>{{ctrl.incompleteNextSteps}}</span>
           <div class="text">
@@ -30,44 +23,5 @@
             <small class="go-to">go to next steps</small>
           </div>
         </a>
-        <div class="activity" ng-if="ctrl.trailingCounts.week_counts.length">
-            <small>Activity by week</small>
-            <div class="graph clearfix">
-                <div ng-repeat="(key, week) in ctrl.trailingCounts.week_counts | limitTo:13"
-                     style="height:{{week.count}}%"
-                     class="week {{ctrl.convertNumberToWord(key + 1)}}">
-                    <p><span>{{week.count}}</span>Week {{key + 1}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="activity new-user" ng-if="!ctrl.trailingCounts.week_counts.length">
-          <small>Activity by week</small>
-          <p>You have no activity yet! To get started, ask questions about your deals or start assigning next steps to your team.</p>
-          <div class="new-user-btns">
-            <button ng-click="$state.go('root.ask-questions')">Ask Questions</button>
-            <button ng-click="$state.go('root.coming-soon')">Assign Next Steps</button>
-          </div>
-        </div>
-        <div class="playbook" ng-if="ctrl.playbook_counts.length">
-            <small>Campaign</small>
-            <ul ng-repeat="(key, playbook) in ctrl.playbook_counts" class="play">
-                <li ng-repeat="play in playbook">{{play.play}}: {{play.count}}</li>
-            </ul>
-        </div>
-        <div class="playbook" ng-if="!ctrl.playbook_counts.length">
-            <small>Campaign</small>
-            <ul class="play">
-                <li ng-if="ctrl.campaignCounts.length == 0">No campaigns added yet!</li>
-                <li ng-repeat="(playName, count) in ctrl.campaignCounts">{{ctrl.campaignPlayString(playName, count)}}</li>
-            </ul>
-        </div>
-        <div class="virtual-team clearfix" ng-if="ctrl.virtual_team.length">
-            <small>Active Virtual Team</small>
-            <div ng-repeat="team_mate in ctrl.virtual_team" class="questions clearfix">
-                <small>{{team_mate.name}}</small>
-                <div class="answered {{ctrl.answerCountIsZero(team_mate)}}">{{team_mate.answer_count}}</div>
-                <div class="asked">{{team_mate.question_count}}</div>
-            </div>
-        </div>
     </div>
 </div>
