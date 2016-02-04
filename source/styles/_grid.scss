@@ -46,10 +46,10 @@ header {
   }
   .profile-details {
     @include span(75% no-gutter border-box);
-    .all-deals, .active-deals {
+    .all-deals, .new-deals {
       @include span(50% no-gutter border-box);
     }
-    .unanswered-questions, .incomplete-steps {
+    .dash-next-steps {
       @include span(100% no-gutter border-box);
       span {
         @include span(45% no-gutter border-box);
@@ -151,10 +151,10 @@ header {
     }
     .profile-details {
       @include span(100% no-gutter border-box);
-      .all-deals, .active-deals, .qualify, .campaign {
+      .all-deals, .new-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
       }
-      .unanswered-questions, .incomplete-steps {
+      .dash-next-steps {
         @include span(100% no-gutter border-box);
         span {
           @include span(35% no-gutter border-box);

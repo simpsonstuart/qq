@@ -1,0 +1,131 @@
+/* PROFILE ---------------------------------
+-------------------------------------------*/
+.profile {
+  border-top: 1px solid $col-grey-stroke;
+  border-bottom: 1px solid $col-grey-stroke;
+  aside {
+    padding: 20px 15px 0 15px;
+    text-align: center;
+    img {
+      margin-bottom: 10px;
+      max-width: 160px;
+      width: 100%;
+    }
+    .profile-title {
+      margin-bottom: 10px;
+      color: $text-light;
+    }
+    small {
+      line-height: 1.7rem;
+    }
+  }
+  .profile-details {
+    border-left: 1px solid $col-grey-stroke;
+    small {
+      text-align: center;
+      display: block;
+      margin-bottom: 15px;
+    }
+    .all-deals, .new-deals {
+      padding-top: 20px;
+      text-align: center;
+      small {
+        margin-bottom: 5px;
+      }
+      h2 {
+        color: $text-primary;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .all-deals {
+      small {
+        color: $col-orange;
+        font-weight: 700;
+        &:after {
+          @include fa;
+          @include fa(caret-right);
+          @include fa-size(1.4rem);
+          @include fa-align(text-top);
+          @include fa-left(5px);
+        }
+      }
+    }
+    .dash-next-steps {
+      background: $col-orange-highlight;
+      padding: 10px 20px;
+      border-top: 1px solid $col-grey-stroke;
+      span {
+        color: $col-orange;
+        font-size: 6.5rem;
+        font-weight: 700;
+        text-align: right;
+      }
+      .text {
+        padding-left: 10px;
+        margin-top: 20px;
+      }
+      small {
+        text-align: left;
+        margin-bottom: 5px;
+        &.go-to {
+          color: $col-orange;
+          font-weight: 700;
+          &:after {
+            @include fa;
+            @include fa(caret-right);
+            @include fa-size(1.4rem);
+            @include fa-align(text-top);
+            @include fa-left(5px);
+          }
+        }
+      }
+    }
+  }
+  .new-deals {
+    border-left: 1px solid $col-grey-stroke;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+
+/* MEDIA QUERIES ---------------------------
+-------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+
+  .profile {
+    aside {
+      padding: 10px;
+      text-align: left;
+      background: $col-grey;
+      border-bottom: 1px solid $col-grey-stroke;
+      h2 {
+        margin-bottom: 4px;
+      }
+      img {
+        width: 60px;
+        height: 60px;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 0;
+      }
+      .profile-title {
+        margin-bottom: 4px;
+      }
+    }
+    .profile-details {
+      border-left: none;
+      .match-height {
+        flex-direction: row;
+      }
+    }
+  }
+
+}
+
+

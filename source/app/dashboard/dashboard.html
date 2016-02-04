@@ -3,7 +3,6 @@
     <aside>
         <img ng-if="ctrl.profile.picture" ng-src="{{ctrl.profile.picture}}">
         <h2>{{ctrl.profile.name}}</h2>
-        <small><a href="#">Partners</a> | <a href="#">Targets</a> | <a href="#">Accounts</a></small>
     </aside>
     <div class="profile-details clearfix">
         <div class="match-height">
@@ -11,17 +10,24 @@
                 <small>All My Deals (?)</small>
                 <h2>{{ctrl.allMyDeals}}</h2>
             </a>
-            <a href="" class="active-deals" ng-click="$state.go('deal-list')">
-                <small>Active Deals</small>
+            <div class="new-deals">
+                <small>New Deals</small>
                 <h2>{{ctrl.formatMoney(ctrl.activeDeals)}}</h2>
-            </a>
+            </div>
         </div>
-        <a href="" class="incomplete-steps" ng-click="$state.go('next-steps')">
+        <a href="" class="dash-next-steps" ng-click="$state.go('next-steps')">
           <span>{{ctrl.incompleteNextSteps}}</span>
           <div class="text">
-            <small>Incomplete next steps</small>
+            <small>next steps</small>
             <small class="go-to">go to next steps</small>
           </div>
+        </a>
+        <a href="" class="dash-next-steps" ng-click="$state.go('next-steps')">
+            <span>{{ctrl.incompleteNextSteps}}</span>
+            <div class="text">
+                <small>Deals without next steps</small>
+                <small class="go-to">go to next steps</small>
+            </div>
         </a>
     </div>
 </div>
