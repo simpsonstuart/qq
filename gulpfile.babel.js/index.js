@@ -48,15 +48,13 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/jquery/dist/jquery.js'),
   fullPath(config.paths.node_modules + '/lodash/index.js'),
   fullPath(config.paths.node_modules + '/angular/angular.js'),
-  fullPath(config.paths.node_modules + '/angular-ui-router/build/angular-ui-router.js'),
+  fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
   fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
   fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
   fullPath(config.paths.node_modules + '/ionic-npm/js/ionic.js'),
   fullPath(config.paths.source.root + '/vendor/IOS9Patch.js')
 ];
-console.log(path.join(fullPath(config.paths.source.application), config.globs.scripts));
-
 
 //Cordova complains about it not being a Cordova project if www does not exist
 if (! fs.existsSync('./www')) fs.mkdirSync('./www');
@@ -168,7 +166,6 @@ gulp.task('javascript', () => {
       .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
-      //.pipe(iife())
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
