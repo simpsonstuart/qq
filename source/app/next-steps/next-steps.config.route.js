@@ -17,7 +17,7 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/next-steps/coming-soon.html',
+                    templateUrl: 'views/next-steps/next-steps.html',
                     controller: 'NextSteps',
                     controllerAs: 'ctrl'
                 },
@@ -27,7 +27,7 @@
                     controllerAs: 'ctrl'
                 }
             }
-        })
+        });
     }
 
 })();

@@ -33,7 +33,7 @@
     angular.module('app').config(config);
 
 
-    function run($http, CacheFactory, $rootScope, $location, $state, AuthService, $stateParams) {
+    function run($http, CacheFactory, $rootScope, $state, AuthService, $stateParams) {
 
         $http.defaults.cache = CacheFactory('defaultCache', {
             maxAge: 15 * 60 * 1000, // Items added to this cache expire after 15 minutes
@@ -46,7 +46,7 @@
         function stateChangeStart(event, next) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
-            console.log('here');
+            console.log('state change start');
             if (next.restricted && (!AuthService.loggedIn())) {
 
                 event.preventDefault();
@@ -64,31 +64,11 @@
 
 
     //AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider
-    function config(AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider) {
+    function config(AppConfig, $urlRouterProvider, $httpProvider, $locationProvider, $authProvider) {
 
         // Satellizer configuration that specifies which API
         // route the JWT should be retrieved from
         $authProvider.loginUrl = AppConfig.apiUri + 'login';
-
-        $stateProvider
-            .state('root', {
-                url:      '',
-                abstract: true,
-                data:     {
-                    bodyClasses:   '',
-                    headerClasses: '',
-                    footerClasses: 'nav',
-                    pageTitle:     'app'
-                },
-                views:    {
-                    '': {
-                        templateUrl:  'views/layouts/html',
-                        controller:   'RootController',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            })
-        ;
 
         $httpProvider.interceptors.push("HttpErrorInterceptor");
         $locationProvider.html5Mode(false);
