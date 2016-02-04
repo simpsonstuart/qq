@@ -35,9 +35,9 @@ header {
             display: block !important;
             margin-bottom: 5px;
           }
-          &.feed:before {
+          &.home:before {
             @include fa;
-            @include fa(inbox);
+            @include fa(home);
             @include fa-size(1.6em);
           }
           &.deals:before {
@@ -50,9 +50,9 @@ header {
             @include fa(check-circle);
             @include fa-size(1.6em);
           }
-          &.ask:before {
+          &.sync:before {
             @include fa;
-            @include fa(comment);
+            @include fa(refresh);
             @include fa-size(1.6em);
           }
           &.more-icon {
@@ -71,19 +71,9 @@ header {
     background: #646464;
     position: absolute;
     z-index: 1;
-    right: 30px;
-    top: 65px;
-    &:before {
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 12px solid #646464;
-      content: '';
-      position: absolute;
-      top: -10px;
-      right: 22px;
-    }
+    right: 20px;
+    top: 61px;
+    width: 200px;
     li {
       float: none;
       text-align: left;
@@ -95,7 +85,7 @@ header {
         }
       }
       a {
-        padding: 10px 15px;
+        padding: 10px 25px 10px 15px;
         &:hover, &.active {
           color: $col-orange;
           background: none;
