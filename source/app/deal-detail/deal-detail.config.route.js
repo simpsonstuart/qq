@@ -1,10 +1,10 @@
 (function () {
     'use strict';
-    angular.module('app.dashboard').config(config);
+    angular.module('app.deal-list').config(config);
 
     function config($stateProvider) {
-        $stateProvider        .state('deal-list.detail', {
-            url: '/:deal_id',
+        $stateProvider.state('deal-detail', {
+            url: '/deals/:deal_id',
             restricted: true,
             params: {
                 deal_id: 'Deal ID'

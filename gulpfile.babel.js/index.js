@@ -137,27 +137,9 @@ gulp.task('javascript', () => {
 
   return gulp.src(
       [
-        fullPath(config.paths.source.application + '/app.js'),
-        path.join(fullPath(config.paths.source.application), 'services/*.js'),
-        path.join(fullPath(config.paths.source.application), 'layouts/*.js'),
-        path.join(fullPath(config.paths.source.application), 'common/common.module.js'),
-        path.join(fullPath(config.paths.source.application), 'common/*.js'),
-        path.join(fullPath(config.paths.source.application), 'dashboard/dashboard.module.js'),
-        path.join(fullPath(config.paths.source.application), 'dashboard/*.js'),
-        path.join(fullPath(config.paths.source.application), 'deal-detail/deal-detail.module.js'),
-        path.join(fullPath(config.paths.source.application), 'deal-detail/*.js'),
-        path.join(fullPath(config.paths.source.application), 'deal-import/deal-import.module.js'),
-        path.join(fullPath(config.paths.source.application), 'deal-import/*.js'),
-        path.join(fullPath(config.paths.source.application), 'deal-list/deal-list.module.js'),
-        path.join(fullPath(config.paths.source.application), 'deal-list/*.js'),
-        path.join(fullPath(config.paths.source.application), 'login/login.module.js'),
-        path.join(fullPath(config.paths.source.application), 'login/*.js'),
-        path.join(fullPath(config.paths.source.application), 'next-steps/next-steps.module.js'),
-        path.join(fullPath(config.paths.source.application), 'next-steps/*.js'),
-        path.join(fullPath(config.paths.source.application), 'registration/registration.module.js'),
-        path.join(fullPath(config.paths.source.application), 'registration/*.js'),
-        path.join(fullPath(config.paths.source.application), 'settings/settings.module.js'),
-        path.join(fullPath(config.paths.source.application), 'settings/*.js'),
+          fullPath(config.paths.source.application + '/**/*.module.js'),
+          fullPath(config.paths.source.application + '/**/*.config.route.js'),
+          fullPath(config.paths.source.application + '/**/*.js')
       ]
   )
       .pipe(replace("app.API_URI", process.env.API_URI))

@@ -61,9 +61,6 @@
         }
     }
 
-
-
-    //AppConfig, $urlRouterProvider, $stateProvider, $httpProvider, $locationProvider, $authProvider
     function config(AppConfig, $urlRouterProvider, $httpProvider, $locationProvider, $authProvider) {
 
         // Satellizer configuration that specifies which API

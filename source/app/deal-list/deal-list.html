@@ -6,7 +6,7 @@
     </aside>
     <div class="details clearfix">
         <div class="text">
-            <h2><a ui-sref="deal-list.detail({deal_id: deal.id})">{{deal.name}}</a></h2>
+            <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
             <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
         </div>
         <div class="close-date clearfix">
@@ -15,7 +15,7 @@
             <small class="caution" ng-if="deal.close_date == ctrl.dateNow">Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <span class="deal-activity">12</span>
         </div>
-        <a ui-sref="deal-list.detail({deal_id: deal.id})" class="caret"></a>
+        <a ui-sref="deal-detail({deal_id: deal.id})" class="caret"></a>
     </div>
 </div>
 
