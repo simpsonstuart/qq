@@ -2120,9 +2120,9 @@ footer {
             display: block !important;
             margin-bottom: 2px;
           }
-          &.feed:before {
+          &.home:before {
             @include fa;
-            @include fa(inbox);
+            @include fa(home);
             @include fa-size(1.3em);
           }
           &.deals:before {
@@ -2135,9 +2135,9 @@ footer {
             @include fa(check-circle);
             @include fa-size(1.3em);
           }
-          &.ask:before {
+          &.sync:before {
             @include fa;
-            @include fa(comment);
+            @include fa(refresh);
             @include fa-size(1.3em);
           }
         }

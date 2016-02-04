@@ -1,6 +1,8 @@
 <nav>
     <ul class="clearfix">
+        <li><a ui-sref-active-eq="active" class="home" ui-sref="deal-list">Home</a></li>
         <li><a ng-class="{active: ctrl.DealsActive}" id="footer-deals" class="deals" ui-sref="deal-list">Deals</a></li>
         <li><a ng-class="{active: ctrl.NSActive}" id="footer-NS" class="next"  ui-sref="next-steps">Next Step</a></li>
+        <li><a ui-sref-active-eq="active" class="sync" ui-sref="deal-list">Sync</a></li>
     </ul>
 </nav>
