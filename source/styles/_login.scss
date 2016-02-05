@@ -1,0 +1,113 @@
+/* LOGIN SCREENS -------------------------------
+------------------------------------------------*/
+.login.grey {
+  background: $col-grey;
+  .site-wrap {
+    background: $col-grey;
+  }
+}
+
+.login {
+  header {
+    padding: 5px 0 10px 0;
+  }
+  h1 {
+    text-align: center;
+    margin-left: 0;
+  }
+  form {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    label {
+      margin-top: 10px;
+      margin-bottom: 3px;
+      display: block;
+    }
+    button {
+      width: 280px;
+      margin: 20px auto;
+      display: block;
+      text-align: center;
+      height: 40px;
+    }
+  }
+  button.salesforce {
+    width: 280px;
+    display: block;
+    text-align: center;
+    height: 40px;
+  }
+  button.salesforce:disabled {
+    background: #C1C1C1;
+    border: 1px solid #DADADA;
+    color: #888;
+    cursor: not-allowed !important;
+  }
+  .register-text {
+    text-align: center;
+    a {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+}
+
+
+.hr {
+  background: #cbcbcb;
+  height: 1px;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 20px auto 40px auto;
+  p {
+    color: #fff;
+    text-transform: uppercase;
+    background: $text-light;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+
+
+/* MEDIA QUERIES ---------------------------
+-------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .login {
+    h1 {
+      position: static;
+      transform: none;
+      color: $text-primary;
+      margin: 25px 0 15px 0;
+      font-size: 2rem;
+    }
+    footer.nav {
+      display: none;
+    }
+  }
+
+  .import-title,
+  .login form.import {
+    margin-top: 20px;
+  }
+}
+
+
