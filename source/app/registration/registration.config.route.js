@@ -8,12 +8,13 @@
             restricted: false,
             data: {
                 bodyClasses: 'login grey',
-                headerClasses: 'back',
+                headerClasses: 'logo-nav',
+                footerClasses: 'nav',
                 pageTitle:     'Traqq'
             },
             views: {
                 'header': {
-                    templateUrl: 'views/layouts/back-header-with-nav.html',
+                    templateUrl: 'views/layouts/logo-nav.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },
