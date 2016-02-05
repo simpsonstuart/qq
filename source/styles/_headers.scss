@@ -365,6 +365,20 @@ header.logo-nav {
   label[for="nav-trigger"] {
     display: block;
   }
+
+  header.logo-nav {
+    padding: 5px 0;
+    height: 46px;
+    box-sizing: border-box;
+    .logo {
+      background: url(../media/images/logo.svg) no-repeat;
+      margin: 0 auto;
+      float: none;
+      width: 43px;
+      height: 36px;
+    }
+  }
+
 }
 
 

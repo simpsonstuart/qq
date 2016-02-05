@@ -7,13 +7,14 @@
             url: '/deals/import/',
             restricted: true,
             data: {
-                headerClasses: 'back',
+                bodyClasses: 'login',
+                headerClasses: 'logo-nav',
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'
             },
             views: {
                 'header': {
-                    templateUrl: 'views/layouts/import-back-header.html',
+                    templateUrl: 'views/layouts/logo-nav.html',
                     controller: 'HeaderController',
                     controllerAs: 'ctrl'
                 },

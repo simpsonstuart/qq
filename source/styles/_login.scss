@@ -8,9 +8,6 @@
 }
 
 .login {
-  header {
-    padding: 5px 0 10px 0;
-  }
   h1 {
     text-align: center;
     margin-left: 0;
@@ -103,11 +100,6 @@
     footer.nav {
       display: none;
     }
-  }
-
-  .import-title,
-  .login form.import {
-    margin-top: 20px;
   }
 }
 
