@@ -1,0 +1,104 @@
+/* SETTINGS -------------------------------
+-------------------------------------------*/
+.settings-icon {
+  &:before {
+    @include fa;
+    @include fa(cog);
+    @include fa-size(2.5rem);
+    @include fa-align(middle);
+    @include fa-left(5px);
+    line-height: 20px;
+  }
+  &:hover {
+    color: #f77600 !important;
+  }
+}
+.settings {
+  border-left: 1px solid $col-grey-stroke;
+  .row {
+    padding: 15px 20px;
+    position: relative;
+    &:last-child {
+      border-bottom: none;
+    }
+    small {
+      margin-bottom: 5px;
+      display: block;
+    }
+    h2 {
+      margin-bottom: 0;
+    }
+    .edit {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    &.btns {
+      background: $col-grey;
+      button {
+        width: 280px;
+        display: block;
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &.sign-out {
+          background: $col-red;
+          border-color: #b3391b;
+          &:hover {
+            background: #b3391b;
+          }
+        }
+      }
+    }
+  }
+  .edit-expanded {
+    padding: 15px 20px 20px 20px;
+    background: $col-grey;
+    border-bottom: 1px solid $col-grey-stroke;
+    clear: both;
+    small {
+      display: block;
+      margin-bottom: 15px;
+      &.error {
+        margin: 0 0 -5px 0;
+        width: 280px;
+        box-sizing: border-box;
+      }
+    }
+    input {
+      height: 38px;
+      box-sizing: border-box;
+      padding: 5px;
+      border: 1px solid #dbdbdb;
+      margin-bottom: 10px;
+      width: 280px;
+    }
+    button {
+      width: 280px;
+      display: block;
+    }
+  }
+}
+
+
+
+
+
+
+/* MEDIA QUERIES -----------------------------
+ --------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .settings {
+    .row.btns {
+      background: $col-grey;
+      button {
+        margin: 0 auto 10px auto;
+      }
+    }
+  }
+}

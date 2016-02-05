@@ -1,0 +1,143 @@
+/* DEALS LIST --------------------------
+----------------------------------------*/
+.deals-list {
+  display: flex;
+  border-bottom: 1px solid $col-grey-stroke;
+  border-top: 1px solid $col-grey-stroke;
+  width: 100%;
+  aside {
+    position: relative;
+    padding: 10px 0;
+    width: 100px;
+    .favorite {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      cursor: pointer;
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(4rem);
+        color: $col-grey-stroke;
+      }
+      &.active {
+        &:before {
+          color: $col-blue;
+        }
+      }
+    }
+  }
+  .details {
+    border-left: 1px solid $col-grey-stroke;
+    padding: 20px 0 20px 10px;
+    flex-grow: 1;
+    position: relative;
+    .text {
+      margin-top: 8px;
+      width: 44%;
+    }
+    h2 {
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .close-date {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 250px;
+      small {
+        display: block;
+        background: $col-grey-alt;
+        height: 24px;
+        line-height: 24px;
+        padding-left: 10px;
+        &.overdue {
+          background: $col-red;
+          color: #fff;
+        }
+        &.caution {
+          background: #c6bd09;
+          color:#fff;
+        }
+      }
+      .deal-activity {
+        color: #fff;
+        background: $col-red;
+        position: absolute;
+        right: 15px;
+        text-align: center;
+        border-radius: 50px;
+        padding: 5px;
+        top: -10px;
+        min-width: 14px;
+        border: 1px solid #fff;
+      }
+    }
+    .caret {
+      display: none;
+    }
+  }
+}
+
+
+
+
+/* MEDIA QUERIES ---------------------------
+-------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .deals-list {
+    border-top: none;
+    .details {
+      .text {
+        margin-top: 0;
+        width: 85%;
+      }
+      h2 {
+        display: block;
+        margin-right: 0;
+      }
+      .close-date {
+        position: relative;
+        right: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        .deal-activity {
+          right: 5px;
+        }
+      }
+      .caret {
+        display: block;
+      }
+    }
+  }
+}
+
+
+/* max-width 568 --------------------------*/
+@media only screen and (max-width: 568px) {
+  .deals-list {
+    aside {
+      width: 60px;
+    }
+  }
+}
+
+
+/* max-width 420 --------------------------*/
+@media only screen and (max-width: 420px) {
+  .deals-list {
+    .details {
+      padding: 15px 10px;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
