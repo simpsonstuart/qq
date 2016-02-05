@@ -19,7 +19,9 @@
         'app.login',
         'app.next-steps',
         'app.registration',
-        'app.settings'
+        'app.settings',
+        'app.sync',
+        'app.registration-confirmation'
     ]);
 
     angular.module('app').constant('AppConfig', {
@@ -46,7 +48,6 @@
         function stateChangeStart(event, next) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
-            console.log('state change start');
             if (next.restricted && (!AuthService.loggedIn())) {
 
                 event.preventDefault();

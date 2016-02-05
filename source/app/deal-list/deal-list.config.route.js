@@ -4,7 +4,7 @@
 
     function config($stateProvider) {
         $stateProvider.state('deal-list', {
-            url: '/deals',
+            url: '/deal-list',
             restricted: true,
             data: {
                 footerClasses: 'nav',
