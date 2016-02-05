@@ -150,6 +150,9 @@ button {
     background: $col-orange-active;
     color: #fff;
   }
+  &:focus {
+    outline: none;
+  }
   &:disabled {
     background: #C1C1C1;
     border: 1px solid #DADADA;
@@ -194,16 +197,6 @@ input[type=text], input[type=email], input[type=password] {
 
 textarea {
   border: 1px solid $col-grey-stroke;
-}
-
-.match-height {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-}
-
-.center-text {
-  text-align: center;
 }
 
 .flex {

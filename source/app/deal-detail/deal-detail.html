@@ -13,7 +13,7 @@
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: ctrl.deal.favorite }"></span>
     </aside>
     <div class="deal-details clearfix">
-        <div class="match-height">
+        <div class="flex">
             <div class="deal-btns">
                 <button class="deal-feed" ui-sref="deal-list.feed({deal_id: ctrl.deal.id})">Deal Feed</button>
                 <button class="next-steps" ng-click="$state.go('next-steps')">Next Steps</button>
