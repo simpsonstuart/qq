@@ -1,16 +1,16 @@
 <h1>Edit</h1>
 <div class="edit clearfix">
-    <fieldset>
+    <fieldset class="edit-mobile">
         <p>
-            <small>Close Date</small>
-            <input type="date" name="closeDate">
+            <small class="input-label">Close Date</small>
+            <input type="date" class="edit-input-style" name="closeDate">
         </p>
     </fieldset>
     <div class="sync-check">
         <input type="checkbox" name="syncChanges" ng-model="syncChanges" value="true" />Sync my changes to Salesforce
     </div>
     <div class="edit-buttons">
-        <button ui-sref="import-deals" ng-model="setNextStep">Cancel</button>
-        <button  ui-sref="edit-next-step">Save Changes</button>
+        <button class="submit edit-buttons" ui-sref="import-deals" ng-model="setNextStep">Cancel</button>
+        <button class="submit edit-buttons" ui-sref="edit-next-step">Save Changes</button>
     </div>
 </div>
