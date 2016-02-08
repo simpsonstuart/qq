@@ -29,6 +29,12 @@
       }
     }
   }
+  .deal-header {
+    background: $col-grey;
+    border-top: 1px solid $col-grey-stroke;
+    display: block;
+    padding: 5px 0 5px 20px;
+  }
 }
 
 .updates-header {
@@ -39,6 +45,7 @@
   }
   > p {
     color: $text-light;
+    line-height: 2rem;
   }
   button {
     width: 300px;
@@ -65,11 +72,22 @@
     right: 20px;
     top: 16px;
   }
+  .edit {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
-
-
-
+#tab-content2 {
+  h2 {
+    margin: 5px 0 0 0;
+  }
+  .update {
+    padding-right: 60px;
+  }
+}
 
 
 
@@ -85,14 +103,14 @@
     &-all-btn {
       margin-top: 0;
     }
-  }
-
-  .sync {
     h1 {
       font-size: 1.8rem;
       position: static;
       color: $text-primary;
       transform: none;
+    }
+    .deal-header {
+      padding-left: 10px;
     }
   }
 
@@ -108,6 +126,9 @@
     }
     .account-value {
       top: 6px;
+      right: 10px;
+    }
+    .edit {
       right: 10px;
     }
   }
