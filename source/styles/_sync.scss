@@ -18,6 +18,19 @@
   }
 }
 
+.syncing {
+  text-align: center;
+  h2 {
+    &:before {
+      @include fa;
+      @include fa(refresh);
+      @include fa-size(2.4rem);
+      @include fa-right(7px);
+      color: $salesforce;
+    }
+  }
+}
+
 
 
 /* MEDIA QUERIES --------------------------

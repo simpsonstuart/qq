@@ -3,18 +3,20 @@
         <button class="submit" type="submit" ng-click="ctrl.submit()">Sync All Updates</button>
     </div>
     <div class="tabs">
-        <!-- Radio button and label for #tab-content1 -->
+
         <input type="radio" name="tabs" id="tab1" checked >
         <label for="tab1">From Salesforce</label>
-        <!-- Radio button and label for #tab-content2 -->
+
         <input type="radio" name="tabs" id="tab2">
         <label for="tab2">To Salesforce</label>
         <div id="tab-content1" class="tab-content">
-            <h3><!-- Tab title here --></h3>
-            <p><!-- Tab content here --></p>
-        </div> <!-- #tab-content1 -->
+            <div class="syncing">
+                <h2 class="syncing">Getting Updates from Salesforce</h2>
+                <img src="../media/images/syncing.gif">
+            </div>
+        </div>
         <div id="tab-content2" class="tab-content">
-            <h3><!-- Tab title here --></h3>
+            <h2><!-- Tab title here --></h2>
             <p><!-- Tab content here --></p>
         </div> <!-- #tab-content2 -->
     </div>

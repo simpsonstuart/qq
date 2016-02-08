@@ -161,8 +161,8 @@ button {
     cursor: not-allowed;
   }
   &.salesforce {
-    background: #4bb5e9;
-    border: 1px solid #48a5d3;
+    background: $salesforce;
+    border: 1px solid $salesforce-border;
     &:before {
       content: '';
       background: url(../media/images/salesforce-logo.png) no-repeat;
@@ -174,7 +174,7 @@ button {
       padding-bottom: 3px;
     }
     &:hover {
-      background: #2fa5df;
+      background: $salesforce-hover;
       color: #fff;
     }
   }
@@ -251,7 +251,6 @@ textarea {
   background: $col-orange-highlight;
   text-align: center;
   cursor: pointer;
-  transition: all 0.4s ease;
   border-bottom: 1px solid $col-grey-stroke;
   box-sizing: border-box;
 }
@@ -281,27 +280,6 @@ label[for=tab2] {
   background-color:#ffffff;
 }
 
-.tab-content * {
-  -webkit-animation: scale 0.7s ease-in-out;
-  -moz-animation: scale 0.7s ease-in-out;
-  animation: scale 0.7s ease-in-out;
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.01);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 
 
 
@@ -315,7 +293,7 @@ label[for=tab2] {
 
 /* ERROR STYLES ---------------------------
 -------------------------------------------*/
-.Report_Label{
+.Report_Label {
   padding: 10px;
   padding-left: 22px;
 }
