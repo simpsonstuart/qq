@@ -1,0 +1,36 @@
+.registration-confirmation {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  p {
+    line-height: 2rem;
+  }
+  a {
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: underline;
+    font-weight: 700;
+    &:before {
+      @include fa;
+      @include fa(envelope-o);
+      @include fa-size(2rem);
+      @include fa-right(7px);
+    }
+  }
+}
+
+
+
+
+/* MEDIA QUERIES ----------------------------
+ --------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .registration-confirmation {
+    margin-top: 30px;
+  }
+}
