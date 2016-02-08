@@ -178,6 +178,13 @@ header {
     }
   }
 
+  .profile {
+    .settings {
+      @include span(100% no-gutter border-box);
+      float: none;
+    }
+  }
+
   .deal-detail {
     .deal-details {
       @include span(100% no-gutter border-box);

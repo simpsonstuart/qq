@@ -7,10 +7,6 @@
     </aside>
     <div class="settings clearfix">
         <div class="row">
-            <small>Username</small>
-            <h2>{{ctrl.profile.username}}</h2>
-        </div>
-        <div class="row">
             <small>password</small>
             <h2>•••••••••••</h2>
             <a href="#settings" class="edit" ng-click="ctrl.click_password()">edit</a>
@@ -61,10 +57,8 @@
                 </fieldset>
             </form>
         </div>
-        <div class="row"><small>Other</small></div>
         <div class="row btns">
-            <button ng-hide="ctrl.isSalesRep" ui-sref="import-deals">Import Deals</button>
-            <button ng-click="ctrl.logOut()" class="sign-out">Sign Out</button>
+            <button ng-click="ctrl.logOut()" class="sign-out">Log Out</button>
         </div>
     </div>
 </div>
