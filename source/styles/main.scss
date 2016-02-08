@@ -363,6 +363,119 @@ label[for=tab2] {
   background-color:#ffffff;
 }
 
+.next-step {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.edit {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.edit-input-style {
+  margin-top: 7px !important;
+}
+
+.edit-mobile {
+  margin-top: 30px;
+}
+
+.sync-check {
+  color: #48a5d3;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.updating {
+  text-align: center;
+  margin: auto;
+  padding-top: 20px;
+  &:before {
+    content: '';
+    background: url(../media/images/salesforce-logo.png) no-repeat;
+    display: inline-block;
+    width: 39px;
+    height: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
+}
+.account-check {
+  &:before {
+    content: '';
+    background: url(../media/images/logo.svg) no-repeat;
+    display: inline-block;
+    width: 39px;
+    height: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
+}
+
+
+/* TABS -----------------------------------
+-------------------------------------------*/
+.tabs {
+  width: 100%;
+}
+
+.tabs:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.tabs input[type=radio] {
+  display:none;
+}
+
+.tabs label {
+  float: left;
+  padding: 10px 0;
+  width: 50%;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $col-orange;
+  background: $col-orange-highlight;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid $col-grey-stroke;
+  box-sizing: border-box;
+}
+
+label[for=tab2] {
+  border-left: 1px solid $col-grey-stroke;
+}
+
+.tabs [id^="tab"]:checked + label {
+  background: #fff;
+  color: $text-light;
+  border-bottom: none;
+}
+
+#tab1:checked ~ #tab-content1,
+#tab2:checked ~ #tab-content2,
+#tab3:checked ~ #tab-content3 {
+  display: block;
+}
+
+.tab-content {
+  display: none;
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  background-color:#ffffff;
+}
+
 .edit-input-style {
   margin-top: 7px !important;
 }
