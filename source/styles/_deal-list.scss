@@ -21,7 +21,7 @@
         @include fa-size(4rem);
         color: $col-grey-stroke;
       }
-      &.active {
+      &.active, &:hover {
         &:before {
           color: $col-blue;
         }
