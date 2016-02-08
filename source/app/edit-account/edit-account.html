@@ -1,0 +1,16 @@
+<h1>Edit</h1>
+<div class="edit clearfix">
+    <fieldset>
+        <p>
+            <small>Account Value</small>
+            <input type="number" name="email" ng-model="accountValue" id="accountValue" />
+        </p>
+    </fieldset>
+    <div class="sync-check">
+        <input type="checkbox" name="syncChanges" ng-model="syncChanges" value="true" />Sync my changes to Salesforce
+    </div>
+    <div class="edit-buttons">
+        <button ui-sref="import-deals" ng-model="setNextStep">Cancel</button>
+        <button  ui-sref="edit-next-step">Save Changes</button>
+    </div>
+</div>

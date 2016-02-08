@@ -1,0 +1,10 @@
+<h1>Set Next Step</h1>
+<div class="next-step clearfix">
+    <form name="NextStepForm" ng-submit="ctrl.nextStep_submit()">
+      <small>Next Step</small>
+        <textarea cols="55" rows="7"></textarea>
+        <input type="checkbox" name="syncChanges" ng-model="syncChanges" value="true" />Sync my changes to Salesforce
+    </form>
+    <button ui-sref="import-deals" ng-model="setNextStep">Cancel</button>
+    <button  ui-sref="edit-next-step">Save Changes</button>
+</div>
