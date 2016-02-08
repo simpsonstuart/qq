@@ -42,85 +42,47 @@
     small {
       text-align: center;
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     h2 {
       text-align: center;
     }
-    .virtual-team {
-      div small {
-        text-align: left;
-      }
-    }
-    .caret {
-      top: 12px;
-    }
   }
-  .deal-btns {
-    box-sizing: border-box;
-    border-top: 1px solid $col-grey-stroke;
-    padding: 15px 0 0 0;
-    button {
-      display: block;
-      max-width: 300px;
-      width: 90%;
-      margin: 13px auto;
-    }
-    .deal-feed {
-      &:before {
-        @include fa;
-        @include fa(inbox);
-        @include fa-size(2rem);
-        @include fa-right(10px);
-        @include fa-align(middle);
-      }
-    }
-    .next-steps {
-      &:before {
-        @include fa;
-        @include fa(check-circle);
-        @include fa-size(2rem);
-        @include fa-right(10px);
-        @include fa-align(middle);
-      }
-    }
-  }
-  .plays {
-    border-left: 1px solid $col-grey-stroke;
-    small {
-      background: $col-grey;
-      padding: 5px 20px;
-      text-align: left;
-      border-bottom: 1px solid $col-grey-stroke;
-      border-top: 1px solid $col-grey-stroke;
-      margin-bottom: 0;
-    }
-    p {
-      margin-bottom: 5px;
-      margin-left: 20px;
-    }
-    .questions {
-      display: flex;
-      position: absolute;
-      right: 25px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-  .close-date, .account-value {
+  .close-date, .account-value, .forecast, .stage {
     padding: 20px 0 15px 0;
     border-top: 1px solid $col-grey-stroke;
+    width: 50%;
   }
-  .account-value {
-    margin-top: 19px;
+  .account-value, .close-date, &-next-step {
+    cursor: pointer;
+    small {
+      color: $col-orange;
+      font-weight: 700;
+      &:hover {
+        color: $col-orange-active;
+      }
+      &:after {
+        @include fa;
+        @include fa(caret-right);
+        @include fa-size(1.8rem);
+        @include fa-left(5px);
+      }
+    }
+    h2 {
+      color: $text-primary;
+    }
   }
-  .add-play {
+  .close-date, .stage {
+    border-left: 1px solid $col-grey-stroke;
+  }
+  &-next-step {
+    text-align: center;
+    padding: 20px;
     border-top: 1px solid $col-grey-stroke;
-    button {
-      max-width: 300px;
-      width: 90%;
-      margin: 27px auto 10px auto;
-      display: block;
+    display: block;
+    p {
+      margin-top: 10px;
+      line-height: 2rem;
     }
   }
   .salesforce-button {
@@ -149,18 +111,7 @@
   }
 }
 
-.play-row {
-  position: relative;
-  display: block;
-  padding: 15px 0;
-}
 
-.play-row-hover {
-  &:hover {
-    background: $col-orange-highlight;
-    cursor: pointer;
-  }
-}
 
 
 
@@ -242,34 +193,8 @@
     }
     .deal-details {
       border-left: none;
-      .deal-btns {
-        border-top: none;
-        padding-top: 0;
-        text-align: center;
-        button {
-          width: 145px;
-          display: inline-block;
-          &:first-child {
-            margin-right: 6px;
-          }
-        }
-      }
       .account-value, .close-date {
-        float: left;
-        width: 50%;
-        margin-top: 0;
-        box-sizing: border-box;
-      }
-      .close-date {
-        border-left: 1px solid $col-grey-stroke;
-      }
-      .plays {
-        .questions {
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-        }
+        border-top: none;
       }
       .salesforce-button {
         border-left: none;

@@ -14,42 +14,29 @@
     </aside>
     <div class="deal-details clearfix">
         <div class="flex">
-            <div class="deal-btns">
-                <button class="deal-feed" ui-sref="deal-list.feed({deal_id: ctrl.deal.id})">Deal Feed</button>
-                <button class="next-steps" ng-click="$state.go('next-steps')">Next Steps</button>
-                <div class="clearfix">
-                    <div class="account-value">
-                        <small>Account Value</small>
-                        <h2 ng-bind="ctrl.account_value"></h2>
-                    </div>
-                    <div class="close-date">
-                        <small>Close Date</small>
-                        <h2 ng-bind="ctrl.close_date"></h2>
-                    </div>
-                </div>
+            <a class="account-value">
+                <small>Account Value</small>
+                <h2 ng-bind="ctrl.account_value"></h2>
+            </a>
+            <a class="close-date">
+                <small>Close Date</small>
+                <h2 ng-bind="ctrl.close_date"></h2>
+            </a>
+        </div>
+        <div class="flex">
+            <div class="forecast">
+                <small>Forecast</small>
+                <h2>Commit</h2>
             </div>
-            <div class="plays">
-                <div ng-repeat="(playbook_name, playbook) in ctrl.playbook_counts">
-                    <small>{{playbook_name}}</small>
-                    <div
-                            class="play-row"
-                            ng-class='{"play-row-hover": ctrl.showAnswerQuestionForPlaybookName(playbook_name)}'
-                            ng-repeat="play in playbook"
-                            ng-click="ctrl.goToPlayFeed(playbook_name, play.play_id)"
-                    >
-                        <p>{{play.play}}</p>
-                        <div ng-if="ctrl.showAnswerQuestionForPlaybookName(playbook_name)" class="questions clearfix">
-                            <div class="answered">{{play.answer_count}}</div>
-                            <div class="asked">{{play.question_count}}</div>
-                        </div>
-                        <a ng-if="ctrl.showAnswerQuestionForPlaybookName(playbook_name)" ui-sref="deal-list.play({deal_id: ctrl.deal.id, play_id: play.play_id})" class="caret"></a>
-                    </div>
-                </div>
-                <div class="add-play">
-                  <button ui-sref="deal-set-play({deal_id: ctrl.deal.id})">Add Play</button>
-                </div>
+            <div class="stage">
+                <small>Stage</small>
+                <h2>Negotiating</h2>
             </div>
         </div>
+        <a class="deal-detail-next-step">
+            <small>Next Step</small>
+            <p>Check on funding and deal status to verify that we have all we need to get financed.</p>
+        </a>
         <div class="salesforce-button">
             <button class="salesforce" ng-click="ctrl.viewDealSalesforce()">View Deal in Salesforce</button>
             <a class="sync" href="" ng-click="ctrl.syncWithSalesforce()">Sync with Salesforce</a>
