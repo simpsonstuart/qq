@@ -1,4 +1,6 @@
-.registration-confirmation {
+.registration-confirmation,
+.link-salesforce,
+.get-started {
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
@@ -20,9 +22,24 @@
       @include fa-right(7px);
     }
   }
+  button {
+    width: 300px;
+    display: block;
+    margin-top: 20px;
+  }
 }
 
-
+.get-started {
+  h2 {
+    &:before {
+      @include fa;
+      @include fa(check-circle);
+      @include fa-size(2.2rem);
+      @include fa-right(5px);
+      color: $col-green;
+    }
+  }
+}
 
 
 /* MEDIA QUERIES ----------------------------
@@ -30,7 +47,9 @@
 
 /* max-width 767 --------------------------*/
 @media only screen and (max-width: 767px) {
-  .registration-confirmation {
+  .registration-confirmation,
+  .link-salesforce,
+  .get-started {
     margin-top: 30px;
   }
 }

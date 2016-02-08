@@ -7,7 +7,7 @@
             url: '/link-with-salesforce',
             restricted: false,
             data: {
-                bodyClasses: 'login grey',
+                bodyClasses: 'login',
                 headerClasses: 'logo-nav',
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'
