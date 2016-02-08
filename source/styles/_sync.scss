@@ -16,20 +16,63 @@
       }
     }
   }
-}
-
-.syncing {
-  text-align: center;
-  h2 {
-    &:before {
-      @include fa;
-      @include fa(refresh);
-      @include fa-size(2.4rem);
-      @include fa-right(7px);
-      color: $salesforce;
+  &-header {
+    padding-top: 20px;
+    text-align: center;
+    .syncing {
+      &:before {
+        @include fa;
+        @include fa(refresh);
+        @include fa-size(3rem);
+        @include fa-right(7px);
+        color: $salesforce;
+      }
     }
   }
 }
+
+.updates-header {
+  padding-top: 20px;
+  text-align: center;
+  h1 {
+    margin: 0 0 10px 0;
+  }
+  > p {
+    color: $text-light;
+  }
+  button {
+    width: 300px;
+    margin: 15px auto 20px auto;
+    display: block;
+  }
+}
+
+.update {
+  position: relative;
+  border-top: 1px solid $col-grey-stroke;
+  padding: 20px;
+  &:last-child {
+    border-bottom: 1px solid $col-grey-stroke;
+  }
+  a {
+    display: inline-block;
+  }
+  p {
+    margin: 5px 0;
+  }
+  .account-value {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+  }
+}
+
+
+
+
+
+
+
 
 
 
@@ -41,6 +84,31 @@
   .sync {
     &-all-btn {
       margin-top: 0;
+    }
+  }
+
+  .sync {
+    h1 {
+      font-size: 1.8rem;
+      position: static;
+      color: $text-primary;
+      transform: none;
+    }
+  }
+
+  .update {
+    padding: 10px;
+    h2 {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 3px;
+    }
+    .account-value {
+      top: 6px;
+      right: 10px;
     }
   }
 }

@@ -3,18 +3,40 @@
         <button class="submit" type="submit" ng-click="ctrl.submit()">Sync All Updates</button>
     </div>
     <div class="tabs">
-
         <input type="radio" name="tabs" id="tab1" checked >
         <label for="tab1">From Salesforce</label>
 
         <input type="radio" name="tabs" id="tab2">
         <label for="tab2">To Salesforce</label>
+
         <div id="tab-content1" class="tab-content">
-            <div class="syncing">
-                <h2 class="syncing">Getting Updates from Salesforce</h2>
+            <!-- display when checking for updates -->
+            <div class="sync-header">
+                <h1 class="syncing">Getting Updates from Salesforce</h1>
+                <h1>Traqq is up to date with Salesforce</h1> <!-- display after user syncs updates -->
                 <img src="../media/images/syncing.gif">
             </div>
+
+            <!-- display when updates are found -->
+            <div class="updates-header">
+                <h1>Salesforce Updates</h1>
+                <p>Salesforce found 2 deals not in Traqq</p>
+                <button>Sync Only Salesforce Updates</button>
+            </div>
+            <div class="update">
+                <h2><a href="">UNM Genetics Study</a></h2>
+                <p>Owner | Paul Barr</p>
+                <small>Close 12/13/16</small>
+                <h2 class="account-value">$450,000</h2>
+            </div>
+            <div class="update">
+                <h2><a href="">Disney Next Phase Opportunity</a></h2>
+                <p>Owner | Christopher Walken</p>
+                <small>Close 12/13/16</small>
+                <h2 class="account-value">$1,450,000</h2>
+            </div>
         </div>
+
         <div id="tab-content2" class="tab-content">
             <h2><!-- Tab title here --></h2>
             <p><!-- Tab content here --></p>
