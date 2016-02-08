@@ -15,7 +15,7 @@
                 ctrl.DealsActive = false;
                 ctrl.NSActive = false;
                 ctrl.SyncActive = false;
-            }else if ($state.is('deals-list')){
+            }else if ($state.is('deal-list')){
                 ctrl.HomeActive = false;
                 ctrl.DealsActive = true;
                 ctrl.NSActive = false;

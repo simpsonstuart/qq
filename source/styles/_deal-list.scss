@@ -1,6 +1,6 @@
 /* DEALS LIST --------------------------
 ----------------------------------------*/
-.deals-list {
+.deal-list {
   display: flex;
   border-bottom: 1px solid $col-grey-stroke;
   width: 100%;
@@ -89,7 +89,7 @@
 
 /* max-width 767 --------------------------*/
 @media only screen and (max-width: 767px) {
-  .deals-list {
+  .deal-list {
     border-top: none;
     .details {
       .text {
@@ -120,7 +120,7 @@
 
 /* max-width 568 --------------------------*/
 @media only screen and (max-width: 568px) {
-  .deals-list {
+  .deal-list {
     aside {
       width: 60px;
     }
@@ -130,7 +130,7 @@
 
 /* max-width 420 --------------------------*/
 @media only screen and (max-width: 420px) {
-  .deals-list {
+  .deal-list {
     .details {
       padding: 15px 10px;
       img {
