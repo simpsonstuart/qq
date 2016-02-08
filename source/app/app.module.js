@@ -21,7 +21,9 @@
         'app.registration',
         'app.settings',
         'app.sync',
-        'app.registration-confirmation'
+        'app.registration-confirmation',
+        'app.get-started',
+        'app.link-with-salesforce'
     ]);
 
     angular.module('app').constant('AppConfig', {
