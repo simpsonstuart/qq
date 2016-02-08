@@ -13,10 +13,7 @@
         <button class="submit" type="submit" ng-disabled="ctrl.LSError == false">Login</button>
     </fieldset>
 </form>
-<div class="hr" ng-if="ctrl.LSError == true">
-    <p>or</p>
-</div>
-<button class="submit salesforce" ng-click="ctrl.salesforceLogin()" ng-if="ctrl.LSError == true">Login with Salesforce</button>
+<div class="hr" ng-if="ctrl.LSError == true"></div>
 <div class="register-text" ng-if="ctrl.LSError == true">
     <small>Don't have an account?</small>
     <a ui-sref="registration">Register for Free</a>

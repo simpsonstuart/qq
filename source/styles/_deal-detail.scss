@@ -135,7 +135,6 @@
       top: 50%;
       transform: translateY(-50%);
       color: #d6d6d6;
-      transition: color 0.4s ease;
       cursor: pointer;
       &:before {
         @include fa;

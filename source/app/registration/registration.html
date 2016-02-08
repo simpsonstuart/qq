@@ -8,10 +8,6 @@
         <input type="email" name="email" ng-model="email" id="email" required placeholder="Email" />
         </p>
         <p>
-            <label for="username">Username</label>
-            <input type="text" name="Username" id="username" ng-model="username" required placeholder="Username"/>
-        </p>
-        <p>
         <label for="password">Password</label>
         <small class="error" ng-if="registration_form.password.$error.required && !registration_form.password.$pristine">This field is required</small>
         <input data-ng-model='user.password' type="password" id="password" name='password' placeholder='password' required>

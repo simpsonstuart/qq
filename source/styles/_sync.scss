@@ -1,0 +1,135 @@
+.sync {
+  &-all-btn {
+    background: $col-grey;
+    padding: 10px 0;
+    border-bottom: 1px solid $col-grey-stroke;
+    margin-top: -50px;
+    button {
+      background: #4bb5e9;
+      border: 1px solid #48a5d3;
+      width: 300px;
+      margin: 0 auto;
+      display: block;
+      &:hover {
+        background: #2fa5df;
+        color: #fff;
+      }
+    }
+  }
+  &-header {
+    padding-top: 20px;
+    text-align: center;
+    .syncing {
+      &:before {
+        @include fa;
+        @include fa(refresh);
+        @include fa-size(3rem);
+        @include fa-right(7px);
+        color: $salesforce;
+      }
+    }
+  }
+  .deal-header {
+    background: $col-grey;
+    border-top: 1px solid $col-grey-stroke;
+    display: block;
+    padding: 5px 0 5px 20px;
+  }
+}
+
+.updates-header {
+  padding-top: 20px;
+  text-align: center;
+  h1 {
+    margin: 0 0 10px 0;
+  }
+  > p {
+    color: $text-light;
+    line-height: 2rem;
+  }
+  button {
+    width: 300px;
+    margin: 15px auto 20px auto;
+    display: block;
+  }
+}
+
+.update {
+  position: relative;
+  border-top: 1px solid $col-grey-stroke;
+  padding: 20px 120px 20px 20px;
+  &:last-child {
+    border-bottom: 1px solid $col-grey-stroke;
+  }
+  a {
+    display: inline-block;
+  }
+  p {
+    margin: 5px 0;
+  }
+  .account-value {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+  }
+  .edit {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+#tab-content2 {
+  h2 {
+    margin: 5px 0 0 0;
+  }
+  .update {
+    padding-right: 60px;
+  }
+}
+
+
+
+
+
+
+/* MEDIA QUERIES --------------------------
+-------------------------------------------*/
+
+/* max-width 768 --------------------------*/
+@media only screen and (max-width: 768px) {
+  .sync {
+    &-all-btn {
+      margin-top: 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+      position: static;
+      color: $text-primary;
+      transform: none;
+    }
+    .deal-header {
+      padding-left: 10px;
+    }
+  }
+
+  .update {
+    padding: 10px 90px 10px 10px;
+    h2 {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 3px;
+    }
+    .account-value {
+      top: 6px;
+      right: 10px;
+    }
+    .edit {
+      right: 10px;
+    }
+  }
+}
