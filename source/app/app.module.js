@@ -23,7 +23,14 @@
         'app.sync',
         'app.registration-confirmation',
         'app.get-started',
-        'app.link-with-salesforce'
+        'app.link-with-salesforce',
+        'app.set-next-step',
+        'app.favorites',
+        'app.edit-next-step',
+        'app.edit-close-date',
+        'app.edit.account',
+        'app.deal-detail-edit'
+
     ]);
 
     angular.module('app').constant('AppConfig', {

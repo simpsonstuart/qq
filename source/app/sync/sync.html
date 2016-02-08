@@ -1,2 +1,18 @@
 <div class="centered-button"><button class="submit sync-salesforce" type="submit" ng-click="ctrl.submit()">Sync All Updates</button></div>
-<h2 class="updating">Getting Updates from Salesforce</h2>
+<div class="feed">
+    <div class="tabs">
+        <div id="tab-content1" class="row tab-content">
+            <div class="sync-type">
+                <a href="" ng-click="ctrl.fromShow()" ng-class="{active: ctrl.fromActive}" class="questions">FROM SALESFORCE</a>
+                <a href="" ng-click="ctrl.toShow()" ng-class="{active: ctrl.toActive}" class="comments">TO SALESFORCE</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="from_salesforce" ng-if="ctrl.fromShow">
+    <h2 class="updating" ng-if="ctrl.isSyncing">Getting Updates from Salesforce</h2>
+</div>
+
+<div class="to_salesforce" ng-if="ctrl.fromShow">
+
+</div>

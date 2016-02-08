@@ -257,6 +257,28 @@ textarea {
   text-align: center;
   margin: auto;
   padding-top: 20px;
+  &:before {
+    content: '';
+    background: url(../media/images/salesforce-logo.png) no-repeat;
+    display: inline-block;
+    width: 39px;
+    height: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
+}
+.account-check {
+  &:before {
+    content: '';
+    background: url(../media/images/logo.svg) no-repeat;
+    display: inline-block;
+    width: 39px;
+    height: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
 }
 
 
