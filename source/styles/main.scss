@@ -222,6 +222,8 @@ textarea {
   padding: 30px;
   margin: auto;
   width: 300px;
+  text-align: center;
+  line-height: 20px;
 }
 
 .centered-text-link {
@@ -229,12 +231,17 @@ textarea {
   width: 200px;
   color: #f77600;
   text-decoration: underline;
+  text-align: center;
+}
+.get-started {
+  width: 250px;
 }
 
-
-
-
-
+.centered-button {
+  margin: auto;
+  width: 300px;
+  text-align: center;
+}
 
 
 /* ERROR STYLES ---------------------------
