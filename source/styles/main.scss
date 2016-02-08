@@ -161,8 +161,8 @@ button {
     cursor: not-allowed;
   }
   &.salesforce {
-    background: $salesforce;
-    border: 1px solid $salesforce-border;
+    background: #4bb5e9;
+    border: 1px solid #48a5d3;
     &:before {
       content: '';
       background: url(../media/images/salesforce-logo.png) no-repeat;
@@ -174,7 +174,17 @@ button {
       padding-bottom: 3px;
     }
     &:hover {
-      background: $salesforce-hover;
+      background: #2fa5df;
+      color: #fff;
+    }
+  }
+  &.sync-salesforce {
+    background: #4bb5e9;
+    border: 1px solid #48a5d3;
+    width: 300px;
+    margin-top: 15px;
+    &:hover {
+      background: #2fa5df;
       color: #fff;
     }
   }
@@ -244,9 +254,58 @@ textarea {
   }
 }
 
+.centered-text {
+  padding: 30px;
+  margin: auto;
+  width: 300px;
+  text-align: center;
+  line-height: 20px;
+}
 
+.centered-text-link {
+  margin: auto;
+  width: 200px;
+  color: #f77600;
+  text-decoration: underline;
+  text-align: center;
+}
+.get-started {
+  width: 250px;
+}
 
+.centered-button {
+  margin: auto;
+  width: 300px;
+  text-align: center;
+}
 
+.updating {
+  text-align: center;
+  margin: auto;
+  padding-top: 20px;
+  &:before {
+    content: '';
+    background: url(../media/images/salesforce-logo.png) no-repeat;
+    display: inline-block;
+    width: 39px;
+    height: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
+}
+.account-check {
+  &:before {
+    content: '';
+    background: url(../media/images/logo.svg) no-repeat;
+    display: inline-block;
+    width: 39px;
+    height: 27px;
+    margin-right: 10px;
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
+}
 
 
 /* TABS -----------------------------------
@@ -304,16 +363,19 @@ label[for=tab2] {
   background-color:#ffffff;
 }
 
+.edit-input-style {
+  margin-top: 7px !important;
+}
 
+.edit-mobile {
+  margin-top: 30px;
+}
 
-
-
-
-
-
-
-
-
+.sync-check {
+  color: #48a5d3;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
 
 /* ERROR STYLES ---------------------------
 -------------------------------------------*/
