@@ -3,6 +3,7 @@
     position: relative;
     border-top: 1px solid $col-grey-stroke;
     padding: 20px 120px 20px 20px;
+    max-width: none;
     &:last-child {
       border-bottom: 1px solid $col-grey-stroke;
     }
