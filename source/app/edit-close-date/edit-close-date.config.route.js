@@ -7,6 +7,7 @@
                 url: '/edit-close-date',
                 restricted: true,
                 data: {
+                    bodyClasses: 'grey',
                     headerClasses: 'back',
                     footerClasses: 'nav',
                     pageTitle:     'Traqq'
