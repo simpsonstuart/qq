@@ -32,16 +32,19 @@
   }
 }
 
-.sort {
+.fixed {
   display: flex;
   background: $col-grey;
   border-top: 1px solid $col-grey-stroke;
   padding: 10px 20px;
-  p:first-child {
-    line-height: 32px;
-    margin-right: 5px;
-    color: $text-light;
-    font-size: 1.2rem;
+  .sort {
+    display: flex;
+    p:first-child {
+      line-height: 32px;
+      margin-right: 5px;
+      color: $text-light;
+      font-size: 1.2rem;
+    }
   }
   .selected {
     color: $text-light;
@@ -69,6 +72,7 @@
     }
   }
   ul {
+    display: none;
     position: absolute;
     background: #fff;
     border-left: 1px solid $col-grey-stroke;
@@ -101,7 +105,53 @@
     }
     &:hover, &.active {
       color: $col-orange;
+    }
+    &.active {
       font-weight: 700;
+    }
+  }
+}
+
+
+
+
+
+
+/* MEDIA QUERIES ----------------------------
+ --------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .next-step-list {
+    .next-step {
+      padding: 10px 35px 10px 10px;
+      h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+      .account-value {
+        bottom: 38px;
+      }
+      .caret {
+        top: 7px;
+        right: 10px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .fixed {
+    padding: 10px 0 0 0;
+    display: inherit;
+    .sort {
+      justify-content: center;
+    }
+    .filter {
+      margin: 10px 0 0 0;
+      padding: 8px 0;
+      background: #fff;
+      text-align: center;
+      border-top: 1px solid $col-grey-stroke;
     }
   }
 }
