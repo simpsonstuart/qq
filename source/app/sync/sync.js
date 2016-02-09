@@ -27,17 +27,14 @@
 
         function syncUpdates() {
             ctrl.isSyncing = true;
-
         }
 
         function syncSalesforceUpdates() {
             ctrl.isSyncing = true;
-
         }
 
         function syncTraqqUpdates() {
             ctrl.isSyncing = true;
-
         }
 
     }
