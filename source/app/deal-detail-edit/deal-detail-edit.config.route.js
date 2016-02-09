@@ -7,6 +7,7 @@
                 url: '/deal-detail-edit',
                 restricted: true,
                 data: {
+                    bodyClasses: 'grey',
                     headerClasses: 'back',
                     footerClasses: 'nav',
                     pageTitle:     'Traqq'

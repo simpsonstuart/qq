@@ -1,0 +1,58 @@
+.deal-detail-edit {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  h1 {
+    margin-left: 0;
+    border-bottom: 1px solid $col-grey-stroke;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  small {
+    display: block;
+    margin-bottom: 6px;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input[type=checkbox] {
+    width: initial;
+  }
+  label[for=sync-now] {
+    color: $salesforce;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  &-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    button {
+      width: 48%;
+    }
+  }
+}
+
+
+
+
+
+
+/* MEDIA QUERIES ---------------------------
+-------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .deal-detail-edit {
+    padding: 30px 20px;
+    box-sizing: border-box;
+    h1 {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
