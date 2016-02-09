@@ -1,0 +1,157 @@
+.next-step-list {
+  .next-step {
+    position: relative;
+    border-top: 1px solid $col-grey-stroke;
+    padding: 20px 120px 20px 20px;
+    &:last-child {
+      border-bottom: 1px solid $col-grey-stroke;
+    }
+    a {
+      margin-left: 20px;
+    }
+    p {
+      margin: 5px 0 5px 20px;
+      color: $text-light;
+    }
+    .account-value {
+      position: absolute;
+      right: 20px;
+      bottom: 48px;
+    }
+    small {
+      background: $col-grey;
+      padding: 6px 10px;
+      display: block;
+      margin-top: 12px;
+      margin-right: -120px;
+    }
+    .caret {
+      top: 17px;
+      right: 20px;
+    }
+  }
+}
+
+.fixed {
+  display: flex;
+  background: $col-grey;
+  border-top: 1px solid $col-grey-stroke;
+  padding: 10px 20px;
+  .sort {
+    display: flex;
+    p:first-child {
+      line-height: 32px;
+      margin-right: 5px;
+      color: $text-light;
+      font-size: 1.2rem;
+    }
+  }
+  .selected {
+    color: $text-light;
+    background: #fff;
+    border: 1px solid $col-grey-stroke;
+    position: relative;
+    width: 240px;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    p {
+      color: $text-light;
+      font-size: 1.2rem;
+      line-height: 30px;
+    }
+    span {
+      position: absolute;
+      right: 7px;
+      top: 6px;
+      &:before {
+        @include fa;
+        @include fa(caret-down);
+        @include fa-size(2rem);
+      }
+    }
+  }
+  ul {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border-left: 1px solid $col-grey-stroke;
+    border-right: 1px solid $col-grey-stroke;
+    border-bottom: 1px solid $col-grey-stroke;
+    z-index: 1;
+    top: 30px;
+    right: -1px;
+    left: -1px;
+    li {
+      padding: 10px;
+      font-size: 1.2rem;
+      border-top: 1px solid $col-grey-stroke;
+      cursor: pointer;
+      &:hover {
+        background: $col-orange-highlight;
+      }
+    }
+  }
+  .filter {
+    color: $text-light;
+    margin: 7px 20px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    &:before {
+      @include fa;
+      @include fa(check-circle);
+      @include fa-size(1.8rem);
+      @include fa-right(5px);
+    }
+    &:hover, &.active {
+      color: $col-orange;
+    }
+    &.active {
+      font-weight: 700;
+    }
+  }
+}
+
+
+
+
+
+
+/* MEDIA QUERIES ----------------------------
+ --------------------------------------------*/
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  .next-step-list {
+    .next-step {
+      padding: 10px 35px 10px 10px;
+      h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+      .account-value {
+        bottom: 38px;
+      }
+      .caret {
+        top: 7px;
+        right: 10px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .fixed {
+    padding: 10px 0 0 0;
+    display: inherit;
+    .sort {
+      justify-content: center;
+    }
+    .filter {
+      margin: 10px 0 0 0;
+      padding: 8px 0;
+      background: #fff;
+      text-align: center;
+      border-top: 1px solid $col-grey-stroke;
+    }
+  }
+}
