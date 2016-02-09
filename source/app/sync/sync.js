@@ -7,6 +7,8 @@
         var ctrl = this;
         ctrl.syncUpdates = syncUpdates;
         ctrl.formatMoney = NumberService.formatMoney;
+        ctrl.syncSalesforceUpdates = syncSalesforceUpdates;
+        ctrl.syncTraqqUpdates = syncTraqqUpdates;
 
         //fictional deals
         ctrl.fromSalesforceDeals = [
@@ -25,6 +27,17 @@
 
         function syncUpdates() {
             ctrl.isSyncing = true;
+
+        }
+
+        function syncSalesforceUpdates() {
+            ctrl.isSyncing = true;
+
+        }
+
+        function syncTraqqUpdates() {
+            ctrl.isSyncing = true;
+
         }
 
     }

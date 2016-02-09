@@ -15,13 +15,12 @@
                 <h1 class="syncing">Getting Updates from Salesforce</h1>
                 <img src="../media/images/syncing.gif">
             </div>
-
             <!-- display when updates are found -->
             <div ng-if="ctrl.fromSalesforceDeals.length">
             <div class="updates-header">
                 <h1>Salesforce Updates</h1>
                 <p>Salesforce found {{ctrl.updatesNumber}} deals not in Traqq</p>
-                <button>Sync Salesforce Updates</button>
+                <button ng-click="ctrl.syncSalesforceUpdates()">Sync Salesforce Updates</button>
             </div>
             <div ng-repeat="deal in ctrl.fromSalesforceDeals" class="update">
                 <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
@@ -30,27 +29,24 @@
                 <h2 class="account-value">{{ctrl.formatMoney(deal.account_value)}}</h2>
             </div>
             </div>
-
             <!-- display after user syncs updates -->
             <div class="sync-header" ng-if="!ctrl.fromSalesforceDeals.length && ctrl.isSyncing">
                 <h1>Traqq is up to date with Salesforce</h1>
             </div>
-
         </div>
-
         <div id="tab-content2" class="tab-content">
 
             <!-- display when checking for updates -->
-            <div class="sync-header" ng-if="ctrl.noUpdates">
+            <div class="sync-header" ng-if="!ctrl.toSalesforceDeals.length && ctrl.isSyncing">
                 <h1>Salesforce is up to date with Traqq</h1> <!-- display after user syncs updates -->
             </div>
 
-            <div ng-if="!ctrl.toUpdatesFound">
+            <div ng-if="ctrl.toSalesforceDeals.length">
             <!-- display when updates are found -->
             <div class="updates-header">
                 <h1>Traqq Updates</h1>
                 <p>You have changes in Traqq that haven't been synced to Salesforce yet.</p>
-                <button>Sync Traqq Updates</button>
+                <button ng-click="ctrl.syncTraqqUpdates()">Sync Traqq Updates</button>
             </div>
 
             <div ng-repeat="deal in ctrl.toSalesforceDeals">
@@ -66,7 +62,6 @@
                     <a class="edit" ui-sref="edit-next-step{deal_id: deal.id})">edit</a>
                 </div>
             </div>
-
           </div>
         </div>
     </div>
