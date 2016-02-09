@@ -1,5 +1,13 @@
 <h1>My Deals</h1>
-
+<div class="sort-by-dropdown">
+    <small>Sort by </small>
+    <select class="sort-picker">
+        <option value="volvo">Close Date</option>
+        <option value="saab">Deal Value</option>
+        <option value="opel">Favorite</option>
+        <option value="audi">Deal Name</option>
+    </select>
+</div>
 <div ng-repeat="deal in ctrl.deals" class="deal-list">
     <aside>
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: deal.favorite }"></span>
