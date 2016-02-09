@@ -92,30 +92,23 @@
     text-align: center;
     button {
       width: 300px;
+      margin-top: 8px;
     }
   }
-  .sync {
+  .view-deal {
     display: block;
     margin-top: 20px;
     font-weight: 700;
     color: #4bb5e9;
-    &:before {
-      @include fa;
-      @include fa(refresh);
-      @include fa-size(1.2em);
-      margin-right: 5px;
-    }
     &:hover {
       color: #48a5d3;
     }
   }
 }
-
-
-
-
-
-
+.salesforce-grid {
+  width: 50%;
+  margin: auto;
+}
 
 
 /* MEDIA QUERIES ----------------------------

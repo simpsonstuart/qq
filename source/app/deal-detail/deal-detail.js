@@ -17,9 +17,13 @@
         ctrl.goToSendQuestionGroup = goToSendQuestionGroup;
         ctrl.syncWithSalesforce = syncWithSalesforce;
         ctrl.viewDealSalesforce = viewDealSalesforce;
+        ctrl.editAccountValue = editAccountValue;
+        ctrl.editCloseDate = editCloseDate;
+        ctrl.editNextStep = editNextStep;
         ctrl.favorite = favorite;
         ctrl.showAnswerQuestionForPlaybookName = showAnswerQuestionForPlaybookName;
         ctrl.goToPlayFeed = goToPlayFeed;
+        ctrl.editDealDetail = editDealDetail;
 
         activate();
 
@@ -56,6 +60,22 @@
 
         function goToSendQuestionGroup() {
             $state.go("send-question-group", {deal_id: ctrl.deal.id});
+        }
+
+        function editDealDetail() {
+            $state.go('deal-detail-edit', {deal_id: ctrl.deal.id});
+        }
+
+        function editAccountValue() {
+            $state.go('edit-account', {deal_id: ctrl.deal.id});
+        }
+
+        function editCloseDate() {
+            $state.go('edit-close-date', {deal_id: ctrl.deal.id});
+        }
+
+        function editNextStep() {
+            $state.go('edit-next-step', {deal_id: ctrl.deal.id});
         }
 
         function syncWithSalesforce() {
