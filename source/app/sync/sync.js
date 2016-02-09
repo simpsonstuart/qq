@@ -5,6 +5,12 @@
 
     function Sync($scope) {
         var ctrl = this;
+        ctrl.syncUpdates = syncUpdates;
+
+        function syncUpdates() {
+            ctrl.isSyncing = true;
+        }
+
     }
 
 })();

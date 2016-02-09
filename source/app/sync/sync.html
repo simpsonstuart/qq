@@ -1,6 +1,6 @@
 <div class="sync">
     <div class="sync-all-btn">
-        <button class="submit" type="submit" ng-click="ctrl.syncUpdates()">Sync All Updates</button>
+        <button class="submit" type="submit" ng-click="ctrl.syncUpdates()" ng-disabled="ctrl.isSyncing || ctrl.noUpdates">Sync All Updates</button>
     </div>
     <div class="tabs">
         <input type="radio" name="tabs" id="tab1" checked >
@@ -13,7 +13,6 @@
             <!-- display when checking for updates -->
             <div class="sync-header"  ng-if="ctrl.isSyncing">
                 <h1 class="syncing">Getting Updates from Salesforce</h1>
-                <h1>Traqq is up to date with Salesforce</h1> <!-- display after user syncs updates -->
                 <img src="../media/images/syncing.gif">
             </div>
 
@@ -32,9 +31,9 @@
             </div>
             </div>
 
-            <!-- display when checking for updates -->
+            <!-- display after user syncs updates -->
             <div class="sync-header" ng-if="ctrl.noUpdates">
-                <h1>Traqq is up to date with Salesforce</h1> <!-- display after user syncs updates -->
+                <h1>Traqq is up to date with Salesforce</h1>
             </div>
 
         </div>
