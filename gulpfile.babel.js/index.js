@@ -51,9 +51,7 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
   fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
-  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
-  fullPath(config.paths.node_modules + '/ionic-npm/js/ionic.js'),
-  fullPath(config.paths.source.root + '/vendor/IOS9Patch.js')
+  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js')
 ];
 
 //Cordova complains about it not being a Cordova project if www does not exist

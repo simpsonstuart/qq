@@ -11,8 +11,7 @@
   "dependencies": {
     "font-sassy": "^4.4.0",
     "latest-version": "^2.0.0",
-    "susy": "^2.2.6",
-    "ionic-npm": "1.0.2"
+    "susy": "^2.2.6"
   },
   "devDependencies": {
     "angular": "^1.4.7",
