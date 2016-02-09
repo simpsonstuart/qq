@@ -1,6 +1,6 @@
 <div class="sync">
     <div class="sync-all-btn">
-        <button class="submit" type="submit" ng-click="ctrl.submit()">Sync All Updates</button>
+        <button class="submit" type="submit" ng-click="ctrl.syncUpdates()">Sync All Updates</button>
     </div>
     <div class="tabs">
         <input type="radio" name="tabs" id="tab1" checked >
@@ -11,61 +11,63 @@
 
         <div id="tab-content1" class="tab-content">
             <!-- display when checking for updates -->
-            <div class="sync-header">
-                <h1 class="syncing" ng-if="ctrl.isSyncing">Getting Updates from Salesforce</h1>
+            <div class="sync-header"  ng-if="ctrl.isSyncing">
+                <h1 class="syncing">Getting Updates from Salesforce</h1>
                 <h1>Traqq is up to date with Salesforce</h1> <!-- display after user syncs updates -->
                 <img src="../media/images/syncing.gif">
             </div>
 
             <!-- display when updates are found -->
+            <div ng-if="ctrl.updatesFound">
             <div class="updates-header">
                 <h1>Salesforce Updates</h1>
-                <p>Salesforce found 2 deals not in Traqq</p>
+                <p>Salesforce found {{ctrl.updatesNumber}} deals not in Traqq</p>
                 <button>Sync Salesforce Updates</button>
             </div>
-            <div class="update">
-                <h2><a href="">UNM Genetics Study</a></h2>
-                <p>Owner | Paul Barr</p>
-                <small>Close 12/13/16</small>
-                <h2 class="account-value">$450,000</h2>
+            <div ng-repeat="deal in ctrl.salesforceUpdates" class="update">
+                <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
+                <p>Owner | {{deal.owner}}</p>
+                <small>Close {{deal.close_date | date:"MM/dd/yyyy"}}</small>
+                <h2 class="account-value">{{ctrl.formatMoney(deal.account_value)}}</h2>
             </div>
-            <div class="update">
-                <h2><a href="">Disney Next Phase Opportunity</a></h2>
-                <p>Owner | Christopher Walken</p>
-                <small>Close 12/13/16</small>
-                <h2 class="account-value">$1,450,000</h2>
             </div>
-        </div>
 
-        <div id="tab-content2" class="tab-content">
             <!-- display when checking for updates -->
-            <div class="sync-header">
+            <div class="sync-header" ng-if="ctrl.noUpdates">
                 <h1>Traqq is up to date with Salesforce</h1> <!-- display after user syncs updates -->
             </div>
 
+        </div>
+
+        <div id="tab-content2" class="tab-content">
+
+            <!-- display when checking for updates -->
+            <div class="sync-header" ng-if="ctrl.noUpdates">
+                <h1>Salesforce is up to date with Traqq</h1> <!-- display after user syncs updates -->
+            </div>
+
             <!-- display when updates are found -->
-            <div class="updates-header">
+            <div class="updates-header" ng-if="ctrl.toUpdatesFound">
                 <h1>Traqq Updates</h1>
                 <p>You have changes in Traqq that haven't been synced to Salesforce yet.</p>
                 <button>Sync Traqq Updates</button>
             </div>
-            <small class="deal-header">Sony Tech Refresh</small>
+
+            <div ng-repeat="deal in ctrl.salesforceUpdates">
+            <small class="deal-header">{{deal.name}}</small>
             <div class="update">
                 <small>account value</small>
-                <h2>$1,200,000</h2>
-                <a class="edit" href="">edit</a>
+                <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
+                <a class="edit" ui-sref="deal-detail-edit({deal_id: deal.id})">edit</a>
             </div>
+            </div>
+
             <div class="update">
                 <small>Next Step</small>
                 <h2>Check on funding and deal status to verify that we have all we need to get this financed.</h2>
                 <a class="edit" href="">edit</a>
             </div>
-            <small class="deal-header">Maks Azaria Group</small>
-            <div class="update">
-                <small>Close Date</small>
-                <h2>1/4/16</h2>
-                <a class="edit" href="">edit</a>
-            </div>
+
         </div>
     </div>
 </div>

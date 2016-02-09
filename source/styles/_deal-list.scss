@@ -27,6 +27,24 @@
         }
       }
     }
+    .favorite-no-select {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      &:before {
+        @include fa;
+        @include fa(star);
+        @include fa-size(4rem);
+        color: $col-grey-stroke;
+      }
+      &.active, &:hover {
+        &:before {
+          color: $col-blue;
+        }
+      }
+    }
   }
   .details {
     border-left: 1px solid $col-grey-stroke;
