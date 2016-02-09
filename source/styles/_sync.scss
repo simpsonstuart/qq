@@ -82,11 +82,15 @@
 }
 
 #tab-content2 {
+  border-bottom: 1px solid $col-grey-stroke;
   h2 {
     margin: 5px 0 0 0;
   }
   .update {
     padding-right: 60px;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
