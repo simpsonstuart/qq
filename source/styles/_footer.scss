@@ -28,6 +28,10 @@ footer {
             background: #e05b03;
             color: #fff;
           }
+          &:hover {
+            color: #fff;
+            background: $col-orange-active;
+          }
           &:before {
             display: block !important;
             margin-bottom: 2px;
@@ -53,55 +57,6 @@ footer {
             @include fa-size(1.3em);
           }
         }
-      }
-    }
-  }
-  &.prev-next {
-    a {
-      color: #fff;
-      line-height: 46px;
-      position: absolute;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-      &:hover {
-        color: #fff;
-      }
-      &.prev {
-        left: 20px;
-        &:before {
-          @include fa;
-          @include fa(caret-left);
-          @include fa-size(1.5em);
-          @include fa-right(7px);
-          @include fa-align(middle);
-          padding-bottom: 4px;
-        }
-      }
-      &.next {
-        right: 20px;
-        &:after {
-          @include fa;
-          @include fa(caret-right);
-          @include fa-size(1.5em);
-          @include fa-left(7px);
-          @include fa-align(middle);
-          padding-bottom: 3px;
-        }
-      }
-    }
-    .pending {
-      background: $col-orange-active;
-      color: #fff;
-      text-align: center;
-      padding: 10px 15px;
-      width: 90px;
-      margin: 0 auto;
-      h2 {
-        margin-bottom: 0;
-      }
-      small {
-        color: #fff;
       }
     }
   }
