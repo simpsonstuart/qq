@@ -98,9 +98,24 @@
     }
   }
 }
+.sort-by-dropdown {
+  background: #e5e5e5;
+  padding: 10px 0;
+  border-bottom: 1px solid #dbdbdb;
+  padding-left: 40px;
+}
 
-
-
+.sort-picker{
+  width: 70%;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 6px;
+  background: #fff;
+  color: #888;
+  border: 1px solid #CEC9C9;
+  margin: 3px 0 3px 0;
+  font-size: 12px;
+}
 
 /* MEDIA QUERIES ---------------------------
 -------------------------------------------*/
