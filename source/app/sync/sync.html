@@ -19,8 +19,8 @@
             <div ng-if="ctrl.fromSalesforceDeals.length">
             <div class="updates-header">
                 <h1>Salesforce Updates</h1>
-                <p>Salesforce found {{ctrl.updatesNumber}} deals not in Traqq</p>
-                <button ng-click="ctrl.syncSalesforceUpdates()">Sync Salesforce Updates</button>
+                <p>Found {{ctrl.updatesNumber}} deals in Salesforce</p>
+                <button ng-click="ctrl.syncSalesforceUpdates()">Import New Deals</button>
             </div>
             <div ng-repeat="deal in ctrl.fromSalesforceDeals" class="update">
                 <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
