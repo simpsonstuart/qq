@@ -2,33 +2,23 @@
 <div class="next-step-list">
     <div class="fixed">
         <div class="sort">
-            <p>Sort by</p>
-            <div class="selected">
-                <p>Close Date</p>
-                <span></span>
-                <ul>
-                    <li>Close Date</li>
-                    <li>Deal Name</li>
-                    <li>Deal Value</li>
-                </ul>
-            </div>
+            <p>Sort by </p>
+            <select class="selected" ng-model="ctrl.selectedSort">
+                <option value="close_date">Close Date</option>
+                <option value="account_value">Deal Value</option>
+                <option value="favorite">Favorite</option>
+                <option value="name">Deal Name</option>
+            </select>
         </div>
-        <p class="filter">Deals without Next Steps</p>
+
+        <p class="filter" ng-click="ctrl.filterNextSteps()" ng-class="{ active: ctrl.filterActive }">Deals without Next Steps</p>
     </div>
-    <div class="next-step">
-        <h2>Visit customer to check on deal status.</h2>
-        <a href="">Sony Tech Refresh</a>
-        <p>Owner | Claire Miller</p>
-        <p class="account-value">$1,200,000</p>
-        <small>Close Date 1/26/16</small>
-        <a class="caret"></a>
-    </div>
-    <div class="next-step">
-        <h2>Visit customer to check on deal status to verify that we have funding for everything.</h2>
-        <a href="">Disney Next Phase Opportunity</a>
-        <p>Owner | Claire Miller</p>
-        <p class="account-value">$1,200,000</p>
-        <small>Close Date 1/26/16</small>
+    <div class="next-step" ng-repeat="deal in ctrl.filteredDeals | orderBy: ctrl.selectedSort">
+        <h2>{{deal.next_step}}</h2>
+        <a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a>
+        <p>Owner | {{deal.owner}}</p>
+        <p class="account-value">{{ctrl.formatMoney(deal.account_value)}}</p>
+        <small>Close Date {{deal.close_date | date:"MM/dd/yyyy"}}</small>
         <a class="caret"></a>
     </div>
 </div>
