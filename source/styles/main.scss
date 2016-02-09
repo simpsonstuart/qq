@@ -189,6 +189,24 @@ button {
       color: #fff;
     }
   }
+
+  &.sync-with-salesforce {
+    background: #4bb5e9;
+    border: 1px solid #48a5d3;
+    width: 300px;
+    margin-top: 15px;
+    &:before {
+      @include fa;
+      @include fa(refresh);
+      @include fa-size(1.2em);
+      margin-right: 5px;
+    }
+    &:hover {
+      background: #2fa5df;
+      color: #fff;
+    }
+  }
+
   &.edit-buttons{
     margin-right: 5px;
     margin-top: 20px;

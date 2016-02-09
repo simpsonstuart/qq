@@ -14,11 +14,11 @@
     </aside>
     <div class="deal-details clearfix">
         <div class="flex">
-            <a class="account-value">
+            <a class="account-value" ng-click="ctrl.editAccountValue()">
                 <small>Account Value</small>
                 <h2 ng-bind="ctrl.account_value"></h2>
             </a>
-            <a class="close-date">
+            <a class="close-date" ng-click="ctrl.editCloseDate()">
                 <small>Close Date</small>
                 <h2 ng-bind="ctrl.close_date"></h2>
             </a>
@@ -33,13 +33,16 @@
                 <h2>Negotiating</h2>
             </div>
         </div>
-        <a class="deal-detail-next-step">
+        <a class="deal-detail-next-step" ng-click="ctrl.editNextStep()">
             <small>Next Step</small>
             <p>Check on funding and deal status to verify that we have all we need to get financed.</p>
         </a>
         <div class="salesforce-button">
-            <button class="salesforce" ng-click="ctrl.viewDealSalesforce()">View Deal in Salesforce</button>
-            <a class="sync" href="" ng-click="ctrl.syncWithSalesforce()">Sync with Salesforce</a>
+            <div class="salesforce-grid">
+            <button class="submit" ng-click="ctrl.editDealDetail()">Edit Deal</button>
+            <button class="sync-with-salesforce" ng-click="ctrl.viewDealSalesforce()">Sync with Salesforce</button>
+            <a class="view-deal" href="" ng-click="ctrl.syncWithSalesforce()">View Deal in Salesforce</a>
+            </div>
         </div>
         <div class="virtual-team clearfix" ng-if="ctrl.extended_team.length">
             <small>Extended Team</small>
