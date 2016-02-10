@@ -8,7 +8,7 @@
         <div class="flex">
             <a href="" class="all-deals" ng-click="$state.go('deal-list')">
                 <small>All My Deals</small>
-                <h2>{{ctrl.allMyDeals}}</h2>
+                <h2>{{ctrl.formatMoney(ctrl.allMyDeals)}}</h2>
             </a>
             <div class="new-deals">
                 <small>New Deals</small>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <a href="" class="dash-next-steps" ng-click="$state.go('next-steps')">
-            <span>{{ctrl.incompleteNextSteps}}</span>
+            <span>{{ctrl.dealsNextWithoutStepsCount}}</span>
             <div class="text">
                 <small>Deals without next steps</small>
                 <small class="go-to">go to next steps</small>

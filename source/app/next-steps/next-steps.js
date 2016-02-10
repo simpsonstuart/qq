@@ -28,11 +28,7 @@
             ctrl.filterActive= !ctrl.filterActive;
             if(ctrl.filterActive){
 
-                ctrl.filteredDeals  = ctrl.deals.filter(function(deal) {
-                    ctrl.noNextStep = true;
-                    ctrl.showNoDealsWithoutNextSteps = false;
-                    return !deal.next_step;
-                });
+                ctrl.filteredDeals  = _.reject(ctrl.deals, "next_step");
             }
             else{
 

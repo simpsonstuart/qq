@@ -15,7 +15,6 @@
         activate();
 
         function activate() {
-            ctrl.dealsForLabel = 'My Deals';
 
             DealService.getAll().then(function (data) {
                 ctrl.favoriteDeals = _.filter(data, 'favorite');

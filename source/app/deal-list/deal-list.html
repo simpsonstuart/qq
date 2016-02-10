@@ -24,7 +24,6 @@
             <small ng-if="deal.close_date > ctrl.dateNow">closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <small class="overdue" ng-if="deal.close_date < ctrl.dateNow">Past Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
             <small class="caution" ng-if="deal.close_date == ctrl.dateNow">Due {{deal.close_date | date:"MM/dd/yyyy"}}</small>
-            <span class="deal-activity">12</span>
         </div>
         <a ui-sref="deal-detail({deal_id: deal.id})" class="caret"></a>
     </div>
