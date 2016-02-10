@@ -37,9 +37,9 @@
 
 <body ng-class="$state.current.data.bodyClasses">
 <ul class="mobile-nav">
-    <li><a class="home" href="#">Home</a></li>
+    <li><a class="home" ui-sref="dashboard">Home</a></li>
     <li><a class="deals" ui-sref="deal-list">Deals</a></li>
-    <li><a ui-sref-active-eq="active" class="favorites">Favorites</a></li>
+    <li><a ui-sref-active-eq="active" ui-sref="favorites" class="favorites">Favorites</a></li>
     <li><a class="next-steps" ui-sref="next-steps">Next Steps</a></li>
     <li><a ui-sref-active-eq="active" class="settings" ui-sref="settings">Settings</a></li>
     <li><a ui-sref-active-eq="active" class="sync" ng-click="ctrl.syncSalesforce()" href="#">Sync with Salesforce</a></li>
