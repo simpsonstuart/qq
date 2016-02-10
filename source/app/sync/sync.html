@@ -15,6 +15,13 @@
                 <h1 class="syncing">Getting Updates from Salesforce</h1>
                 <img src="../media/images/syncing.gif">
             </div>
+
+            <div ng-if="ctrl.noDealsToImport()" class="endpoint-error">
+                <h2>There are no deals to import</h2>
+            </div>
+            <div ng-show="ctrl.errorRetrieve" class="endpoint-error">
+                <h2>Error couldn't retrieve deals to import!</h2>
+            </div>
             <!-- display when updates are found -->
             <div ng-if="ctrl.fromSalesforceDeals.length">
             <div class="updates-header">

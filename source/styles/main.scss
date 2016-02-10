@@ -344,13 +344,6 @@ label[for=tab2] {
   background-color:#ffffff;
 }
 
-
-
-
-
-
-
-
 /* ERROR STYLES ---------------------------
 -------------------------------------------*/
 .Report_Label {
@@ -375,11 +368,13 @@ label[for=tab2] {
   color: #fff;
 }
 
-
-
-
-
-
+.endpoint-error {
+  padding: 10px;
+  color: #636363;
+  margin: auto;
+  margin-top: 10px;
+  width: 310px;
+}
 
 /* RETINA IMAGES --------------------------
 -------------------------------------------*/
@@ -390,12 +385,6 @@ label[for=tab2] {
     background-size: 100% auto;
   }
 }
-
-
-
-
-
-
 
 /* MEDIA QUERIES --------------------------
 -------------------------------------------*/
@@ -411,7 +400,6 @@ label[for=tab2] {
     padding-left: 23px;
   }
 }
-
 
 /* max-width 767 --------------------------*/
 @media only screen and (max-width: 767px) {
