@@ -15,10 +15,11 @@
     </div>
     <div class="next-step" ng-repeat="deal in ctrl.filteredDeals | orderBy: ctrl.selectedSort">
         <h2>{{deal.next_step}}</h2>
+        <h2 ng-if="ctrl.noNextStep">Set Next Step</h2>
         <a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a>
         <p>Owner | {{deal.owner}}</p>
         <p class="account-value">{{ctrl.formatMoney(deal.account_value)}}</p>
         <small>Close Date {{deal.close_date | date:"MM/dd/yyyy"}}</small>
-        <a class="caret"></a>
+        <a class="caret" ui-sref="deal-detail({deal_id: deal.id})"></a>
     </div>
 </div>

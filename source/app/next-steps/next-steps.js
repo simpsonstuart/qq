@@ -25,12 +25,14 @@
             if(ctrl.filterActive){
 
                 ctrl.filteredDeals  = ctrl.deals.filter(function(deal) {
+                    ctrl.noNextStep = true;
                     return !deal.next_step;
                 });
             }
             else{
 
                 ctrl.filteredDeals = _.filter(ctrl.deals, "next_step");
+                ctrl.noNextStep = false;
             }
         }
     }
