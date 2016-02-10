@@ -1,13 +1,15 @@
 <h1>My Deals</h1>
-<div class="sort-by-dropdown">
-    <small>Sort by </small>
-    <select class="sort-picker" ng-model="ctrl.selectedSort">
-        <option value="close_date">Close Date</option>
-        <option value="account_value">Deal Value</option>
-        <option value="favorite">Favorite</option>
-        <option value="name">Deal Name</option>
-        <option value="next-steps">Next Steps</option>
-    </select>
+<div class="fixed">
+    <div class="sort">
+        <p>Sort by</p>
+        <select class="selected" ng-model="ctrl.selectedSort">
+            <option value="close_date">Close Date</option>
+            <option value="account_value">Deal Value</option>
+            <option value="favorite">Favorite</option>
+            <option value="name">Deal Name</option>
+            <option value="next-steps">Next Steps</option>
+        </select>
+    </div>
 </div>
 <div ng-repeat="deal in ctrl.deals | orderBy: ctrl.selectedSort" class="deal-list">
     <aside>
