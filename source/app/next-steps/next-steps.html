@@ -13,7 +13,7 @@
 
         <p class="filter" ng-click="ctrl.filterNextSteps()" ng-class="{ active: ctrl.filterActive }">Deals without Next Steps</p>
     </div>
-    <h2 ng-show="ctrl.showNoDealsWithoutNextSteps">No deals without next steps found!</h2>
+    <h2 ng-show="ctrl.showNoDealsWithoutNextSteps" class="endpoint-error">No deals without next steps found!</h2>
     <div class="next-step" ng-repeat="deal in ctrl.filteredDeals | orderBy: ctrl.selectedSort">
         <h2>{{deal.next_step}}</h2>
         <h2 ng-if="ctrl.noNextStep">Set Next Step</h2>

@@ -7,7 +7,6 @@
         //Third party
         'ui.router',
         'satellizer',
-        'ngIOS9UIWebViewPatch',
         'angular-cache',
 
         //Internal
