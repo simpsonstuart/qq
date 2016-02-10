@@ -6,6 +6,9 @@
         $stateProvider.state('edit-close-date', {
                 url: '/edit-close-date',
                 restricted: true,
+                params: {
+                deal_id: 'Deal ID'
+                            },
                 data: {
                     bodyClasses: 'grey',
                     headerClasses: 'back',

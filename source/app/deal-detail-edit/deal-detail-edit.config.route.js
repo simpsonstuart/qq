@@ -6,6 +6,9 @@
         $stateProvider.state('deal-detail-edit', {
                 url: '/deal-detail-edit',
                 restricted: true,
+                params: {
+                    deal_id: 'Deal ID'
+                },
                 data: {
                     bodyClasses: 'grey',
                     headerClasses: 'back',

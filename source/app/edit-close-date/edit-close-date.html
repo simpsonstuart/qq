@@ -9,7 +9,7 @@
     <input id="sync-now" type="checkbox" name="syncChanges" ng-model="syncChanges" value="true" />
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
-        <button class="submit" ui-sref="import-deals" ng-model="setNextStep">Cancel</button>
+        <button class="submit" ng-click="ctrl.cancel()" ng-model="setNextStep">Cancel</button>
         <button class="submit" ui-sref="edit-next-step">Save Changes</button>
     </div>
 </form>

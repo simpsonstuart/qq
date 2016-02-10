@@ -6,6 +6,9 @@
         $stateProvider.state('edit-next-step', {
                 url: '/edit-next-step',
                 restricted: true,
+                params: {
+                    deal_id: 'Deal ID'
+                },
                 data: {
                     bodyClasses: 'grey',
                     headerClasses: 'back',

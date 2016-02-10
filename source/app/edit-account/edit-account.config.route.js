@@ -6,6 +6,9 @@
         $stateProvider.state('edit-account', {
                 url: '/edit-account',
                 restricted: true,
+            params: {
+                deal_id: 'Deal ID'
+            },
                 data: {
                     bodyClasses: 'grey',
                     headerClasses: 'back',

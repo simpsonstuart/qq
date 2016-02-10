@@ -5,6 +5,12 @@
 
     function RegistrationConfirmation($scope, $state, UserService) {
         var ctrl = this;
+        ctrl.showMessageResent = false;
+        ctrl.resendVerification = resendVerification;
+
+        function resendVerification(){
+         ctrl.showMessageResent = true;
+        }
 
     }
 })();

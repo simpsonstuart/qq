@@ -11,7 +11,7 @@
             UserService.register((function () {
                 return { 'email': $scope.email, 'username': $scope.username, 'password': $scope.confirm_password };
             })()).then(function(){
-                $state.go('login');
+                $state.go('registration-confirmation');
             });
         }
     }

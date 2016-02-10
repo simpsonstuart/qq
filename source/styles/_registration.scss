@@ -21,6 +21,9 @@
       @include fa-size(2rem);
       @include fa-right(7px);
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
   button {
     width: 300px;

@@ -18,7 +18,6 @@
             UserService.profile('current').then(function (userObject) {
                 AuthService.setUser(userObject);
                 ctrl.profile = userObject;
-                console.log(ctrl.profile);
                 ctrl.allMyDeals = '8134000';
                 ctrl.activeDeals = ctrl.profile.active_deals_amount.data.amount;
                 ctrl.incompleteNextSteps = ctrl.profile.incomplete_next_steps.data.count;

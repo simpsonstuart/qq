@@ -68,6 +68,7 @@
 
         function editAccountValue() {
             $state.go('edit-account', {deal_id: ctrl.deal.id});
+            console.log(ctrl.deal.id);
         }
 
         function editCloseDate() {
