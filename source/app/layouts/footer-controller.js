@@ -21,10 +21,10 @@
                 ctrl.NSActive = false;
                 ctrl.SyncActive = false;
             }else if ($state.is('next-steps')){
-                ctrl.FeedActive = false;
+                ctrl.HomeActive = false;
                 ctrl.DealsActive = false;
                 ctrl.NSActive = true;
-                ctrl.AskActive =false;
+                ctrl.SyncActive = false;
             }else if ($state.is('sync')){
                 ctrl.HomeActive = false;
                 ctrl.DealsActive = false;
