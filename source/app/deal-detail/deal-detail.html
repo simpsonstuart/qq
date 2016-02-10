@@ -2,7 +2,7 @@
     <span class="favorite-mobile"></span>
     <small class="account" ng-bind="ctrl.deal.company_name"></small>
     <h1 ng-bind="ctrl.deal.name"></h1>
-    <small class="deal-owner">Deal Owner: Claire Miller</small>
+    <small class="deal-owner">Deal Owner: {{ctrl.deal.owner.data.name}}</small>
 </div>
 
 <div class="deal-detail clearfix">
@@ -26,16 +26,16 @@
         <div class="flex">
             <div class="forecast">
                 <small>Forecast</small>
-                <h2>Commit</h2>
+                <h2 ng-bind="ctrl.deal.forecast"></h2>
             </div>
             <div class="stage">
                 <small>Stage</small>
-                <h2>Negotiating</h2>
+                <h2 ng-bind="ctrl.deal.stage"></h2>
             </div>
         </div>
         <a class="deal-detail-next-step" ui-sref="edit-next-step({deal_id: ctrl.deal.id})">
             <small>Next Step</small>
-            <p>Check on funding and deal status to verify that we have all we need to get financed.</p>
+            <p ng-bind="ctrl.deal.next_step"></p>
         </a>
         <div class="salesforce-button">
             <div class="salesforce-grid">

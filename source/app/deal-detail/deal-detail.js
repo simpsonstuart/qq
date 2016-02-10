@@ -68,7 +68,6 @@
 
         function editAccountValue() {
             $state.go('edit-account', {deal_id: ctrl.deal.id});
-            console.log(ctrl.deal.id);
         }
 
         function editCloseDate() {
@@ -105,6 +104,7 @@
         function activate() {
             DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
                 ctrl.deal            = data;
+                console.log(data);
                 ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
                 ctrl.account_value   = ctrl.formatMoney(ctrl.deal.account_value);
             });
