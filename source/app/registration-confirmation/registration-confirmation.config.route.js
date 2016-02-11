@@ -4,7 +4,7 @@
 
     function config($stateProvider) {
         $stateProvider.state('registration-confirmation', {
-            url: '/registration-confirmation',
+            url: '/registration-confirmation?email',
             restricted: false,
             data: {
                 bodyClasses: 'login',
