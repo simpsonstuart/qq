@@ -33,7 +33,7 @@
 
             if (args.length == 2) {
                 var credentials = {
-                    username: arguments[1],
+                    email: arguments[1],
                     password: arguments[0]
                 };
                 return $auth.login(credentials);
