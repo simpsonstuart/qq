@@ -3,21 +3,21 @@
     <fieldset>
         <p>
             <small>Amount</small>
-            <input type="number" name="email" ng-model="accountValue" id="accountValue" />
+            <input type="number" name="email" ng-model="ctrl.deal.account_value" id="accountValue" />
         </p>
         <p>
             <small>Close Date</small>
-            <input type="text" name="close-date" ng-model="CloseDate" id="CloseDate" />
+            <input type="date" name="close-date" ng-model="ctrl.deal.close_date" id="CloseDate" />
         </p>
         <p>
             <small>Next Step</small>
-            <textarea cols="55" rows="7"></textarea>
+            <textarea cols="55" rows="7" ng-model="ctrl.deal.nextStep"></textarea>
         </p>
     </fieldset>
     <input id="sync-now" type="checkbox" name="syncChanges" ng-model="syncChanges" value="true" />
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
         <button class="submit" ng-click="ctrl.cancel()" ng-model="setNextStep">Cancel</button>
-        <button class="submit" ui-sref="edit-next-step">Save Changes</button>
+        <button class="submit" ng-click="ctrl.save()" ng-disabled="!ctrl.deal.account_value|| !ctrl.deal.close_date || !ctrl.deal.nextStep">Save Changes</button>
     </div>
 </form>
