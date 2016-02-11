@@ -11,7 +11,7 @@
         activate();
 
         function activate() {
-            DealService.getAll().then(function (data) {
+            DealService.getAll('include=owner').then(function (data) {
                 ctrl.deals = data;
             });
         }
@@ -29,11 +29,17 @@
             if(ctrl.filterActive){
 
                 ctrl.filteredDeals  = _.reject(ctrl.deals, "next_step");
+                ctrl.noNextStep = true;
+                ctrl.showNoDealsWithoutNextSteps = false;
             }
             else{
 
                 ctrl.filteredDeals = _.filter(ctrl.deals, "next_step");
                 ctrl.noNextStep = false;
+                if(ctrl.filteredDeals.length < 1) {
+
+                    ctrl.showNoDealsWithoutNextSteps = true;
+                }
             }
         }
     }
