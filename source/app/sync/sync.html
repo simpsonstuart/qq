@@ -59,7 +59,7 @@
             <div ng-repeat="deal in ctrl.toSalesforceDeals">
             <small class="deal-header">{{deal.name}}</small>
             <div class="update">
-                <small>account value</small>
+                <small>amount</small>
                 <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
                 <a class="edit" ui-sref="deal-detail-edit({deal_id: deal.id})">edit</a>
             </div>
