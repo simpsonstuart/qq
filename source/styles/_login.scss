@@ -48,11 +48,22 @@
     text-align: center;
     a {
       display: block;
-      margin-top: 10px;
+      width: 120px;
+      margin: 10px auto 0 auto;
+      font-weight: 700;
+      text-decoration: underline;
     }
   }
 }
 
+.forgot-pass {
+  text-align: center;
+  display: block;
+  width: 150px;
+  margin: 0 auto 50px auto;
+  font-weight: 700;
+  text-decoration: underline;
+}
 
 .hr {
   background: #cbcbcb;
