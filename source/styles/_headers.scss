@@ -326,6 +326,13 @@ header.logo-nav {
 /* MEDIA QUERIES ---------------------------
 -------------------------------------------*/
 
+/* max-width-------------------------------*/
+@media only screen and (min-width: 1415px) {
+  .more-nav {
+    right: auto !important;
+  }
+}
+
 /* max-width 767 --------------------------*/
 @media only screen and (max-width: 767px) {
   header {

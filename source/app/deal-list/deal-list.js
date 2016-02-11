@@ -12,6 +12,7 @@
         ctrl.timeToClose = DateAndTimeService.daysTill;
         ctrl.dateNow = new Date().toJSON().slice(0,10);
         ctrl.favorite = favorite;
+        ctrl.selectedSort = 'close_date';
 
         activate();
 

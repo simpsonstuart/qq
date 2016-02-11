@@ -7,6 +7,7 @@
         ctrl.filterNextSteps = filterNextSteps;
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.filterActive = false;
+        ctrl.selectedSort = 'close_date';
 
         activate();
 
