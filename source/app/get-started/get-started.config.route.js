@@ -20,7 +20,7 @@
                 },
                 'container': {
                     templateUrl: 'views/get-started/get-started.html',
-                    controller: 'Registration',
+                    controller: 'GetStarted',
                     controllerAs: 'ctrl'
                 }
             }

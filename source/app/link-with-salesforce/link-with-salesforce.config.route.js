@@ -6,6 +6,9 @@
         $stateProvider.state('link-with-salesforce', {
             url: '/link-with-salesforce',
             restricted: false,
+            params: {
+                register_key: '5445'
+            },
             data: {
                 bodyClasses: 'login',
                 headerClasses: 'logo-nav',
