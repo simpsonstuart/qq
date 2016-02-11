@@ -113,9 +113,12 @@
   }
 }
 
-
-
-
+.nextStepLink {
+  &:hover {
+    color: $col-orange;
+    cursor: pointer;
+  }
+}
 
 
 /* MEDIA QUERIES ----------------------------

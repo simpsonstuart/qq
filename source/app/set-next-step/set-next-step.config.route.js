@@ -6,7 +6,11 @@
         $stateProvider.state('set-next-step', {
                 url: '/set-next-step',
                 restricted: true,
+                params: {
+                    deal_id: 'Deal ID'
+                },
                 data: {
+                    bodyClasses: 'grey',
                     headerClasses: 'back',
                     footerClasses: 'nav',
                     pageTitle:     'Traqq'
