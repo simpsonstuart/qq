@@ -7,7 +7,13 @@
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.dealId = $stateParams.deal_id;
+        ctrl.save = save;
         function cancel () {
+            $state.go('deal-detail', {deal_id: ctrl.dealId});
+        }
+
+        function save () {
+            console.log($scope.closeDate);
             $state.go('deal-detail', {deal_id: ctrl.dealId});
         }
     }
