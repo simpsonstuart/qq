@@ -3,6 +3,6 @@
     <p>A verification email has been sent to your email address. Please click on the link included in the email to complete your registration.</p>
     <a class="resend-email" ng-click="ctrl.resendVerification()">Resend Verification Email</a>
     <p class="email-success" ng-show="ctrl.verificationResent">Verification Email Sent!</p>
-    <p class="email-error">Error: Verification email couldn't be sent</p>
+    <p ng-show="ctrl.sendError" class="email-error">Error: Verification email couldn't be sent</p>
 </div>
 
