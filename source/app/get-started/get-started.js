@@ -3,13 +3,20 @@
     angular.module('app.get-started')
         .controller('GetStarted', GetStarted);
 
-    function GetStarted($scope, $state) {
+    function GetStarted($scope, $state, UserService) {
         var ctrl = this;
         ctrl.getStarted = getStarted;
 
-        if ($state.params.token) {
-            ctrl.showGetStarted = true;
+        activate();
+
+        function activate() {
+            UserService.verify($state.params.token).then(function () {
+                ctrl.showGetStarted = true;
+            }, function () {
+                console.log('error token invalid')
+            });
         }
+
 
         function getStarted() {
             $state.go('login', {token: $state.params.token});

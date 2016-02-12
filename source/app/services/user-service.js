@@ -14,7 +14,8 @@
             reset_password: reset_password,
             email_change: email_change,
             billing_change: billing_change,
-            resendVerificationEmail: resendVerificationEmail
+            resendVerificationEmail: resendVerificationEmail,
+            verify: verify
         };
 
         function getAll(query) {

@@ -6,6 +6,7 @@
     function LoginController($scope, AuthService, UserService, $state, UrlService, $window, AppConfig) {
         var ctrl = this;
         var token = $state.params.token;
+        console.log(token);
         var newUser = $state.params.new_user;
         console.log(newUser);
         var errorParams = $state.params.errors;
