@@ -6,7 +6,7 @@
     <div ng-if="ctrl.noDealsToImport()">
         <h2>There are no deals to import</h2>
     </div>
-    <div ng-repeat="deals in ctrl.deals" class="import-row">
+    <div ng-repeat="deal in ctrl.deals" class="import-row">
         <div class="import-details">
             <h2>{{deal.name}}</h2>
             <p>Owner | {{deal.owner}}</p>
