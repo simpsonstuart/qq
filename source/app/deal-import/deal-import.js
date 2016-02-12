@@ -34,8 +34,6 @@
         function activate() {
             DealService.importList().then(function (data) {
                 ctrl.deals = data;
-                console.log(ctrl.deals);
-                console.log(data);
                 ctrl.dealsRetrieved = true;
             });
         }
