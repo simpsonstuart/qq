@@ -6,7 +6,8 @@
     function LinkWithSalesforce($scope, $state, UrlService, $window, AppConfig) {
         var ctrl = this;
         ctrl.salesforceLogin = salesforceLogin;
-        var linked = $state.params.link;
+        var linked = $state.params.linked;
+        console.log(linked);
         if (linked == 'true') {
             $state.go('deal-import');
         }
