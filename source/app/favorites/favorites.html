@@ -7,7 +7,7 @@
     <div class="details clearfix">
         <div class="text">
             <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
-            <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
+            <h2>{{ctrl.formatMoney(deal.amount)}}</h2>
         </div>
         <div class="close-date clearfix">
             <small ng-if="deal.close_date > ctrl.dateNow">closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>

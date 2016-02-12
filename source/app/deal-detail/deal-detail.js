@@ -17,7 +17,7 @@
         ctrl.goToSendQuestionGroup = goToSendQuestionGroup;
         ctrl.syncWithSalesforce = syncWithSalesforce;
         ctrl.viewDealSalesforce = viewDealSalesforce;
-        ctrl.editAccountValue = editAccountValue;
+        ctrl.editamount = editamount;
         ctrl.editCloseDate = editCloseDate;
         ctrl.editNextStep = editNextStep;
         ctrl.favorite = favorite;
@@ -66,7 +66,7 @@
             $state.go('deal-detail-edit', {deal_id: ctrl.deal.id});
         }
 
-        function editAccountValue() {
+        function editamount() {
             $state.go('edit-account', {deal_id: ctrl.deal.id});
         }
 
@@ -83,7 +83,7 @@
                 DealService.syncWithSalesforce(ctrl.deal).then(function (data) {
                     data = data.data;
                     ctrl.close_date      = ctrl.formatDate(data.close_date).format('M/D/YYYY');
-                    ctrl.account_value   = ctrl.formatMoney(data.account_value);
+                    ctrl.amount   = ctrl.formatMoney(data.amount);
                     ctrl.deal.name = data.name;
                     CacheFactory.clearAll();
                 });
@@ -105,7 +105,7 @@
             DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
                 ctrl.deal            = data;
                 ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
-                ctrl.account_value   = ctrl.formatMoney(ctrl.deal.account_value);
+                ctrl.amount   = ctrl.formatMoney(ctrl.deal.amount);
             });
         }
     }

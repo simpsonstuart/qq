@@ -33,7 +33,7 @@
                 <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
                 <p>Owner | {{deal.owner}}</p>
                 <small>Close {{deal.close_date | date:"MM/dd/yyyy"}}</small>
-                <h2 class="account-value">{{ctrl.formatMoney(deal.account_value)}}</h2>
+                <h2 class="account-value">{{ctrl.formatMoney(deal.amount)}}</h2>
             </div>
             </div>
             <!-- display after user syncs updates -->
@@ -60,7 +60,7 @@
             <small class="deal-header">{{deal.name}}</small>
             <div class="update">
                 <small>amount</small>
-                <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
+                <h2>{{ctrl.formatMoney(deal.amount)}}</h2>
                 <a class="edit" ui-sref="deal-detail-edit({deal_id: deal.id})">edit</a>
             </div>
                 <div class="update">

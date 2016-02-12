@@ -3,7 +3,7 @@
     <fieldset>
         <p>
             <small>Amount</small>
-            <input type="number" name="email" ng-model="ctrl.deal.account_value" id="accountValue" />
+            <input type="number" name="email" ng-model="ctrl.deal.amount" id="amount" />
         </p>
         <p>
             <small>Close Date</small>
@@ -18,6 +18,6 @@
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
         <button class="submit" ng-click="ctrl.cancel()" ng-model="setNextStep">Cancel</button>
-        <button class="submit" ng-click="ctrl.save()" ng-disabled="!ctrl.deal.account_value|| !ctrl.deal.close_date || !ctrl.deal.nextStep">Save Changes</button>
+        <button class="submit" ng-click="ctrl.save()" ng-disabled="!ctrl.deal.amount|| !ctrl.deal.close_date || !ctrl.deal.nextStep">Save Changes</button>
     </div>
 </form>

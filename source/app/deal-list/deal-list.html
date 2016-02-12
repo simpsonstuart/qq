@@ -4,7 +4,7 @@
         <p>Sort by</p>
         <select class="selected" ng-model="ctrl.selectedSort">
             <option value="close_date">Close Date</option>
-            <option value="account_value">Deal Value</option>
+            <option value="amount">Deal Value</option>
             <option value="favorite">Favorite</option>
             <option value="name">Deal Name</option>
             <option value="next-steps">Next Steps</option>
@@ -19,7 +19,7 @@
     <div class="details clearfix">
         <div class="text">
             <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
-            <h2>{{ctrl.formatMoney(deal.account_value)}}</h2>
+            <h2>{{ctrl.formatMoney(deal.amount)}}</h2>
         </div>
         <div class="close-date clearfix">
             <small ng-if="deal.close_date > ctrl.dateNow">closes {{deal.close_date | date:"MM/dd/yyyy"}}</small>

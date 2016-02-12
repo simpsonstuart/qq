@@ -6,6 +6,7 @@
     function DealService(ApiService) {
 
         return {
+            deltas: deltas,
             getAll: getAll,
             get: get,
             feed: feed,
@@ -42,6 +43,10 @@
 
         function importList() {
             return ApiService.get('deals/import');
+        }
+
+        function deltas() {
+            return ApiService.get('deals/deltas');
         }
 
         function add(deals) {
