@@ -5,7 +5,7 @@
 
     function Registration($scope, $state, UserService, UrlService) {
         var ctrl = this;
-        var returnUrl = UrlService.urlWithoutQuery() + '/get-started/';
+        var returnUrl = UrlService.urlWithoutPath() + '/get-started';
         ctrl.register = register;
 
         function register() {
