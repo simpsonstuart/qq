@@ -14,7 +14,7 @@
         activate();
 
         function submit() {
-            var dealsToImport = _.pluck(checked(), 'id');
+            var dealsToImport = _.pluck(ctrl.deals, 'id');
 
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
