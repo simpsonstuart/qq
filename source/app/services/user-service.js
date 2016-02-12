@@ -50,8 +50,8 @@
             return ApiService.post('settings', billing_data);
         }
 
-        function resendVerificationEmail(email) {
-            return ApiService.post('users/verification', {'email': email});
+        function resendVerificationEmail(email, returnUrl) {
+            return ApiService.post('users/verification', {'email': email, 'return_url': returnUrl});
         }
 
         function verify(token) {
