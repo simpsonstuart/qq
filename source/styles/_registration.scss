@@ -46,6 +46,30 @@
   }
 }
 
+.email-success {
+  color: $col-green;
+  font-weight: 700;
+  &:before {
+    @include fa;
+    @include fa(check-circle);
+    @include fa-right(5px);
+    @include fa-size(2rem);
+  }
+}
+
+.email-error {
+  color: $col-red;
+  font-weight: 700;
+  &:before {
+    @include fa;
+    @include fa(exclamation-circle);
+    @include fa-right(5px);
+    @include fa-size(2rem);
+  }
+}
+
+
+
 
 
 
