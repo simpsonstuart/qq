@@ -6,6 +6,7 @@
     function GetStarted($scope, $state) {
         var ctrl = this;
         ctrl.getStarted = getStarted;
+        console.log($state.params.token);
 
         if ($state.params.salesforceKey == 'true') {
             ctrl.showGetStarted = true;
