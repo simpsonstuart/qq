@@ -36,7 +36,11 @@
                 );
         }
 
-        function post(uri, data) {
+        function post(uri, data, query) {
+            if (query) {
+                uri = uri + '?' + query;
+            }
+
             return $http.post(AppConfig.apiUri + uri, data)
                 .then(function (response) {
                         CacheFactory.clearAll();

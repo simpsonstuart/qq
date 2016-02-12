@@ -2,6 +2,7 @@
     <h2>Just one more step...</h2>
     <p>A verification email has been sent to your email address. Please click on the link included in the email to complete your registration.</p>
     <p>Once you have verified your address, please continue to the <a ui-sref="login">login</a> page.</p>
+    <p ng-show="ctrl.verificationResent">Verification email resent</p>
     <a ng-click="ctrl.resendVerification()">Resend Verification Email</a>
 </div>
 

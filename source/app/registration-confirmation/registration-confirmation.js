@@ -5,11 +5,15 @@
 
     function RegistrationConfirmation($scope, $state, UserService) {
         var ctrl = this;
-        ctrl.showMessageResent = false;
+        ctrl.verificationResent = false;
         ctrl.resendVerification = resendVerification;
 
-        function resendVerification(){
-         ctrl.showMessageResent = true;
+        function resendVerification() {
+            UserService.resendVerificationEmail($state.params.email).then(function () {
+                ctrl.verificationResent = true;
+            }, function () {
+                console.log('error sending verification email')
+            });
         }
 
     }
