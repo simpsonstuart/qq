@@ -7,6 +7,7 @@
         var ctrl = this;
         var token = $state.params.token;
         var newUser = $state.params.new_user;
+        console.log(newUser);
         var errorParams = $state.params.errors;
         ctrl.salesforceLogin = salesforceLogin;
         ctrl.login = login;
@@ -24,8 +25,13 @@
                     AuthService.createTokenExpirationTime();
                     localStorage.setItem('user', userObject);
                 }).then(function () {
-                    // wait until the user is stored to go to feed
-                    $state.go('dashboard');
+
+                    // wait until the user is stored to go to feed if not first login
+                    if (newUser == 'true') {
+                        $state.go('get-started');
+                    } else {
+                        $state.go('dashboard');
+                    }
                 });
             }).catch(function (response) {
                 //if we get an an error 401 display an error and reset forms
@@ -76,7 +82,7 @@
                         localStorage.setItem('user', user);
                     }).then(function () {
                         if (newUser == 'true') {
-                            $state.go('import-deals');
+                            $state.go('deal-import');
                         } else {
                             $state.go('dashboard');
                         }
