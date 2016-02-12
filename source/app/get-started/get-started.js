@@ -7,8 +7,12 @@
         var ctrl = this;
         ctrl.getStarted = getStarted;
 
+        if ($state.params.salesforceKey == 'true') {
+            ctrl.showGetStarted = true;
+        }
+
         function getStarted() {
-            $state.go('link-with-salesforce', {register_key: "03434324"});
+            $state.go('login, {register_key: ""}');
         }
 
     }
