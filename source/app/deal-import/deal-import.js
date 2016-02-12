@@ -18,7 +18,6 @@
 
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
-                    console.log('deals imported');
                 });
             }
             $state.go('dashboard');
@@ -35,6 +34,7 @@
         function activate() {
             DealService.importList().then(function (data) {
                 ctrl.deals = data;
+                console.log(data);
                 ctrl.dealsRetrieved = true;
             });
         }

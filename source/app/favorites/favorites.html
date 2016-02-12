@@ -1,5 +1,5 @@
 <h1>Favorites</h1>
-
+<h2 class="endpoint-error" ng-if="!ctrl.favoriteDeals">You don't have any deals in your account!</h2>
 <div ng-repeat="deal in ctrl.favoriteDeals" class="deal-list">
     <aside>
         <span class="favorite-no-select" ng-class="{ active: deal.favorite }"></span>
