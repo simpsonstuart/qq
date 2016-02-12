@@ -17,9 +17,8 @@
             });
         }
 
-
         function getStarted() {
-            $state.go('login', {token: $state.params.token});
+            $state.go('login');
         }
 
     }
