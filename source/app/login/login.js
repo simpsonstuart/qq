@@ -25,7 +25,6 @@
                     localStorage.setItem('user', userObject);
                     ctrl.currentUser = userObject;
                 }).then(function () {
-
                     // wait until the user is stored to go to feed if not first login
                     if (!ctrl.currentUser.salesforce_id) {
                         $state.go('link-with-salesforce');
@@ -81,7 +80,7 @@
                         AuthService.createTokenExpirationTime();
                         localStorage.setItem('user', user);
                     }).then(function () {
-                        if (noSalesforce == 'true') {
+                        if (!ctrl.currentUser.salesforce_id) {
                             $state.go('link-with-salesforce');
                         } else {
                             $state.go('dashboard');
