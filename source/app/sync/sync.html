@@ -30,7 +30,7 @@
                 <button ng-click="ctrl.syncSalesforceUpdates()">Import New Deals</button>
             </div>
             <div ng-repeat="deal in ctrl.fromSalesforceDeals" class="update">
-                <h2><a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a></h2>
+                <h2>{{deal.name}}</h2>
                 <p>Owner | {{deal.owner}}</p>
                 <small>Close {{deal.close_date | date:"MM/dd/yyyy"}}</small>
                 <h2 class="account-value">{{ctrl.formatMoney(deal.amount)}}</h2>
