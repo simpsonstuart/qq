@@ -52,5 +52,9 @@
         function resendVerificationEmail(email) {
             return ApiService.post('users/verification', {'email': email});
         }
+
+        function verify(token) {
+           return ApiService.post('users/verify/' + token);
+        }
     }
 })();
