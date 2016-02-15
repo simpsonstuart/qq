@@ -14,8 +14,10 @@
             importList: importList,
             add: add,
             favorite: favorite,
-            syncWithSalesforce: syncWithSalesforce
+            syncWithSalesforce: syncWithSalesforce,
+            update: update
         };
+
 
         function getAll(query) {
             return ApiService.get('deals', query);
@@ -49,8 +51,22 @@
             return ApiService.get('deals/deltas');
         }
 
-        function add(deals) {
-            return ApiService.post('deals/import', {ids: deals});
+        /**
+         * @param {Array.<string>} dealIds
+         * @returns {Promise}
+         */
+        function add(dealIds) {
+            return ApiService.post('deals/import', {ids: dealIds});
+        }
+
+        /**
+         * @param {int} id
+         * @param {object} fields  the fields to update
+         * @returns {Promise}
+         */
+        function update(id, fields) {
+            console.log(fields);
+            return ApiService.post('deals/' + id, fields);
         }
     }
 

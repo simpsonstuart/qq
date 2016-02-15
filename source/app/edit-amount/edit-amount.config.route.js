@@ -1,13 +1,14 @@
 (function () {
     'use strict';
-    angular.module('app.edit.account').config(config);
+    angular.module('app.edit.amount').config(config);
 
     function config($stateProvider) {
-        $stateProvider.state('edit-account', {
-                url: '/edit-account',
+        $stateProvider.state('edit-amount', {
+                url: '/edit-amount/:deal_id?amount',
                 restricted: true,
             params: {
-                deal_id: 'Deal ID'
+                deal_id: 'Deal ID',
+                amount: 'Deal Amount'
             },
                 data: {
                     bodyClasses: 'grey',
@@ -22,8 +23,8 @@
                         controllerAs: 'ctrl'
                     },
                     'container': {
-                        templateUrl: 'views/edit-account/edit-account.html',
-                        controller: 'EditAccount',
+                        templateUrl: 'views/edit-amount/edit-amount.html',
+                        controller: 'EditAmount',
                         controllerAs: 'ctrl'
                     },
                     'footer': {

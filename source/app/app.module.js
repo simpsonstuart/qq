@@ -27,7 +27,7 @@
         'app.favorites',
         'app.edit-next-step',
         'app.edit-close-date',
-        'app.edit.account',
+        'app.edit.amount',
         'app.deal-detail-edit'
 
     ]);

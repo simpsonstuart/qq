@@ -10,6 +10,14 @@
             post: post
         };
 
+        /**
+         *
+         * @param {string} uri
+         * @param {string} query
+         * @param {object} options $http options
+         * @param {function} dataAccessor
+         * @returns {Promise.<T>}
+         */
         function get(uri, query, options, dataAccessor) {
 
             if (!dataAccessor) {
@@ -36,6 +44,13 @@
                 );
         }
 
+        /**
+         *
+         * @param {string} uri
+         * @param {object} data
+         * @param {string} query
+         * @returns {Promise.<T>}
+         */
         function post(uri, data, query) {
             if (query) {
                 uri = uri + '?' + query;

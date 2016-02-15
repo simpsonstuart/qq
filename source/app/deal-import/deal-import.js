@@ -23,10 +23,6 @@
             $state.go('dashboard');
         }
 
-        function checked() {
-            return _.filter(ctrl.deals, "isChecked");
-        }
-
         function noDealsToImport() {
             return ctrl.deals.length < 1 && ctrl.dealsRetrieved;
         }
