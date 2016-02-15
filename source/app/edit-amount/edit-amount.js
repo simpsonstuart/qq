@@ -11,7 +11,7 @@
         ctrl.changed = changed;
         ctrl.amount = null;
 
-        activate();
+        _activate();
 
         /**
          * cancels any changes to deal amount
@@ -44,8 +44,6 @@
             return _original() == ctrl.amount;
         }
 
-        $state.go('deal-detail', {deal_id: ctrl.dealId});
-
         /**
          * returns the original amount
          *
@@ -59,6 +57,15 @@
             }
 
             return null;
+        }
+
+        /**
+         * constructor for the controller
+         *
+         * @private
+         */
+        function _activate() {
+            ctrl.amount = _original();
         }
     }
 
