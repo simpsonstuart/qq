@@ -8,7 +8,8 @@
         ctrl.cancel = cancel;
         ctrl.save = save;
         ctrl.dealId = $stateParams.deal_id;
-        ctrl.changed = changed;
+        ctrl.saveable = saveable;
+        ctrl.notSaveable = notSaveable;
         ctrl.amount = null;
 
         _activate();
@@ -28,11 +29,16 @@
          * @returns void
          */
         function save() {
-            if (changed()) {
+            if (saveable()) {
                 DealService.update(ctrl.dealId, {"amount": ctrl.amount}).then(function () {
                     $state.go('deal-detail', {deal_id: ctrl.dealId});
                 });
             }
+        }
+
+
+        function notSaveable() {
+            return !saveable();
         }
 
         /**
@@ -40,8 +46,8 @@
          *
          * @returns {boolean}
          */
-        function changed() {
-            return _original() == ctrl.amount;
+        function saveable() {
+            return ((_original() != ctrl.amount) && (ctrl.amount > 0));
         }
 
         /**
