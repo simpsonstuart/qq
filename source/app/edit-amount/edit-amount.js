@@ -3,7 +3,7 @@
     angular.module('app.edit.amount')
         .controller('EditAmount', EditAmount);
 
-    function EditAmount($state, $stateParams, DealService) {
+    function EditAmount($scope, $state, $stateParams, DealService) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;
@@ -11,6 +11,7 @@
         ctrl.saveable = saveable;
         ctrl.notSaveable = notSaveable;
         ctrl.amount = null;
+        ctrl.updateSalesforce = false;
 
         _activate();
 
@@ -30,7 +31,7 @@
          */
         function save() {
             if (saveable()) {
-                DealService.update(ctrl.dealId, {"amount": ctrl.amount}).then(function () {
+                DealService.update(ctrl.dealId, {"amount": ctrl.amount}, _updateSalesforceQuery()).then(function () {
                     $state.go('deal-detail', {deal_id: ctrl.dealId});
                 });
             }
@@ -60,6 +61,14 @@
             var amount = parseInt($stateParams.amount);
             if (amount > 0) {
                 return amount;
+            }
+
+            return null;
+        }
+
+        function _updateSalesforceQuery() {
+            if (ctrl.updateSalesforce) {
+                return "update-salesforce=true";
             }
 
             return null;

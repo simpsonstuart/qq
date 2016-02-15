@@ -6,7 +6,7 @@
             <input type="number" name="amount" ng-model="ctrl.amount" id="CloseDate" />
         </p>
     </fieldset>
-    <input id="sync-now" type="checkbox" name="syncChanges" ng-model="syncChanges" value="true" />
+    <input id="sync-now" type="checkbox" name="sync-now" ng-model="ctrl.updateSalesforce" value="true" />
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
         <button class="submit" ng-click="ctrl.cancel()" >Cancel</button>

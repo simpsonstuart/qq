@@ -86,10 +86,11 @@
         /**
          * @param {int} id
          * @param {object} fields  the fields to update
+         * @param {string} query
          * @returns {*|Promise.<T>|V}
          */
-        function update(id, fields) {
-            return ApiService.post('deals/' + id, fields);
+        function update(id, fields, query) {
+            return ApiService.post('deals/' + id, fields, query);
         }
     }
 
