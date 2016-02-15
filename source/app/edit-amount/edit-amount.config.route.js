@@ -4,7 +4,7 @@
 
     function config($stateProvider) {
         $stateProvider.state('edit-amount', {
-                url: '/edit-amount/:deal_id?amount',
+                url: '/deals/:deal_id/edit-amount?amount',
                 restricted: true,
             params: {
                 deal_id: 'Deal ID',

@@ -4,11 +4,12 @@
 
     function config($stateProvider) {
         $stateProvider.state('edit-close-date', {
-                url: '/edit-close-date',
+                url: '/deals/:deal_id/edit-close-date?close_date',
                 restricted: true,
                 params: {
-                deal_id: 'Deal ID'
-                            },
+                    deal_id: 'Deal ID',
+                    close_date: 'Deal close date'
+                },
                 data: {
                     bodyClasses: 'grey',
                     headerClasses: 'back',
