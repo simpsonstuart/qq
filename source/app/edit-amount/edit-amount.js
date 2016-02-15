@@ -3,7 +3,7 @@
     angular.module('app.edit.amount')
         .controller('EditAmount', EditAmount);
 
-    function EditAmount($scope, $state, $stateParams, DealService) {
+    function EditAmount($state, $stateParams, DealService) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;
@@ -13,24 +13,45 @@
 
         activate();
 
-        function activate() {
-            ctrl.amount = _original();
-        }
-
+        /**
+         * cancels any changes to deal amount
+         *
+         * @returns void
+         */
         function cancel() {
             $state.go('deal-detail', {deal_id: ctrl.dealId});
         }
 
+        /**
+         * saves the new deal value if changed
+         *
+         * @returns void
+         */
         function save() {
-            DealService.update(ctrl.dealId, {"amount": ctrl.amount}).then(function () {
-                $state.go('deal-detail', {deal_id: ctrl.dealId});
-            });
+            if (changed()) {
+                DealService.update(ctrl.dealId, {"amount": ctrl.amount}).then(function () {
+                    $state.go('deal-detail', {deal_id: ctrl.dealId});
+                });
+            }
         }
 
+        /**
+         * Checks to see if the amount has changed
+         *
+         * @returns {boolean}
+         */
         function changed() {
             return _original() == ctrl.amount;
         }
 
+        $state.go('deal-detail', {deal_id: ctrl.dealId});
+
+        /**
+         * returns the original amount
+         *
+         * @returns {int}|null
+         * @private
+         */
         function _original() {
             var amount = parseInt($stateParams.amount);
             if (amount > 0) {
