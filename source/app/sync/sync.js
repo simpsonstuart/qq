@@ -3,7 +3,7 @@
     angular.module('app.sync')
         .controller('Sync', Sync);
 
-    function Sync(DealService, $scope, NumberService) {
+    function Sync(DealService, $scope, NumberService, DateAndTimeService) {
         var ctrl = this;
         ctrl.syncUpdates = syncUpdates;
         ctrl.formatMoney = NumberService.formatMoney;
@@ -11,6 +11,8 @@
         ctrl.syncTraqqUpdates = syncTraqqUpdates;
         ctrl.submit = submit;
         ctrl.noDealsToImport = noDealsToImport;
+        ctrl.formatFieldName = formatFieldName;
+        ctrl.formatValue = formatValue;
         ctrl.fromSalesforceDeals = [];
         ctrl.toSalesforceDeals = [];
         ctrl.dealsRetrieved = false;
@@ -29,6 +31,22 @@
             $state.go('dashboard');
         }
 
+        function formatFieldName(field) {
+            return field.replace("_", " ");
+        }
+
+        function formatValue(field, value) {
+             if (field == 'amount') {
+                 return  ctrl.formatMoney(value);
+             }
+
+            if (field == 'close_date') {
+                return DateAndTimeService.dateToFormat(value, "MM/DD/YYYY", "YYYY-MM-DD");
+            }
+
+            return value;
+        }
+
         function noDealsToImport() {
             return ctrl.fromSalesforceDeals.length < 1 && ctrl.dealsRetrieved;
         }
@@ -43,6 +61,7 @@
 
             DealService.deltas().then(function (data) {
                 ctrl.toSalesforceDeals = data;
+                console.log(data);
             });
         }
 

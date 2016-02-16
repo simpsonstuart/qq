@@ -20,8 +20,7 @@
 
         function save () {
             DealService.update(ctrl.dealId, {close_date: _outDate()}, _updateSalesforceQuery()).then(function (response) {
-                    console.log(response);
-                    //$state.go('deal-detail', {deal_id: ctrl.dealId});
+                    $state.go('deal-detail', {deal_id: ctrl.dealId});
                 });
         }
 
@@ -35,7 +34,7 @@
          * @returns {boolean}
          */
         function saveable() {
-            return _original() != _newDate();
+            return DateAndTimeService.dateToFormat(_original(), "MM/DD/YYYY") != _newDate();
         }
 
         function _newDate() {

@@ -58,15 +58,10 @@
 
             <div ng-repeat="deal in ctrl.toSalesforceDeals">
             <small class="deal-header">{{deal.name}}</small>
-            <div class="update">
-                <small>amount</small>
-                <h2>{{ctrl.formatMoney(deal.amount)}}</h2>
-                <a class="edit" ui-sref="deal-detail-edit({deal_id: deal.id})">edit</a>
-            </div>
-                <div class="update">
-                    <small>Next Step</small>
-                    <h2>{{deal.next_step}}</h2>
-                    <a class="edit" ui-sref="edit-next-step{deal_id: deal.id})">edit</a>
+                <div ng-repeat="(field, value) in deal.changed_fields" class="update">
+                    <small>{{ctrl.formatFieldName(field)}}</small>
+                    <h2>{{ctrl.formatValue(field, value)}}</h2>
+                    <a class="edit" ui-sref="deal-detail-edit({deal_id: deal.id, deal: deal})">edit</a>
                 </div>
             </div>
           </div>
