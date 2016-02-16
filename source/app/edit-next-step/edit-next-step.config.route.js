@@ -4,10 +4,11 @@
 
     function config($stateProvider) {
         $stateProvider.state('edit-next-step', {
-                url: '/edit-next-step',
+                url: '/deals/:deal_id/edit-next-step',
                 restricted: true,
                 params: {
-                    deal_id: 'Deal ID'
+                    deal_id: 'Deal ID',
+                    next_step: 'Next Step'
                 },
                 data: {
                     bodyClasses: 'grey',
