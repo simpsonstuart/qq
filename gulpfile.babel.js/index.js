@@ -26,8 +26,6 @@ import iife from 'gulp-iife';
 import browserSync from 'browser-sync';
 import env from "gulp-env";
 import replace from "gulp-replace";
-import cordovaLib from 'cordova-lib';
-const cordova = cordovaLib.cordova;
 
 env({file: ".env.json"});
 
@@ -46,7 +44,7 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/moment-timezone/moment-timezone.js'),
   fullPath(config.paths.node_modules + '/numeral/numeral.js'),
   fullPath(config.paths.node_modules + '/jquery/dist/jquery.js'),
-  fullPath(config.paths.node_modules + '/lodash/lodash.js'),
+  fullPath(config.paths.node_modules + '/underscore/underscore.js'),
   fullPath(config.paths.node_modules + '/angular/angular.js'),
   fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
@@ -54,16 +52,13 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js')
 ];
 
-//Cordova complains about it not being a Cordova project if www does not exist
+//ensure www
 if (! fs.existsSync('./www')) fs.mkdirSync('./www');
 
 //
 // GULP TASKS
 //
 
-gulp.task('cordova:clean', (done) => { cordova.clean({},   done); });
-gulp.task('cordova:prepare', (done) => { cordova.prepare({}, done); });
-gulp.task('cordova:build', (done) => { cordova.build({},   done); });
 
 gulp.task('clean:www', (callback) => {
   del([fullPath(config.paths.public.root)]).then(function () {
@@ -189,10 +184,6 @@ gulp.task('build', (() => {
     gulp.parallel('fonts', 'audio', 'video')
   ];
 
-  if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
-    buildTasks.push('cordova:prepare');
-  }
-
   return gulp.series.apply(gulp, buildTasks);
 })());
 
@@ -238,16 +229,16 @@ gulp.task('browsersync', () => {
   });
 
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{sass,scss,css}'), gulp.series(
-    'styles', 'cordova:prepare', 'browsersync:reload'
+    'styles', 'browsersync:reload'
   ));
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{htm,html}'), gulp.series(
-    'html', 'cordova:prepare', 'browsersync:reload'
+    'html', 'browsersync:reload'
   ));
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{js}'), gulp.series(
-    'javascript', 'cordova:prepare', 'javascript:minify', 'browsersync:reload'
+    'javascript', 'javascript:minify', 'browsersync:reload'
   ));
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{jpg,jpeg,gif,svg,png}'), gulp.series(
-    'images', 'cordova:prepare', 'browsersync:reload'
+    'images', 'browsersync:reload'
   ));
 });
 
