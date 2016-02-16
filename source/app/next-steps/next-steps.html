@@ -16,7 +16,7 @@
     <h2 ng-show="ctrl.showNoDealsWithoutNextSteps" class="endpoint-error">No deals without next steps found!</h2>
     <div class="next-step" ng-repeat="deal in ctrl.filteredDeals | orderBy: ctrl.selectedSort">
         <h2>{{deal.next_step}}</h2>
-        <h2 ng-if="ctrl.noNextStep" ui-sref="set-next-step({deal_id: deal.id})" class="nextStepLink">Set Next Step</h2>
+        <h2 ng-if="ctrl.noNextStep" ui-sref="edit-next-step({deal_id: deal.id, next_step: deal.next_step})" class="nextStepLink">Set Next Step</h2>
         <a ui-sref="deal-detail({deal_id: deal.id})">{{deal.name}}</a>
         <p>Owner | {{deal.owner.data.name}}</p>
         <p class="account-value">{{ctrl.formatMoney(deal.amount)}}</p>
