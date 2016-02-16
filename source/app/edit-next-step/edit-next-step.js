@@ -7,17 +7,12 @@
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;
+        ctrl.notSaveable = notSaveable;
         ctrl.dealId = $stateParams.deal_id;
         ctrl.nextStep = null;
+        ctrl.updateSalesforce = false;
 
-        activate();
-
-        function activate() {
-            DealService.get(ctrl.dealId).then(function (data) {
-                ctrl.deal            = data;
-                console.log(data);
-            });
-        }
+        _activate();
 
         function cancel () {
             $state.go('deal-detail', {deal_id: ctrl.dealId});
@@ -47,7 +42,7 @@
          * @returns {boolean}
          */
         function saveable() {
-            return ((_original() != ctrl.nextStep) && ctrl.nextStep.trim());
+            return ((_original() != ctrl.nextStep) && ctrl.nextStep != null && ctrl.nextStep.trim());
         }
 
         /**
@@ -58,6 +53,7 @@
          */
         function _original() {
             var nextStep = $stateParams.next_step;
+
             if (typeof nextStep == 'string' && nextStep.trim()) {
                 return nextStep;
             }
@@ -79,7 +75,7 @@
          * @private
          */
         function _activate() {
-            ctrl.next_step = _original();
+            ctrl.nextStep = _original();
         }
     }
 
