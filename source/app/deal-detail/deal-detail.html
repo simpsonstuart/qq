@@ -42,7 +42,7 @@
         </a>
         <div class="salesforce-button">
             <div class="salesforce-grid">
-            <button class="submit" ui-sref="deal-detail-edit({deal_id: ctrl.deal.id})">Edit Deal</button>
+            <button class="submit" ui-sref="deal-detail-edit({deal_id: ctrl.deal.id, deal: ctrl.deal})">Edit Deal</button>
             <button class="sync-with-salesforce" ng-click="ctrl.viewDealSalesforce()">Sync with Salesforce</button>
             <a class="view-deal" href="" ng-click="ctrl.syncWithSalesforce()">View Deal in Salesforce</a>
             </div>

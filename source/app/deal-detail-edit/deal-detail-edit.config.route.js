@@ -4,10 +4,11 @@
 
     function config($stateProvider) {
         $stateProvider.state('deal-detail-edit', {
-                url: '/deal-detail-edit',
+                url: '/deals/:deal_id/edit',
                 restricted: true,
                 params: {
-                    deal_id: 'Deal ID'
+                    deal_id: 'Deal ID',
+                    deal: 'The Deal'
                 },
                 data: {
                     bodyClasses: 'grey',
