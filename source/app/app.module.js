@@ -27,7 +27,8 @@
         'app.edit-next-step',
         'app.edit-close-date',
         'app.edit.amount',
-        'app.deal-detail-edit'
+        'app.deal-detail-edit',
+        'app.reset-password'
 
     ]);
 

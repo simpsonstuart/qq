@@ -92,7 +92,7 @@
 
         function viewDealSalesforce() {
             if (AuthService.authenticatedUser().salesforce_instance_url) {
-                $window.location.href = AuthService.authenticatedUser().salesforce_instance_url + '/' + ctrl.deal.salesforce_id;
+                $window.open( AuthService.authenticatedUser().salesforce_instance_url + '/' + ctrl.deal.salesforce_id);
             }
         }
 

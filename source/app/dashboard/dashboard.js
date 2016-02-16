@@ -29,6 +29,7 @@
             DealService.getAll().then(function (data) {
                 ctrl.dealsNextWithoutSteps = _.reject(data, "next_step");
                 ctrl.dealsNextWithoutStepsCount = _.size(ctrl.dealsNextWithoutSteps);
+                
             });
         }
     }

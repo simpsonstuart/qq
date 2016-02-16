@@ -13,12 +13,17 @@
             authenticatedUser:         authenticatedUser,
             createTokenExpirationTime: createTokenExpirationTime,
             refreshToken:              refreshToken,
-            setUser:                   setUser
+            setUser:                   setUser,
+            token:                     token
         };
 
 
         function loggedIn() {
             return $auth.isAuthenticated()
+        }
+
+        function token() {
+            return localStorage.getItem('satellizer_token');
         }
 
         /**

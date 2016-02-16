@@ -14,7 +14,7 @@
         function filterNextSteps(){
             ctrl.filterActive= !ctrl.filterActive;
             if(ctrl.filterActive){
-                ctrl.filteredDeals  = _.reject(ctrl.deals, _doesNotHaveNextStepFilter);
+                ctrl.filteredDeals  = _.reject(ctrl.deals, 'next_step');
                 ctrl.noNextStep = true;
                 ctrl.showNoDealsWithoutNextSteps = false;
             } else {
@@ -48,8 +48,5 @@
             return !!deal.next_step.trim();
         }
 
-        function _doesNotHaveNextStepFilter(deal) {
-            return ! _hasNextStepFilter(deal);
-        }
     }
 })();
