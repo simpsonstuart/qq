@@ -145,7 +145,6 @@
 
         function _activate() {
             _getDeal().then(function () {
-                ctrl.deal.next_step = 'yabber';
                 ctrl.amount = _originalAmount();
                 ctrl.closeDate = _originalCloseDate();
                 ctrl.nextStep = ctrl.deal.next_step;
