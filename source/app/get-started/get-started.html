@@ -1,6 +1,11 @@
 <div class="get-started">
+    <div ng-if="ctrl.showGetStarted">
     <h2>Account Created!</h2>
     <p>Knowing the right questions to ask is the start of as successful campaign. Traqq allows you to do just that.</p>
-    <button class="submit get-started" ng-click="ctrl.getStarted()">Get Started</button>
+    <button class="submit get-started" ng-click="ctrl.getStarted()">Login to Get Started</button>
+    </div>
+    <div ng-if="!ctrl.showGetStarted">
+        <h2>Error!</h2>
+    </div>
 </div>
 

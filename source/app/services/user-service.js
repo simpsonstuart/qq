@@ -14,7 +14,8 @@
             reset_password: reset_password,
             email_change: email_change,
             billing_change: billing_change,
-            resendVerificationEmail: resendVerificationEmail
+            resendVerificationEmail: resendVerificationEmail,
+            verify: verify
         };
 
         function getAll(query) {
@@ -49,8 +50,12 @@
             return ApiService.post('settings', billing_data);
         }
 
-        function resendVerificationEmail(email) {
-            return ApiService.post('users/verification', {'email': email});
+        function resendVerificationEmail(email, returnUrl) {
+            return ApiService.post('users/verification', {'email': email, 'return_url': returnUrl});
+        }
+
+        function verify(token) {
+           return ApiService.post('users/verify/' + token);
         }
     }
 })();

@@ -2,14 +2,14 @@
     <h1>Edit</h1>
     <fieldset>
         <p>
-            <small class="input-label">Next Step</small>
-            <textarea cols="55" rows="7" ng-model="ctrl.nextStep"></textarea>
+            <small>Amount</small>
+            <input type="number" name="amount" ng-model="ctrl.amount" id="CloseDate" />
         </p>
     </fieldset>
-    <input id="sync-now" type="checkbox" name="syncChanges" ng-model="ctrl.updateSalesforce" value="true" />
+    <input id="sync-now" type="checkbox" name="sync-now" ng-model="ctrl.updateSalesforce" value="true" />
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
-        <button class="submit" ng-click="ctrl.cancel()">Cancel</button>
+        <button class="submit" ng-click="ctrl.cancel()" >Cancel</button>
         <button class="submit" ng-click="ctrl.save()" ng-disabled="ctrl.notSaveable()">Save Changes</button>
     </div>
 </form>

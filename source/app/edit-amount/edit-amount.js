@@ -1,29 +1,37 @@
 (function () {
     'use strict';
-    angular.module('app.edit-next-step')
-        .controller('EditNextStep', EditNextStep);
+    angular.module('app.edit.amount')
+        .controller('EditAmount', EditAmount);
 
-    function EditNextStep($scope, $stateParams, $state, DealService) {
+    function EditAmount($scope, $state, $stateParams, DealService) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;
-        ctrl.notSaveable = notSaveable;
         ctrl.dealId = $stateParams.deal_id;
-        ctrl.nextStep = null;
+        ctrl.saveable = saveable;
+        ctrl.notSaveable = notSaveable;
+        ctrl.amount = null;
         ctrl.updateSalesforce = false;
 
         _activate();
 
-        function cancel () {
+        /**
+         * cancels any changes to deal amount
+         *
+         * @returns void
+         */
+        function cancel() {
             $state.go('deal-detail', {deal_id: ctrl.dealId});
         }
 
         /**
+         * saves the new deal value if changed
+         *
          * @returns void
          */
         function save() {
             if (saveable()) {
-                DealService.update(ctrl.dealId, {"next_step": ctrl.nextStep}, _updateSalesforceQuery()).then(function () {
+                DealService.update(ctrl.dealId, {"amount": ctrl.amount}, _updateSalesforceQuery()).then(function () {
                     $state.go('deal-detail', {deal_id: ctrl.dealId});
                 });
             }
@@ -35,21 +43,24 @@
         }
 
         /**
+         * Checks to see if the amount has changed
+         *
          * @returns {boolean}
          */
         function saveable() {
-            return ((_original() != ctrl.nextStep) && ctrl.nextStep != null && ctrl.nextStep.trim());
+            return ((_original() != ctrl.amount) && (ctrl.amount > 0));
         }
 
         /**
-         * @returns {string}|null
+         * returns the original amount
+         *
+         * @returns {int}|null
          * @private
          */
         function _original() {
-            var nextStep = $stateParams.next_step;
-
-            if (typeof nextStep == 'string' && nextStep.trim()) {
-                return nextStep;
+            var amount = parseInt($stateParams.amount);
+            if (amount > 0) {
+                return amount;
             }
 
             return null;
@@ -69,7 +80,7 @@
          * @private
          */
         function _activate() {
-            ctrl.nextStep = _original();
+            ctrl.amount = _original();
         }
     }
 

@@ -7,7 +7,6 @@
         var ctrl = this;
         ctrl.salesforceLogin = salesforceLogin;
         var linked = $state.params.linked;
-        console.log(linked);
         if (linked == 'true') {
             $state.go('deal-import');
         }

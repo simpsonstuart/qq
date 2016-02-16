@@ -6,8 +6,7 @@
     function LoginController($scope, AuthService, UserService, $state, UrlService, $window, AppConfig) {
         var ctrl = this;
         var token = $state.params.token;
-        var newUser = $state.params.new_user;
-        console.log(newUser);
+        var noSalesforce = $state.params.new_user;
         var errorParams = $state.params.errors;
         ctrl.salesforceLogin = salesforceLogin;
         ctrl.login = login;
@@ -24,11 +23,11 @@
                 UserService.profile('current').then(function (userObject) {
                     AuthService.createTokenExpirationTime();
                     localStorage.setItem('user', userObject);
+                    ctrl.currentUser = userObject;
                 }).then(function () {
-
                     // wait until the user is stored to go to feed if not first login
-                    if (newUser == 'true') {
-                        $state.go('get-started');
+                    if (!ctrl.currentUser.salesforce_id) {
+                        $state.go('link-with-salesforce');
                     } else {
                         $state.go('dashboard');
                     }
@@ -81,8 +80,8 @@
                         AuthService.createTokenExpirationTime();
                         localStorage.setItem('user', user);
                     }).then(function () {
-                        if (newUser == 'true') {
-                            $state.go('deal-import');
+                        if (!ctrl.currentUser.salesforce_id) {
+                            $state.go('link-with-salesforce');
                         } else {
                             $state.go('dashboard');
                         }

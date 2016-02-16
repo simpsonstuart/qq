@@ -14,11 +14,11 @@
     </aside>
     <div class="deal-details clearfix">
         <div class="flex">
-            <a class="account-value" ui-sref="edit-account({deal_id: ctrl.deal.id})">
+            <a class="account-value" ui-sref="edit-amount({deal_id: ctrl.deal.id, amount: ctrl.deal.amount})">
                 <small>Amount</small>
                 <h2 ng-bind="ctrl.amount"></h2>
             </a>
-            <a class="close-date" ui-sref="edit-close-date({deal_id: ctrl.deal.id})">
+            <a class="close-date" ui-sref="edit-close-date({deal_id: ctrl.deal.id, close_date: ctrl.deal.close_date})">
                 <small>Close Date</small>
                 <h2 ng-bind="ctrl.close_date"></h2>
             </a>
@@ -33,16 +33,16 @@
                 <h2 ng-bind="ctrl.deal.stage"></h2>
             </div>
         </div>
-        <a class="deal-detail-next-step" ng-show="ctrl.deal.next_step" ui-sref="edit-next-step({deal_id: ctrl.deal.id})">
+        <a class="deal-detail-next-step" ng-show="ctrl.deal.next_step" ui-sref="edit-next-step({deal_id: ctrl.deal.id, next_step: ctrl.deal.next_step})">
             <small>Next Step</small>
             <p ng-bind="ctrl.deal.next_step"></p>
         </a>
-        <a class="deal-detail-next-step" ui-sref="set-next-step({deal_id: ctrl.deal.id})" ng-show="!ctrl.deal.next_step">
+        <a class="deal-detail-next-step" ui-sref="edit-next-step({deal_id: ctrl.deal.id, next_step: ctrl.deal.next_step})" ng-show="!ctrl.deal.next_step">
             <small>Set Next Step</small>
         </a>
         <div class="salesforce-button">
             <div class="salesforce-grid">
-            <button class="submit" ui-sref="deal-detail-edit({deal_id: ctrl.deal.id})">Edit Deal</button>
+            <button class="submit" ui-sref="deal-detail-edit({deal_id: ctrl.deal.id, deal: ctrl.deal})">Edit Deal</button>
             <button class="sync-with-salesforce" ng-click="ctrl.viewDealSalesforce()">Sync with Salesforce</button>
             <a class="view-deal" href="" ng-click="ctrl.syncWithSalesforce()">View Deal in Salesforce</a>
             </div>
