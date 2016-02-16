@@ -49,6 +49,7 @@
 .email-success {
   color: $col-green;
   font-weight: 700;
+  text-align: center;
   &:before {
     @include fa;
     @include fa(check-circle);
@@ -60,6 +61,7 @@
 .email-error {
   color: $col-red;
   font-weight: 700;
+  text-align: center;
   &:before {
     @include fa;
     @include fa(exclamation-circle);
