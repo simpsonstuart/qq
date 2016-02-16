@@ -3,7 +3,7 @@
     angular.module('app.sync')
         .controller('Sync', Sync);
 
-    function Sync(DealService, $scope, NumberService, DateAndTimeService) {
+    function Sync(DealService, $scope, NumberService, DateAndTimeService, _) {
         var ctrl = this;
         ctrl.syncUpdates = syncUpdates;
         ctrl.formatMoney = NumberService.formatMoney;
@@ -61,7 +61,6 @@
 
             DealService.deltas().then(function (data) {
                 ctrl.toSalesforceDeals = data;
-                console.log(data);
             });
         }
 
@@ -84,6 +83,14 @@
 
         function syncTraqqUpdates() {
             ctrl.isSyncing = true;
+            var toSalesforceDealIds = _.pluck(ctrl.toSalesforceDeals, 'id');
+            if (toSalesforceDealIds.length > 0) {
+                DealService.syncToSalesforce(toSalesforceDealIds).then(function (response) {
+                    console.log(response);
+                    ctrl.toSalesforceDeals = [];
+                    ctrl.isSyncing         = false;
+                });
+            }
         }
     }
 
