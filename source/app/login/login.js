@@ -6,9 +6,7 @@
     function LoginController($scope, AuthService, UserService, $state, UrlService, $window, AppConfig) {
         var ctrl = this;
         var token = $state.params.token;
-        var noSalesforce = $state.params.new_user;
         var errorParams = $state.params.errors;
-        ctrl.salesforceLogin = salesforceLogin;
         ctrl.login = login;
         ctrl.LSError = localStorageSupported();
 
@@ -22,7 +20,7 @@
             AuthService.logIn($scope.password, $scope.email).then(function (data) {
                 UserService.profile('current').then(function (userObject) {
                     AuthService.createTokenExpirationTime();
-                    localStorage.setItem('user', userObject);
+                    AuthService.setUser(userObject);
                     ctrl.currentUser = userObject;
                 }).then(function () {
                     // wait until the user is stored to go to feed if not first login
@@ -44,14 +42,6 @@
 
         }
 
-        function salesforceLogin() {
-            var query = {
-                "return_uri": UrlService.urlWithoutQuery()
-            };
-
-            $window.location.href = AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query);
-
-        }
         //test if local storage is available
         function localStorageSupported() {
             try {
