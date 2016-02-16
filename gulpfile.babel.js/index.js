@@ -46,7 +46,7 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/moment-timezone/moment-timezone.js'),
   fullPath(config.paths.node_modules + '/numeral/numeral.js'),
   fullPath(config.paths.node_modules + '/jquery/dist/jquery.js'),
-  fullPath(config.paths.node_modules + '/lodash/lodash.js'),
+  fullPath(config.paths.node_modules + '/underscore/underscore.js'),
   fullPath(config.paths.node_modules + '/angular/angular.js'),
   fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
