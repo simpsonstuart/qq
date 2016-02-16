@@ -13,7 +13,8 @@
             add: add,
             favorite: favorite,
             syncWithSalesforce: syncWithSalesforce,
-            update: update
+            update: update,
+            syncToSalesforce: syncToSalesforce
         };
 
         /**
@@ -91,6 +92,14 @@
          */
         function update(id, fields, query) {
             return ApiService.post('deals/' + id, fields, query);
+        }
+
+        /**
+         * @param {Array} dealIds
+         * @returns {Promise.<T>}
+         */
+        function syncToSalesforce(dealIds) {
+            return ApiService.post('deals/sync/batch', {deal_ids: dealIds});
         }
     }
 
