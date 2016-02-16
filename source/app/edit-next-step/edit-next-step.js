@@ -19,8 +19,6 @@
         }
 
         /**
-         * saves the new deal value if changed
-         *
          * @returns void
          */
         function save() {
@@ -37,8 +35,6 @@
         }
 
         /**
-         * Checks to see if the amount has changed
-         *
          * @returns {boolean}
          */
         function saveable() {
@@ -46,8 +42,6 @@
         }
 
         /**
-         * returns the original amount
-         *
          * @returns {string}|null
          * @private
          */
