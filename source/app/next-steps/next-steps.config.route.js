@@ -6,6 +6,9 @@
         $stateProvider.state('next-steps', {
             url: '/next-steps',
             restricted: true,
+            params: {
+                nextStepState: ''
+            },
             data: {
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'

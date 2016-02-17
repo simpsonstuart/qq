@@ -3,7 +3,7 @@
     angular.module('app.dashboard')
         .controller('Dashboard', Dashboard);
 
-    function Dashboard(NumberService, DateAndTimeService, AuthService, UserService, DealService, $stateParams) {
+    function Dashboard(NumberService, DateAndTimeService, AuthService, UserService, DealService) {
         var ctrl = this;
 
         ctrl.convertNumberToWord = NumberService.numberToWord;

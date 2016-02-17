@@ -2,11 +2,10 @@
     'use strict';
     angular.module('app.next-steps').controller('NextSteps',NextSteps);
 
-    function NextSteps(DealService, NumberService, _) {
+    function NextSteps(DealService, NumberService, _, $stateParams) {
         var ctrl = this;
         ctrl.filterNextSteps = filterNextSteps;
         ctrl.formatMoney = NumberService.formatMoney;
-        ctrl.filterActive = false;
         ctrl.selectedSort = 'close_date';
 
         _activate();
@@ -27,17 +26,26 @@
             }
         }
 
-
         function _activate() {
             DealService.getAll('include=owner').then(function (data) {
                 ctrl.deals = data;
 
-                //filters deals based on if they have next steps or not filtering for other types happens in angular
-                ctrl.filteredDeals = _.filter(ctrl.deals, _hasNextStepFilter);
 
-                if(ctrl.filteredDeals.length < 1) {
-                    ctrl.showNoDealsWithoutNextSteps = true;
+                if ($stateParams.nextStepState === 'false') {
+                    ctrl.filterActive = true;
+                    ctrl.filteredDeals  = _.reject(ctrl.deals, 'next_step');
+                    ctrl.noNextStep = true;
                 }
+                else
+                {
+                    ctrl.filterActive = false;
+                    //filters deals based on if they have next steps or not filtering for other types happens in angular
+                    ctrl.filteredDeals = _.filter(ctrl.deals, _hasNextStepFilter);
+                    if(ctrl.filteredDeals.length < 1) {
+                        ctrl.showNoDealsWithoutNextSteps = true;
+                    }
+                }
+
             });
         }
 
