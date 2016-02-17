@@ -16,6 +16,7 @@
 
         activate();
 
+        //get deals that are favorites
         function activate() {
 
             DealService.getAll().then(function (data) {
@@ -23,6 +24,7 @@
             });
         }
 
+        //remove deal from favorites logic
         function favorite(deal) {
             var deals = ctrl.favoriteDeals;
             DealService.favorite(deal.id);

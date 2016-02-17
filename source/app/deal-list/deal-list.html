@@ -3,11 +3,16 @@
     <div class="sort">
         <p>Sort by</p>
         <select class="selected" ng-model="ctrl.selectedSort">
-            <option value="close_date">Close Date</option>
-            <option value="amount">Deal Value</option>
-            <option value="favorite">Favorite</option>
-            <option value="name">Deal Name</option>
-            <option value="next-steps">Next Steps</option>
+            <option value="close_date">Close Date Oldest First</option>
+            <option value="-close_date">Close Date Newest First</option>
+            <option value="amount">Deal Value Min-Max</option>
+            <option value="-amount">Deal Value Max-Min</option>
+            <option value="-favorite">Favorites First</option>
+            <option value="favorite">Favorites Last</option>
+            <option value="name">Deal Name A-Z</option>
+            <option value="-name">Deal Name Z-A</option>
+            <option value="next-steps">Next Steps Not Set First</option>
+            <option value="-next-steps">Next Steps Set First</option>
         </select>
     </div>
 </div>
