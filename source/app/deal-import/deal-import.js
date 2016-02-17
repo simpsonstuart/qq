@@ -20,7 +20,7 @@
                 DealService.add(dealsToImport).then(function (response) {
                 });
             }
-            $state.go('dashboard');
+            $state.go('dashboard', {firstTime: 'true'});
         }
 
         function noDealsToImport() {

@@ -3,7 +3,7 @@
     angular.module('app.dashboard')
         .controller('Dashboard', Dashboard);
 
-    function Dashboard(NumberService, DateAndTimeService, AuthService, UserService, DealService) {
+    function Dashboard(NumberService, DateAndTimeService, AuthService, UserService, DealService, $stateParams) {
         var ctrl = this;
 
         ctrl.convertNumberToWord = NumberService.numberToWord;
@@ -12,6 +12,12 @@
         ctrl.dealsWithoutNextSteps = "0";
         activate();
         getDealCounts();
+
+        if($stateParams.firstTime === 'true'){
+            console.log('true');
+            activate();
+            getDealCounts();
+        }
 
         function activate() {
 

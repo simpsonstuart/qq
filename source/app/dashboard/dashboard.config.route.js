@@ -6,6 +6,9 @@
         $stateProvider.state('dashboard', {
             url: '/',
             restricted: true,
+            params: {
+                firstTime: ''
+            },
             data:     {
                 bodyClasses:   '',
                 headerClasses: '',
