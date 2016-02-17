@@ -23,8 +23,6 @@
                 ctrl.verificationSent = false;
                 ctrl.resendEnabled = false;
                 resendWait();
-
-                console.log('error sending verification email')
             });
         }
 

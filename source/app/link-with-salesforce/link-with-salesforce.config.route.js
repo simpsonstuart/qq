@@ -5,7 +5,7 @@
     function config($stateProvider) {
         $stateProvider.state('link-with-salesforce', {
             url: '/link-with-salesforce?linked',
-            restricted: false,
+            restricted: true,
             params: {
                 register_key: '5445'
             },

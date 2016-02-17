@@ -5,7 +5,10 @@
     <button class="submit get-started" ng-click="ctrl.getStarted()">Login to Get Started</button>
     </div>
     <div ng-if="!ctrl.showGetStarted">
-        <h2>Error!</h2>
+        <h1 class="email-error">Link invalid or expired!</h1>
+        <div class="email-error">
+        <button ui-sref="registration">Back to Registration</button>
+        </div>
     </div>
 </div>
 
