@@ -83,6 +83,9 @@
     p {
       margin-top: 10px;
       line-height: 2rem;
+      &:first-letter {
+        text-transform: capitalize;
+      }
     }
   }
   .salesforce-button {
