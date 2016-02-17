@@ -13,11 +13,6 @@
         activate();
         getDealCounts();
 
-        if($stateParams.firstTime === 'true'){
-            console.log('true');
-            activate();
-            getDealCounts();
-        }
 
         function activate() {
 
@@ -33,10 +28,15 @@
         function getDealCounts() {
 
             DealService.getAll().then(function (data) {
-                ctrl.dealsNextWithoutSteps = _.reject(data, "next_step");
-                ctrl.dealsNextWithoutStepsCount = _.size(ctrl.dealsNextWithoutSteps);
-                ctrl.dealsWithNextSteps = _.filter(data, 'next_step');
-                ctrl.nextStepsCount = _.size(ctrl.dealsWithNextSteps);
+                if (data.length){
+                    ctrl.dealsNextWithoutSteps      = _.reject(data, "next_step");
+                    ctrl.dealsNextWithoutStepsCount = _.size(ctrl.dealsNextWithoutSteps);
+                    ctrl.dealsWithNextSteps         = _.filter(data, 'next_step');
+                    ctrl.nextStepsCount             = _.size(ctrl.dealsWithNextSteps);
+                }
+                else{
+                    setTimeout(getDealCounts, 50);
+                }
             });
         }
     }
