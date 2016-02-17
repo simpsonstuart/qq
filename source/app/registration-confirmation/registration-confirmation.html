@@ -4,6 +4,9 @@
     <a class="resend-email" ng-click="ctrl.resendVerification()" ng-show="ctrl.resendEnabled">Resend Verification Email</a>
     <p class="email-success" ng-show="ctrl.verificationSent">Verification Email Sent!</p>
     <p class="email-wait" ng-show="ctrl.showCountdown"> Please wait {{ctrl.countDown}} to resend email</p>
-    <p ng-show="ctrl.sendError" class="email-error">Error: Verification email couldn't be sent.</p>
+    <div class="email-error">
+        <p>Error: Verification email couldn't be sent. Please register a valid email address.</p>
+        <button>Back to Registration</button>
+    </div>
 </div>
 

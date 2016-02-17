@@ -7,6 +7,9 @@
     &:last-child {
       border-bottom: 1px solid $col-grey-stroke;
     }
+    h2:first-letter {
+      text-transform: capitalize;
+    }
     a {
       margin-left: 20px;
     }
