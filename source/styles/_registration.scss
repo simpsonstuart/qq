@@ -59,14 +59,19 @@
 }
 
 .email-error {
-  color: $col-red;
-  font-weight: 700;
-  text-align: center;
-  &:before {
-    @include fa;
-    @include fa(exclamation-circle);
-    @include fa-right(5px);
-    @include fa-size(2rem);
+  p {
+    color: $col-red;
+    font-weight: 700;
+    text-align: center;
+    &:before {
+      @include fa;
+      @include fa(exclamation-circle);
+      @include fa-right(5px);
+      @include fa-size(2rem);
+    }
+  }
+  button {
+    margin: 20px auto;
   }
 }
 
@@ -74,6 +79,7 @@
   color: #5A5A5A;
   font-weight: 700;
   text-align: center;
+  margin-top: 20px;
 }
 
 
