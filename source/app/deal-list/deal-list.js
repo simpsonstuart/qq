@@ -21,7 +21,6 @@
 
             DealService.getAll().then(function (data) {
                 ctrl.deals = data;
-
             });
         }
 
