@@ -24,7 +24,12 @@
         function save() {
             if (saveable()) {
                 DealService.update(ctrl.dealId, {"next_step": ctrl.nextStep}, _updateSalesforceQuery()).then(function () {
-                    $state.go('deal-detail', {deal_id: ctrl.dealId});
+                    if($stateParams.from_page ==='nextStep') {
+                        $state.go('next-steps');
+                    }
+                    else {
+                        $state.go('deal-detail', {deal_id: ctrl.dealId});
+                    }
                 });
             }
         }
