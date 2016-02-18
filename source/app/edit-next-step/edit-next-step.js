@@ -10,7 +10,7 @@
         ctrl.notSaveable = notSaveable;
         ctrl.dealId = $stateParams.deal_id;
         ctrl.nextStep = null;
-        ctrl.updateSalesforce = false;
+        ctrl.updateSalesforce = true;
 
         _activate();
 

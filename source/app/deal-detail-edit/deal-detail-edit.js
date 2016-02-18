@@ -13,7 +13,7 @@
         ctrl.amount = null;
         ctrl.closeDate = null;
         ctrl.nextStep = null;
-        ctrl.updateSalesforce = false;
+        ctrl.updateSalesforce = true;
 
         _activate();
 
@@ -72,7 +72,7 @@
          * @private
          */
         function _originalAmount() {
-            var amount = parseInt(ctrl.deal.amount);
+            var amount = parseFloat(ctrl.deal.amount);
             if (amount > 0) {
                 return amount;
             }
