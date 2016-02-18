@@ -11,7 +11,7 @@
         ctrl.saveable = saveable;
         ctrl.notSaveable = notSaveable;
         ctrl.amount = null;
-        ctrl.updateSalesforce = false;
+        ctrl.updateSalesforce = true;
 
         _activate();
 
@@ -58,7 +58,7 @@
          * @private
          */
         function _original() {
-            var amount = parseInt($stateParams.amount);
+            var amount = parseFloat($stateParams.amount);
             if (amount > 0) {
                 return amount;
             }

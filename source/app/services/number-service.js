@@ -10,7 +10,12 @@
             numberToWord: numberToWord
         };
 
-        function formatMoney(integer) {
+        function formatMoney(integer, format) {
+
+            if (format != undefined) {
+                return numeral(integer).format(format);
+            }
+
             return numeral(integer).format('$0,0');
         }
 

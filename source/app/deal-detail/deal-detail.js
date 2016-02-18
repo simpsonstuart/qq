@@ -3,7 +3,7 @@
     angular.module('app.deal-detail')
         .controller('DealDetail', DealDetail);
 
-    function DealDetail(DealService, $stateParams, numeral, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory) {
+    function DealDetail(DealService, $stateParams, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory) {
         var ctrl = this;
 
         ctrl.dealId = $stateParams.deal_id;
@@ -28,8 +28,8 @@
         activate();
 
 
-        function formatMoney(integer) {
-            return numeral(integer).format('$0,0');
+        function formatMoney(number, format) {
+            return NumberService.formatMoney(number, format);
         }
 
         function goToPlayFeed(playbookName, playId) {
@@ -102,7 +102,7 @@
             DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
                 ctrl.deal            = data;
                 ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
-                ctrl.amount   = ctrl.formatMoney(ctrl.deal.amount);
+                ctrl.amount   = ctrl.formatMoney(ctrl.deal.amount, '$0,0.00');
             });
         }
     }
