@@ -10,33 +10,19 @@
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.currentQuarter = DateAndTimeService.currentQuarter;
         ctrl.dealsWithoutNextSteps = "0";
-        activate();
-        getDealCounts();
+
+        _activate();
 
 
-        function activate() {
+        function _activate() {
 
             UserService.profile('current').then(function (userObject) {
                 AuthService.setUser(userObject);
                 ctrl.profile = userObject;
-                ctrl.allMyDeals = '8134000';
-                ctrl.activeDeals = ctrl.profile.active_deals_amount.data.amount;
-                ctrl.incompleteNextSteps = ctrl.profile.incomplete_next_steps.data.count;
-            });
-        }
-
-        function getDealCounts() {
-
-            DealService.getAll().then(function (data) {
-                if (data.length){
-                    ctrl.dealsNextWithoutSteps      = _.reject(data, "next_step");
-                    ctrl.dealsNextWithoutStepsCount = _.size(ctrl.dealsNextWithoutSteps);
-                    ctrl.dealsWithNextSteps         = _.filter(data, 'next_step');
-                    ctrl.nextStepsCount             = _.size(ctrl.dealsWithNextSteps);
-                }
-                else{
-                    setTimeout(getDealCounts, 50);
-                }
+                ctrl.allMyDeals = ctrl.profile.active_deals_amount.data.amount;
+                ctrl.newDealsAmount = ctrl.profile.last_deal_import_amount.data.amount;
+                ctrl.dealsNextWithoutStepsCount = ctrl.profile.deals_without_next_steps_count.data.count;
+                ctrl.nextStepsCount             = ctrl.profile.next_steps_count.data.count;
             });
         }
     }

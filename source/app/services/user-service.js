@@ -27,7 +27,7 @@
         }
 
         function profile(user_id) {
-            return ApiService.get('users/' + user_id, 'include=active_deals_amount,incomplete_next_steps');
+            return ApiService.get('users/' + user_id, 'include=active_deals_amount,next_steps_count,deals_without_next_steps_count,last_deal_import_amount');
         }
 
         function get(user_id) {
