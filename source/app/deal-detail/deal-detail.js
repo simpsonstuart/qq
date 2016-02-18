@@ -79,13 +79,10 @@
         }
 
         function syncWithSalesforce() {
-            if (ctrl.deal.salesforce_id) {
-                DealService.syncWithSalesforce(ctrl.deal).then(function (data) {
-                    data = data.data;
-                    ctrl.close_date      = ctrl.formatDate(data.close_date).format('M/D/YYYY');
-                    ctrl.amount   = ctrl.formatMoney(data.amount);
-                    ctrl.deal.name = data.name;
-                    CacheFactory.clearAll();
+            if (ctrl.deal.id) {
+                ctrl.isSyncing = true;
+                DealService.syncToSalesforce([ctrl.deal.id]).then(function (response) {
+                    ctrl.isSyncing         = false;
                 });
             }
         }
