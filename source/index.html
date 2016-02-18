@@ -49,6 +49,7 @@
 <input ng-if="!$state.includes('login') && !$state.includes('registration')" type="checkbox" id="nav-trigger" class="nav-trigger" />
 <label ng-if="!$state.includes('login') && !$state.includes('registration')" for="nav-trigger"></label>
 <div class="site-wrap">
+
     <header ng-class="$state.current.data.headerClasses" ui-view="header"></header>
 
     <main ui-view="container"></main>
