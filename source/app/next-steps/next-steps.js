@@ -29,15 +29,11 @@
         function _activate() {
             DealService.getAll('include=owner').then(function (data) {
                 ctrl.deals = data;
-
-
                 if ($stateParams.nextStepState === 'false') {
                     ctrl.filterActive = true;
                     ctrl.filteredDeals  = _.reject(ctrl.deals, 'next_step');
                     ctrl.noNextStep = true;
-                }
-                else
-                {
+                } else {
                     ctrl.filterActive = false;
                     //filters deals based on if they have next steps or not filtering for other types happens in angular
                     ctrl.filteredDeals = _.filter(ctrl.deals, _hasNextStepFilter);
