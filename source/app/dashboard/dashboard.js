@@ -10,6 +10,7 @@
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.currentQuarter = DateAndTimeService.currentQuarter;
         ctrl.dealsWithoutNextSteps = "0";
+        ctrl.dataLoading = false;
         activate();
         getDealCounts();
 
@@ -33,8 +34,10 @@
                     ctrl.dealsNextWithoutStepsCount = _.size(ctrl.dealsNextWithoutSteps);
                     ctrl.dealsWithNextSteps         = _.filter(data, 'next_step');
                     ctrl.nextStepsCount             = _.size(ctrl.dealsWithNextSteps);
+                    ctrl.dataLoading = false;
                 }
                 else{
+                    ctrl.dataLoading = true;
                     setTimeout(getDealCounts, 50);
                 }
             });
