@@ -1,0 +1,53 @@
+/* MEDIA QUERIES --------------------------
+-------------------------------------------*/
+
+/* min-width 768 --------------------------*/
+@media only screen and (min-width: 768px) {
+  .Report_Label {
+    display: none;
+  }
+
+  .Report_Label_Non_Mobile {
+    padding: 10px;
+    padding-left: 23px;
+  }
+}
+
+/* max-width 767 --------------------------*/
+@media only screen and (max-width: 767px) {
+  body, html {
+    height: 100%;
+  }
+
+  main {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  h1 {
+    position: absolute;
+    top: 13px;
+    color: #fff;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  .match-height.column, .match-height {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .Report_Label {
+    padding: 10px;
+    background: #e5e5e5;
+    text-align: center;
+  }
+
+  .Report_Label_Non_Mobile {
+    display: none;
+  }
+}

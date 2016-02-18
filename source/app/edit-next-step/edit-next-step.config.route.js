@@ -8,7 +8,8 @@
                 restricted: true,
                 params: {
                     deal_id: 'Deal ID',
-                    next_step: ''
+                    next_step: '',
+                    from_page: ''
                 },
                 data: {
                     bodyClasses: 'grey',
