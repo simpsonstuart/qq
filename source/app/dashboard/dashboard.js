@@ -25,6 +25,9 @@
                 ctrl.nextStepsCount             = ctrl.profile.next_steps_count.data.count;
             });
         }
+
+
     }
+
 
 })();

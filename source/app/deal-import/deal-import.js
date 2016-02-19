@@ -15,12 +15,27 @@
 
         function submit() {
             var dealsToImport = _.pluck(ctrl.deals, 'id');
+            checkImportStatus();
 
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
                 });
             }
-            $state.go('dashboard', {firstTime: 'true'});
+
+            function checkImportStatus() {
+                DealService.getAll().then(function (data) {
+
+                    if (data.length) {
+                        ctrl.isSyncing = false;
+                        $state.go('dashboard');
+                    }
+                    else {
+                        ctrl.isSyncing = true;
+                        setTimeout(checkImportStatus, 50);
+                    }
+
+                });
+            }
         }
 
         function noDealsToImport() {
@@ -33,6 +48,7 @@
                 ctrl.dealsRetrieved = true;
             });
         }
+
     }
 
 })();
