@@ -24,10 +24,13 @@
         @include fa-size(4rem);
         color: $col-grey-stroke;
       }
-      &.active, &:hover {
+      &.active{
         &:before {
           color: $col-blue;
         }
+      }
+      &:hover {
+        color: #111;
       }
     }
     .favorite-no-select {
@@ -42,10 +45,13 @@
         @include fa-size(4rem);
         color: $col-grey-stroke;
       }
-      &.active, &:hover {
+      &.active{
         &:before {
           color: $col-blue;
         }
+      }
+      &:hover {
+        color: #111;
       }
     }
   }
