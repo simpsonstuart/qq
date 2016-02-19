@@ -18,7 +18,7 @@
                 },
                 views: {
                     'header': {
-                        templateUrl: 'views/layouts/back-header-with-nav.html',
+                        templateUrl: 'views/layouts/default-header.html',
                         controller: 'HeaderController',
                         controllerAs: 'ctrl'
                     },

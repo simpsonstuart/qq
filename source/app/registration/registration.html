@@ -8,19 +8,18 @@
         <input type="email" name="email" ng-model="email" id="email" required placeholder="Email" />
         </p>
         <p>
-        <label for="password">Choose Password</label>
-        <small class="error" ng-if="registration_form.password.$error.required && !registration_form.password.$pristine">Password field is required!</small>
-        <input data-ng-model='user.password' type="password" id="password" name='password' placeholder='Password' required>
+        <label for="pw1">Choose Password</label>
+            <small class="error" ng-if="registration_form.password.$error.required && !registration_form.password.$pristine">Password field is required!</small>
+        <input type="password" id="pw1" name="pw1" ng-model="pw1" ng-required="" placeholder='Password' />
         </p>
         <p>
-        <label for="confirm_password">Confirm Password</label>
+        <label for="pw2">Confirm Password</label>
         <small class="error" ng-if="registration_form.confirm_password.$error.required && !registration_form.password.$pristine">Confirm password field required!</small>
-        <small class="error" ng-if="registration_form.confirm_password.$error.passwordVerify && !registration_form.confirm_password.$pristine">Passwords don't match!</small>
-        <input ng-model='confirm_password' type="password" name='confirm_password' id="confirm_password" placeholder='Confirm Password' required data-password-verify="user.password">
+        <small class="error" ng-show="registration_form.pw2.$error.pwmatch">Passwords don't match.</small>
+        <input type="password" id="pw2" name="pw2" ng-model="pw2" ng-required="" pw-check="pw1" placeholder='Confirm Password' />
         </p>
         <button class="submit" type="submit" ng-disabled="registration_form.$invalid">Register</button>
     </fieldset>
-
 </form>
 
 
