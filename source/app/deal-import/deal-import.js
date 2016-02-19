@@ -19,6 +19,10 @@
 
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
+
+                    if(response.status === 500){
+                        ctrl.syncError = true;
+                    }
                 });
             }
 

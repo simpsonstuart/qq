@@ -3,12 +3,15 @@
     <button class="submit salesforce" type="submit" ng-click="ctrl.submit()">Import Deals from Salesforce</button>
 </div>
 <div class="import">
-    <div class="sync-header" ng-if="ctrl.isSyncing">
+    <div class="sync-header" ng-if="ctrl.isSyncing && !ctrl.syncError">
         <h1>Importing Deals from Salesforce</h1>
         <img src="../media/images/syncing.gif">
     </div>
     <div ng-if="ctrl.noDealsToImport()">
-        <h2>There are no deals to import</h2>
+        <h1>There are no deals to import</h1>
+    </div>
+    <div ng-show="ctrl.syncError">
+        <h1>Error Importing Deals!</h1>
     </div>
     <div ng-repeat="deal in ctrl.deals" class="import-row">
         <div class="import-details">
