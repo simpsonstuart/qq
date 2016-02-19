@@ -10,7 +10,7 @@
 
         function register() {
             UserService.register((function () {
-                return { 'email': $scope.email, 'username': $scope.username, 'password': $scope.confirm_password, 'return_url': returnUrl};
+                return { 'email': $scope.email, 'password': $scope.pw2, 'return_url': returnUrl};
             })()).then(function(){
                 $state.go('registration-confirmation', {email: $scope.email});
             });
