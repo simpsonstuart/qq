@@ -16,7 +16,7 @@
                 <img src="../media/images/syncing.gif">
             </div>
 
-            <div class="sync-header" ng-if="ctrl.noDealsToImport">
+            <div class="sync-header" ng-show="ctrl.noDealsToImport">
                 <h1>There are no deals to import</h1>
             </div>
             <div class="sync-header" ng-show="ctrl.errorRetrieve" class="endpoint-error">

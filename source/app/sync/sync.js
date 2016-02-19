@@ -10,7 +10,6 @@
         ctrl.syncSalesforceUpdates = syncSalesforceUpdates;
         ctrl.syncTraqqUpdates = syncTraqqUpdates;
         ctrl.submit = submit;
-        ctrl.noDealsToImport = noDealsToImport;
         ctrl.formatFieldName = formatFieldName;
         ctrl.formatValue = formatValue;
         ctrl.fromSalesforceDeals = [];
@@ -25,7 +24,6 @@
 
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
-                    console.log('deals imported');
                 });
             }
             $state.go('dashboard');
@@ -48,13 +46,21 @@
         }
 
         function noDealsToImport() {
-            return ctrl.fromSalesforceDeals.length < 1 && ctrl.dealsRetrieved;
+
+            if(ctrl.fromSalesforceDeals.length){
+                ctrl.noDealsToImport = false;
+            }
+            else{
+                ctrl.noDealsToImport = true;
+            }
+
         }
 
         function activate() {
             DealService.importList().then(function (data) {
                 ctrl.fromSalesforceDeals = data;
                 ctrl.dealsRetrieved = true;
+                noDealsToImport();
             }, function (response) {
                 ctrl.errorRetrieve = true;
             });
@@ -62,6 +68,7 @@
             DealService.deltas().then(function (data) {
                 ctrl.toSalesforceDeals = data;
             });
+
         }
 
         function syncUpdates() {
