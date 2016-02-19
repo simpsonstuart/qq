@@ -85,6 +85,7 @@
 
         function syncSalesforceUpdates() {
             ctrl.isSyncing = true;
+            var dealsToImport = _.pluck(ctrl.fromSalesforceDeals, 'id');
             _syncFromSalesforce(dealsToImport).then(function (success) {
                  ctrl.isSyncing = false;
             }, function (failure) {
@@ -93,6 +94,7 @@
         }
 
         function syncTraqqUpdates() {
+            var toSalesforceDealIds = _.pluck(ctrl.toSalesforceDeals, 'id');
             ctrl.isSyncing = true;
                 _syncToSalesforce(toSalesforceDealIds).then(function () {
                     ctrl.isSyncing = false;
