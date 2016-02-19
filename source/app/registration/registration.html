@@ -4,8 +4,8 @@
         <p>
         <label for="email">Email Address</label>
         <small class="error" ng-if="registration_form.email.$error.required && !registration_form.email.$pristine">Email field is required!</small>
-        <small class="error" ng-if="registration_form.email.$error.email && !registration_form.email.$pristine">Invalid email format</small>
-        <input type="email" name="email" ng-model="email" id="email" required placeholder="Email" />
+        <small class="error" ng-if="registration_form.email.$error.email && !registration_form.email.$pristine || ctrl.emailInvalid">Invalid email format</small>
+        <input type="email" name="email" ng-model="email" id="email" ng-change="ctrl.emailVerify()" required placeholder="Email"/>
         </p>
         <p>
         <label for="pw1">Choose Password</label>
@@ -18,7 +18,7 @@
         <small class="error" ng-show="registration_form.pw2.$error.pwmatch">Passwords don't match.</small>
         <input type="password" id="pw2" name="pw2" ng-model="pw2" ng-required="" pw-check="pw1" placeholder='Confirm Password' />
         </p>
-        <button class="submit" type="submit" ng-disabled="registration_form.$invalid">Register</button>
+        <button class="submit" type="submit" ng-disabled="registration_form.$invalid || ctrl.emailInvalid">Register</button>
     </fieldset>
 </form>
 
