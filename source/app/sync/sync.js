@@ -3,7 +3,7 @@
     angular.module('app.sync')
         .controller('Sync', Sync);
 
-    function Sync(DealService, $scope, NumberService, DateAndTimeService, _) {
+    function Sync(DealService, NumberService, DateAndTimeService, _, $q) {
         var ctrl = this;
         ctrl.syncUpdates = syncUpdates;
         ctrl.formatMoney = NumberService.formatMoney;
@@ -66,31 +66,66 @@
 
         function syncUpdates() {
             ctrl.isSyncing = true;
+
+            $q.all([
+                    _syncFromSalesforce(),
+                    _syncToSalesforce()
+                ])
+                .then(function(values) {
+                    ctrl.isSyncing = false;
+                });
         }
 
         function syncSalesforceUpdates() {
             ctrl.isSyncing = true;
-            var dealsToImport = _.pluck(ctrl.fromSalesforceDeals, 'id');
-
-            if (dealsToImport.length > 0) {
-                DealService.add(dealsToImport).then(function (response) {
-                    console.log(response);
-                    ctrl.fromSalesforceDeals = [];
-                    ctrl.isSyncing = false;
-                });
-            }
+            _syncFromSalesforce(dealsToImport).then(function (success) {
+                 ctrl.isSyncing = false;
+            }, function (failure) {
+                ctrl.errorRetrieve = true;
+            });
         }
 
         function syncTraqqUpdates() {
             ctrl.isSyncing = true;
-            var toSalesforceDealIds = _.pluck(ctrl.toSalesforceDeals, 'id');
-            if (toSalesforceDealIds.length > 0) {
-                DealService.syncToSalesforce(toSalesforceDealIds).then(function (response) {
-                    console.log(response);
-                    ctrl.toSalesforceDeals = [];
-                    ctrl.isSyncing         = false;
+                _syncToSalesforce(toSalesforceDealIds).then(function () {
+                    ctrl.isSyncing = false;
+                }, function (reason) {
+                    ctrl.errorRetrieve = true;
                 });
-            }
+        }
+
+        function _syncFromSalesforce() {
+            var dealsToImport = _.pluck(ctrl.fromSalesforceDeals, 'id');
+
+            return $q(function(resolve, reject) {
+                if (dealsToImport.length > 0) {
+                    DealService.add(dealsToImport).then(function (response) {
+                        ctrl.fromSalesforceDeals = [];
+                        resolve('Synced From Salesforce');
+                    }, function (response) {
+                        reject('Failure to sync from salesforce');
+                    });
+                } else {
+                    resolve('Nothing to Sync');
+                }
+            });
+        }
+
+        function _syncToSalesforce() {
+            var toSalesforceDealIds = _.pluck(ctrl.toSalesforceDeals, 'id');
+
+            return $q(function(resolve, reject) {
+                if (toSalesforceDealIds.length > 0) {
+                    DealService.syncToSalesforce(toSalesforceDealIds).then(function (response) {
+                        ctrl.toSalesforceDeals = [];
+                        resolve('Synced to Salesforce');
+                    }, function () {
+                        reject('failed to Sync to Salesforce');
+                    });
+                } else {
+                    resolve('Nothing to sync');
+                }
+            });
         }
     }
 

@@ -11,6 +11,7 @@
         ctrl.closeDate = null;
         ctrl.saveable = saveable;
         ctrl.notSaveable = notSaveable;
+        ctrl.updateSalesforce = true;
 
         _activate();
 
