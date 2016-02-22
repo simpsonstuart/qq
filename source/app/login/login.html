@@ -2,7 +2,7 @@
 <form name="login_form" ng-submit="ctrl.login()">
     <small class="error-list" ng-repeat="error in ctrl.errorsList" >{{ error }}</small>
     <fieldset>
-        <p> 
+        <p>
             <small class="error-list" ng-if="login_form.email.$invalid && !login_form.email.$pristine">Email is required</small>
             <input type="email" name="email" ng-model="email" ng-disabled="ctrl.LSError == false" required placeholder="Email"/>
         </p>
