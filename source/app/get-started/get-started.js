@@ -19,6 +19,7 @@
 
         function getStarted() {
             $state.go('login');
+
         }
 
     }
