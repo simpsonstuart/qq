@@ -2,8 +2,9 @@
     <h1>Edit</h1>
     <fieldset>
         <p>
-            <small>Amount</small>
-            <input type="number" name="amount" ng-model="ctrl.amount" id="CloseDate" />
+            <label for="amount"><small>Amount</small></label>
+            <small class="error">Please enter a valid amount</small>
+            <input type="number" name="amount" ng-model="ctrl.amount" id="amount" />
         </p>
     </fieldset>
     <input id="sync-now" type="checkbox" name="sync-now" ng-model="ctrl.updateSalesforce" value="true" />
