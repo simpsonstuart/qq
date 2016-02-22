@@ -26,6 +26,7 @@ header {
         a {
           color: #fff;
           display: block;
+          position: relative;
           padding: 10px 27px;
           &:hover, &.active {
             background: $col-orange-active;
@@ -61,6 +62,15 @@ header {
               @include fa(ellipsis-h);
               @include fa-size(1.6em);
             }
+          }
+          span {
+            position: absolute;
+            background: $salesforce;
+            bottom: 7px;
+            left: 60px;
+            border-radius: 15px;
+            padding: 3px;
+            min-width: 14px;
           }
         }
       }
@@ -106,18 +116,6 @@ header {
             @include fa(cog);
             @include fa-size(1.3em);
             @include fa-right(7px);
-          }
-        }
-        &.sync {
-          color: #4bb5e9;
-          &:before {
-            @include fa;
-            @include fa(refresh);
-            @include fa-size(1.3em);
-            @include fa-right(7px);
-          }
-          &:hover {
-            color: $col-orange;
           }
         }
         &.logout {
@@ -288,7 +286,8 @@ label[for="nav-trigger"] {
         }
       }
       &.sync {
-        color: #4bb5e9;
+        color: $salesforce;
+        position: relative;
         &:hover {
           color: $col-orange;
         }
@@ -297,6 +296,17 @@ label[for="nav-trigger"] {
           @include fa(refresh);
           @include fa-size(2rem);
           @include fa-right(7px);
+        }
+        span {
+          position: absolute;
+          background: $salesforce;
+          top: 13px;
+          left: 190px;
+          text-align: center;
+          color: #fff;
+          border-radius: 15px;
+          padding: 3px;
+          min-width: 14px;
         }
       }
       &.logout {
