@@ -16,10 +16,10 @@
                 <img src="../media/images/syncing.gif">
             </div>
 
-            <div ng-if="ctrl.noDealsToImport()" class="endpoint-error">
-                <h2>There are no deals to import</h2>
+            <div class="sync-header" ng-show="ctrl.noDealsToImport">
+                <h1>There are no deals to import</h1>
             </div>
-            <div ng-if="ctrl.errorRetrieve" class="endpoint-error">
+            <div class="sync-header" ng-show="ctrl.errorRetrieve" class="endpoint-error">
                 <h2>Error couldn't retrieve deals to import!</h2>
             </div>
             <!-- display when updates are found -->
@@ -37,7 +37,7 @@
             </div>
             </div>
             <!-- display after user syncs updates -->
-            <div class="sync-header" ng-if="!ctrl.fromSalesforceDeals.length && !ctrl.isSyncing">
+            <div class="sync-header" ng-if="!ctrl.fromSalesforceDeals.length && !ctrl.isSyncing && !ctrl.errorRetrieve && !ctrl.noDealsToImport">
                 <h1>Traqq is up to date with Salesforce</h1>
             </div>
         </div>

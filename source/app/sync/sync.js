@@ -10,6 +10,7 @@
         ctrl.syncSalesforceUpdates = syncSalesforceUpdates;
         ctrl.syncTraqqUpdates = syncTraqqUpdates;
         ctrl.noDealsToImport = noDealsToImport;
+        ctrl.submit = submit;
         ctrl.formatFieldName = formatFieldName;
         ctrl.formatValue = formatValue;
         ctrl.fromSalesforceDeals = [];
@@ -18,6 +19,16 @@
         ctrl.errorRetrieve = false;
 
         activate();
+
+        function submit() {
+            var dealsToImport = _.pluck(checked(), 'id');
+
+            if (dealsToImport.length > 0) {
+                DealService.add(dealsToImport).then(function (response) {
+                });
+            }
+            $state.go('dashboard');
+        }
 
         function formatFieldName(field) {
             return field.replace("_", " ");
@@ -36,13 +47,21 @@
         }
 
         function noDealsToImport() {
-            return ctrl.fromSalesforceDeals.length < 1 && ctrl.dealsRetrieved;
+
+            if(ctrl.fromSalesforceDeals.length){
+                ctrl.noDealsToImport = false;
+            }
+            else{
+                ctrl.noDealsToImport = true;
+            }
+
         }
 
         function activate() {
             DealService.importList().then(function (data) {
                 ctrl.fromSalesforceDeals = data;
                 ctrl.dealsRetrieved = true;
+                noDealsToImport();
             }, function (response) {
                 ctrl.errorRetrieve = true;
             });
@@ -50,6 +69,7 @@
             DealService.deltas().then(function (data) {
                 ctrl.toSalesforceDeals = data;
             });
+
         }
 
         function syncUpdates() {
@@ -66,6 +86,7 @@
 
         function syncSalesforceUpdates() {
             ctrl.isSyncing = true;
+            var dealsToImport = _.pluck(ctrl.fromSalesforceDeals, 'id');
             _syncFromSalesforce(dealsToImport).then(function (success) {
                  ctrl.isSyncing = false;
             }, function (failure) {
@@ -74,6 +95,7 @@
         }
 
         function syncTraqqUpdates() {
+            var toSalesforceDealIds = _.pluck(ctrl.toSalesforceDeals, 'id');
             ctrl.isSyncing = true;
                 _syncToSalesforce(toSalesforceDealIds).then(function () {
                     ctrl.isSyncing = false;
