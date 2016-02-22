@@ -28,7 +28,8 @@
         'app.edit-close-date',
         'app.edit.amount',
         'app.deal-detail-edit',
-        'app.reset-password'
+        'app.reset-password',
+        'app.hamburger'
 
     ]);
 
