@@ -3,6 +3,8 @@
     <small class="error-list" ng-repeat="error in ctrl.errorsList" >{{ error }}</small>
     <fieldset>
         <p>
+            <small class="error" ng-if="login_form.email.$invalid && !login_form.email.$pristine">Email is required</small>
+            <input type="text" name="email" ng-model="email" ng-disabled="ctrl.LSError == false" required placeholder="Email"/>
             <small class="error-list" ng-if="login_form.email.$invalid && !login_form.email.$pristine">Email is required</small>
             <input type="email" name="email" ng-model="email" ng-disabled="ctrl.LSError == false" required placeholder="Email"/>
         </p>

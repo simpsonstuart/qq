@@ -23,6 +23,7 @@ footer {
         a {
           color: #fff;
           display: block;
+          position: relative;
           padding: 7px 21px;
           &.active {
             background: #e05b03;
@@ -55,6 +56,15 @@ footer {
             @include fa;
             @include fa(refresh);
             @include fa-size(1.3em);
+          }
+          span {
+            position: absolute;
+            background: $salesforce;
+            top: -6px;
+            right: 5px;
+            border-radius: 15px;
+            padding: 3px;
+            min-width: 14px;
           }
         }
       }
