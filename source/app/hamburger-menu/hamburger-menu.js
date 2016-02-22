@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    angular.module('app.hamburger')
-        .controller('hamburgerController', hamburgerController);
+    angular.module('app.hamburger-menu')
+        .controller('hamburgerMenu', hamburgerMenu);
 
-    function hamburgerController($scope, $state, AuthService) {
+    function hamburgerMenu($scope, $state, AuthService) {
         var ctrl = this;
         ctrl.logOut = logOut;
 

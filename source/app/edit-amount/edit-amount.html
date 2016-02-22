@@ -3,8 +3,8 @@
     <fieldset>
         <p>
             <label for="amount"><small>Amount</small></label>
-            <small class="error">Please enter a valid amount</small>
-            <input type="number" name="amount" ng-model="ctrl.amount" id="amount" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" />
+            <small class="error" ng-if="ctrl.amount.$invalid">Please enter a valid amount</small>
+            <input type="number" name="amount" ng-model="ctrl.amount" id="amount" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required />
         </p>
     </fieldset>
     <input id="sync-now" type="checkbox" name="sync-now" ng-model="ctrl.updateSalesforce" value="true" />

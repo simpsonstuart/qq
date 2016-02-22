@@ -29,7 +29,7 @@
         'app.edit.amount',
         'app.deal-detail-edit',
         'app.reset-password',
-        'app.hamburger'
+        'app.hamburger-menu'
 
     ]);
 
