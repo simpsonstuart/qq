@@ -16,13 +16,13 @@
         function submit() {
             var dealsToImport = _.pluck(ctrl.deals, 'id');
             checkImportStatus();
+            ctrl.syncError = false;
 
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
 
-                    if(response.status === 500){
-                        ctrl.syncError = true;
-                    }
+                }, function () {
+                    ctrl.syncError = true;
                 });
             }
 
