@@ -16,12 +16,20 @@
                 <img src="../media/images/syncing.gif">
             </div>
 
-            <div class="sync-header" ng-show="ctrl.noDealsToImport">
+            <!-- display when checking for updates -->
+            <div class="sync-header"  ng-if="ctrl.loadingFromSalesForce">
+                <h1 class="syncing">Loading…</h1>
+                <img src="../media/images/syncing.gif">
+            </div>
+
+            <div class="sync-header" ng-if="ctrl.noDealsToImport()">
                 <h1>There are no deals to import</h1>
             </div>
-            <div class="sync-header" ng-show="ctrl.errorRetrieve" class="endpoint-error">
+
+            <div class="sync-header" ng-if="ctrl.errorRetrieve" class="endpoint-error">
                 <h2>Error couldn't retrieve deals to import!</h2>
             </div>
+
             <!-- display when updates are found -->
             <div ng-if="ctrl.fromSalesforceDeals.length">
             <div class="updates-header">
@@ -44,7 +52,19 @@
         <div id="tab-content2" class="tab-content">
 
             <!-- display when checking for updates -->
-            <div class="sync-header" ng-if="!ctrl.toSalesforceDeals.length && !ctrl.isSyncing">
+            <div class="sync-header"  ng-if="ctrl.isSyncing">
+                <h1 class="syncing">Sending Updates to Salesforce</h1>
+                <img src="../media/images/syncing.gif">
+            </div>
+
+            <!-- display when checking for updates -->
+            <div class="sync-header"  ng-if="ctrl.loadingToSalesForce">
+                <h1 class="syncing">Loading…</h1>
+                <img src="../media/images/syncing.gif">
+            </div>
+
+            <!-- display when checking for updates -->
+            <div class="sync-header" ng-if="!ctrl.toSalesforceDeals.length && !ctrl.isSyncing && !ctrl.loadingToSalesForce">
                 <h1>Salesforce is up to date with Traqq</h1> <!-- display after user syncs updates -->
             </div>
 

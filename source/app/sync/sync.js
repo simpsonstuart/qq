@@ -17,6 +17,8 @@
         ctrl.toSalesforceDeals = [];
         ctrl.dealsRetrieved = false;
         ctrl.errorRetrieve = false;
+        ctrl.loadingFromSalesForce = true;
+        ctrl.loadingToSalesForce = true;
 
         activate();
 
@@ -47,27 +49,30 @@
         }
 
         function noDealsToImport() {
-
-            if(ctrl.fromSalesforceDeals.length){
-                ctrl.noDealsToImport = false;
-            }
-            else{
-                ctrl.noDealsToImport = true;
+            if (ctrl.loadingFromSalesForce || ctrl.isSyncing) {
+                return false;
             }
 
+            return !ctrl.fromSalesforceDeals.length;
         }
 
         function activate() {
             DealService.importList().then(function (data) {
+                ctrl.loadingFromSalesForce = false;
                 ctrl.fromSalesforceDeals = data;
                 ctrl.dealsRetrieved = true;
                 noDealsToImport();
             }, function (response) {
+                ctrl.loadingFromSalesForce = false;
                 ctrl.errorRetrieve = true;
             });
 
             DealService.deltas().then(function (data) {
+                ctrl.loadingToSalesForce = false;
                 ctrl.toSalesforceDeals = data;
+            }, function () {
+                ctrl.loadingToSalesForce = false;
+                ctrl.errorRetrieve = true;
             });
 
         }
