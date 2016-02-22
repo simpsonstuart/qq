@@ -150,11 +150,14 @@
   .fixed {
     padding: 10px 0 0 0;
     display: inherit;
+    &-deals {
+      padding-bottom: 9px;
+    }
     .sort {
       justify-content: center;
     }
     .filter {
-      margin: 10px 0 0 0;
+      margin: 8px 0 0 0;
       padding: 8px 0;
       background: #fff;
       text-align: center;
