@@ -41,7 +41,7 @@
         </div>
         <div ng-show="ctrl.expand_show_email" class="edit-expanded">
             <small>Edit Email</small>
-            <form name="email_form" ng-submit="ctrl.email_change()">
+            <form name="email_form" ng-submit="ctrl.changeEmail()">
                 <fieldset>
                     <p>
                         <small class="error" ng-if="email_form.current_password_email.$error.required && !email_form.current_password_email.$pristine">Current password is required</small>

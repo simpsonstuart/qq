@@ -4,37 +4,48 @@
         .controller('Settings', Settings);
 
     function Settings($scope, AuthService, $state, UserService, $stateParams) {
-        var ctrl = this;
-        var user_id = $stateParams.user_id;
+        var ctrl            = this;
+        var user_id         = $stateParams.user_id;
+        ctrl.profile        = {};
         ctrl.password_reset = password_reset;
-        ctrl.email_change = email_change;
+        ctrl.changeEmail    = email_change;
         ctrl.billing_change = billing_change;
-        ctrl.logOut = logOut;
+        ctrl.logOut         = logOut;
         ctrl.click_password = click_password;
-        ctrl.click_email = click_email;
+        ctrl.click_email    = click_email;
 
         activate();
 
         function password_reset() {
-            return UserService.reset_password({
-                    'current_password': $scope.current_password, 'new_password': $scope.new_password_confirm})
+            return UserService.changePassword('current',
+                {'email': AuthService.authenticatedUser().email, 'password': $scope.current_password, 'new_password': $scope.new_password_confirm}
+            )
                 .then(function (response) {
                     console.log(response);
                     if (response.status === 500) {
                         console.log(response)
                     }
                     ctrl.expand_show_password = !ctrl.expand_show_password;
+                }, function (response) {
+                    console.log(response);
                 });
         }
 
         function email_change() {
-            return UserService.email_change({'current_password_email': $scope.current_password_email, 'new_email': $scope.new_email})
+            var email = $scope.new_email;
+            return UserService.changeEmail('current', {'password': $scope.current_password_email, 'email': AuthService.authenticatedUser().email,'new_email': email})
                 .then(function (response) {
-                    console.log(response);
+                    var user = AuthService.authenticatedUser();
+                    user.email = email;
+                    AuthService.setUser(user);
+                    ctrl.profile = user;
+                    console.log(AuthService.authenticatedUser().email);
+
+                    ctrl.expand_show_email = !ctrl.expand_show_email;
+                }, function (response) {
                     if (response.status === 500) {
                         console.log(response)
                     }
-                    ctrl.expand_show_email = !ctrl.expand_show_email;
                 });
         }
 

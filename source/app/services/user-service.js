@@ -6,16 +6,16 @@
     function UserService(ApiService) {
 
         return {
-            getAll: getAll,
-            getPending: getPending,
-            profile: profile,
-            get: get,
-            register: register,
-            reset_password: reset_password,
-            email_change: email_change,
-            billing_change: billing_change,
+            getAll:                  getAll,
+            getPending:              getPending,
+            profile:                 profile,
+            get:                     get,
+            register:                register,
+            changePassword:          changePassword,
+            changeEmail:             changeEmail,
+            billing_change:          billing_change,
             resendVerificationEmail: resendVerificationEmail,
-            verify: verify
+            verify:                  verify
         };
 
         function getAll(query) {
@@ -38,12 +38,12 @@
             return ApiService.post('registration', registration_data);
         }
 
-        function reset_password(reset_password_data){
-            return ApiService.post('settings', reset_password_data);
+        function changePassword(userId, reset_password_data){
+            return ApiService.post('users/' + userId + '/password', reset_password_data);
         }
 
-        function email_change(email_data) {
-            return ApiService.post('settings', email_data);
+        function changeEmail(userId, email_data) {
+            return ApiService.post('users/' + userId + '/email', email_data);
         }
 
         function billing_change(billing_data) {
