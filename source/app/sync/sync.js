@@ -96,6 +96,7 @@
                  ctrl.isSyncing = false;
             }, function (failure) {
                 ctrl.errorRetrieve = true;
+                ctrl.isSyncing = false;
             });
         }
 
@@ -106,6 +107,7 @@
                     ctrl.isSyncing = false;
                 }, function (reason) {
                     ctrl.errorRetrieve = true;
+                    ctrl.isSyncing = false;
                 });
         }
 
