@@ -19,7 +19,7 @@
             <div ng-if="ctrl.noDealsToImport()" class="endpoint-error">
                 <h2>There are no deals to import</h2>
             </div>
-            <div ng-show="ctrl.errorRetrieve" class="endpoint-error">
+            <div ng-if="ctrl.errorRetrieve" class="endpoint-error">
                 <h2>Error couldn't retrieve deals to import!</h2>
             </div>
             <!-- display when updates are found -->

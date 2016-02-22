@@ -9,7 +9,6 @@
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.syncSalesforceUpdates = syncSalesforceUpdates;
         ctrl.syncTraqqUpdates = syncTraqqUpdates;
-        ctrl.submit = submit;
         ctrl.noDealsToImport = noDealsToImport;
         ctrl.formatFieldName = formatFieldName;
         ctrl.formatValue = formatValue;
@@ -19,17 +18,6 @@
         ctrl.errorRetrieve = false;
 
         activate();
-
-        function submit() {
-            var dealsToImport = _.pluck(checked(), 'id');
-
-            if (dealsToImport.length > 0) {
-                DealService.add(dealsToImport).then(function (response) {
-                    console.log('deals imported');
-                });
-            }
-            $state.go('dashboard');
-        }
 
         function formatFieldName(field) {
             return field.replace("_", " ");
