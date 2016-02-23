@@ -9,6 +9,8 @@
         var errorParams = $state.params.errors;
         ctrl.login = login;
         ctrl.LSError = localStorageSupported();
+        ctrl.resetFail = false;
+        ctrl.resetSuccess = false;
 
         //display error if local storage not supported
         var errors = [];
@@ -62,6 +64,8 @@
             if (errorParams) {
                 ctrl.errorsList.push(errorParams.split(','));
             }
+            ctrl.resetSuccess = $state.params.reset_success;
+            ctrl.resetFail = $state.params.resetFail;
 
             if (token) {
                 AuthService.logIn(token).then(function () {

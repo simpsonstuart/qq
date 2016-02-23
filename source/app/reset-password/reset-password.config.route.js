@@ -4,7 +4,7 @@
 
     function config($stateProvider) {
         $stateProvider.state('reset-password', {
-            url: '/reset-password',
+            url: '/reset-password?token',
             restricted: false,
             data: {
                 bodyClasses: 'login grey',
@@ -20,7 +20,7 @@
                 },
                 'container': {
                     templateUrl: 'views/reset-password/reset-password.html',
-                    controller: 'Reset-Password',
+                    controller: 'ResetPassword',
                     controllerAs: 'ctrl'
                 }
             }

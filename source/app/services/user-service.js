@@ -15,7 +15,9 @@
             changeEmail:             changeEmail,
             billing_change:          billing_change,
             resendVerificationEmail: resendVerificationEmail,
-            verify:                  verify
+            verify:                  verify,
+            resetPassword:           resetPassword,
+            sendPasswordReset:       sendPasswordReset
         };
 
         function getAll(query) {
@@ -38,8 +40,21 @@
             return ApiService.post('registration', registration_data);
         }
 
-        function changePassword(userId, reset_password_data){
+        function changePassword(userId, reset_password_data) {
             return ApiService.post('users/' + userId + '/password', reset_password_data);
+        }
+
+        function sendPasswordReset(email, returnUrl) {
+            return ApiService.post('password/reset/send', {email: email, return_url: returnUrl});
+        }
+
+        /**
+         * @param {string} token
+         * @param {string} password
+         * @returns {Promise}
+         */
+        function resetPassword(token, password) {
+            return ApiService.post('password/reset', {token: token, password: password});
         }
 
         function changeEmail(userId, email_data) {
