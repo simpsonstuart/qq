@@ -5,7 +5,7 @@ header {
   background: $col-orange;
   position: relative;
   .logo {
-    background: url(../media/images/logo.svg) no-repeat;
+    background: url(/media/images/logo.svg) no-repeat;
     text-indent: -9999px;
     width: 50px;
     height: 41px;
@@ -322,7 +322,7 @@ label[for="nav-trigger"] {
 header.logo-nav {
   padding: 10px 0;
   .logo {
-    background: url(../media/images/logo.svg) no-repeat;
+    background: url(/media/images/logo.svg) no-repeat;
     margin: 0 auto;
     float: none;
     width: 80px;
@@ -391,7 +391,7 @@ header.logo-nav {
     height: 46px;
     box-sizing: border-box;
     .logo {
-      background: url(../media/images/logo.svg) no-repeat;
+      background: url(/media/images/logo.svg) no-repeat;
       margin: 0 auto;
       float: none;
       width: 43px;
