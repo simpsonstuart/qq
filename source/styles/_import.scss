@@ -6,6 +6,7 @@
   text-align: center;
   .salesforce {
     width: 300px;
+    margin-top: 10px;
   }
 }
 
@@ -66,6 +67,7 @@
   .import {
     margin-top: 0;
     width: 100%;
+    border-top: none;
     &-row {
       padding: 10px;
       &:first-child {
