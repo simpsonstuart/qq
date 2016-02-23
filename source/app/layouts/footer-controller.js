@@ -3,12 +3,18 @@
     angular.module('app')
         .controller('FooterController', FooterController);
 
-    function FooterController($scope, $state) {
+    function FooterController($state, UserService, $rootScope) {
         var ctrl = this;
+        ctrl.syncCount = 0;
 
         activate();
 
+        $rootScope.$on('Synced', function () {
+            _getSyncCount(true);
+        });
+
         function activate() {
+            _getSyncCount();
             //highlight the feed tab only by default
             if($state.is('settings')){
                 ctrl.HomeActive = true;
@@ -31,6 +37,18 @@
                 ctrl.NSActive = false;
                 ctrl.SyncActive = true;
             }
+        }
+
+        function _getSyncCount(bustCache) {
+            UserService.syncCount(bustCache).then(function (response) {
+                if (!response.count) {
+                    ctrl.syncCount = 0;
+                }
+
+                ctrl.syncCount =  response.count;
+            }, function (response) {
+                ctrl.syncCount =  'E';
+            });
         }
     }
 })();
