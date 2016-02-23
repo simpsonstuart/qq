@@ -58,5 +58,10 @@
             return !!deal.next_step.trim();
         }
 
+        //makes sure window is scrolled to top
+        $(window).load(function() {
+            $(document).scrollTop(100);
+        });
+
     }
 })();
