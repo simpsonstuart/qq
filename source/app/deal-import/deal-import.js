@@ -10,6 +10,7 @@
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.deals = [];
         ctrl.dealsRetrieved = false;
+        ctrl.noDealsToImport = false;
 
         activate();
 
@@ -24,6 +25,10 @@
                 }, function () {
                     ctrl.syncError = true;
                 });
+            }else{
+                if(!dealsToImport.length){
+                    ctrl.noDealsToImport = true;
+                }
             }
 
             function checkImportStatus() {
