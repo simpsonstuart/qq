@@ -18,6 +18,7 @@
         activate();
 
         function activate() {
+            window.scrollTo(0, 0);
             ctrl.loading = true;
             ctrl.dealsForLabel = 'My Deals';
 
