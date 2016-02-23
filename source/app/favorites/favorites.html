@@ -12,7 +12,8 @@
         </select>
     </div>
 </div>
-<h2 class="endpoint-error" ng-if="!ctrl.favoriteDeals">You don't have any deals in your account!</h2>
+<loading ng-show="ctrl.loading"></loading>
+<h2 class="endpoint-error" ng-if="ctrl.noFavoriteDeals">You don't have any favorite deals!</h2>
 <div ng-repeat="deal in ctrl.favoriteDeals | orderBy: [ctrl.selectedSort, 'name']" class="deal-list">
     <aside>
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: deal.favorite }"></span>
