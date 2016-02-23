@@ -1,10 +1,9 @@
 <div class="import-title">
     <small>Your salesforce deals</small>
     <button class="submit salesforce" type="submit" ng-click="ctrl.submit()" ng-disabled="ctrl.isSyncing && !ctrl.syncError">Import Deals from Salesforce</button>
+    <loading ng-show="ctrl.loading() && !ctrl.syncError" message="{{ctrl.loading()}}"></loading>
 </div>
 <div class="import">
-    <loading ng-show="ctrl.loading() && !ctrl.syncError" message="{{ctrl.loading()}}"></loading>
-
     <div ng-if="ctrl.noDealsToImport">
         <h1>There are no deals to import</h1>
     </div>
