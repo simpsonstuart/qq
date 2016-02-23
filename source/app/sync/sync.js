@@ -3,7 +3,7 @@
     angular.module('app.sync')
         .controller('Sync', Sync);
 
-    function Sync(DealService, NumberService, DateAndTimeService, _, $q) {
+    function Sync(DealService, NumberService, DateAndTimeService, _, $q, CacheFactory, $rootScope) {
         var ctrl = this;
         ctrl.syncUpdates = syncUpdates;
         ctrl.formatMoney = NumberService.formatMoney;
@@ -85,6 +85,7 @@
                     _syncToSalesforce()
                 ])
                 .then(function(values) {
+                    _clearCaches();
                     ctrl.isSyncing = false;
                 });
         }
@@ -94,9 +95,11 @@
             var dealsToImport = _.pluck(ctrl.fromSalesforceDeals, 'id');
             _syncFromSalesforce(dealsToImport).then(function (success) {
                  ctrl.isSyncing = false;
+                _clearCaches();
             }, function (failure) {
                 ctrl.errorRetrieve = true;
                 ctrl.isSyncing = false;
+                _clearCaches();
             });
         }
 
@@ -105,9 +108,11 @@
             ctrl.isSyncing = true;
                 _syncToSalesforce(toSalesforceDealIds).then(function () {
                     ctrl.isSyncing = false;
+                    _clearCaches();
                 }, function (reason) {
                     ctrl.errorRetrieve = true;
                     ctrl.isSyncing = false;
+                    _clearCaches();
                 });
         }
 
@@ -143,6 +148,11 @@
                     resolve('Nothing to sync');
                 }
             });
+        }
+
+        function _clearCaches() {
+            CacheFactory.clearAll();
+            $rootScope.$broadcast('Synced');
         }
     }
 

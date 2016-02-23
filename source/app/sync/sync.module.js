@@ -5,13 +5,14 @@
     angular.module('app.sync').run(run);
 
 
-    function run(CacheFactory, $rootScope) {
+    function run(CacheFactory, $rootScope, UserService) {
 
         $rootScope.$on('$stateChangeStart', stateChangeStart);
 
         function stateChangeStart(event, next) {
             if (next.name == 'sync') {
-                CacheFactory.clearAll()
+                CacheFactory.clearAll();
+                $rootScope.$broadcast('Synced');
             }
         }
     }
