@@ -16,7 +16,8 @@
             resendVerificationEmail: resendVerificationEmail,
             verify:                  verify,
             resetPassword:           resetPassword,
-            sendPasswordReset:       sendPasswordReset
+            sendPasswordReset:       sendPasswordReset,
+            syncCount:               syncCount
         };
 
         function getAll(query) {
@@ -45,6 +46,10 @@
 
         function sendPasswordReset(email, returnUrl) {
             return ApiService.post('password/reset/send', {email: email, return_url: returnUrl});
+        }
+
+        function syncCount() {
+            return ApiService.get('sync/count');
         }
 
         /**
