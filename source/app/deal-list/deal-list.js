@@ -13,14 +13,21 @@
         ctrl.dateNow = new Date().toJSON().slice(0,10);
         ctrl.favorite = favorite;
         ctrl.selectedSort = 'close_date';
+        ctrl.noDeals = false;
 
         activate();
 
         function activate() {
+            ctrl.loading = true;
             ctrl.dealsForLabel = 'My Deals';
 
             DealService.getAll().then(function (data) {
                 ctrl.deals = data;
+                ctrl.loading = false;
+
+                if (! ctrl.deals.length) {
+                   ctrl.noDeals = true;
+                }
             });
         }
 
