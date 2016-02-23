@@ -1,5 +1,5 @@
 <h1>Favorites</h1>
-<div class="fixed">
+<div class="fixed fixed-padding">
     <div class="sort">
         <p>Sort by</p>
         <select class="selected" ng-model="ctrl.selectedSort">
@@ -14,7 +14,7 @@
 </div>
 <loading ng-show="ctrl.loading"></loading>
 <h2 class="endpoint-error" ng-if="ctrl.noFavoriteDeals">You don't have any favorite deals!</h2>
-<div ng-repeat="deal in ctrl.favoriteDeals | orderBy: ctrl.selectedSort" class="deal-list">
+<div ng-repeat="deal in ctrl.favoriteDeals | orderBy: [ctrl.selectedSort, 'name']" class="deal-list">
     <aside>
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: deal.favorite }"></span>
     </aside>
