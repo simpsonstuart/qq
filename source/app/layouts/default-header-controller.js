@@ -8,6 +8,8 @@
         ctrl.logOut = logOut;
         ctrl.syncSalesforce = syncSalesforce;
         ctrl.syncCount = 0;
+        ctrl.clicked = clicked;
+        ctrl.MenuClicked = false;
 
         _activate();
 
@@ -27,6 +29,12 @@
 
         function _activate() {
             _getSyncCount();
+        }
+
+
+        function clicked (){
+            console.log('clicked');
+            ctrl.MenuClicked = ! ctrl.MenuClicked;
         }
 
         function _getSyncCount(bustCache) {
