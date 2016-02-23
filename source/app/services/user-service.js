@@ -48,8 +48,8 @@
             return ApiService.post('password/reset/send', {email: email, return_url: returnUrl});
         }
 
-        function syncCount() {
-            return ApiService.get('sync/count');
+        function syncCount(bustCache) {
+            return ApiService.get('sync/count', null, null, null, bustCache);
         }
 
         /**
