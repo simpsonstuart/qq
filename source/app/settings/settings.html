@@ -31,7 +31,7 @@
                         <small class="error" ng-if="password_form.confirm_password.$error.passwordVerify && !password_form.confirm_password.$pristine">Passwords don't match!</small>
                         <input type="password" name="confirm_password" ng-model="new_password_confirm" required placeholder="Confirm New Password" data-password-verify="new.password"/>
                     </p>
-                    <button type="submit" ng-disabled="password_form.$invalid">Reset</button>
+                    <button type="submit" ng-disabled="password_form.$invalid">Update</button>
                 </fieldset>
             </form>
         </div>
