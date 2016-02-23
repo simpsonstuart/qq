@@ -60,11 +60,11 @@
                 changed.close_date = _outDate();
             }
 
-            if (_originalAmount() != ctrl.amount && (ctrl.amount > 0)) {
+            if (_originalAmount() != ctrl.amount) {
                 changed.amount = ctrl.amount;
             }
 
-            if(ctrl.nextStep != ctrl.deal.next_step && ctrl.nextStep.trim()) {
+            if(ctrl.nextStep != ctrl.deal.next_step) {
                 changed.next_step = ctrl.nextStep;
             }
 
