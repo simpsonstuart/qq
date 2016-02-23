@@ -20,7 +20,7 @@
     box-sizing: border-box;
   }
   input[type=checkbox] {
-    width: initial;
+    width: auto;
   }
   label[for=sync-now] {
     color: $salesforce;
