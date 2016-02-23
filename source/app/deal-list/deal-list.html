@@ -1,12 +1,12 @@
-<h1>My Deals</h1>
+<h1>Deals</h1>
 <div class="fixed">
     <div class="sort">
         <p>Sort by</p>
-        <select class="selected" ng-model="ctrl.selectedSort">
+        <select class="selected" data-ng-model="ctrl.selectedSort">
             <option value="close_date">Close Date Oldest First</option>
             <option value="-close_date">Close Date Newest First</option>
-            <option value="amount">Deal Value Min-Max</option>
-            <option value="-amount">Deal Value Max-Min</option>
+            <option value="-amount">Deal Value Min-Max</option>
+            <option value="amount">Deal Value Max-Min</option>
             <option value="-favorite">Favorites First</option>
             <option value="favorite">Favorites Last</option>
             <option value="name">Deal Name A-Z</option>
@@ -15,7 +15,7 @@
     </div>
 </div>
 <h2 class="endpoint-error" ng-if="!ctrl.deals">You don't have any deals in your account!</h2>
-<div ng-repeat="deal in ctrl.deals | orderBy: ctrl.selectedSort" class="deal-list">
+<div ng-repeat="deal in ctrl.deals | orderBy: [ctrl.selectedSort, 'name']" class="deal-list">
     <aside>
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: deal.favorite }"></span>
     </aside>

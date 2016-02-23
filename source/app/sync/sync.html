@@ -37,7 +37,7 @@
                 <p>Found {{ctrl.updatesNumber}} deals in Salesforce</p>
                 <button ng-click="ctrl.syncSalesforceUpdates()">Import New Deals</button>
             </div>
-            <div ng-repeat="deal in ctrl.fromSalesforceDeals" class="update">
+            <div ng-repeat="deal in ctrl.fromSalesforceDeals  | orderBy: 'name'" class="update">
                 <h2>{{deal.name}}</h2>
                 <p>Owner | {{deal.owner}}</p>
                 <small>Close {{deal.close_date | date:"MM/dd/yyyy"}}</small>
@@ -76,7 +76,7 @@
                 <button ng-click="ctrl.syncTraqqUpdates()">Sync Traqq Updates</button>
             </div>
 
-            <div ng-repeat="deal in ctrl.toSalesforceDeals">
+            <div ng-repeat="deal in ctrl.toSalesforceDeals  | orderBy: 'name' ">
             <small class="deal-header">{{deal.name}}</small>
                 <div ng-repeat="(field, value) in deal.changed_fields" class="update">
                     <small>{{ctrl.formatFieldName(field)}}</small>

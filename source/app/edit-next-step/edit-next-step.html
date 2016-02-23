@@ -2,9 +2,8 @@
     <h1>Edit</h1>
     <fieldset>
         <p>
-            <label for="next-step"><small>Next Step (0 of 255)</small></label>
-            <small class="error">character limit exceeded</small>
-            <textarea cols="55" rows="7" id="next-step" ng-model="ctrl.nextStep"></textarea>
+            <label for="next-step"><small>Next Step ({{ctrl.nextStep.length}} of 255)</small></label>
+            <textarea cols="55" rows="7" id="next-step" ng-model="ctrl.nextStep" maxlength="255"></textarea>
         </p>
     </fieldset>
     <input id="sync-now" type="checkbox" name="syncChanges" ng-model="ctrl.updateSalesforce" value="true" />
