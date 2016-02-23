@@ -8,6 +8,7 @@
         ctrl.cancel = cancel;
         ctrl.save = save;
         ctrl.notSaveable = notSaveable;
+        ctrl.nextStepLength = nextStepLength;
         ctrl.dealId = $stateParams.deal_id;
         ctrl.nextStep = null;
         ctrl.updateSalesforce = true;
@@ -33,6 +34,15 @@
                 });
             }
         }
+
+        function nextStepLength() {
+            if(! ctrl.nextStep) {
+                return 0;
+            }
+
+            return ctrl.nextStep.length;
+        }
+
 
 
         function notSaveable() {
