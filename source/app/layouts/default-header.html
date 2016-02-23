@@ -1,4 +1,5 @@
 <div class="wrapper">
+    <a class="hamburger" href=""></a>
     <h1 class="logo">Traqq</h1>
     <nav class="main-nav" role="navigation">
         <ul class="clearfix">
@@ -15,6 +16,15 @@
             </li>
         </ul>
     </nav>
+    <ul class="mobile-nav" ng-controller="hamburgerMenu as ctrl">
+      <li><a class="home" ui-sref="dashboard" ng-click="ctrl.closeMenu()">Home</a></li>
+      <li><a class="deals" ui-sref="deal-list" ng-click="ctrl.closeMenu()">My Deals</a></li>
+      <li><a ui-sref-active-eq="active" ui-sref="favorites" class="favorites" ng-click="ctrl.closeMenu()">Favorites</a></li>
+      <li><a class="next-steps" ui-sref="next-steps" ng-click="ctrl.closeMenu()">Next Steps</a></li>
+      <li><a ui-sref-active-eq="active" class="settings" ui-sref="settings" ng-click="ctrl.closeMenu()">Settings</a></li>
+      <li><a ui-sref-active-eq="active" class="sync" ui-sref="sync" href="#" ng-click="ctrl.closeMenu()">Sync with Salesforce <span>5</span></a></li>
+      <li><a ui-sref-active-eq="active" class="logout" ng-click="ctrl.logOut()" href="#">Logout</a></li>
+    </ul>
 </div>
 
 

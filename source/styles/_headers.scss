@@ -3,7 +3,23 @@
 header {
   padding: 0;
   background: $col-orange;
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  .hamburger {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    &:before {
+      @include fa;
+      @include fa(bars);
+      @include fa-size(2.5rem);
+      color: #fff;
+    }
+  }
   .logo {
     background: url(/media/images/logo.svg) no-repeat;
     text-indent: -9999px;
@@ -131,7 +147,7 @@ header {
 /* BACK HEADER ----------------------------
 -------------------------------------------*/
 header.back {
-  height: 62px;
+  height: 61px;
   .back-btn {
     display: none;
     position: absolute;
@@ -151,68 +167,17 @@ header.back {
 
 /* HAMBURGER MENU --------------------------
 -------------------------------------------*/
-.nav-trigger {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-}
-
-label[for="nav-trigger"] {
-  display: none;
-  position: absolute;
-  left: 15px;
-  top: 7px;
-  z-index: 3;
-  &:before {
-    @include fa;
-    @include fa(bars);
-    @include fa-size(3rem);
-    @include fa-right(7px);
-    color: #fff;
-  }
-}
-
-.nav-trigger + label, .site-wrap {
-  transition: left 0.2s;
-}
-
-.nav-trigger:checked + label {
-  left: 280px;
-}
-
-.nav-trigger:checked ~ .site-wrap {
-  left: 265px;
-  box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
-}
-
-.site-wrap {
-  min-height: 100%;
-  min-width: 100%;
-  background-color: white;
-  position: relative;
-  top: 0;
-  bottom: 100%;
-  left: 0;
-  z-index: 1;
-  margin-bottom: -46px;
-  &:after {
-    content: '';
-    display: block;
-    height: 46px;
-  }
-}
-
 .mobile-nav {
   display: none;
   list-style: none;
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 0;
+  top: 46px;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 0;
-  background: #646464;
+  background: rgba(100, 100, 100, 1);
   li {
     float: none;
     text-align: left;
@@ -325,8 +290,8 @@ header.logo-nav {
     background: url(/media/images/logo.svg) no-repeat;
     margin: 0 auto;
     float: none;
-    width: 80px;
-    height: 50px;
+    width: 50px;
+    height: 41px;
   }
 }
 
@@ -349,6 +314,9 @@ header.logo-nav {
     padding-left: 10px;
     padding-right: 10px;
     height: 46px;
+    .hamburger {
+      display: block;
+    }
     .logo {
       width: 43px;
       height: 36px;
@@ -378,9 +346,9 @@ header.logo-nav {
     }
   }
 
-  .mobile-nav {
+  /*.mobile-nav {
     display: block;
-  }
+  }*/
 
   label[for="nav-trigger"] {
     display: block;

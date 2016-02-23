@@ -36,26 +36,14 @@
 </head>
 
 <body ng-class="$state.current.data.bodyClasses">
-<ul class="mobile-nav" ng-controller="hamburgerMenu as ctrl">
-    <li><a class="home" ui-sref="dashboard" ng-click="ctrl.closeMenu()">Home</a></li>
-    <li><a class="deals" ui-sref="deal-list" ng-click="ctrl.closeMenu()">My Deals</a></li>
-    <li><a ui-sref-active-eq="active" ui-sref="favorites" class="favorites" ng-click="ctrl.closeMenu()">Favorites</a></li>
-    <li><a class="next-steps" ui-sref="next-steps" ng-click="ctrl.closeMenu()">Next Steps</a></li>
-    <li><a ui-sref-active-eq="active" class="settings" ui-sref="settings" ng-click="ctrl.closeMenu()">Settings</a></li>
-    <li><a ui-sref-active-eq="active" class="sync" ui-sref="sync" href="#" ng-click="ctrl.closeMenu()">Sync with Salesforce <span>5</span></a></li>
-    <li><a ui-sref-active-eq="active" class="logout" ng-click="ctrl.logOut()" href="#">Logout</a></li>
-</ul>
 
-<input ng-if="!$state.includes('login') && !$state.includes('registration') && !$state.includes('link-with-salesforce') && !$state.includes('get-started') && !$state.includes('deal-import') && !$state.includes('registration-confirmation') && !$state.includes('reset-password')" type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label ng-if="!$state.includes('login') && !$state.includes('registration') && !$state.includes('link-with-salesforce') && !$state.includes('get-started') && !$state.includes('deal-import') && !$state.includes('registration-confirmation') && !$state.includes('reset-password')" for="nav-trigger"></label>
-<div class="site-wrap">
 
     <header ng-class="$state.current.data.headerClasses" ui-view="header"></header>
 
     <main ui-view="container"></main>
 
     <footer ng-class="$state.current.data.footerClasses" ui-view="footer"></footer>
-</div>
+
 </body>
 </html>
 
