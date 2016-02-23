@@ -13,7 +13,6 @@
             register:                register,
             changePassword:          changePassword,
             changeEmail:             changeEmail,
-            billing_change:          billing_change,
             resendVerificationEmail: resendVerificationEmail,
             verify:                  verify,
             resetPassword:           resetPassword,
@@ -59,10 +58,6 @@
 
         function changeEmail(userId, email_data) {
             return ApiService.post('users/' + userId + '/email', email_data);
-        }
-
-        function billing_change(billing_data) {
-            return ApiService.post('settings', billing_data);
         }
 
         function resendVerificationEmail(email, returnUrl) {

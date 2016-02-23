@@ -9,7 +9,6 @@
         ctrl.profile        = {};
         ctrl.password_reset = password_reset;
         ctrl.changeEmail    = email_change;
-        ctrl.billing_change = billing_change;
         ctrl.logOut         = logOut;
         ctrl.click_password = click_password;
         ctrl.click_email    = click_email;
@@ -21,13 +20,10 @@
                 {'email': AuthService.authenticatedUser().email, 'password': $scope.current_password, 'new_password': $scope.new_password_confirm}
             )
                 .then(function (response) {
-                    console.log(response);
-                    if (response.status === 500) {
-                        console.log(response)
-                    }
                     ctrl.expand_show_password = !ctrl.expand_show_password;
                 }, function (response) {
                     console.log(response);
+                    ctrl.passwordError = response.message;
                 });
         }
 
@@ -39,24 +35,9 @@
                     user.email = email;
                     AuthService.setUser(user);
                     ctrl.profile = user;
-                    console.log(AuthService.authenticatedUser().email);
-
                     ctrl.expand_show_email = !ctrl.expand_show_email;
                 }, function (response) {
-                    if (response.status === 500) {
-                        console.log(response)
-                    }
-                });
-        }
-
-        function billing_change() {
-            return UserService.billing_change({'CCNumber': $scope.CCNumber})
-                .then(function (response) {
-                    console.log(response);
-                    if (response.status === 500) {
-                        console.log(response)
-                    }
-                    ctrl.expand_show_billing = !ctrl.expand_show_billing;
+                    ctrl.emailError = response.message;
                 });
         }
 
@@ -79,6 +60,7 @@
             ctrl.expand_show_email = !ctrl.expand_show_email;
             $scope.current_password_email = '';
             $scope.new_email = '';
+            console.log($scope.password_form);
             $scope.email_form.$setPristine(true);
         }
 
