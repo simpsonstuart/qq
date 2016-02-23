@@ -29,9 +29,7 @@
                     ctrl.syncError = true;
                 });
             } else {
-                if(!dealsToImport.length){
-                    ctrl.noDealsToImport = true;
-                }
+                loading(false);
             }
 
             function checkImportStatus() {
@@ -68,6 +66,9 @@
                 ctrl.deals = data;
                 ctrl.dealsRetrieved = true;
                 loading(false);
+                if(!ctrl.deals.length){
+                    ctrl.noDealsToImport = true;
+                }
             });
         }
 
