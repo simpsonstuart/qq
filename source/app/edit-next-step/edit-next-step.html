@@ -3,13 +3,13 @@
     <fieldset>
         <p>
             <label for="next-step"><small>Next Step ({{ctrl.nextStepLength()}} of 255)</small></label>
-            <textarea cols="55" rows="7" id="next-step" ng-model="ctrl.nextStep" maxlength="255"></textarea>
+            <textarea cols="55" rows="7" id="next-step" ng-model="ctrl.nextStep" maxlength="255" ng-change="ctrl.textUpdated()"></textarea>
         </p>
     </fieldset>
     <input id="sync-now" type="checkbox" name="syncChanges" ng-model="ctrl.updateSalesforce" value="true" />
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
         <button class="submit" ng-click="ctrl.cancel()">Cancel</button>
-        <button class="submit" ng-click="ctrl.save()">Save Changes</button>
+        <button class="submit" ng-click="ctrl.save()" ng-disabled="!ctrl.updated">Save Changes</button>
     </div>
 </form>

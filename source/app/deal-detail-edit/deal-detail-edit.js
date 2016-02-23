@@ -8,8 +8,8 @@
         ctrl.cancel = cancel;
         ctrl.save = save;
         ctrl.dealId = $stateParams.deal_id;
-        ctrl.notSaveable = notSaveable;
         ctrl.nextStepLength = nextStepLength;
+        ctrl.textUpdated = textUpdated;
 
         ctrl.amount = null;
         ctrl.closeDate = null;
@@ -28,11 +28,10 @@
          * @returns void
          */
         function save() {
-            if (saveable()) {
                 DealService.update(ctrl.dealId, _changed(), _updateSalesforceQuery()).then(function () {
                     $state.go('deal-detail', {deal_id: ctrl.dealId});
                 });
-            }
+
         }
 
         function nextStepLength() {
@@ -43,18 +42,16 @@
             return ctrl.nextStep.length;
         }
 
-        function notSaveable() {
-            return !saveable();
+        function textUpdated() {
+            ctrl.updated = true;
         }
+
 
         /**
          * Checks to see if the amount has changed
          *
          * @returns {boolean}
          */
-        function saveable() {
-            return _count(_changed());
-        }
 
         function _changed() {
             var changed = {};

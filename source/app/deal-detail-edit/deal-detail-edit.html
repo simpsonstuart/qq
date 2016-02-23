@@ -3,21 +3,21 @@
     <fieldset>
         <p>
             <label for="amount"><small>Amount</small></label>
-            <input type="number" name="amount" ng-model="ctrl.amount" id="amount" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" pattern="[0-9]*" step="0.01" />
+            <input type="number" name="amount" ng-model="ctrl.amount" id="amount" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" pattern="[0-9]*" step="0.01" ng-change="ctrl.textUpdated()" />
         </p>
         <p>
             <label for="close-date"><small>Close Date</small></label>
-            <input type="date" name="close-date" ng-model="ctrl.closeDate" id="close-date" />
+            <input type="date" name="close-date" ng-model="ctrl.closeDate" id="close-date" ng-change="ctrl.textUpdated()" />
         </p>
         <p>
             <label for="next-step"><small>Next Step ({{ctrl.nextStepLength()}} of 255)</small></label>
-            <textarea cols="55" rows="7" id="next-step" maxlength="255" ng-model="ctrl.nextStep"></textarea>
+            <textarea cols="55" rows="7" id="next-step" maxlength="255" ng-model="ctrl.nextStep" ng-change="ctrl.textUpdated()"></textarea>
         </p>
     </fieldset>
     <input id="sync-now" type="checkbox" name="syncChanges" ng-model="ctrl.updateSalesforce"/>
     <label for="sync-now">Sync my changes to Salesforce now</label>
     <div class="deal-detail-edit-buttons">
         <button class="submit" ng-click="ctrl.cancel()" ng-model="setNextStep">Cancel</button>
-        <button class="submit" ng-click="ctrl.save()" ng-disabled="ctrl.notSaveable()">Save Changes</button>
+        <button class="submit" ng-click="ctrl.save()" ng-disabled="!ctrl.updated">Save Changes</button>
     </div>
 </form>

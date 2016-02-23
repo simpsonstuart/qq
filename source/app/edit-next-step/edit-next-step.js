@@ -11,6 +11,7 @@
         ctrl.dealId = $stateParams.deal_id;
         ctrl.nextStep = null;
         ctrl.updateSalesforce = true;
+        ctrl.textUpdated = textUpdated;
 
         _activate();
 
@@ -40,7 +41,9 @@
             return ctrl.nextStep.length;
         }
 
-
+        function textUpdated() {
+            ctrl.updated = true;
+        }
 
 
         /**
