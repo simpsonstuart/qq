@@ -63,7 +63,7 @@
                 return amount;
             }
 
-            return null;
+            return 0;
         }
 
         function _updateSalesforceQuery() {

@@ -83,7 +83,7 @@
                 return amount;
             }
 
-            return null;
+            return 0;
         }
 
         /**
