@@ -174,10 +174,13 @@ header.back {
   height: 100%;
   position: fixed;
   top: 46px;
-  right: 0;
   bottom: 0;
-  left: 0;
+  left: 150%;
   background: rgba(100, 100, 100, 1);
+  transition: all .2s ease;
+  &.active {
+    left: 0;
+  }
   li {
     float: none;
     text-align: left;
@@ -346,9 +349,9 @@ header.logo-nav {
     }
   }
 
-  /*.mobile-nav {
+  .mobile-nav {
     display: block;
-  }*/
+  }
 
   label[for="nav-trigger"] {
     display: block;
