@@ -18,7 +18,7 @@
             views: {
                 'header': {
                     templateUrl: 'views/layouts/default-header.html',
-                    controller: 'HeaderController',
+                    controller: 'DefaultHeaderController',
                     controllerAs: 'ctrl'
                 },
                 'container': {

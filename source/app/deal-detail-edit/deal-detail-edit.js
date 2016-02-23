@@ -9,6 +9,7 @@
         ctrl.save = save;
         ctrl.dealId = $stateParams.deal_id;
         ctrl.notSaveable = notSaveable;
+        ctrl.nextStepLength = nextStepLength;
 
         ctrl.amount = null;
         ctrl.closeDate = null;
@@ -32,6 +33,14 @@
                     $state.go('deal-detail', {deal_id: ctrl.dealId});
                 });
             }
+        }
+
+        function nextStepLength() {
+            if(! ctrl.nextStep) {
+                return 0;
+            }
+
+            return ctrl.nextStep.length;
         }
 
         function notSaveable() {

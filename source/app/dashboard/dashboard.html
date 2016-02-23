@@ -15,10 +15,9 @@
                 <h2>{{ctrl.formatMoney(ctrl.newDealsAmount)}}</h2>
             </div>
         </div>
-            <div class="sync-header"  ng-if="ctrl.dataLoading">
-                <h2> Getting Deal Counts</h2>
-                <img src="../media/images/syncing.gif">
-        </div>
+
+        <loading ng-show="ctrl.dataLoading" message="Getting Deal Counts"></loading>
+
         <div ng-if="!ctrl.dataLoading">
         <a href="" class="dash-next-steps" ui-sref="next-steps({nextStepState: 'false'})">
             <span>{{ctrl.dealsNextWithoutStepsCount}}</span>

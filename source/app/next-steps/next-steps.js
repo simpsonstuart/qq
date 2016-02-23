@@ -7,6 +7,7 @@
         ctrl.filterNextSteps = filterNextSteps;
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.selectedSort = 'close_date';
+        ctrl.loading = false;
 
         _activate();
 
@@ -27,7 +28,9 @@
         }
 
         function _activate() {
+            ctrl.loading = true;
             DealService.getAll('include=owner').then(function (data) {
+                ctrl.loading = false;
                 ctrl.deals = data;
                 if ($stateParams.nextStepState === 'false') {
                     ctrl.filterActive = true;

@@ -10,7 +10,7 @@
             <input type="date" name="close-date" ng-model="ctrl.closeDate" id="close-date" />
         </p>
         <p>
-            <label for="next-step"><small>Next Step ({{ctrl.nextStep.length}} of 255)</small></label>
+            <label for="next-step"><small>Next Step ({{ctrl.nextStepLength()}} of 255)</small></label>
             <textarea cols="55" rows="7" id="next-step" maxlength="255" ng-model="ctrl.nextStep"></textarea>
         </p>
     </fieldset>

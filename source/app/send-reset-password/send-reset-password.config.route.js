@@ -1,15 +1,11 @@
 (function () {
     'use strict';
-    angular.module('app.login').config(config);
+    angular.module('app.send-reset-password').config(config);
 
     function config($stateProvider) {
-        $stateProvider.state('login', {
-            url: '/login?token',
+        $stateProvider.state('send-reset-password', {
+            url: '/send-reset-password',
             restricted: false,
-            params: {
-                reset_success: '',
-                reset_fail: ''
-            },
             data: {
                 bodyClasses: 'login grey',
                 headerClasses: 'logo-nav',
@@ -23,11 +19,12 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/login/login.html',
-                    controller: 'LoginController',
+                    templateUrl: 'views/send-reset-password/send-reset-password.html',
+                    controller: 'SendResetPassword',
                     controllerAs: 'ctrl'
                 }
             }
-        })
+        });
     }
+
 })();

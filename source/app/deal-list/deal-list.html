@@ -1,5 +1,5 @@
-<h1>Deals</h1>
-<div class="fixed">
+<h1>My Deals</h1>
+<div class="fixed fixed-padding">
     <div class="sort">
         <p>Sort by</p>
         <select class="selected" data-ng-model="ctrl.selectedSort">
@@ -14,7 +14,8 @@
         </select>
     </div>
 </div>
-<h2 class="endpoint-error" ng-if="!ctrl.deals">You don't have any deals in your account!</h2>
+<loading ng-show="ctrl.loading"></loading>
+<h2 class="endpoint-error" ng-if="ctrl.noDeals">You don't have any deals in your account!</h2>
 <div ng-repeat="deal in ctrl.deals | orderBy: [ctrl.selectedSort, 'name']" class="deal-list">
     <aside>
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: deal.favorite }"></span>

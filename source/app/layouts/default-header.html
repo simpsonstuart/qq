@@ -3,9 +3,9 @@
     <nav class="main-nav" role="navigation">
         <ul class="clearfix">
             <li><a ui-sref-active-eq="active" class="home" ui-sref="dashboard">Home</a></li>
-            <li><a ui-sref-active-eq="active" class="deals" ui-sref="deal-list">Deals</a></li>
+            <li><a ui-sref-active-eq="active" class="deals" ui-sref="deal-list">My Deals</a></li>
             <li><a ui-sref-active-eq="active" class="next" ui-sref="next-steps">Next Steps</a></li>
-            <li><a ui-sref-active-eq="active" class="sync" ui-sref="sync">Sync <span>5</span></a></li>
+            <li><a ui-sref-active-eq="active" class="sync" ui-sref="sync">Sync <span ng-bind="ctrl.syncCount"></span></a></li>
             <li class="more"><a ui-sref-active-eq="active" class="more-icon">More</a>
                 <ul class="more-nav">
                     <li><a ui-sref-active-eq="active" class="favorites" ui-sref="favorites">Favorites</a></li>

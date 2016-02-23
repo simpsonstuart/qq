@@ -18,7 +18,7 @@
             views: {
                 'header': {
                     templateUrl: 'views/layouts/logo-nav.html',
-                    controller: 'HeaderController',
+                    controller: 'LogoNavHeaderController',
                     controllerAs: 'ctrl'
                 },
                 'container': {

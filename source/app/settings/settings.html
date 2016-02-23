@@ -13,7 +13,7 @@
         </div>
         <div ng-show="ctrl.expand_show_password" class="edit-expanded">
             <small>Edit Password</small>
-            <small class="error-list" >Error</small>
+            <small class="error-list" ng-bind="ctrl.passwordError" ng-if="ctrl.passwordError"></small>
             <form name="password_form" ng-submit="ctrl.password_reset()">
                 <fieldset>
                     <p>
@@ -42,7 +42,7 @@
         </div>
         <div ng-show="ctrl.expand_show_email" class="edit-expanded">
             <small>Edit Email</small>
-            <small class="error-list" >Error</small>
+            <small class="error-list" ng-bind="ctrl.emailError" ng-if="ctrl.emailError">Error</small>
             <form name="email_form" ng-submit="ctrl.changeEmail()">
                 <fieldset>
                     <p>

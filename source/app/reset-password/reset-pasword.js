@@ -1,18 +1,26 @@
 (function () {
     'use strict';
     angular.module('app.reset-password')
-        .controller('Reset-Password', ResetPassword);
+        .controller('ResetPassword', ResetPassword);
 
     function ResetPassword($scope, $state, UserService) {
         var ctrl = this;
-        ctrl.reset = reset;
+        ctrl.save = save;
+        ctrl.token = null;
+        ctrl.saving = false;
 
-        function reset() {
-            UserService.reset_password((function () {
-                return { 'email': $scope.email};
-            })()).then(function(){
-                $state.go('login');
+        _activate();
+
+        function save() {
+            UserService.resetPassword(ctrl.token, $scope.pw2).then(function(){
+                $state.go('login', {reset_success: true});
+            }, function () {
+                $state.go('login', {reset_fail: true});
             });
+        }
+
+        function _activate() {
+           ctrl.token = $state.params.token;
         }
     }
 })();

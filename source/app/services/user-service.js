@@ -13,9 +13,11 @@
             register:                register,
             changePassword:          changePassword,
             changeEmail:             changeEmail,
-            billing_change:          billing_change,
             resendVerificationEmail: resendVerificationEmail,
-            verify:                  verify
+            verify:                  verify,
+            resetPassword:           resetPassword,
+            sendPasswordReset:       sendPasswordReset,
+            syncCount:               syncCount
         };
 
         function getAll(query) {
@@ -38,16 +40,29 @@
             return ApiService.post('registration', registration_data);
         }
 
-        function changePassword(userId, reset_password_data){
+        function changePassword(userId, reset_password_data) {
             return ApiService.post('users/' + userId + '/password', reset_password_data);
+        }
+
+        function sendPasswordReset(email, returnUrl) {
+            return ApiService.post('password/reset/send', {email: email, return_url: returnUrl});
+        }
+
+        function syncCount() {
+            return ApiService.get('sync/count');
+        }
+
+        /**
+         * @param {string} token
+         * @param {string} password
+         * @returns {Promise}
+         */
+        function resetPassword(token, password) {
+            return ApiService.post('password/reset', {token: token, password: password});
         }
 
         function changeEmail(userId, email_data) {
             return ApiService.post('users/' + userId + '/email', email_data);
-        }
-
-        function billing_change(billing_data) {
-            return ApiService.post('settings', billing_data);
         }
 
         function resendVerificationEmail(email, returnUrl) {
