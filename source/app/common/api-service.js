@@ -16,9 +16,10 @@
          * @param {string} query
          * @param {object} options $http options
          * @param {function} dataAccessor
+         * @param {boolean} bustCache
          * @returns {Promise.<T>}
          */
-        function get(uri, query, options, dataAccessor) {
+        function get(uri, query, options, dataAccessor, bustCache) {
 
             if (!dataAccessor) {
                 dataAccessor = function (response) {
@@ -33,6 +34,11 @@
             if (!options) {
                 options = {cache: true};
             }
+
+            if (bustCache) {
+                CacheFactory.get('defaultCache').remove(AppConfig.apiUri + uri);
+            }
+
 
             return $http.get(AppConfig.apiUri + uri, options)
                 .then(function (response) {
