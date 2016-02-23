@@ -23,6 +23,10 @@
 
             DealService.getAll().then(function (data) {
                 ctrl.deals = data;
+
+                angular.forEach(ctrl.deals, function (deal) {
+                    deal.amount = parseFloat(deal.amount);
+                });
                 ctrl.loading = false;
 
                 if (! ctrl.deals.length) {
@@ -35,6 +39,9 @@
             DealService.favorite(deal.id);
             deal.favorite = !deal.favorite;
         }
+
+
+
     }
 
 })();

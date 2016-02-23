@@ -32,6 +32,9 @@
             DealService.getAll('include=owner').then(function (data) {
                 ctrl.loading = false;
                 ctrl.deals = data;
+                angular.forEach(ctrl.deals, function (deal) {
+                    deal.amount = parseFloat(deal.amount);
+                });
                 if ($stateParams.nextStepState === 'false') {
                     ctrl.filterActive = true;
                     ctrl.filteredDeals  = _.reject(ctrl.deals, 'next_step');

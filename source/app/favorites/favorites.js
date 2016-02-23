@@ -24,6 +24,9 @@
             DealService.getAll().then(function (data) {
                 ctrl.loading = false;
                 ctrl.favoriteDeals = _.filter(data, 'favorite');
+                angular.forEach(ctrl.favoriteDeals, function (deal) {
+                    deal.amount = parseFloat(deal.amount);
+                });
                 ctrl.noFavoriteDeals = (ctrl.favoriteDeals.length < 1);
             }, function (response) {
                 ctrl.loading = false;
