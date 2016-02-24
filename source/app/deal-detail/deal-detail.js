@@ -3,7 +3,7 @@
     angular.module('app.deal-detail')
         .controller('DealDetail', DealDetail);
 
-    function DealDetail(DealService, $stateParams, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory, $rootScope) {
+    function DealDetail(DealService, $stateParams, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory, $rootScope, $timeout) {
         var ctrl = this;
 
         ctrl.dealId = $stateParams.deal_id;
@@ -82,7 +82,9 @@
             if (ctrl.deal.id) {
                 ctrl.isSyncing = true;
                 DealService.syncToSalesforce([ctrl.deal.id]).then(function (response) {
-                    ctrl.isSyncing         = false;
+                    $timeout(function () {
+                        ctrl.isSyncing         = false;
+                    }, 1000);
                     _clearCaches();
                 });
             }
