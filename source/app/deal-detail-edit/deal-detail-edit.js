@@ -11,7 +11,6 @@
         ctrl.nextStepLength = nextStepLength;
         ctrl.textUpdated = textUpdated;
         ctrl.errors = [];
-
         ctrl.amount = null;
         ctrl.closeDate = null;
         ctrl.nextStep = null;
@@ -157,6 +156,13 @@
                 ctrl.amount = _originalAmount();
                 ctrl.closeDate = _originalCloseDate();
                 ctrl.nextStep = ctrl.deal.next_step;
+
+                if(ctrl.deal.next_step){
+                    ctrl.nextStep = ctrl.deal.next_step;
+                }else{
+                   ctrl.nextStep = ctrl.deal.changed_fields.next_step;
+                }
+
             });
         }
     }
