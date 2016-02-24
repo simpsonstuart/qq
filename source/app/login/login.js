@@ -32,8 +32,8 @@
             }).catch(function (response) {
                 //if we get an an error 401 display an error and reset forms
                 if (response.status === 401) {
-                    ctrl.errorsList = [];
-                    ctrl.errorsList.push("Invalid email or password!");
+                    ctrl.errors = [];
+                    ctrl.errors.push("Invalid email or password!");
                     $scope.email = '';
                     $scope.password ='';
                     $scope.login_form.$setPristine(true);
