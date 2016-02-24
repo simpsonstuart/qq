@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <form name="login_form" ng-submit="ctrl.login()">
-    <small class="error-list" ng-repeat="error in ctrl.errorsList" >{{ error }}</small>
+    <formerrors errors="ctrl.errors"></formerrors>
     <fieldset>
         <p>
             <small class="error-list" ng-if="login_form.email.$invalid && !login_form.email.$pristine">Email is required</small>

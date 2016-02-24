@@ -27,7 +27,8 @@
                 },
                 'footer': {
                     templateUrl: 'views/layouts/default-footer.html',
-                    controller: 'FooterController'
+                    controller: 'FooterController',
+                    controllerAs: 'ctrl'
                 }
             }
         })

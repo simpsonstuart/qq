@@ -12,6 +12,7 @@
         ctrl.notSaveable = notSaveable;
         ctrl.amount = null;
         ctrl.updateSalesforce = true;
+        ctrl.errors = [];
 
         _activate();
 
@@ -31,8 +32,11 @@
          */
         function save() {
             if (saveable()) {
+                ctrl.errors = [];
                 DealService.update(ctrl.dealId, {"amount": ctrl.amount}, _updateSalesforceQuery()).then(function () {
                     $state.go('deal-detail', {deal_id: ctrl.dealId});
+                }, function () {
+                    ctrl.errors.push('Server Error');
                 });
             }
         }
@@ -48,7 +52,7 @@
          * @returns {boolean}
          */
         function saveable() {
-            return ((_original() != ctrl.amount) && (ctrl.amount > 0));
+            return (_original() != ctrl.amount);
         }
 
         /**

@@ -44,11 +44,12 @@
                 if (!response.count) {
                     ctrl.syncCount = 0;
                 }
-
                 ctrl.syncCount =  response.count;
             }, function (response) {
                 ctrl.syncCount =  'E';
             });
+
+            console.log(ctrl.syncCount);
         }
     }
 })();
