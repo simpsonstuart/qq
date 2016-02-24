@@ -7,9 +7,9 @@
         var ctrl = this;
         ctrl.logOut = logOut;
         ctrl.syncSalesforce = syncSalesforce;
-        ctrl.syncCount = 0;
         ctrl.clicked = clicked;
         ctrl.MenuClicked = false;
+        ctrl.getSyncCount = getSyncCount;
 
         _activate();
 
@@ -27,6 +27,10 @@
             alert("Implement me!");
         }
 
+        function getSyncCount() {
+            return UserService.getSyncCount();
+        }
+
         function _activate() {
             _getSyncCount();
         }
@@ -40,12 +44,12 @@
         function _getSyncCount(bustCache) {
             UserService.syncCount(bustCache).then(function (response) {
                 if (!response.count) {
-                    ctrl.syncCount = 0;
+                    UserService.setSyncCount(0);
                 }
 
-                ctrl.syncCount =  response.count;
+                UserService.setSyncCount(response.count);
             }, function (response) {
-                ctrl.syncCount =  'E';
+                UserService.setSyncCount('E');
             });
         }
     }

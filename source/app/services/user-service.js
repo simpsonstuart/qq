@@ -4,6 +4,7 @@
         .factory('UserService', UserService);
 
     function UserService(ApiService) {
+        var savedSyncCount = 0;
 
         return {
             getAll:                  getAll,
@@ -17,7 +18,9 @@
             verify:                  verify,
             resetPassword:           resetPassword,
             sendPasswordReset:       sendPasswordReset,
-            syncCount:               syncCount
+            syncCount:               syncCount,
+            getSyncCount:            getSyncCount,
+            setSyncCount:            setSyncCount
         };
 
         function getAll(query) {
@@ -46,6 +49,14 @@
 
         function sendPasswordReset(email, returnUrl) {
             return ApiService.post('password/reset/send', {email: email, return_url: returnUrl});
+        }
+
+        function getSyncCount() {
+            return savedSyncCount;
+        }
+
+        function setSyncCount(count) {
+            savedSyncCount = count;
         }
 
         function syncCount(bustCache) {

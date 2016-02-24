@@ -5,7 +5,7 @@
 
     function FooterController($state, UserService, $rootScope) {
         var ctrl = this;
-        ctrl.syncCount = 0;
+        ctrl.getSyncCount = getSyncCount;
 
         activate();
 
@@ -13,25 +13,30 @@
             _getSyncCount(true);
         });
 
+        function getSyncCount() {
+            return UserService.getSyncCount();
+        }
+
         function activate() {
             _getSyncCount();
+
             //highlight the feed tab only by default
-            if($state.is('settings')){
+            if ($state.is('settings')) {
                 ctrl.HomeActive = true;
                 ctrl.DealsActive = false;
                 ctrl.NSActive = false;
                 ctrl.SyncActive = false;
-            }else if ($state.is('deal-list')){
+            } else if ($state.is('deal-list')) {
                 ctrl.HomeActive = false;
                 ctrl.DealsActive = true;
                 ctrl.NSActive = false;
                 ctrl.SyncActive = false;
-            }else if ($state.is('next-steps')){
+            } else if ($state.is('next-steps')) {
                 ctrl.HomeActive = false;
                 ctrl.DealsActive = false;
                 ctrl.NSActive = true;
                 ctrl.SyncActive = false;
-            }else if ($state.is('sync')){
+            } else if ($state.is('sync')) {
                 ctrl.HomeActive = false;
                 ctrl.DealsActive = false;
                 ctrl.NSActive = false;
@@ -42,11 +47,12 @@
         function _getSyncCount(bustCache) {
             UserService.syncCount(bustCache).then(function (response) {
                 if (!response.count) {
-                    ctrl.syncCount = 0;
+                    UserService.setSyncCount(0);
                 }
-                ctrl.syncCount =  response.count;
+
+                UserService.setSyncCount(response.count);
             }, function (response) {
-                ctrl.syncCount =  'E';
+                UserService.setSyncCount('E');
             });
         }
     }
