@@ -40,14 +40,7 @@
             DealService.favorite(deal.id);
             deal.favorite = !deal.favorite;
         }
-
-        //makes sure window is scrolled to top
-        $(window).load(function() {
-            $(document).scrollTop(100);
-        });
-
-
-
+        
     }
 
 })();
