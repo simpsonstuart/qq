@@ -1,5 +1,5 @@
 <div class="deal-title">
-    <span class="favorite-mobile"></span>
+    <span class="favorite-mobile" ng-click="ctrl.favorite(deal)" ng-class="{ active: ctrl.deal.favorite }"></span>
     <small class="account" ng-bind="ctrl.deal.company_name"></small>
     <h1 ng-bind="ctrl.deal.name"></h1>
     <small class="deal-owner">Deal Owner: {{ctrl.deal.owner.data.first_name}} {{ctrl.deal.owner.data.last_name}}</small>
