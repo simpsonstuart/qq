@@ -48,8 +48,6 @@
             }, function (response) {
                 ctrl.syncCount =  'E';
             });
-
-            console.log(ctrl.syncCount);
         }
     }
 })();

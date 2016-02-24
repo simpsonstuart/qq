@@ -3,11 +3,11 @@
     angular.module('app.deal-detail')
         .controller('DealDetail', DealDetail);
 
-    function DealDetail(DealService, $stateParams, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory) {
+    function DealDetail(DealService, $stateParams, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory, $rootScope) {
         var ctrl = this;
 
         ctrl.dealId = $stateParams.deal_id;
-
+        ctrl.isSyncing = false;
         ctrl.formatMoney = formatMoney;
         ctrl.formatDate = DateAndTimeService.formatDate;
         ctrl.sortQuestionAnswers = sortQuestionAnswers;
@@ -83,6 +83,7 @@
                 ctrl.isSyncing = true;
                 DealService.syncToSalesforce([ctrl.deal.id]).then(function (response) {
                     ctrl.isSyncing         = false;
+                    _clearCaches();
                 });
             }
         }
@@ -104,6 +105,11 @@
                 ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
                 ctrl.amount   = ctrl.formatMoney(ctrl.deal.amount, '$0,0.00');
             });
+        }
+
+        function _clearCaches() {
+            CacheFactory.clearAll();
+            $rootScope.$broadcast('Synced');
         }
     }
 
