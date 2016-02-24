@@ -48,7 +48,7 @@
          * @returns {boolean}
          */
         function saveable() {
-            return ((_original() != ctrl.amount) && (ctrl.amount > 0));
+            return (_original() != ctrl.amount);
         }
 
         /**
