@@ -32,7 +32,7 @@
         @include fa(star);
         @include fa-size(4rem);
       }
-      &.active, &:hover {
+      &.active {
         color: $col-blue;
       }
     }

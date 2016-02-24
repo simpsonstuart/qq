@@ -100,6 +100,7 @@
         }
 
         function activate() {
+            window.scrollTo(0, 0);
             DealService.get(ctrl.dealId, 'include=owner,playbook_counts,extended_team').then(function (data) {
                 ctrl.deal            = data;
                 ctrl.close_date      = ctrl.formatDate(ctrl.deal.close_date).format('M/D/YYYY');
