@@ -199,7 +199,7 @@ header.back {
       padding: 12px 15px;
       color: #fff;
       &:hover, &.active {
-        color: $col-orange;
+        color: $col-orange !important;
         background: none;
       }
       &:before {
