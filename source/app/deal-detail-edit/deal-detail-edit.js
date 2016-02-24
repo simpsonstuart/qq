@@ -10,6 +10,7 @@
         ctrl.dealId = $stateParams.deal_id;
         ctrl.nextStepLength = nextStepLength;
         ctrl.textUpdated = textUpdated;
+        ctrl.errors = [];
 
         ctrl.amount = null;
         ctrl.closeDate = null;
@@ -28,10 +29,12 @@
          * @returns void
          */
         function save() {
-                DealService.update(ctrl.dealId, _changed(), _updateSalesforceQuery()).then(function () {
-                    $state.go('deal-detail', {deal_id: ctrl.dealId});
-                });
-
+            ctrl.errors = [];
+            DealService.update(ctrl.dealId, _changed(), _updateSalesforceQuery()).then(function () {
+                $state.go('deal-detail', {deal_id: ctrl.dealId});
+            }, function () {
+                ctrl.errors.push('Server Error');
+            });
         }
 
         function nextStepLength() {

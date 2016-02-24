@@ -16,7 +16,6 @@
                 } else {
                     scope.message = "Loading…"
                 }
-
             }
         };
     }

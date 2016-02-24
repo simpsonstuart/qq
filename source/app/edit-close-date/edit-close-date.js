@@ -12,6 +12,7 @@
         ctrl.saveable = saveable;
         ctrl.notSaveable = notSaveable;
         ctrl.updateSalesforce = true;
+        ctrl.errors = [];
 
         _activate();
 
@@ -20,9 +21,12 @@
         }
 
         function save () {
+            ctrl.errors = [];
             DealService.update(ctrl.dealId, {close_date: _outDate()}, _updateSalesforceQuery()).then(function (response) {
-                    $state.go('deal-detail', {deal_id: ctrl.dealId});
-                });
+                $state.go('deal-detail', {deal_id: ctrl.dealId});
+            }, function () {
+               ctrl.errors.push('Server Error');
+            });
         }
 
         function notSaveable() {

@@ -12,6 +12,7 @@
         ctrl.nextStep = null;
         ctrl.updateSalesforce = true;
         ctrl.textUpdated = textUpdated;
+        ctrl.errors = [];
 
         _activate();
 
@@ -23,6 +24,7 @@
          * @returns void
          */
         function save() {
+                ctrl.errors = [];
                 DealService.update(ctrl.dealId, {"next_step": ctrl.nextStep}, _updateSalesforceQuery()).then(function () {
                     if($stateParams.from_page ==='nextStep') {
                         $state.go('next-steps');
@@ -30,6 +32,8 @@
                     else {
                         $state.go('deal-detail', {deal_id: ctrl.dealId});
                     }
+                }, function () {
+                    ctrl.errors.push('Server Error');
                 });
         }
 
