@@ -2,7 +2,7 @@
     'use strict';
     angular.module('app.next-steps').controller('NextSteps',NextSteps);
 
-    function NextSteps(DealService, NumberService, _, $stateParams) {
+    function NextSteps(DealService, NumberService, _, $stateParams, $window) {
         var ctrl = this;
         ctrl.filterNextSteps = filterNextSteps;
         ctrl.formatMoney = NumberService.formatMoney;
@@ -28,6 +28,7 @@
         }
 
         function _activate() {
+            window.scrollTo(0, 0);
             ctrl.loading = true;
             DealService.getAll('include=owner').then(function (data) {
                 ctrl.loading = false;
@@ -59,9 +60,7 @@
         }
 
 
-        window.onload = function() {
-            window.scrollTo(0, 0);
-        };
+
 
     }
 })();
