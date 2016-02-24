@@ -10,6 +10,7 @@
                 nextStepState: ''
             },
             data: {
+                bodyClasses: '',
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'
             },
