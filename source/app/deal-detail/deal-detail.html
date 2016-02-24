@@ -43,9 +43,8 @@
         <div class="salesforce-button">
             <div class="salesforce-grid">
                 <button class="submit" ui-sref="deal-detail-edit({deal_id: ctrl.deal.id, deal: ctrl.deal})">Edit Deal</button>
-                <button class="sync-with-salesforce" ng-click="ctrl.syncWithSalesforce()">Sync with Salesforce</button>
+                <button class="sync-with-salesforce" ng-class="{syncing: ctrl.isSyncing}" ng-click="ctrl.syncWithSalesforce()">Sync with Salesforce</button>
                 <a class="view-deal" href="" ng-click="ctrl.viewDealSalesforce()">View Deal in Salesforce</a>
-                <loading ng-show="ctrl.isSyncing" message="Syncing…"></loading>
             </div>
         </div>
         <div class="virtual-team clearfix" ng-if="ctrl.extended_team.length">
