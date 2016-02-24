@@ -7,6 +7,7 @@
             url: '/deal-list',
             restricted: true,
             data: {
+                bodyClasses: '',
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'
             },

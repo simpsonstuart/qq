@@ -7,6 +7,7 @@
                 url: '/settings',
                 restricted: true,
                 data: {
+                    bodyClasses: '',
                     headerClasses: 'back',
                     footerClasses: 'nav',
                     pageTitle:     'Traqq'
