@@ -13,6 +13,7 @@
         ctrl.dealsRetrieved = false;
         ctrl.noDealsToImport = false;
         ctrl.loadingMessage = false;
+        ctrl.dealImportButtonText = "Import Deals from Salesforce";
 
         activate();
 
@@ -25,11 +26,13 @@
             if (dealsToImport.length > 0) {
                 DealService.add(dealsToImport).then(function (response) {
                       loading(false);
-                }, function () {
+                }, function (response) {
+                    console.log(response);
                     ctrl.syncError = true;
                 });
             } else {
                 loading(false);
+                $state.go('dashboard');
             }
 
             function checkImportStatus() {
@@ -66,9 +69,12 @@
                 ctrl.deals = data;
                 ctrl.dealsRetrieved = true;
                 loading(false);
-                if(!ctrl.deals.length){
+                if(!ctrl.deals.length) {
                     ctrl.noDealsToImport = true;
+                    ctrl.dealImportButtonText = "Continue to Dashboard";
                 }
+            }, function () {
+                ctrl.syncError = true;
             });
         }
 
