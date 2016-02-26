@@ -1,6 +1,6 @@
 <div class="deal-title">
     <span class="favorite-mobile" ng-click="ctrl.favorite(deal)" ng-class="{ active: ctrl.deal.favorite }"></span>
-    <small class="account" ng-bind="ctrl.deal.company_name | limitTo: 18 ">{{ctrl.deal.company_name < 18 ? '' : '...'}}</small>
+    <small class="account" ng-bind="ctrl.deal.company_name | limitTo: 36 ">{{ctrl.deal.company_name < 36 ? '' : '...'}}</small>
     <h1 ng-bind="ctrl.deal.name | limitTo: 36">{{ctrl.deal.name < 26 ? '' : '...'}}</h1>
     <small class="deal-owner">Deal Owner: {{ctrl.deal.owner.data.first_name | limitTo: 13}} {{ctrl.deal.owner.data.last_name | limitTo: 13}} {{ctrl.deal.owner.data.last_name.length < 13 ? '' : '...'}}</small>
 </div>
