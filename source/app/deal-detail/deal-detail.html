@@ -16,7 +16,7 @@
         <div class="flex">
             <a class="account-value" ui-sref="edit-amount({deal_id: ctrl.deal.id, amount: ctrl.deal.amount})">
                 <small>Amount</small>
-                <h2 ng-bind="ctrl.amount | limitTo: 15"></h2>
+                <h2 ng-bind="ctrl.amount | limitTo: 18"></h2>
             <a class="close-date" ui-sref="edit-close-date({deal_id: ctrl.deal.id, close_date: ctrl.deal.close_date})">
                 <small>Close Date</small>
                 <h2 ng-bind="ctrl.close_date"></h2>
@@ -26,11 +26,11 @@
         <div class="flex">
             <div class="forecast">
                 <small>Forecast</small>
-                <h2 ng-bind="ctrl.deal.forecast | limitTo: 15"></h2>
+                <h2 ng-bind="ctrl.deal.forecast | limitTo: 20"></h2>
             </div>
             <div class="stage">
                 <small>Stage</small>
-                <h2 ng-bind="ctrl.deal.stage | limitTo: 15"></h2>
+                <h2 ng-bind="ctrl.deal.stage | limitTo: 20"></h2>
             </div>
         </div>
         <a class="deal-detail-next-step" ng-show="ctrl.deal.next_step" ui-sref="edit-next-step({deal_id: ctrl.deal.id, next_step: ctrl.deal.next_step})">
