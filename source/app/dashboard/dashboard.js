@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.dashboard')
         .controller('Dashboard', Dashboard);
+    Dashboard.$inject = ['NumberService', 'DateAndTimeService', 'AuthService', 'UserService'];
 
-    function Dashboard(NumberService, DateAndTimeService, AuthService, UserService, DealService) {
+    function Dashboard(NumberService, DateAndTimeService, AuthService, UserService) {
         var ctrl = this;
 
         ctrl.convertNumberToWord = NumberService.numberToWord;

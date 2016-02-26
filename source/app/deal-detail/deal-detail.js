@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.deal-detail')
         .controller('DealDetail', DealDetail);
+    DealDetail.$inject = ['DealService', '$stateParams', 'DateAndTimeService', 'NumberService', '$state', '$window', 'AuthService', 'CacheFactory', '$rootScope', '$timeout'];
 
     function DealDetail(DealService, $stateParams, DateAndTimeService, NumberService, $state, $window, AuthService, CacheFactory, $rootScope, $timeout) {
         var ctrl = this;

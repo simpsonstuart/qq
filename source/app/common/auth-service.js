@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('app.common').factory('AuthService', AuthService);
+    AuthService.$inject = ['$auth', 'moment', 'ApiService', 'CacheFactory', '$q'];
 
     function AuthService($auth, moment, ApiService, CacheFactory, $q) {
         var tokenLifeMinutes = 60;

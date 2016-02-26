@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.common')
         .factory("HttpErrorInterceptor", HttpErrorInterceptor);
+    HttpErrorInterceptor.$inject = ['$q', '$location', '$injector'];
 
     function HttpErrorInterceptor($q, $location, $injector) {
         var middleware = this;

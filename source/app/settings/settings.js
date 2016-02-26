@@ -2,8 +2,10 @@
     'use strict';
     angular.module('app.settings')
         .controller('Settings', Settings);
+    Settings.$inject = ['$scope', 'AuthService', '$state', 'UserService', '$stateParams'];
 
-    function Settings($scope, AuthService, $state, UserService, $stateParams) {
+
+    function Settings($scope, $stateParams, $state, UserService) {
         var ctrl            = this;
         var user_id         = $stateParams.user_id;
         ctrl.profile        = {};
