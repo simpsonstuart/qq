@@ -12,6 +12,7 @@
         ctrl.logOut         = logOut;
         ctrl.click_password = click_password;
         ctrl.click_email    = click_email;
+        ctrl.emailVerify = emailVerify;
 
         activate();
 
@@ -38,6 +39,18 @@
                 }, function (response) {
                     ctrl.emailError = response.message;
                 });
+        }
+
+        function emailVerify() {
+            var reg = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/;
+            if (reg.test($scope.new_email)){
+
+                ctrl.emailInvalid = false;
+            }
+            else{
+                ctrl.emailInvalid = true;
+                $scope.email_form.$invalid = true;
+            }
         }
 
 

@@ -51,8 +51,8 @@
                     </p>
 
                     <p>
-                        <small class="error" ng-if="email_form.new_email.$invalid && !email_form.new_email.$pristine">Email must be a valid address</small>
-                        <input type="email" name="new_email" ng-model="new_email" required placeholder="New Email"/>
+                        <small class="error" ng-if="email_form.new_email.$error.email && !email_form.new_email.$pristine || ctrl.emailInvalid">Invalid email format</small>
+                        <input type="email" name="new_email" ng-model="new_email" id="new_email" ng-change="ctrl.emailVerify()" required placeholder="New Email"/>
                     </p>
 
                     <button type="submit" ng-disabled="email_form.$invalid">Save</button>
