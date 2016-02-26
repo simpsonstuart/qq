@@ -17,12 +17,11 @@
 
         function password_reset() {
             return UserService.changePassword('current',
-                {'email': AuthService.authenticatedUser().email, 'password': $scope.current_password, 'new_password': $scope.new_password_confirm}
+                {'email': AuthService.authenticatedUser().email, 'password': $scope.current_password, 'new_password': $scope.pw2}
             )
                 .then(function (response) {
                     ctrl.expand_show_password = !ctrl.expand_show_password;
                 }, function (response) {
-                    console.log(response);
                     ctrl.passwordError = response.message;
                 });
         }
@@ -51,8 +50,8 @@
         function click_password() {
             ctrl.expand_show_password = !ctrl.expand_show_password;
             $scope.current_password = '';
-            $scope.new_password = '';
-            $scope.new_password_confirm = '';
+            $scope.pw1 = '';
+            $scope.pw2 = '';
             $scope.password_form.$setPristine(true);
         }
 
@@ -60,7 +59,6 @@
             ctrl.expand_show_email = !ctrl.expand_show_email;
             $scope.current_password_email = '';
             $scope.new_email = '';
-            console.log($scope.password_form);
             $scope.email_form.$setPristine(true);
         }
 
