@@ -16,17 +16,17 @@ The build in the gulp file is dependent upon the `PLATFORM` environment variable
 Ensure node/npm is installed using nvm.
 
 ```sh
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 ```
 then
 
 ```sh
 source ~/.bashrc
-nvm install stable
-nvm use stable
+nvm install 4.3
+nvm use 4.3
 ```
 
-**You might have to perform "nvm use stable" on every new terminal.**  Once node is installed, navigate to the directory of this repository's source and perform the following commands to install this project's dependencies:
+**You might have to perform "nvm use 4.3" on every new terminal.**  Once node is installed, navigate to the directory of this repository's source and perform the following commands to install this project's dependencies:
 
 ```sh
 npm install
