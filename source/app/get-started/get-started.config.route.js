@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('app.registration').config(config);
+    angular.module('app.get-started').config(config);
 
     function config($stateProvider) {
         $stateProvider.state('get-started', {
