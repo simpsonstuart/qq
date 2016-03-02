@@ -32,8 +32,13 @@
                 "return_uri": UrlService.urlWithoutQuery(),
                 "token": AuthService.token()
             };
-           var loginPouopup = window.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), 'newwindow', 'width=600, height=550');
-            var ref = cordova.InAppBrowser.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), '_blank', 'location=yes');
+
+            if(AppConfig.environment === 'ios') {
+                var loginPopup  = cordova.InAppBrowser.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), '_blank', 'location=yes');
+            } else {
+                var loginPouopup = window.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), 'newwindow', 'width=600, height=550');
+            }
+
         }
 
     }
