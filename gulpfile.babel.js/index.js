@@ -39,6 +39,13 @@ function fullPath (pathString) {
   return path.normalize(__dirname + '/../' + pathString);
 }
 
+if(process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android'){
+    var mediaLocation = '../media';
+} else {
+    var mediaLocation = '/media';
+}
+
+
 console.log('full path: ' + fullPath(config.paths.node_modules));
 
 var vendorJavascriptSources = [
@@ -163,21 +170,28 @@ gulp.task('javascript:minify', () => {
 });
 
 gulp.task('styles', () => {
+
+
   return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
     .pipe(plumber())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
+    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
+
 });
 
 gulp.task('styles:production', () => {
-  return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
+
+    return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
+
     .pipe(plumber())
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([cssnano(config.tasks.cssnano.options)]))
     .pipe(gulpif(config.tasks.minifycss.enabled, minifycss(config.tasks.minifycss.options)))
+    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 

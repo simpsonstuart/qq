@@ -21,7 +21,7 @@ header {
     }
   }
   .logo {
-    background: url(./media/images/logo.svg) no-repeat;
+    background: url(app.MEDIA_LOCATION/images/logo.svg) no-repeat;
     text-indent: -9999px;
     width: 50px;
     height: 41px;
@@ -292,7 +292,7 @@ header.back {
 header.logo-nav {
   padding: 10px 0;
   .logo {
-    background: url(./media/images/logo.svg) no-repeat;
+    background: url(app.MEDIA_LOCATION/images/logo.svg) no-repeat;
     margin: 0 auto;
     float: none;
     width: 50px;
@@ -364,7 +364,7 @@ header.logo-nav {
     height: 46px;
     box-sizing: border-box;
     .logo {
-      background: url(./media/images/logo.svg) no-repeat;
+      background: url(app.MEDIA_LOCATION/images/logo.svg) no-repeat;
       margin: 0 auto;
       float: none;
       width: 43px;
