@@ -41,7 +41,10 @@ To run the project, simply initate gulp, and Browsersync will serve it from the 
 gulp
 ```
 InAppBrowser also needs to be added to cordova via the command below
+
+```sh
 cordova plugin add cordova-plugin-inappbrowser
+```
 
 More research still needs to be done on what specifically is committed to the repository for a Cordova project, but if you're getting errors during initial run about this project not being a Cordova project, then try running the following commands and see if it fixes the issue:
 
