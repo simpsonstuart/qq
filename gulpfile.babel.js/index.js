@@ -49,7 +49,8 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
   fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
-  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js')
+  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
+  fullPath(config.paths.vendor + '/ng-cordova.js')
 ];
 
 //ensure www
