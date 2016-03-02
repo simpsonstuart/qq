@@ -28,16 +28,21 @@
         }
 
         function salesforceLogin() {
-            var query = {
-                "return_uri": UrlService.urlWithoutQuery(),
-                "token": AuthService.token()
-            };
 
-            if(AppConfig.environment === 'ios') {
+            if(AppConfig.platform === 'ios') {
+                var query = {
+                    "token": AuthService.token()
+                };
+
                 var loginPopup  = cordova.InAppBrowser.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), '_blank', 'location=yes');
-            } else {
-                var loginPopup = window.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), 'newwindow', 'width=600, height=550');
                 loginPopup.addEventListener('exit', function(event) { $state.go('deal-import'); });
+            } else {
+                var query = {
+                    "return_uri": UrlService.urlWithoutQuery(),
+                    "token": AuthService.token()
+                };
+
+                var loginPopup = window.open(AppConfig.oauthUrl + "oauth2/salesforce/login/?" + UrlService.makeQuery(query), 'newwindow', 'width=600, height=550');
             }
 
         }
