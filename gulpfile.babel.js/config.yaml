@@ -1,6 +1,7 @@
 ---
 paths:
   node_modules: "./node_modules"
+  vendor: "./source/vendor"
   source:
     root: "./source"
     html: "./source/layout"
