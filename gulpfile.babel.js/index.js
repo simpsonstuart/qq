@@ -154,6 +154,7 @@ gulp.task('javascript', () => {
       .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
+      .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
