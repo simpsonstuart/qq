@@ -98,10 +98,18 @@ gulp.task('audio', () => {
 });
 
 gulp.task('html', () => {
+
+    if(process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android'){
+        var cordovaIncluded = '<script src="./cordova.js"></script>';
+    } else {
+        var cordovaIncluded = '';
+    }
+
   gulp.src([
         path.join(fullPath(config.paths.source.html), config.globs.html),
         path.join(fullPath(config.paths.source.application), config.globs.html),
       ])
+      .pipe(replace("app.CORDOVA", cordovaIncluded))
       .pipe(filter(['**']))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(fullPath(config.paths.public.views)));
