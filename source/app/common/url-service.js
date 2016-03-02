@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.common')
         .factory('UrlService', UrlService);
+    UrlService.$inject = ['$location'];
 
     function UrlService($location) {
         return {

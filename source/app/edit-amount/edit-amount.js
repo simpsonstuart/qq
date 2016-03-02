@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.edit.amount')
         .controller('EditAmount', EditAmount);
+    EditAmount.$inject = ['$state', '$stateParams', 'DealService'];
 
-    function EditAmount($scope, $state, $stateParams, DealService) {
+    function EditAmount($state, $stateParams, DealService) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;

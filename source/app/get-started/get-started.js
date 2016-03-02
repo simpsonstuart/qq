@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.get-started')
         .controller('GetStarted', GetStarted);
+    GetStarted.$inject = ['$state', 'UserService'];
 
-    function GetStarted($scope, $state, UserService) {
+    function GetStarted($state, UserService) {
         var ctrl = this;
         ctrl.error = false;
         ctrl.showGetStarted = false;

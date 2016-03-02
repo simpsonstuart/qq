@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.deal-import')
         .controller('DealImport', DealImport);
+    DealImport.$inject = ['$state', 'DealService', 'NumberService'];
 
     function DealImport($state, DealService, NumberService) {
         var ctrl = this;

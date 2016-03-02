@@ -1,8 +1,9 @@
 (function () {
     'use strict';
     angular.module('app.next-steps').controller('NextSteps',NextSteps);
+    NextSteps.$inject = ['DealService', 'NumberService', '_', '$stateParams'];
 
-    function NextSteps(DealService, NumberService, _, $stateParams, $window) {
+    function NextSteps(DealService, NumberService, _, $stateParams) {
         var ctrl = this;
         ctrl.filterNextSteps = filterNextSteps;
         ctrl.formatMoney = NumberService.formatMoney;

@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.link-with-salesforce')
         .controller('LinkWithSalesforce', LinkWithSalesforce);
+    LinkWithSalesforce.$inject = ['$state', 'UrlService', '$window', 'AppConfig', 'AuthService'];
 
-    function LinkWithSalesforce($scope, $state, UrlService, $window, AppConfig, AuthService) {
+    function LinkWithSalesforce($state, UrlService, $window, AppConfig, AuthService) {
         var ctrl = this;
         ctrl.salesforceLogin = salesforceLogin;
         var linked = $state.params.linked;

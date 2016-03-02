@@ -44,6 +44,7 @@
 
     angular.module('app').run(run);
     angular.module('app').config(config);
+    run.$inject = ['$http', 'CacheFactory', '$rootScope', '$state', 'AuthService', '$stateParams'];
 
 
     function run($http, CacheFactory, $rootScope, $state, AuthService, $stateParams) {
@@ -73,6 +74,7 @@
         }
     }
 
+    config.$inject = ['AppConfig', '$urlRouterProvider', '$httpProvider', '$locationProvider', '$authProvider'];
     function config(AppConfig, $urlRouterProvider, $httpProvider, $locationProvider, $authProvider) {
 
         // Satellizer configuration that specifies which API

@@ -10,7 +10,7 @@
                 firstTime: ''
             },
             data:     {
-                bodyClasses:   '',
+                bodyClasses:   'dashboard white',
                 headerClasses: '',
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'

@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.login')
         .controller('LoginController', LoginController);
+    LoginController.$inject = ['$scope', 'AuthService', 'UserService', '$state'];
 
-    function LoginController($scope, AuthService, UserService, $state, UrlService, $window, AppConfig) {
+    function LoginController($scope, AuthService, UserService, $state) {
         var ctrl = this;
         var token = $state.params.token;
         var errorParams = $state.params.errors;

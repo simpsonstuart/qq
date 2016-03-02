@@ -22,14 +22,14 @@
                     </p>
 
                     <p>
-                        <small class="error" ng-if="password_form.new_password.$invalid && !password_form.new_password.$pristine">New password is required</small>
-                        <input type="password" name="new_password"  ng-model='new_password' required placeholder="New Password"/>
+                        <small class="error" ng-if="!pw1.length && !password_form.pw1.$pristine">New password is required!</small>
+                        <input type="password" id="pw1" name="pw1" ng-model="pw1" ng-required="" placeholder='New Password' />
                     </p>
 
                     <p>
-                        <small class="error" ng-if="password_form.confirm_password.$error.required && !password_form.confirm_password.$pristine">Password Field required!</small>
-                        <small class="error" ng-if="password_form.confirm_password.$error.passwordVerify && !password_form.confirm_password.$pristine">Passwords don't match!</small>
-                        <input type="password" name="confirm_password" ng-model="new_password_confirm" required placeholder="Confirm New Password" data-password-verify="new.password"/>
+                        <small class="error" ng-if="!pw2.length && !password_form.pw2.$pristine">Confirm password field required!</small>
+                        <small class="error" ng-show="password_form.pw2.$error.pwmatch">Passwords don't match!</small>
+                        <input type="password" id="pw2" name="pw2" ng-model="pw2" ng-required="" pw-check="pw1" placeholder='Confirm Password' />
                     </p>
                     <button type="submit" ng-disabled="password_form.$invalid">Change</button>
                 </fieldset>
@@ -51,8 +51,8 @@
                     </p>
 
                     <p>
-                        <small class="error" ng-if="email_form.new_email.$invalid && !email_form.new_email.$pristine">Email must be a valid address</small>
-                        <input type="email" name="new_email" ng-model="new_email" required placeholder="New Email"/>
+                        <small class="error" ng-if="email_form.new_email.$error.email && !email_form.new_email.$pristine || ctrl.emailInvalid">Invalid email format</small>
+                        <input type="email" name="new_email" ng-model="new_email" id="new_email" ng-change="ctrl.emailVerify()" required placeholder="New Email"/>
                     </p>
 
                     <button type="submit" ng-disabled="email_form.$invalid">Save</button>

@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('app.common').directive('emailVerify', pwCheck);
+
     function pwCheck() {
         var INTEGER_REGEXP = new RegExp('^[a-z0-9]+(\.[_a-z0-9]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,50})$', 'i');
         return {

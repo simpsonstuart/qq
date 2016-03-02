@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.edit-next-step')
         .controller('EditNextStep', EditNextStep);
+    EditNextStep.$inject = ['$stateParams', '$state', 'DealService'];
 
-    function EditNextStep($scope, $stateParams, $state, DealService) {
+    function EditNextStep($stateParams, $state, DealService) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;

@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.hamburger-menu')
         .controller('hamburgerMenu', hamburgerMenu);
+    hamburgerMenu.$inject = ['$state', 'AuthService'];
 
-    function hamburgerMenu($scope, $state, AuthService) {
+    function hamburgerMenu($state, AuthService) {
         var ctrl = this;
         ctrl.logOut = logOut;
         ctrl.clicked = clicked;

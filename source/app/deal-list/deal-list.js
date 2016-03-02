@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.deal-list')
         .controller('DealList', DealList);
+    DealList.$inject = ['DealService', 'DateAndTimeService', 'NumberService'];
 
     function DealList(DealService, DateAndTimeService, NumberService) {
         var ctrl = this;

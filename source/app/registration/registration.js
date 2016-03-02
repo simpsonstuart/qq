@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.registration')
         .controller('Registration', Registration);
+    Registration.$inject = ['$scope', '$state', 'UserService', 'UrlService'];
 
     function Registration($scope, $state, UserService, UrlService) {
         var ctrl         = this;
