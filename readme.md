@@ -4,14 +4,19 @@
 
 See `.env.json.example`.  Rename or move to `.env.json`
 
+Acceptable values for `PLATFORM` are: "web, ios, android".
+Acceptable values for `ENVIRONMENT` are: "dev, production".
+
 **If you add an environment variable,** you will need to add it to the `.env.json`, the `AppConfig` in `app.module.js`, **and**
 the `make-env-json-file.py`.
 
 The `make-env-json-file.py` is to grab the environment variables from the build server.
 
+These variables are injected by the build system into Angular.  Two of them, `ENV` and `PLATFORM`, are injected directly onto the root object (`window`).
+
 ## Dev Environment
 
-The build in the gulp file is dependent upon the `PLATFORM` environment variable in `.env.json`.   Acceptable values are: "web, ios, android"
+The build in the gulp file is dependent upon the `PLATFORM` environment variable in `.env.json`.
 
 Ensure node/npm is installed using nvm.
 
@@ -44,6 +49,7 @@ InAppBrowser also needs to be added to cordova via the command below
 
 ```sh
 cordova plugin add cordova-plugin-inappbrowser
+cordova plugin add cordova-universal-links-plugin
 ```
 
 More research still needs to be done on what specifically is committed to the repository for a Cordova project, but if you're getting errors during initial run about this project not being a Cordova project, then try running the following commands and see if it fixes the issue:

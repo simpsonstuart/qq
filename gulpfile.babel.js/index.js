@@ -39,12 +39,19 @@ function fullPath (pathString) {
   return path.normalize(__dirname + '/../' + pathString);
 }
 
-if(process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android'){
+function isMobile() {
+  return (process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android');
+}
+
+function isWeb() {
+  return process.env.PLATFORM == 'web';
+}
+
+if(isMobile()){
     var mediaLocation = '../media';
 } else {
     var mediaLocation = '/media';
 }
-
 
 console.log('full path: ' + fullPath(config.paths.node_modules));
 
@@ -98,18 +105,16 @@ gulp.task('audio', () => {
 });
 
 gulp.task('html', () => {
+  var mobileScripts = '';
 
-    if(process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android'){
-        var cordovaIncluded = '<script src="./cordova.js"></script>';
-    } else {
-        var cordovaIncluded = '';
-    }
+  if(isMobile()){
+      mobileScripts = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+  }
 
   gulp.src([
         path.join(fullPath(config.paths.source.html), config.globs.html),
         path.join(fullPath(config.paths.source.application), config.globs.html),
       ])
-      .pipe(replace("app.CORDOVA", cordovaIncluded))
       .pipe(filter(['**']))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(fullPath(config.paths.public.views)));
@@ -117,6 +122,9 @@ gulp.task('html', () => {
   return gulp.src([
       config.paths.source.root + '/index.html'
     ])
+      .pipe(replace("app.MOBILE_SCRIPTS", mobileScripts))
+      .pipe(replace("app.PLATFORM", process.env.PLATFORM))
+      .pipe(replace("app.ENVIRONMENT", process.env.ENVIRONMENT))
     .pipe(filter(['**']))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(fullPath(config.paths.public.html)));
@@ -148,6 +156,11 @@ gulp.task('javascript', () => {
     .pipe(sourcemaps.write())
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
+
+  if (isMobile()) {
+    gulp.src(fullPath(config.paths.source.root + '/index.js'))
+        .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
+  }
 
   return gulp.src(
       [
@@ -213,7 +226,7 @@ gulp.task('build', (() => {
     gulp.parallel('fonts', 'audio', 'video')
   ];
 
-  if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
+  if (isMobile()) {
     buildTasks.push('cordova:prepare');
   }
 
@@ -238,12 +251,13 @@ gulp.task('production',
   )
 );
 
+
 gulp.task('browsersync', () => {
   var baseDir;
   console.log(process.env.PLATFORM);
-  if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
+  if (isMobile()) {
     baseDir = './platforms/browser/www';
-  } else if (process.env.PLATFORM == 'web') {
+  } else if (isWeb()) {
     baseDir = './www';
   } else {
     throw "unable to determine base directory for browsersync"
