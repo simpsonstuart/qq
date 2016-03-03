@@ -23,6 +23,10 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
 
+    <universal-links>
+        <host name="dev.traqq.pixelandline.com" scheme="http" event="ul_Traqq" />
+    </universal-links>
+
     <!-- iOS Specific Settings -->
     <platform name="ios">
         <preference name="StatusBarOverlaysWebView" value="false" />
