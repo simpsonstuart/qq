@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('app.common').factory('ApiService', ApiService);
+    ApiService.$inject = ['AppConfig', '$http', '$q', 'CacheFactory'];
 
 
     function ApiService(AppConfig, $http, $q, CacheFactory) {

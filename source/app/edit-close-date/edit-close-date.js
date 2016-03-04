@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.edit-close-date')
         .controller('EditCloseDate', EditCloseDate);
+    EditCloseDate.$inject = ['$stateParams', '$state', 'DealService', 'DateAndTimeService'];
 
-    function EditCloseDate($scope, $stateParams, $state, DealService, DateAndTimeService) {
+    function EditCloseDate($stateParams, $state, DealService, DateAndTimeService) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.dealId = $stateParams.deal_id;

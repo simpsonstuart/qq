@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.registration')
         .controller('Registration', Registration);
+    Registration.$inject = ['$scope', '$state', 'UserService', 'UrlService'];
 
     function Registration($scope, $state, UserService, UrlService) {
         var ctrl         = this;
@@ -10,6 +11,7 @@
         ctrl.emailVerify = emailVerify;
 
         function register() {
+            console.log({'email': $scope.email, 'password': $scope.pw2, 'return_url': returnUrl});
             UserService.register((function () {
                 return {'email': $scope.email, 'password': $scope.pw2, 'return_url': returnUrl};
             })()).then(function () {

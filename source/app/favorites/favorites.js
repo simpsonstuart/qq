@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.favorites')
         .controller('Favorites', Favorites);
+    Favorites.$inject = ['DealService', 'DateAndTimeService', 'NumberService'];
 
-    function Favorites($scope, DealService, DateAndTimeService, NumberService) {
+    function Favorites(DealService, DateAndTimeService, NumberService) {
         var ctrl = this;
 
         ctrl.formatDate = DateAndTimeService.formatDate;

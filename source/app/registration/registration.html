@@ -9,12 +9,12 @@
         </p>
         <p>
         <label for="pw1">Choose Password</label>
-            <small class="error" ng-if="registration_form.password.$error.required && !registration_form.password.$pristine">Password field is required!</small>
+            <small class="error" ng-if="!pw1.length && !registration_form.pw1.$pristine">Password required!</small>
         <input type="password" id="pw1" name="pw1" ng-model="pw1" ng-required="" placeholder='Password' />
         </p>
         <p>
         <label for="pw2">Confirm Password</label>
-        <small class="error" ng-if="registration_form.confirm_password.$error.required && !registration_form.password.$pristine">Confirm password field required!</small>
+        <small class="error" ng-if="!pw2.length && !registration_form.pw2.$pristine">Confirm password required!</small>
         <small class="error" ng-show="registration_form.pw2.$error.pwmatch">Passwords don't match.</small>
         <input type="password" id="pw2" name="pw2" ng-model="pw2" ng-required="" pw-check="pw1" placeholder='Confirm Password' />
         </p>

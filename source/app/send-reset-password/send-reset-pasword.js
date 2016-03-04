@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.send-reset-password')
         .controller('SendResetPassword', SendResetPassword);
+    SendResetPassword.$inject = ['$scope', '$state', 'UserService', 'UrlService'];
 
     function SendResetPassword($scope, $state, UserService, UrlService) {
         var returnUrl    = UrlService.urlWithoutPath() + '/reset-password';

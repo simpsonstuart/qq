@@ -10,7 +10,7 @@
                 deal_id: 'Deal ID'
             },
             data: {
-                bodyClasses: '',
+                bodyClasses: 'deal-detail white',
                 headerClasses: 'back',
                 footerClasses: 'nav',
                 pageTitle:     'Traqq'

@@ -8,7 +8,7 @@
         <div class="flex">
             <a href="" class="all-deals" ng-click="$state.go('deal-list')">
                 <small>All My Deals</small>
-                <h2>{{ctrl.formatMoney(ctrl.allMyDeals)}}</h2>
+                <h2>{{ctrl.formatMoney(ctrl.allMyDeals) | limitTo: 16 }}</h2>
             </a>
             <div class="new-deals">
                 <small>New Deals</small>

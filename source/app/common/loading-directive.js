@@ -6,7 +6,7 @@
     function LoadingDirective() {
         return {
             restrict: 'E',
-            template: '<div class="sync-header"><h1>{{message}}</h1><img src="/media/images/syncing.gif"></div>',
+            template: '<div class="sync-header"><h1>{{message}}</h1><img src="app.MEDIA_LOCATION/images/syncing.gif"></div>',
             scope: {
                 show: '='
             },

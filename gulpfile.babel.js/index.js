@@ -26,6 +26,8 @@ import iife from 'gulp-iife';
 import browserSync from 'browser-sync';
 import env from "gulp-env";
 import replace from "gulp-replace";
+import cordovaLib from 'cordova-lib';
+const cordova = cordovaLib.cordova;
 
 env({file: ".env.json"});
 
@@ -35,6 +37,20 @@ const config = yaml.load(fs.readFileSync(path.join(__dirname, 'config.yaml'), 'u
 
 function fullPath (pathString) {
   return path.normalize(__dirname + '/../' + pathString);
+}
+
+function isMobile() {
+  return (process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android');
+}
+
+function isWeb() {
+  return process.env.PLATFORM == 'web';
+}
+
+if(isMobile()){
+    var mediaLocation = '../media';
+} else {
+    var mediaLocation = '/media';
 }
 
 console.log('full path: ' + fullPath(config.paths.node_modules));
@@ -49,16 +65,20 @@ var vendorJavascriptSources = [
   fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
   fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
   fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
-  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js')
+  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
+  fullPath(config.paths.vendor + '/ng-cordova.js')
 ];
 
-//ensure www
+//Cordova complains about it not being a Cordova project if www does not exist
 if (! fs.existsSync('./www')) fs.mkdirSync('./www');
 
 //
 // GULP TASKS
 //
 
+gulp.task('cordova:clean', (done) => { cordova.clean({},   done); });
+gulp.task('cordova:prepare', (done) => { cordova.prepare({}, done); });
+gulp.task('cordova:build', (done) => { cordova.build({},   done); });
 
 gulp.task('clean:www', (callback) => {
   del([fullPath(config.paths.public.root)]).then(function () {
@@ -85,6 +105,12 @@ gulp.task('audio', () => {
 });
 
 gulp.task('html', () => {
+  var mobileScripts = '';
+
+  if(isMobile()){
+      mobileScripts = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+  }
+
   gulp.src([
         path.join(fullPath(config.paths.source.html), config.globs.html),
         path.join(fullPath(config.paths.source.application), config.globs.html),
@@ -96,6 +122,9 @@ gulp.task('html', () => {
   return gulp.src([
       config.paths.source.root + '/index.html'
     ])
+      .pipe(replace("app.MOBILE_SCRIPTS", mobileScripts))
+      .pipe(replace("app.PLATFORM", process.env.PLATFORM))
+      .pipe(replace("app.ENVIRONMENT", process.env.ENVIRONMENT))
     .pipe(filter(['**']))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(fullPath(config.paths.public.html)));
@@ -128,6 +157,11 @@ gulp.task('javascript', () => {
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
 
+  if (isMobile()) {
+    gulp.src(fullPath(config.paths.source.root + '/index.js'))
+        .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
+  }
+
   return gulp.src(
       [
           fullPath(config.paths.source.application + '/**/*.module.js'),
@@ -141,6 +175,7 @@ gulp.task('javascript', () => {
       .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
+      .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
@@ -157,21 +192,28 @@ gulp.task('javascript:minify', () => {
 });
 
 gulp.task('styles', () => {
+
+
   return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
     .pipe(plumber())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
+    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
+
 });
 
 gulp.task('styles:production', () => {
-  return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
+
+    return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
+
     .pipe(plumber())
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([cssnano(config.tasks.cssnano.options)]))
     .pipe(gulpif(config.tasks.minifycss.enabled, minifycss(config.tasks.minifycss.options)))
+    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 
@@ -183,6 +225,10 @@ gulp.task('build', (() => {
     gulp.parallel('javascript', 'styles', 'html'),
     gulp.parallel('fonts', 'audio', 'video')
   ];
+
+  if (isMobile()) {
+    buildTasks.push('cordova:prepare');
+  }
 
   return gulp.series.apply(gulp, buildTasks);
 })());
@@ -205,12 +251,13 @@ gulp.task('production',
   )
 );
 
+
 gulp.task('browsersync', () => {
   var baseDir;
   console.log(process.env.PLATFORM);
-  if (process.env.PLATFORM == 'ios' || process.env.PLATFORM == 'android') {
+  if (isMobile()) {
     baseDir = './platforms/browser/www';
-  } else if (process.env.PLATFORM == 'web') {
+  } else if (isWeb()) {
     baseDir = './www';
   } else {
     throw "unable to determine base directory for browsersync"
@@ -229,16 +276,16 @@ gulp.task('browsersync', () => {
   });
 
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{sass,scss,css}'), gulp.series(
-    'styles', 'browsersync:reload'
+    'styles', 'cordova:prepare', 'browsersync:reload'
   ));
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{htm,html}'), gulp.series(
-    'html', 'browsersync:reload'
+    'html', 'cordova:prepare', 'browsersync:reload'
   ));
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{js}'), gulp.series(
-    'javascript', 'javascript:minify', 'browsersync:reload'
+    'javascript', 'cordova:prepare', 'javascript:minify', 'browsersync:reload'
   ));
   gulp.watch(path.join(fullPath(config.paths.source.root), '/**/*.{jpg,jpeg,gif,svg,png}'), gulp.series(
-    'images', 'browsersync:reload'
+    'images', 'cordova:prepare', 'browsersync:reload'
   ));
 });
 

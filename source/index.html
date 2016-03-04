@@ -17,7 +17,14 @@
     <!-- iOS - Allow web app when loaded in Safari -->
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!--<script src="./cordova.js"></script>-->
+
+    app.MOBILE_SCRIPTS
+
+    <script>
+        var ENV = "app.ENVIRONMENT";
+        var PLATFORM = "app.PLATFORM";
+    </script>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title ng-bind="$state.current.data.pageTitle"></title>
     <meta name="description" content="">
@@ -25,7 +32,7 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <base href="/">
+    <!--<base href="/">-->
 
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="./styles/main.css">

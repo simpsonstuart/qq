@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.registration-confirmation')
         .controller('RegistrationConfirmation', RegistrationConfirmation);
+    RegistrationConfirmation.$inject = ['$state', 'UserService', 'UrlService', '$timeout'];
 
     function RegistrationConfirmation($state, UserService, UrlService, $timeout) {
         var returnUrl = UrlService.urlWithoutPath() + '/get-started';

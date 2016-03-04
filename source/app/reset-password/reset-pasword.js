@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.reset-password')
         .controller('ResetPassword', ResetPassword);
+    ResetPassword.$inject = ['$scope', '$state', 'UserService'];
 
     function ResetPassword($scope, $state, UserService) {
         var ctrl = this;

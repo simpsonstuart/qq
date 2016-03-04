@@ -21,7 +21,7 @@
             _getSyncCount();
 
             //highlight the feed tab only by default
-            if ($state.is('settings')) {
+            if ($state.is('dashboard')) {
                 ctrl.HomeActive = true;
                 ctrl.DealsActive = false;
                 ctrl.NSActive = false;

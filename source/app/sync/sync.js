@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.sync')
         .controller('Sync', Sync);
+    Sync.$inject = ['DealService', 'NumberService', 'DateAndTimeService','_', '$q', 'CacheFactory', '$rootScope'];
 
     function Sync(DealService, NumberService, DateAndTimeService, _, $q, CacheFactory, $rootScope) {
         var ctrl = this;

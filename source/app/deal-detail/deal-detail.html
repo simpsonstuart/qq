@@ -1,14 +1,14 @@
 <div class="deal-title">
     <span class="favorite-mobile" ng-click="ctrl.favorite(deal)" ng-class="{ active: ctrl.deal.favorite }"></span>
-    <small class="account" ng-bind="ctrl.deal.company_name"></small>
-    <h1 ng-bind="ctrl.deal.name"></h1>
-    <small class="deal-owner">Deal Owner: {{ctrl.deal.owner.data.first_name}} {{ctrl.deal.owner.data.last_name}}</small>
+    <small class="account" ng-bind="ctrl.deal.company_name | limitTo: 36 ">{{ctrl.deal.company_name < 36 ? '' : '...'}}</small>
+    <h1 ng-bind="ctrl.deal.name | limitTo: 36">{{ctrl.deal.name < 26 ? '' : '...'}}</h1>
+    <small class="deal-owner">Deal Owner: {{ctrl.deal.owner.data.first_name | limitTo: 13}} {{ctrl.deal.owner.data.last_name | limitTo: 13}} {{ctrl.deal.owner.data.last_name.length < 13 ? '' : '...'}}</small>
 </div>
 
 <div class="deal-detail clearfix">
     <aside>
         <img ng-src="{{ctrl.deal.owner.data.picture}}">
-        <h2>{{ctrl.deal.owner.data.first_name}} {{ctrl.deal.owner.data.last_name}}</h2>
+        <h2>{{ctrl.deal.owner.data.first_name | limitTo: 13}} {{ctrl.deal.owner.data.last_name | limitTo: 13}} {{ctrl.deal.owner.data.last_name.length < 13 ? '' : '...'}}</h2>
         <small>Deal Owner</small>
         <span ng-click="ctrl.favorite(deal)" class="favorite" ng-class="{ active: ctrl.deal.favorite }"></span>
     </aside>
@@ -16,26 +16,26 @@
         <div class="flex">
             <a class="account-value" ui-sref="edit-amount({deal_id: ctrl.deal.id, amount: ctrl.deal.amount})">
                 <small>Amount</small>
-                <h2 ng-bind="ctrl.amount"></h2>
-            </a>
+                <h2 ng-bind="ctrl.amount | limitTo: 18"></h2>
             <a class="close-date" ui-sref="edit-close-date({deal_id: ctrl.deal.id, close_date: ctrl.deal.close_date})">
                 <small>Close Date</small>
                 <h2 ng-bind="ctrl.close_date"></h2>
+            </a>
             </a>
         </div>
         <div class="flex">
             <div class="forecast">
                 <small>Forecast</small>
-                <h2 ng-bind="ctrl.deal.forecast"></h2>
+                <h2 ng-bind="ctrl.deal.forecast | limitTo: 20"></h2>
             </div>
             <div class="stage">
                 <small>Stage</small>
-                <h2 ng-bind="ctrl.deal.stage"></h2>
+                <h2 ng-bind="ctrl.deal.stage | limitTo: 20"></h2>
             </div>
         </div>
         <a class="deal-detail-next-step" ng-show="ctrl.deal.next_step" ui-sref="edit-next-step({deal_id: ctrl.deal.id, next_step: ctrl.deal.next_step})">
             <small>Next Step</small>
-            <p ng-bind="ctrl.deal.next_step"></p>
+            <p ng-bind="ctrl.deal.next_step | limitTo: 50"></p>
         </a>
         <a class="deal-detail-next-step" ui-sref="edit-next-step({deal_id: ctrl.deal.id, next_step: ctrl.deal.next_step})" ng-show="!ctrl.deal.next_step">
             <small>Set Next Step</small>

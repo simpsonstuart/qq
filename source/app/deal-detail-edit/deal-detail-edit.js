@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.deal-detail-edit')
         .controller('DealDetailEdit', DealDetailEdit);
+    DealDetailEdit.$inject = ['$stateParams', '$state', 'DealService', 'DateAndTimeService', '$q'];
 
-    function DealDetailEdit($scope, $stateParams, $state, DealService, DateAndTimeService, $q) {
+    function DealDetailEdit($stateParams, $state, DealService, DateAndTimeService, $q) {
         var ctrl = this;
         ctrl.cancel = cancel;
         ctrl.save = save;
