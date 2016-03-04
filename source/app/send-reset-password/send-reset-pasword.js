@@ -5,7 +5,7 @@
     SendResetPassword.$inject = ['$scope', '$state', 'UserService', 'UrlService'];
 
     function SendResetPassword($scope, $state, UserService, UrlService) {
-        var returnUrl    = UrlService.urlWithoutPath() + '/reset-password';
+        var returnUrl = '/reset-password';
         var ctrl = this;
         ctrl.tryAgain = tryAgain;
         ctrl.send = send;

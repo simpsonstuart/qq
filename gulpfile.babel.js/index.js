@@ -105,10 +105,14 @@ gulp.task('audio', () => {
 });
 
 gulp.task('html', () => {
-  var mobileScripts = '';
+  var platformContent = '';
 
-  if(isMobile()){
-      mobileScripts = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+  if (isMobile()) {
+      platformContent = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+  }
+
+  if (isWeb()) {
+    platformContent = '<base href="/">'
   }
 
   gulp.src([
@@ -122,9 +126,10 @@ gulp.task('html', () => {
   return gulp.src([
       config.paths.source.root + '/index.html'
     ])
-      .pipe(replace("app.MOBILE_SCRIPTS", mobileScripts))
+      .pipe(replace("app.PLATFORM_CONTENT", platformContent))
       .pipe(replace("app.PLATFORM", process.env.PLATFORM))
       .pipe(replace("app.ENVIRONMENT", process.env.ENVIRONMENT))
+      .pipe(replace("app.WEB_CONTENT", process.env.ENVIRONMENT))
     .pipe(filter(['**']))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(fullPath(config.paths.public.html)));
