@@ -90,7 +90,7 @@
         function monthChanged (selectedMonth) {
             var dateNumber = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(selectedMonth) / 3 + 1 ;
             ctrl.numberOfDays = moment(dateNumber, "MM").daysInMonth();
-             ctrl.dates = _.range(1, ctrl.numberOfDays);
+             ctrl.dates = _.range(1, ctrl.numberOfDays + 1);
         }
         function activate() {
             UserService.profile(function () {
