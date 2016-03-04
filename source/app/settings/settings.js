@@ -46,7 +46,7 @@
         }
         function changeFiscalYear() {
             return UserService.changeFiscalYear('current',
-                {'email': AuthService.authenticatedUser().email, 'fiscalYear': $scope.newFiscalYear}
+                {'email': AuthService.authenticatedUser().email, 'fiscalYearStartMonth': ctrl.selectedMonth, 'fiscalYearStartDate': ctrl.selectedDate}
                 )
                 .then(function (response) {
                     ctrl.expandShowFiscalYear = !ctrl.expandShowFiscalYear;

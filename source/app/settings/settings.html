@@ -65,7 +65,7 @@
             <small class="error-list" ng-bind="ctrl.fiscalYearError" ng-if="ctrl.fiscalYearError">Error saving data!</small>
             <form name="fiscalYearForm" ng-submit="ctrl.fiscalYear()">
                 <fieldset>
-                    <p>
+                    <p class="fiscalYearEdit">
                         <select class="selected" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged(ctrl.selectedMonth)">
                             <option ng-repeat="month in ctrl.months" value="{{month}}">{{month}}</option>
                         </select>
@@ -79,7 +79,7 @@
         </div>
         <div class="row btns">
             <button ng-click="ctrl.logOut()" class="sign-out">Log Out</button>
-            <button ui-sref="link-with-salesforce" class="submit salesforce">Re-login with Salesforce</button>
+            <button ui-sref="link-with-salesforce" class="submit salesforce">Change Salesforce Account</button>
         </div>
     </div>
 </div>
