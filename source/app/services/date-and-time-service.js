@@ -9,7 +9,8 @@
             currentQuarter: currentQuarter,
             daysTill: daysTill,
             dateFromFormat: dateFromFormat,
-            dateToFormat: dateToFormat
+            dateToFormat: dateToFormat,
+            dateDayMonth: dateDayMonth
         };
 
         /**
@@ -62,6 +63,10 @@
          */
         function daysTill(date) {
             return moment().to(date);
+        }
+
+        function dateDayMonth (date){
+            return moment(date).format('DD/MM');
         }
     }
 

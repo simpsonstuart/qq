@@ -59,6 +59,30 @@
                 </fieldset>
             </form>
         </div>
+
+        <div class="row">
+            <small>Start of Fiscal Year</small>
+            <h2>{{ctrl.profile.startFiscalYear}}</h2>
+            <a href="#settings" class="edit" ng-click="ctrl.clickFiscalYear()">edit</a>
+        </div>
+        <div ng-show="ctrl.expandShowFiscalYear" class="edit-expanded">
+            <small>Edit Fiscal Year Start</small>
+            <small class="error-list" ng-bind="ctrl.fiscalYearError" ng-if="ctrl.fiscalYearError">Error saving data!</small>
+            <form name="fiscalYearForm" ng-submit="ctrl.fiscalYear()">
+                <fieldset>
+                    <p>
+                        <select class="selected" data-ng-model="ctrl.selectedMonth">
+                            <option ng-repeat="month in ctrl.months" value="{{month.value}}">{{month.name}}</option>
+                        </select>
+                        <select class="selected" data-ng-model="ctrl.selectedDate">
+                            <option ng-repeat="date in ctrl.dates" value="{{date}">{{date}}</option>
+                        </select>
+                    </p>
+
+                    <button type="submit" ng-disabled="fiscalYearForm.$invalid">Save</button>
+                </fieldset>
+            </form>
+        </div>
         <div class="row btns">
             <button ng-click="ctrl.logOut()" class="sign-out">Log Out</button>
             <button ui-sref="link-with-salesforce" class="submit salesforce">Re-login with Salesforce</button>
