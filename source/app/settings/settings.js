@@ -2,8 +2,9 @@
     'use strict';
     angular.module('app.settings')
         .controller('Settings', Settings);
-    Settings.$inject = ['$scope', 'AuthService', '$state', 'UserService', '$stateParams', 'DateAndTimeService', '_'];
-    function Settings($scope, $stateParams, $state, UserService, DateAndTimeService, _, moment) {
+    Settings.$inject = ['$scope', 'AuthService', '$state', 'UserService', '$stateParams', '_', 'moment'];
+
+    function Settings($scope, AuthService, $state, UserService , $stateParams, _ , moment) {
         var ctrl            = this;
         var user_id         = $stateParams.user_id;
         var daysInMonth = [];
@@ -18,6 +19,7 @@
         ctrl.fiscalYear = changeFiscalYear;
         ctrl.months = moment.monthsShort();
         ctrl.monthChanged = monthChanged;
+
         activate();
         function passwordReset() {
             return UserService.changePassword('current',
@@ -85,12 +87,10 @@
             $scope.newFiscalYear = '';
             $scope.fiscalYearForm.$setPristine(true);
         }
-        function monthChanged () {
-            _.times(ctrl.selectedMonth.daysInMonth(), function (n) {
-                daysInMonth.push(day.format('DD'));
-                ctrl.selectedMonth.add(1, 'day');
-            });
-            ctrl.dates = daysInMonth;
+        function monthChanged (selectedMonth) {
+            var dateNumber = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(selectedMonth) / 3 + 1 ;
+            ctrl.numberOfDays = moment(dateNumber, "MM").daysInMonth();
+             ctrl.dates = _.range(1, ctrl.numberOfDays);
         }
         function activate() {
             UserService.profile(function () {

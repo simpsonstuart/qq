@@ -66,8 +66,8 @@
             <form name="fiscalYearForm" ng-submit="ctrl.fiscalYear()">
                 <fieldset>
                     <p>
-                        <select class="selected" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged">
-                            <option ng-repeat="month in ctrl.months" value="{{month.value}}">{{month.name}}</option>
+                        <select class="selected" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged(ctrl.selectedMonth)">
+                            <option ng-repeat="month in ctrl.months" value="{{month}}">{{month}}</option>
                         </select>
                         <select class="selected" data-ng-model="ctrl.selectedDate">
                             <option ng-repeat="date in ctrl.dates" value="{{date}">{{date}}</option>
