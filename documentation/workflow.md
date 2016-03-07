@@ -22,9 +22,12 @@ The usage of the development branch is being phased out in favor of the `develop
 
 **Note:** If you have a branch named `development`, it will interfere with the Git Flow plugin since it uses `development/` as the prefix for feature branches.
 
-* To add a feature click on the "Git Flow -> Start Feature" menu item in the bottom, right-hand corner ![git flow popup](images/git-flow-popup.png)
-* Then create a new feature (default branch should be develop) by preceding it with a `/`: ![start feature](images/new-feature-dialog.png)
-* You should then see your new branch in the bottom menu bar's git integration ![new feature branch](images/new-feature-branch.png)
+* To add a feature click on the "Git Flow -> Start Feature" menu item in the bottom, right-hand corner
+    * ![git flow popup](images/git-flow-popup.png)
+* Then create a new feature (default branch should be develop) by preceding it with a `/`:
+    * ![start feature](images/new-feature-dialog.png)
+* You should then see your new branch in the bottom menu bar's git integration
+    * ![new feature branch](images/new-feature-branch.png)
 
 
 ### Branch/Prefix Reference
