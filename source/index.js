@@ -2,7 +2,6 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        cordovaStatusbar.overlaysWebView(false);
         cordovaStatusbar.styleColor('orange');
     },
 
