@@ -110,7 +110,7 @@ gulp.task('html', () => {
   var platformContent = '';
 
   if (isMobile()) {
-      platformContent = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+      platformContent = '<script src="./cordova.js"></script>\n\t<script src="./scripts/init.js"></script>';
   }
 
   if (isWeb()) {
