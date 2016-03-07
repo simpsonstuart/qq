@@ -92,13 +92,13 @@
     </platform>
 
     <!-- Android Specific Settings -->
-    <platform name="android">
-      <icon src="res/icons/android/mdpi.png" density="mdpi" />
-      <icon src="res/icons/android/xxhdpi.png" density="xxhdpi" />
-      <icon src="res/icons/android/hdpi.png" density="hdpi" />
-      <icon src="res/icons/android/ldpi.png" density="ldpi" />
-      <icon src="res/icons/android/xhdpi.png" density="xhdpi" />
-    </platform>
+    <!--<platform name="android">-->
+      <!--<icon src="res/icons/android/mdpi.png" density="mdpi" />-->
+      <!--<icon src="res/icons/android/xxhdpi.png" density="xxhdpi" />-->
+      <!--<icon src="res/icons/android/hdpi.png" density="hdpi" />-->
+      <!--<icon src="res/icons/android/ldpi.png" density="ldpi" />-->
+      <!--<icon src="res/icons/android/xhdpi.png" density="xhdpi" />-->
+    <!--</platform>-->
 
     <!-- Browser Specific Settings -->
     <platform name="browser">

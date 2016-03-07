@@ -37,7 +37,7 @@ nvm use 4.3
 
 ```sh
 npm install
-npm install -g cordova gulp-cli
+npm install -g cordova@5.4.* gulp-cli
 ```
 
 ### Running the Project

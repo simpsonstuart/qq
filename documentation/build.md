@@ -2,12 +2,55 @@
 
 Currently, we are using Cordova version `5.4.x`
 
+Install [cordova-icon](https://www.npmjs.com/package/cordova-icon) by `npm install cordova-icon -g`
+
 ## Android
 
 ### Environment Setup
   * [Cordova Android Setup Guide](https://cordova.apache.org/docs/en/5.4.0/guide/platforms/android/index.html)
     * You will need to Download the [Android-SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) or [Android Studio](http://developer.android.com/sdk/index.html)
         * If using the Android-SDK, you will need to also install [SDK Plugins](http://developer.android.com/sdk/installing/adding-packages.html)
+       
+  * `cordova platform add android`
+  
+  * If you are on Ubuntu, [you need to install the following packages](http://developer.android.com/sdk/installing/index.html?pkg=tools)
+  
+```shell
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libncurses5:i386 libstdc++6:i386 zlib1g:i386
+```
+ 
+### Build
+
+#### Release
+
+
+```bash
+gulp build
+cordova-icon
+cordova build android --release
+```
+
+#### Debug
+
+
+```bash
+gulp build
+cordova-icon
+cordova build android --debug
+```
+
+
+### Problems
+
+If you run into problems, run: 
+
+```shell
+cordova platform remove android
+cordova platform add android
+```
+  
 
 ## iOS
 
@@ -41,11 +84,17 @@ Once it is uploaded, you should be able to see it in iTunes Connect.
 
 ### Build
 
+#### Release
+
+#### Debug
+
 ```bash
 gulp build
 cordova build ios --device --debug
-
 ```
+
+
+### Problems
 
 If you have issues, try removing and adding the platform back in.
 
