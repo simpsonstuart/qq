@@ -54,7 +54,7 @@ cordova plugin add cordova-plugin-inappbrowser
 cordova plugin add cordova-universal-links-plugin
 ```
 
-Cordova Status Bar should also be added to the project
+Cordova Status Bar should also be added to the project to hide the status bar properly
 
 ```sh
 cordova plugin add cordova-plugin-statusbar
