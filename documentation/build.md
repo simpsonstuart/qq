@@ -1,8 +1,13 @@
 # Build
 
+Currently, we are using Cordova version `5.4.x`
+
 ## Android
 
-
+### Environment Setup
+  * [Cordova Android Setup Guide](https://cordova.apache.org/docs/en/5.4.0/guide/platforms/android/index.html)
+    * You will need to Download the [Android-SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) or [Android Studio](http://developer.android.com/sdk/index.html)
+        * If using the Android-SDK, you will need to also install [SDK Plugins](http://developer.android.com/sdk/installing/adding-packages.html)
 
 ## iOS
 
