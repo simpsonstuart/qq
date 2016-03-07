@@ -2,7 +2,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        cordovaStatusbar.hide();
+        cordovaStatusbar.overlaysWebView(false);
     },
 
     // Bind Event Listeners

@@ -52,6 +52,11 @@ InAppBrowser also needs to be added to cordova via the command below
 ```sh
 cordova plugin add cordova-plugin-inappbrowser
 cordova plugin add cordova-universal-links-plugin
+```
+
+Cordova Status Bar should also be added to the project
+
+```sh
 cordova plugin add cordova-plugin-statusbar
 ```
 
@@ -61,6 +66,7 @@ More research still needs to be done on what specifically is committed to the re
 cordova platform remove browser
 cordova platform add browser
 ```
+
 
 There may be a better way to do this, but it should install all of the files that it needs to successfully run the project.
 
