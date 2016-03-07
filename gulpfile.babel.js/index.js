@@ -165,7 +165,7 @@ gulp.task('javascript', () => {
     .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
 
   if (isMobile()) {
-    gulp.src(fullPath(config.paths.source.root + '/index.js'))
+    gulp.src(fullPath(config.paths.source.root + '/init.js'))
         .pipe(gulp.dest(fullPath(config.paths.public.scripts)));
   }
 
