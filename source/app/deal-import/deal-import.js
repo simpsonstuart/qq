@@ -41,7 +41,7 @@
 
                     if (data.length) {
                         ctrl.isSyncing = false;
-                        $state.go('dashboard');
+                        $state.go('set-fiscal-year');
                     }
                     else {
                         ctrl.isSyncing = true;

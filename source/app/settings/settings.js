@@ -16,7 +16,7 @@
         ctrl.click_email    = clickEmail;
         ctrl.emailVerify = emailVerify;
         ctrl.clickFiscalYear = clickFiscalYear;
-        ctrl.fiscalYear = changeFiscalYear;
+        ctrl.setFiscalYear = changeFiscalYear;
         ctrl.months = moment.monthsShort();
         ctrl.monthChanged = monthChanged;
 

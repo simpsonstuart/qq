@@ -18,10 +18,6 @@
         <small class="error" ng-show="registration_form.pw2.$error.pwmatch">Passwords don't match.</small>
         <input type="password" id="pw2" name="pw2" ng-model="pw2" ng-required="" pw-check="pw1" placeholder='Confirm Password' />
         </p>
-        <p>
-            <label for="pw1">Start of Fiscal Year</label>
-            <input type="date" id="fiscalYear" name="fiscalYear" ng-model="fiscalYear" required placeholder='Fiscal Year' />
-        </p>
         <button class="submit" type="submit" ng-disabled="registration_form.$invalid || ctrl.emailInvalid">Register</button>
     </fieldset>
 </form>

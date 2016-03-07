@@ -1,0 +1,23 @@
+<div class="link-salesforce">
+    <div>
+    <h2>Set Fiscal Year</h2>
+    <p class="fiscalYearMessage">Not sure of the exact start date? You can always edit it later in your settings.</p>
+        <form name="fiscalYearForm" ng-submit="ctrl.setFiscalYear()">
+            <fieldset>
+                <p class="fiscalYearEdit">
+                    <p class="fiscalYearSelectHeading">Start of Fiscal Year</p>
+                    <select class="fiscalYearSelect" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged(ctrl.selectedMonth)" required>
+                        <option value="" disabled selected>Month</option>
+                        <option ng-repeat="month in ctrl.months" value="{{month}}">{{month}}</option>
+                    </select>
+                    <select class="fiscalYearSelect" data-ng-model="ctrl.selectedDate" required>
+                        <option value="" disabled selected>Day</option>
+                        <option ng-repeat="date in ctrl.dates" value="{{date}}">{{date}}</option>
+                    </select>
+                </p>
+                <button type="submit" ng-disabled="fiscalYearForm.$invalid" class="fiscalYearButton">Set</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+

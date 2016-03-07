@@ -11,7 +11,6 @@
         ctrl.emailVerify = emailVerify;
 
         function register() {
-            console.log({'email': $scope.email, 'password': $scope.pw2, 'return_url': returnUrl});
             UserService.register((function () {
                 return {'email': $scope.email, 'password': $scope.pw2, 'return_url': returnUrl};
             })()).then(function () {

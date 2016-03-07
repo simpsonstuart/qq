@@ -31,7 +31,8 @@
         'app.deal-detail-edit',
         'app.reset-password',
         'app.send-reset-password',
-        'app.hamburger-menu'
+        'app.hamburger-menu',
+        'app.set-fiscal-year'
 
     ]);
 
