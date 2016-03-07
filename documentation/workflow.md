@@ -15,8 +15,9 @@ The usage of the development branch is being phased out in favor of the `develop
 #### SourceTree
 
 #### PhpStorm (and other JetBrains IDE's)
-    * [Install](https://www.jetbrains.com/phpstorm/help/installing-updating-and-uninstalling-repository-plugins.html) the `Git Flow Integration` plugin
-        * ![installing a plugin](images/install-plugin.png)
+
+* [Install](https://www.jetbrains.com/phpstorm/help/installing-updating-and-uninstalling-repository-plugins.html) the `Git Flow Integration` plugin
+    * ![installing a plugin](images/install-plugin.png)
 
 ##### Adding a Feature Using PHPStorm
 
