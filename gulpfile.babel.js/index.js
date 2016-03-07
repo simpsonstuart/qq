@@ -48,9 +48,11 @@ function isWeb() {
 }
 
 if(isMobile()){
-    var mediaLocation = '../media';
+    var mediaLocationFromStyles = '../media';
+    var mediaLocationFromRoot   = './media';
 } else {
-    var mediaLocation = '/media';
+    var mediaLocationFromStyles = '/media';
+    var mediaLocationFromRoot = '/media';
 }
 
 console.log('full path: ' + fullPath(config.paths.node_modules));
@@ -180,7 +182,8 @@ gulp.task('javascript', () => {
       .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
-      .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
+      .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+      .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
@@ -205,7 +208,8 @@ gulp.task('styles', () => {
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
-    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 
 });
@@ -218,7 +222,8 @@ gulp.task('styles:production', () => {
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([cssnano(config.tasks.cssnano.options)]))
     .pipe(gulpif(config.tasks.minifycss.enabled, minifycss(config.tasks.minifycss.options)))
-    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 

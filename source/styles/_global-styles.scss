@@ -104,7 +104,7 @@ button {
     border: 1px solid #48a5d3;
     &:before {
       content: '';
-      background:  url(app.MEDIA_LOCATION/images/salesforce-logo.png) no-repeat;
+      background:  url(app.MEDIA_LOCATION_FROM_STYLES/images/salesforce-logo.png) no-repeat;
       display: inline-block;
       width: 39px;
       height: 27px;
