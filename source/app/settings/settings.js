@@ -20,6 +20,7 @@
         ctrl.months = moment.monthsShort();
         ctrl.monthChanged = monthChanged;
 
+
         activate();
         function passwordReset() {
             return UserService.changePassword('current',

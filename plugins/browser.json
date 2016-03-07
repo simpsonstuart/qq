@@ -21,6 +21,9 @@
         },
         "cordova-universal-links-plugin": {
             "PACKAGE_NAME": "com.mattneally.traqq"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.mattneally.traqq"
         }
     },
     "dependent_plugins": {}

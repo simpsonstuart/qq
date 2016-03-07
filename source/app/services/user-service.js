@@ -20,7 +20,8 @@
             sendPasswordReset:       sendPasswordReset,
             syncCount:               syncCount,
             getSyncCount:            getSyncCount,
-            setSyncCount:            setSyncCount
+            setSyncCount:            setSyncCount,
+            changeFiscalYear:        changeFiscalYear
         };
 
         function getAll(query) {
@@ -82,6 +83,11 @@
 
         function verify(token) {
            return ApiService.post('users/verify/' + token);
+        }
+
+        function changeFiscalYear(fiscalYearMonth, fiscalYearDate){
+
+            return ApiService.post('users/' + userId + '/fiscalYearMonth', fiscalYearMonth, fiscalYearDate);
         }
     }
 })();
