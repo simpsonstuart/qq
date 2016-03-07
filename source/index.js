@@ -3,6 +3,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
         cordovaStatusbar.overlaysWebView(false);
+        cordovaStatusbar.styleColor('orange');
     },
 
     // Bind Event Listeners
