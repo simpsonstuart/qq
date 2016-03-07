@@ -48,9 +48,11 @@ function isWeb() {
 }
 
 if(isMobile()){
-    var mediaLocation = '../media';
+    var mediaLocationFromStyles = '../media';
+    var mediaLocationFromRoot   = './media';
 } else {
-    var mediaLocation = '/media';
+    var mediaLocationFromStyles = '/media';
+    var mediaLocationFromRoot = '/media';
 }
 
 console.log('full path: ' + fullPath(config.paths.node_modules));
@@ -105,10 +107,14 @@ gulp.task('audio', () => {
 });
 
 gulp.task('html', () => {
-  var mobileScripts = '';
+  var platformContent = '';
 
-  if(isMobile()){
-      mobileScripts = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+  if (isMobile()) {
+      platformContent = '<script src="./cordova.js"></script>\n\t<script src="./scripts/index.js"></script>';
+  }
+
+  if (isWeb()) {
+    platformContent = '<base href="/">'
   }
 
   gulp.src([
@@ -122,9 +128,10 @@ gulp.task('html', () => {
   return gulp.src([
       config.paths.source.root + '/index.html'
     ])
-      .pipe(replace("app.MOBILE_SCRIPTS", mobileScripts))
+      .pipe(replace("app.PLATFORM_CONTENT", platformContent))
       .pipe(replace("app.PLATFORM", process.env.PLATFORM))
       .pipe(replace("app.ENVIRONMENT", process.env.ENVIRONMENT))
+      .pipe(replace("app.WEB_CONTENT", process.env.ENVIRONMENT))
     .pipe(filter(['**']))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(fullPath(config.paths.public.html)));
@@ -175,7 +182,8 @@ gulp.task('javascript', () => {
       .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
-      .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
+      .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+      .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(gulpif(config.tasks.babel.enabled, babel(config.tasks.babel.options)))
@@ -200,7 +208,8 @@ gulp.task('styles', () => {
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
-    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 
 });
@@ -213,7 +222,8 @@ gulp.task('styles:production', () => {
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([cssnano(config.tasks.cssnano.options)]))
     .pipe(gulpif(config.tasks.minifycss.enabled, minifycss(config.tasks.minifycss.options)))
-    .pipe(replace("app.MEDIA_LOCATION", mediaLocation))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 

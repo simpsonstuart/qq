@@ -8,8 +8,16 @@
         return {
             makeQuery: makeQuery,
             urlWithoutPath: urlWithoutPath,
-            urlWithoutQuery: urlWithoutQuery
+            urlWithoutQuery: urlWithoutQuery,
+            path: path
         };
+
+        /**
+         * @returns {string}
+         */
+        function path() {
+            return $location.path();
+        }
 
         /**
          * query = { "test": "foobar", "test2: "fooo"};

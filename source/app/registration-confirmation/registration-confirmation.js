@@ -5,7 +5,7 @@
     RegistrationConfirmation.$inject = ['$state', 'UserService', 'UrlService', '$timeout'];
 
     function RegistrationConfirmation($state, UserService, UrlService, $timeout) {
-        var returnUrl = UrlService.urlWithoutPath() + '/get-started';
+        var returnUrl = '/get-started';
 
         var ctrl = this;
         ctrl.verificationResent = false;

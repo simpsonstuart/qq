@@ -1,6 +1,23 @@
 # Build
 
+## Android
+
+
+
 ## iOS
+
+### App Store and TestFlight Deployment
+
+If you are uploading to the App Store or Test Flight you will need to make sure that you have the code signing certificates and profiles downloaded
+from the the Apple Developer site.
+
+Make sure you bump the version number in `config.xml` when you push a new version.
+
+Before you upload you may need to set the provisioning profile by clicking on the project in Xcode then clicking on the "Build Settings" tab.
+
+Then use Application Uploader to upload the application.  This can be found in Xcode -> Open Developer Tool.
+
+Once it is uploaded, you should be able to see it in iTunes Connect.
 
 ### Setup
 

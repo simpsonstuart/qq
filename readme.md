@@ -1,5 +1,8 @@
 # Quick Questions Front-end
 
+* [Build Documentation](documentation/build.md)
+* [Workflow](documentation/workflow.md)
+
 ## Environment Variables
 
 See `.env.json.example`.  Rename or move to `.env.json`
@@ -23,7 +26,6 @@ Ensure node/npm is installed using nvm.
 ```sh
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 ```
-then
 
 ```sh
 source ~/.bashrc
@@ -50,6 +52,7 @@ InAppBrowser also needs to be added to cordova via the command below
 ```sh
 cordova plugin add cordova-plugin-inappbrowser
 cordova plugin add cordova-universal-links-plugin
+cordova plugin add cordova-plugin-statusbar
 ```
 
 More research still needs to be done on what specifically is committed to the repository for a Cordova project, but if you're getting errors during initial run about this project not being a Cordova project, then try running the following commands and see if it fixes the issue:
