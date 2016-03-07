@@ -1,8 +1,8 @@
+
 <h1>User Settings</h1>
 <div class="profile clearfix">
     <aside>
         <img ng-if="ctrl.profile.picture" ng-src="{{ctrl.profile.picture}}">
-
         <h2>{{ctrl.profile.first_name}} {{ctrl.profile.last_name}}</h2>
     </aside>
     <div class="settings clearfix">
@@ -20,12 +20,10 @@
                         <small class="error" ng-if="password_form.current_password.$invalid && !password_form.current_password.$pristine">Current password is required</small>
                         <input type="password" name="current_password" ng-model="current_password" required placeholder="Current Password"/>
                     </p>
-
                     <p>
                         <small class="error" ng-if="!pw1.length && !password_form.pw1.$pristine">New password is required!</small>
                         <input type="password" id="pw1" name="pw1" ng-model="pw1" ng-required="" placeholder='New Password' />
                     </p>
-
                     <p>
                         <small class="error" ng-if="!pw2.length && !password_form.pw2.$pristine">Confirm password field required!</small>
                         <small class="error" ng-show="password_form.pw2.$error.pwmatch">Passwords don't match!</small>
@@ -49,13 +47,33 @@
                         <small class="error" ng-if="email_form.current_password_email.$error.required && !email_form.current_password_email.$pristine">Current password is required</small>
                         <input type="password" name="current_password_email" ng-model="current_password_email" required placeholder="Enter Password"/>
                     </p>
-
                     <p>
                         <small class="error" ng-if="email_form.new_email.$error.email && !email_form.new_email.$pristine || ctrl.emailInvalid">Invalid email format</small>
                         <input type="email" name="new_email" ng-model="new_email" id="new_email" ng-change="ctrl.emailVerify()" required placeholder="New Email"/>
                     </p>
-
                     <button type="submit" ng-disabled="email_form.$invalid">Save</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="row">
+            <small>Start of Fiscal Year</small>
+            <h2>{{ctrl.profile.startFiscalYear}}</h2>
+            <a href="#settings" class="edit" ng-click="ctrl.clickFiscalYear()">edit</a>
+        </div>
+        <div ng-show="ctrl.expandShowFiscalYear" class="edit-expanded">
+            <small>Edit Fiscal Year Start</small>
+            <small class="error-list" ng-bind="ctrl.fiscalYearError" ng-if="ctrl.fiscalYearError">Error saving data!</small>
+            <form name="fiscalYearForm" ng-submit="ctrl.fiscalYear()">
+                <fieldset>
+                    <p>
+                        <select class="selected" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged">
+                            <option ng-repeat="month in ctrl.months" value="{{month.value}}">{{month.name}}</option>
+                        </select>
+                        <select class="selected" data-ng-model="ctrl.selectedDate">
+                            <option ng-repeat="date in ctrl.dates" value="{{date}">{{date}}</option>
+                        </select>
+                    </p>
+                    <button type="submit" ng-disabled="fiscalYearForm.$invalid">Save</button>
                 </fieldset>
             </form>
         </div>
