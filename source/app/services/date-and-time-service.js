@@ -6,7 +6,7 @@
     function DateAndTimeService(moment) {
         return {
             formatDate: formatDate,
-            currentQuarter: currentQuarter,
+            formatQuarter: formatQuarter,
             daysTill: daysTill,
             dateFromFormat: dateFromFormat,
             dateToFormat: dateToFormat,
@@ -53,8 +53,8 @@
         /**
          * @returns {int}
          */
-        function currentQuarter() {
-            return moment().quarter();
+        function formatQuarter(date) {
+            return moment(date).format('MMM DD');
         }
 
         /**
