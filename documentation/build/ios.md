@@ -37,7 +37,6 @@ Once it is uploaded, you should be able to see it in iTunes Connect.
 ```bash
 gulp build
 cordova build ios --device --debug
-
 ```
 
 

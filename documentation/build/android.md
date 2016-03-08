@@ -3,7 +3,6 @@
 ### HockeyApp
 
 * [hockey app android sdk setup](http://support.hockeyapp.net/kb/client-integration-android/hockeyapp-for-android-sdk)
-* `cordova plugin add cordova-plugin-hockeyapp`
 * You need to [sign the app](https://cordova.apache.org/docs/en/dev/guide/platforms/android/#signing-an-app) before you upload
     * `keytool -genkey -v -keystore traqq.keystore -alias traqq -keyalg RSA -keysize 2048 -validity 10000`
 * In order for the build to be signed, you need a `release-signing.properties` file in the `APPFOLDER\platforms\android` folder
