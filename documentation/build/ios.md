@@ -34,6 +34,17 @@ Once it is uploaded, you should be able to see it in iTunes Connect.
 
 In `.env.json` change `PLATFORM` to `ios`.  Also make sure that the URI's point to the correct domain.
 
+
+```bash
+gulp build
+cordova build ios --release
+```
+
+In Xcode run:
+
+1. `Product -> Clean`
+2. `Product -> Archive`
+
 #### Debug
 
 ```bash
