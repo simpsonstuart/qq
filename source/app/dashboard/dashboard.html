@@ -10,9 +10,19 @@
                 <small>All My Deals</small>
                 <h2>{{ctrl.formatMoney(ctrl.allMyDeals) | limitTo: 16 }}</h2>
             </a>
+            <a href="" class="all-deals" ng-click="$state.go('deal-list')">
+                <small>Deals this Quarter</small>
+                <h2>{{ctrl.formatMoney(ctrl.dealsThisQuarter) | limitTo: 16 }}</h2>
+            </a>
+        </div>
+        <div class="flex">
             <div class="new-deals">
-                <small>New Deals</small>
-                <h2>{{ctrl.formatMoney(ctrl.newDealsAmount)}}</h2>
+                <small>Start of Fiscal Year</small>
+                <h2>{{ctrl.fiscalYearStartMonth}}{{ctrl.fiscalYearStartDate}}</h2>
+            </div>
+            <div class="new-deals">
+                <small>Current Quarter</small>
+                <h2>{{ctrl.formatQuarter(ctrl.currentQuarterStart)}} - {{ctrl.formatQuarter(ctrl.currentQuarterEnd)}}</h2>
             </div>
         </div>
 
