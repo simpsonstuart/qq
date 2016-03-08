@@ -1,6 +1,8 @@
 ###### PER-PROJECT IGNORE ######
 /www
 .env.json
+*.keystore
+*.properties
 
 ####### CORDOVA IGNORES #######
 /platforms

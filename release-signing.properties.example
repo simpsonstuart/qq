@@ -1,0 +1,5 @@
+storeFile=traqq.keystore
+storePassword=secret
+storeType=keystore
+keyAlias=traqq
+keyPassword=secret
