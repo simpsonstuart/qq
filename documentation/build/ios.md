@@ -32,6 +32,8 @@ Once it is uploaded, you should be able to see it in iTunes Connect.
 
 #### Release
 
+In `.env.json` change `PLATFORM` to `ios`.  Also make sure that the URI's point to the correct domain.
+
 #### Debug
 
 ```bash
