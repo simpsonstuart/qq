@@ -8,6 +8,18 @@
 **Please remember:** the `development` and `staging` branches still exist as of this writing (3/7/16).
 The usage of the development branch is being phased out in favor of the `develop` branch since it corresponds to the GitFlow methodology.
 
+### Branch/Prefix Reference
+
+Type                |   Branch or Prefix     
+--------------------|-------------------------
+Production          | master
+Next Release        | develop
+Feature Prefix      | feature/
+Release Prefix      | release/
+Hotfix Prefix       | hotfix/
+Support Prefix      | prefix/
+
+
 ### Recommended Git Flow Utilities
 
 #### Commandline
@@ -29,15 +41,9 @@ The usage of the development branch is being phased out in favor of the `develop
     * ![start feature](images/new-feature-dialog.png)
 * You should then see your new branch in the bottom menu bar's git integration
     * ![new feature branch](images/new-feature-branch.png)
+    
+##### Finishing a feature
 
-
-### Branch/Prefix Reference
-
-Type                |   Branch or Prefix     
---------------------|-------------------------
-Production          | master
-Next Release        | develop
-Feature Prefix      | feature/
-Release Prefix      | release/
-Hotfix Prefix       | hotfix/
-Support Prefix      | prefix/
+1. Make sure that your local `develop` branch is up to date with `origin/develop` (you may need to pull on the `develop` branch)
+2. Click `Gitflow -> Finish Feature` in the bottom right hand corner of your screen. 
+3. 
