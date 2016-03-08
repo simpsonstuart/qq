@@ -46,4 +46,4 @@ Support Prefix      | prefix/
 
 1. Make sure that your local `develop` branch is up to date with `origin/develop` (you may need to pull on the `develop` branch)
 2. Click `Gitflow -> Finish Feature` in the bottom right hand corner of your screen. 
-3. 
+3. Complete any merges that are necessary
