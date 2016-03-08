@@ -13,6 +13,7 @@ Install [cordova-icon](https://www.npmjs.com/package/cordova-icon) by `npm insta
 * You need to [sign the app](https://cordova.apache.org/docs/en/dev/guide/platforms/android/#signing-an-app) before you upload
     * `keytool -genkey -v -keystore [keystore_name].keystore -alias [alias_name] -keyalg RSA -keysize 2048 -validity 10000`
 * In order for the build to be signed, you need a `release-signing.properties` file in the `APPFOLDER\platforms\android` folder
+    * You can review [how to set gradle properties here](https://cordova.apache.org/docs/en/dev/guide/platforms/android/#setting-gradle-properties)
 
 ### Environment Setup
   * [Cordova Android Setup Guide](https://cordova.apache.org/docs/en/5.4.0/guide/platforms/android/index.html)
