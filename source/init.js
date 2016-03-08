@@ -13,10 +13,6 @@ var app = {
     onDeviceReady: function() {
         universalLinks.subscribe('ul_Traqq', app.didLaunchAppFromLink);
         StatusBar.hide();
-        //hockeyapp.start(
-        //    function() { console.log('hockeyapp initialised'); },
-        //    function(msg) { console.log(msg); },
-        //    '< your APP ID >');
     },
 
     didLaunchAppFromLink: function(eventData) {
