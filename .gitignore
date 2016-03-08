@@ -1,6 +1,6 @@
 ###### PER-PROJECT IGNORE ######
 /www
-.env.json
+*.env.json
 *.keystore
 *.properties
 
