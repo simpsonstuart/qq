@@ -125,6 +125,13 @@ gulp.task('html', () => {
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(fullPath(config.paths.public.views)));
 
+  if (isWeb()) {
+    gulp.src([
+          config.paths.source.root + '/apple-app-site-association'
+        ])
+        .pipe(gulp.dest(fullPath(config.paths.public.html)));
+  }
+
   return gulp.src([
       config.paths.source.root + '/index.html'
     ])
