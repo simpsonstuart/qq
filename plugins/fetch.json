@@ -38,5 +38,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "plist-additions": {
+        "source": {
+            "type": "local",
+            "path": "custom-plugins/plist-additions"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
