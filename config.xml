@@ -34,6 +34,8 @@
 
     <!-- iOS Specific Settings -->
     <platform name="ios">
+        <preference name="Orientation" value="all" />
+
         <preference name="StatusBarOverlaysWebView" value="false" />
 
         <!-- When set to true, the web view does not attempt to render incoming content as it
