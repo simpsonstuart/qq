@@ -95,13 +95,6 @@ gulp.task('cordova:build', (done) => {
 });
 
 gulp.task('clean:www', (callback) => {
-    if (isAndoid()) {
-        shell.task(['cordova-icon']);
-        gulp.src(fullPath('./release-signing.properties'))
-            .pipe(gulp.dest(fullPath(config.paths.platforms.android))
-            );
-    }
-
   del([fullPath(config.paths.public.root)]).then(function () {
     callback();
   });
@@ -263,7 +256,14 @@ gulp.task('build', (() => {
   ];
 
   if (isMobile()) {
-    buildTasks.push('cordova:prepare');
+      buildTasks.push('cordova:prepare');
+
+      if (isAndoid()) {
+          shell.task(['cordova-icon']);
+          gulp.src(fullPath('./release-signing.properties'))
+              .pipe(gulp.dest(fullPath(config.paths.platforms.android))
+              );
+      }
   }
 
   return gulp.series.apply(gulp, buildTasks);

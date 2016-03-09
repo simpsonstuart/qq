@@ -18,7 +18,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <!--<icon src="res/icons/icon.svg" />-->
     <preference name="Fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="false" />
     <preference name="Orientation" value="default" />
@@ -92,15 +91,6 @@
         <splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
         <!-- iOS Hooks -->
     </platform>
-
-    <!-- Android Specific Settings -->
-    <!--<platform name="android">-->
-      <!--<icon src="res/icons/android/mdpi.png" density="mdpi" />-->
-      <!--<icon src="res/icons/android/xxhdpi.png" density="xxhdpi" />-->
-      <!--<icon src="res/icons/android/hdpi.png" density="hdpi" />-->
-      <!--<icon src="res/icons/android/ldpi.png" density="ldpi" />-->
-      <!--<icon src="res/icons/android/xhdpi.png" density="xhdpi" />-->
-    <!--</platform>-->
 
     <!-- Browser Specific Settings -->
     <platform name="browser">
