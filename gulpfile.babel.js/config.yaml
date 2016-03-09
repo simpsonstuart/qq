@@ -23,6 +23,8 @@ paths:
     images: "./www/media/images"
     audio: "./www/media/audio"
     video: "./www/media/video"
+  platforms:
+    android: "./platforms/android"
 
 tasks:
   htmlmin:

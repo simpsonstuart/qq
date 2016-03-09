@@ -1,4 +1,4 @@
-storeFile=traqq.keystore
+storeFile=/path/to/project/traqq.keystore
 storePassword=secret
 storeType=jks
 keyAlias=traqq

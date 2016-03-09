@@ -27,6 +27,8 @@ import browserSync from 'browser-sync';
 import env from "gulp-env";
 import replace from "gulp-replace";
 import cordovaLib from 'cordova-lib';
+import shell from 'gulp-shell';
+
 const cordova = cordovaLib.cordova;
 
 env({file: ".env.json"});
@@ -40,7 +42,15 @@ function fullPath (pathString) {
 }
 
 function isMobile() {
-  return (process.env.PLATFORM === 'ios' || process.env.PLATFORM === 'android');
+  return (isIos() || isAndoid());
+}
+
+function isAndoid() {
+     return process.env.PLATFORM === 'android';
+}
+
+function isIos() {
+    return process.env.PLATFORM === 'ios';
 }
 
 function isWeb() {
@@ -80,9 +90,18 @@ if (! fs.existsSync('./www')) fs.mkdirSync('./www');
 
 gulp.task('cordova:clean', (done) => { cordova.clean({},   done); });
 gulp.task('cordova:prepare', (done) => { cordova.prepare({}, done); });
-gulp.task('cordova:build', (done) => { cordova.build({},   done); });
+gulp.task('cordova:build', (done) => {
+    cordova.build({},   done);
+});
 
 gulp.task('clean:www', (callback) => {
+    if (isAndoid()) {
+        shell.task(['cordova-icon']);
+        gulp.src(fullPath('./release-signing.properties'))
+            .pipe(gulp.dest(fullPath(config.paths.platforms.android))
+            );
+    }
+
   del([fullPath(config.paths.public.root)]).then(function () {
     callback();
   });
