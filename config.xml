@@ -53,7 +53,7 @@
         only local backups via iTunes sync. Set to none prevent web storage backups. -->
         <preference name="BackupWebStorage" value="none" />
 
-        <preference name="target-device" value="tablet" />
+        <preference name="target-device" value="universal" />
         <preference name="deployment-target" value="7.0" />
 
         <preference name="SuppressesLongPressGesture" value="true" />
