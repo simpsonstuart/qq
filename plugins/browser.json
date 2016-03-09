@@ -19,10 +19,10 @@
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.mattneally.traqq"
         },
-        "cordova-plugin-statusbar": {
+        "plist-additions": {
             "PACKAGE_NAME": "com.mattneally.traqq"
         },
-        "plist-additions": {
+        "cordova-universal-links-plugin": {
             "PACKAGE_NAME": "com.mattneally.traqq"
         }
     },

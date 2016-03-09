@@ -22,6 +22,16 @@
     <preference name="DisallowOverscroll" value="false" />
     <preference name="Orientation" value="default" />
 
+    <universal-links>
+        <ios-team-id value="T7YC6ZYQA3" />
+        <host name="dev.traqq.pixelandline.net" >
+            <path url="*" />
+        </host>
+        <host name="traqq.pixelandline.net" >
+            <path url="*" />
+        </host>
+    </universal-links>
+
     <!-- iOS Specific Settings -->
     <platform name="ios">
         <preference name="StatusBarOverlaysWebView" value="false" />
