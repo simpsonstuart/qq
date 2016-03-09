@@ -58,6 +58,26 @@
         }
       }
     }
+    .deals-this-quarter {
+      padding-top: 20px;
+      text-align: center;
+      border-left: 1px solid #dbdbdb;
+      width: 50%;
+      small {
+        color: $col-orange;
+        font-weight: 700;
+        &:after {
+          @include fa;
+          @include fa(caret-right);
+          @include fa-size(1.4rem);
+          @include fa-align(text-top);
+          @include fa-left(5px);
+        }
+      }
+      h2 {
+        color: #4c4c4c;
+      }
+    }
     .dash-next-steps {
       background: $col-orange-highlight;
       padding: 10px 20px;
@@ -91,6 +111,17 @@
   }
   .new-deals {
     border-left: 1px solid $col-grey-stroke;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .start-of-fiscal {
+    padding-top: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
     h2 {
       margin-bottom: 20px;
     }

@@ -10,13 +10,13 @@
                 <small>All My Deals</small>
                 <h2>{{ctrl.formatMoney(ctrl.allMyDeals) | limitTo: 16 }}</h2>
             </a>
-            <a href="" class="all-deals" ng-click="$state.go('deal-list')">
+            <a href="" class="deals-this-quarter" ng-click="$state.go('deal-list')">
                 <small>Deals this Quarter</small>
                 <h2>{{ctrl.formatMoney(ctrl.dealsThisQuarter) | limitTo: 16 }}</h2>
             </a>
         </div>
-        <div class="flex">
-            <div class="new-deals">
+        <div class="flex-with-line">
+            <div class="start-of-fiscal">
                 <small>Start of Fiscal Year</small>
                 <h2>{{ctrl.fiscalYearStartMonth}}{{ctrl.fiscalYearStartDate}}</h2>
             </div>

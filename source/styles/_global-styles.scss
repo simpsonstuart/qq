@@ -216,6 +216,11 @@ textarea {
   display: flex;
 }
 
+.flex-with-line {
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+}
+
 .caret {
   position: absolute;
   right: 5px;
