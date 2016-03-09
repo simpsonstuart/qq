@@ -1,5 +1,5 @@
 storeFile=traqq.keystore
 storePassword=secret
-storeType=keystore
+storeType=jks
 keyAlias=traqq
 keyPassword=secret
