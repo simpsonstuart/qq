@@ -7,6 +7,7 @@
   }
 }
 .profile {
+  border-left: 1px solid #dbdbdb;
   border-top: 1px solid $col-grey-stroke;
   border-bottom: 1px solid $col-grey-stroke;
   aside {
@@ -26,11 +27,10 @@
     }
   }
   .profile-details {
-    border-left: 1px solid $col-grey-stroke;
     small {
       text-align: center;
       display: block;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
     }
     .all-deals, .new-deals {
       padding-top: 20px;
@@ -45,6 +45,7 @@
         outline: none;
       }
     }
+
     .all-deals {
       small {
         color: $col-orange;
@@ -61,7 +62,6 @@
     .deals-this-quarter {
       padding-top: 20px;
       text-align: center;
-      border-left: 1px solid #dbdbdb;
       width: 50%;
       small {
         color: $col-orange;
@@ -108,9 +108,11 @@
         }
       }
     }
+    .new-deals, .deals-this-quarter {
+      border-left: 1px solid $col-grey-stroke;
+    }
   }
   .new-deals {
-    border-left: 1px solid $col-grey-stroke;
     h2 {
       margin-bottom: 20px;
     }

@@ -11,6 +11,7 @@
         ctrl.formatMoney = NumberService.formatMoney;
         ctrl.dealsWithoutNextSteps = "0";
         ctrl.formatQuarter = DateAndTimeService.formatQuarter;
+        ctrl.fiscalYearStartDate = 'January 1';
 
 
         _activate();
