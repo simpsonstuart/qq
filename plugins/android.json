@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.mattneally.traqq"
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.mattneally.traqq"
         },
@@ -14,6 +17,9 @@
             "PACKAGE_NAME": "com.mattneally.traqq"
         },
         "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.mattneally.traqq"
+        },
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.mattneally.traqq"
         },
         "cordova-plugin-statusbar": {

@@ -19,9 +19,9 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <!--<icon src="res/icons/icon.svg" />-->
-    <preference name="Fullscreen" value="true" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="Orientation" value="portrait" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="Orientation" value="default" />
 
     <!-- iOS Specific Settings -->
     <platform name="ios">
