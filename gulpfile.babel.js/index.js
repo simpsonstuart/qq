@@ -60,9 +60,11 @@ function isWeb() {
 if(isMobile()){
     var mediaLocationFromStyles = '../media';
     var mediaLocationFromRoot   = './media';
+    var moreDisplayFromStyles = 'none'
 } else {
     var mediaLocationFromStyles = '/media';
     var mediaLocationFromRoot = '/media';
+    var moreDisplayFromStyles = 'block'
 }
 
 console.log('full path: ' + fullPath(config.paths.node_modules));
@@ -223,13 +225,14 @@ gulp.task('styles', () => {
 
 
   return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
+    .pipe(replace("app.MORE_DISPLAY_FROM_STYLES", moreDisplayFromStyles))
     .pipe(plumber())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write())
-    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
-    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 
 });
@@ -237,13 +240,13 @@ gulp.task('styles', () => {
 gulp.task('styles:production', () => {
 
     return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
-
+    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
+    .pipe(replace("app.MORE_DISPLAY_FROM_STYLES", moreDisplayFromStyles))
+    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(plumber())
     .pipe(sass(config.tasks.sass.options))
     .pipe(postcss([cssnano(config.tasks.cssnano.options)]))
     .pipe(gulpif(config.tasks.minifycss.enabled, minifycss(config.tasks.minifycss.options)))
-    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
-    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(gulp.dest(fullPath(config.paths.public.styles)));
 });
 

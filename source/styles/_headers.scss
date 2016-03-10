@@ -36,7 +36,7 @@ header {
         float: left;
         &.more:hover {
           .more-nav {
-            display: block;
+            display: 'app.MORE_DISPLAY_FROM_STYLES';
           }
         }
         a {

@@ -20,14 +20,15 @@
         function _activate() {
 
             var fiscalYearStart = '01-01-2016';
-            var currentDate = moment().format('MM-DD-YYYY');
-            var endFirstQuarter = moment(fiscalYearStart, "MM-DD-YYYY").add(3, 'months');
-            var endSecondQuarter = moment(endFirstQuarter, "MM-DD-YYYY").add(3, 'months');
-            var endThirdQuarter = moment(endSecondQuarter, "MM-DD-YYYY").add(3, 'months');
-            var endFourthQuarter = moment(endThirdQuarter, "MM-DD-YYYY").add(3, 'months');
+            var startFirstQuarter = moment(fiscalYearStart, "MM-DD-YYYY");
+            var currentDate = moment();
+            var endFirstQuarter = moment(startFirstQuarter).add(3, 'months');
+            var endSecondQuarter = moment(endFirstQuarter).add(3, 'months');
+            var endThirdQuarter = moment(endSecondQuarter).add(3, 'months');
+            var endFourthQuarter = moment(endThirdQuarter).add(3, 'months');
 
-            if(moment(currentDate).isBetween(fiscalYearStart, endFirstQuarter) || moment(currentDate).isSame(fiscalYearStart)){
-                ctrl.currentQuarterStart = fiscalYearStart;
+            if(moment(currentDate).isBetween(startFirstQuarter, endFirstQuarter) || moment(currentDate).isSame(startFirstQuarter)){
+                ctrl.currentQuarterStart = startFirstQuarter;
                 ctrl.currentQuarterEnd = endFirstQuarter;
             }
             if (moment(currentDate).isBetween(endFirstQuarter, endSecondQuarter) || moment(currentDate).isSame(endFirstQuarter)){
