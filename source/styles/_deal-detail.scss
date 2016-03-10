@@ -144,7 +144,7 @@
         @include fa(star);
         @include fa-size(3.5rem);
       }
-      &.active, &:hover {
+      &.active{
         color: $col-blue;
       }
     }

@@ -10,6 +10,7 @@
         ctrl.clicked = clicked;
         ctrl.MenuClicked = false;
         ctrl.getSyncCount = getSyncCount;
+        ctrl.isShown = {'display': 'block'};
 
         _activate();
 
@@ -37,9 +38,9 @@
 
 
         function clicked (){
-            console.log('clicked');
             ctrl.MenuClicked = ! ctrl.MenuClicked;
         }
+
 
         function _getSyncCount(bustCache) {
             UserService.syncCount(bustCache).then(function (response) {
