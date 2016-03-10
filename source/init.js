@@ -12,7 +12,6 @@ var app = {
     // deviceready Event Handler
     onDeviceReady: function() {
         universalLinks.subscribe('ul_Traqq', app.didLaunchAppFromLink);
-        //StatusBar.hide();
     },
 
     didLaunchAppFromLink: function(eventData) {

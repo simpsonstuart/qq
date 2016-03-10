@@ -26,13 +26,7 @@
     <preference name="StatusBarStyle" value="lightcontent" />
 
     <universal-links>
-        <ios-team-id value="T7YC6ZYQA3" />
-        <host name="dev.traqq.pixelandline.net" >
-            <path url="*" />
-        </host>
-        <host name="traqq.pixelandline.net" >
-            <path url="*" />
-        </host>
+        <host name="dev.traqq.pixelandline.net" scheme="https" event="ul_Traqq" />
     </universal-links>
 
     <!-- iOS Specific Settings -->
