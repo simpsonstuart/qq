@@ -93,6 +93,16 @@
         <!-- iOS Hooks -->
     </platform>
 
+    <!-- Android Specific Settings -->
+    <platform name="android">
+        <icon src="res/icons/android/ldpi.png" density="ldpi" />
+        <icon src="res/icons/android/mdpi.png" density="mdpi" />
+        <icon src="res/icons/android/hdpi.png" density="hdpi" />
+        <icon src="res/icons/android/xhdpi.png" density="xhdpi" />
+        <icon src="res/icons/android/xxhdpi.png" density="xxhdpi" />
+        <icon src="res/icons/android/xxxhdpi.png" density="xxxhdpi" />
+    </platform>
+
     <!-- Browser Specific Settings -->
     <platform name="browser">
     </platform>
