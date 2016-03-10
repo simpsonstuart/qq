@@ -7,7 +7,7 @@
             <li><a ui-sref-active-eq="active" class="deals" ui-sref="deal-list">My Deals</a></li>
             <li><a ui-sref-active-eq="active" class="next" ui-sref="next-steps">Next Steps</a></li>
             <li><a ui-sref-active-eq="active" class="sync" ui-sref="sync">Sync <span ng-bind="ctrl.getSyncCount()"></span></a></li>
-            <li class="more"><a ui-sref-active-eq="active" class="more-icon">More</a>
+            <li class="more"><a ui-sref-active-eq="active" class="more-icon" ng-style="ctrl.isShown">More</a>
                 <ul class="more-nav">
                     <li><a ui-sref-active-eq="active" class="favorites" ui-sref="favorites">Favorites</a></li>
                     <li><a ui-sref-active-eq="active" class="settings" ui-sref="settings">Settings</a></li>

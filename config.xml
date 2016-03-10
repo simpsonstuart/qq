@@ -20,7 +20,10 @@
     <allow-intent href="geo:*" />
     <preference name="Fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="false" />
-    <preference name="Orientation" value="default" />
+    <preference name="Orientation" value="all" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
 
     <universal-links>
         <ios-team-id value="T7YC6ZYQA3" />
@@ -35,8 +38,6 @@
     <!-- iOS Specific Settings -->
     <platform name="ios">
         <preference name="Orientation" value="all" />
-
-        <preference name="StatusBarOverlaysWebView" value="false" />
 
         <!-- When set to true, the web view does not attempt to render incoming content as it
         arrives. Instead, the view’s current contents remain in place until all of the new content
