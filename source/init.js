@@ -15,7 +15,7 @@ var app = {
     },
 
     didLaunchAppFromLink: function(eventData) {
-        alert('Did launch application from the link: ' + eventData);
+        alert('App Launched from link!: ' + eventData);
     }
 };
 

@@ -139,7 +139,8 @@ gulp.task('html', () => {
 
   if (isWeb()) {
     gulp.src([
-          config.paths.source.root + '/apple-app-site-association'
+          config.paths.source.root + '/apple-app-site-association',
+          './ul_web_hooks/android/android_web_hook.html'
         ])
         .pipe(gulp.dest(fullPath(config.paths.public.html)));
   }
