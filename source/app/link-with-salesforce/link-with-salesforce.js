@@ -29,7 +29,7 @@
         }
 
         function salesforceLogin() {
-            if(AppConfig.platform === 'ios') {
+            if(AppConfig.platform === 'ios' || AppConfig.platform === 'android') {
                 var query = {
                     "token": AuthService.token()
                 };
