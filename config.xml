@@ -25,6 +25,16 @@
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="lightcontent" />
 
+    <universal-links>
+        <ios-team-id value="T7YC6ZYQA3" />
+        <host name="dev.traqq.pixelandline.net" >
+            <path url="*" />
+        </host>
+        <host name="traqq.pixelandline.net" >
+            <path url="*" />
+        </host>
+    </universal-links>
+
     <!-- iOS Specific Settings -->
     <platform name="ios">
         <preference name="Orientation" value="all" />

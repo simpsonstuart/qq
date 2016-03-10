@@ -35,7 +35,6 @@ npm install -g cordova@5.4.* gulp-cli
 ```sh
 cordova plugin add cordova-plugin-inappbrowser
 cordova plugin add cordova-universal-links-plugin
-cordova plugin add cordova-plugin-statusbar
 cordova plugin add ./custom-plugins/plist-additions
 ```
 
