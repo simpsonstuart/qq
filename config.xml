@@ -27,6 +27,7 @@
 
     <universal-links>
         <host name="dev.traqq.pixelandline.net" scheme="https" event="ul_Traqq" />
+        <host name="traqq.pixelandline.net" scheme="https" event="ul_Traqq" />
     </universal-links>
 
     <!-- iOS Specific Settings -->
