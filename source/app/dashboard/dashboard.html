@@ -9,8 +9,8 @@
                 <a href="" class="all-deals" ng-click="$state.go('deal-list')">
                     <small>All My Deals</small>
                     <h2>{{ctrl.formatMoney(ctrl.allMyDeals) | limitTo: 16 }}</h2>
-                    <a class="deals-this-quarter" ui-sref="edit-close-date({deal_id: ctrl.deal.id, close_date: ctrl.deal.close_date})">
-                        <small>Deals this Quarter</small>
+                    <a class="deals-this-quarter" ui-sref="deal-list({deals_filter: 'quarter' })">
+                        <small>Current Quarter</small>
                         <h2>{{ctrl.formatMoney(ctrl.dealsThisQuarter) | limitTo: 16 }}</h2>
                     </a>
                 </a>
