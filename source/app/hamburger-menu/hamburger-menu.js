@@ -17,7 +17,6 @@
         }
 
         function clicked (){
-            console.log('clicked');
             ctrl.MenuClicked = ! ctrl.MenuClicked;
         }
     }

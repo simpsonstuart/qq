@@ -7,8 +7,8 @@
             <li><a ui-sref-active-eq="active" class="deals" ui-sref="deal-list">My Deals</a></li>
             <li><a ui-sref-active-eq="active" class="next" ui-sref="next-steps">Next Steps</a></li>
             <li><a ui-sref-active-eq="active" class="sync" ui-sref="sync">Sync <span ng-bind="ctrl.getSyncCount()"></span></a></li>
-            <li class="more"><a ui-sref-active-eq="active" class="more-icon" ng-style="ctrl.isShown">More</a>
-                <ul class="more-nav">
+            <li class="more"><a ui-sref-active-eq="active" class="more-icon" ng-click="ctrl.moreClicked()">More</a>
+                <ul class="more-nav" ng-show="ctrl.moreShown">
                     <li><a ui-sref-active-eq="active" class="favorites" ui-sref="favorites">Favorites</a></li>
                     <li><a ui-sref-active-eq="active" class="settings" ui-sref="settings">Settings</a></li>
                     <li><a ui-sref-active-eq="active" class="logout" ng-click="ctrl.logOut()" href="#">Logout</a></li>

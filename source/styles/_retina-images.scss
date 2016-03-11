@@ -3,7 +3,7 @@
 @media (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
   button .salesforce:before {
-    background: url(app.MEDIA_LOCATION_FROM_STYLES/images/salesforce-logo@2x.png) no-repeat;
+    background: $salesforce-logo-2x;
     background-size: 100% auto;
   }
 }

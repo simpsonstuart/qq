@@ -36,7 +36,7 @@ header {
         float: left;
         &.more:hover {
           .more-nav {
-            display: $more-link-display;
+           display: block;
           }
         }
         a {
@@ -93,7 +93,7 @@ header {
     }
   }
   .more-nav {
-    display: none;
+    display: $more-link-display;
     background: #646464;
     position: absolute;
     z-index: 1;

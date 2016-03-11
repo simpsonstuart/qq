@@ -3,14 +3,17 @@
     angular.module('app')
         .controller('DefaultHeaderController', DefaultHeaderController);
 
-    function DefaultHeaderController(AuthService, $state, UserService, $rootScope) {
+    function DefaultHeaderController(AuthService, $state, UserService, $rootScope, AppConfig) {
         var ctrl = this;
         ctrl.logOut = logOut;
-        ctrl.syncSalesforce = syncSalesforce;
         ctrl.clicked = clicked;
         ctrl.MenuClicked = false;
+        ctrl.moreClicked = moreClicked;
         ctrl.getSyncCount = getSyncCount;
-        ctrl.isShown = {'display': 'block'};
+
+        if(AppConfig.platform === 'web') {
+            ctrl.moreShown = true;
+        }
 
         _activate();
 
@@ -24,9 +27,6 @@
             $state.go('login');
         }
 
-        function syncSalesforce() {
-            alert("Implement me!");
-        }
 
         function getSyncCount() {
             return UserService.getSyncCount();
@@ -39,6 +39,13 @@
 
         function clicked (){
             ctrl.MenuClicked = ! ctrl.MenuClicked;
+        }
+
+        function moreClicked (){
+            console.log('clicked');
+            if(AppConfig.platform === 'android' || AppConfig.platform === 'ios'){
+                ctrl.moreShown = ! ctrl.moreShown;
+            }
         }
 
 
