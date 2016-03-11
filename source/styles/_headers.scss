@@ -21,7 +21,7 @@ header {
     }
   }
   .logo {
-    background: url(app.MEDIA_LOCATION_FROM_STYLES/images/logo.svg) no-repeat;
+    background: $logo-background-url;
     text-indent: -9999px;
     width: 50px;
     height: 41px;
@@ -36,7 +36,7 @@ header {
         float: left;
         &.more:hover {
           .more-nav {
-            display: 'app.MORE_DISPLAY_FROM_STYLES';
+            display: $more-link-display;
           }
         }
         a {
@@ -292,7 +292,7 @@ header.back {
 header.logo-nav {
   padding: 10px 0;
   .logo {
-    background: url(app.MEDIA_LOCATION_FROM_STYLES/images/logo.svg) no-repeat;
+    background: $logo-background-url;
     margin: 0 auto;
     float: none;
     width: 50px;
@@ -364,7 +364,7 @@ header.logo-nav {
     height: 46px;
     box-sizing: border-box;
     .logo {
-      background: url(app.MEDIA_LOCATION_FROM_STYLES/images/logo.svg) no-repeat;
+      background: $logo-background-url;
       margin: 0 auto;
       float: none;
       width: 43px;

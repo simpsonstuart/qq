@@ -57,15 +57,28 @@ function isWeb() {
   return process.env.PLATFORM == 'web';
 }
 
+var buildPath = './source/styles/config/_build.scss';
 if(isMobile()){
-    var mediaLocationFromStyles = '../media';
     var mediaLocationFromRoot   = './media';
-    var moreDisplayFromStyles = 'none'
+
+
+    if (fs.existsSync(buildPath)) fs.unlinkSync(buildPath);
+    fs.writeFile(buildPath, '$logo-background-url: url(../media/images/logo.svg) no-repeat;\n $more-link-display: none;', function (err) {
+        if (err) return console.log(err);
+        console.log('error building build.scss');
+    });
+
 } else {
-    var mediaLocationFromStyles = '/media';
     var mediaLocationFromRoot = '/media';
-    var moreDisplayFromStyles = 'block'
+
+    if (fs.existsSync(buildPath)) fs.unlinkSync(buildPath);
+    fs.writeFile(buildPath, '$logo-background-url: url(/media/images/logo.svg) no-repeat;\n $more-link-display: block;', function (err) {
+        if (err) return console.log(err);
+        console.log('error building build.scss');
+    });
 }
+
+
 
 console.log('full path: ' + fullPath(config.paths.node_modules));
 
@@ -204,7 +217,6 @@ gulp.task('javascript', () => {
       .pipe(replace("app.OAUTH_URI", process.env.OAUTH_URI))
       .pipe(replace("app.OAUTH_RETURN_URI", process.env.OAUTH_RETURN_URI))
       .pipe(replace("app.ORGANIZATION_RETURN_URI", process.env.ORGANIZATION_RETURN_URI))
-      .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
       .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
       .pipe(plumber())
       .pipe(sourcemaps.init({loadMaps: true}))
@@ -223,11 +235,10 @@ gulp.task('javascript:minify', () => {
 
 gulp.task('styles', () => {
 
+    gulp.src(fullPath(config.paths.source.styles + '/' + config.globs.styles))
+        .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
 
-  return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
-    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
-    .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
-    .pipe(replace("app.MORE_DISPLAY_FROM_STYLES", moreDisplayFromStyles))
+  return gulp.src(fullPath(config.paths.source.styles + '/' + config.globs.styles))
     .pipe(plumber())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass(config.tasks.sass.options))
@@ -239,9 +250,7 @@ gulp.task('styles', () => {
 
 gulp.task('styles:production', () => {
 
-    return gulp.src(path.join(fullPath(config.paths.source.styles), config.globs.styles))
-    .pipe(replace("app.MEDIA_LOCATION_FROM_STYLES", mediaLocationFromStyles))
-    .pipe(replace("app.MORE_DISPLAY_FROM_STYLES", moreDisplayFromStyles))
+    return gulp.src(fullPath(config.paths.source.styles + '/' + config.globs.styles))
     .pipe(replace("app.MEDIA_LOCATION_FROM_ROOT", mediaLocationFromRoot))
     .pipe(plumber())
     .pipe(sass(config.tasks.sass.options))
