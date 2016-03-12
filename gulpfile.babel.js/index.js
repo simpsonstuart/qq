@@ -63,7 +63,7 @@ if(isMobile()){
 
 
     if (fs.existsSync(buildPath)) fs.unlinkSync(buildPath);
-    fs.writeFile(buildPath, '$logo-background-url: url(../media/images/logo.svg) no-repeat;\n $more-link-display: block;\n $salesforce-logo-location :url(../media/images/salesforce-logo.png) no-repeat;\n $salesforce-logo-2x: url(../media/images/salesforce-logo@2x.png) no-repeat;', function (err) {
+    fs.writeFile(buildPath, '$logo-background-url: url(../media/images/logo.svg) no-repeat;\n $more-link-display: block;\n $salesforce-logo-location :url(../media/images/salesforce-logo.png) no-repeat;\n $salesforce-logo-2x: url(../media/images/salesforce-logo@2x.png) no-repeat;\n $col-orange-dependent: n;', function (err) {
         if (err) return console.log(err);
         console.log('error building build.scss');
     });
@@ -72,7 +72,7 @@ if(isMobile()){
     var mediaLocationFromRoot = '/media';
 
     if (fs.existsSync(buildPath)) fs.unlinkSync(buildPath);
-    fs.writeFile(buildPath, '$logo-background-url: url(/media/images/logo.svg) no-repeat;\n $more-link-display: none;\n $salesforce-logo-location :url(/media/images/salesforce-logo.png) no-repeat;\n $salesforce-logo-2x: url(/media/images/salesforce-logo@2x.png) no-repeat;', function (err) {
+    fs.writeFile(buildPath, '$logo-background-url: url(/media/images/logo.svg) no-repeat;\n $more-link-display: none;\n $salesforce-logo-location :url(/media/images/salesforce-logo.png) no-repeat;\n $salesforce-logo-2x: url(/media/images/salesforce-logo@2x.png) no-repeat;\n $col-orange-dependent: #e05b03;', function (err) {
         if (err) return console.log(err);
         console.log('error building build.scss');
     });

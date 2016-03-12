@@ -13,6 +13,7 @@
 
         if(AppConfig.platform === 'web') {
             ctrl.moreShown = true;
+            ctrl.hoverShown = false;
         }
 
         _activate();
@@ -45,6 +46,7 @@
             console.log('clicked');
             if(AppConfig.platform === 'android' || AppConfig.platform === 'ios'){
                 ctrl.moreShown = ! ctrl.moreShown;
+                ctrl.hoverShown = ! ctrl.hoverShown;
             }
         }
 

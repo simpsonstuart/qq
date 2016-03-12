@@ -44,8 +44,12 @@ header {
           display: block;
           position: relative;
           padding: 10px 27px;
-          &:hover, &.active {
+           &.active {
             background: $col-orange-active;
+            color: #fff;
+          }
+          &:hover{
+            background: $col-orange-dependent;
             color: #fff;
           }
           &:before {
