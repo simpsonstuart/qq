@@ -104,8 +104,7 @@
         }
 
         function notLinkedWithSalesforce() {
-            var userData = authenticatedUser();
-            return !! userData.salesforce_id;
+            return !authenticatedUser().salesforce_id;
         }
 
         function notVerified() {

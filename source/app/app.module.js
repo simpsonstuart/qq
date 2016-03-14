@@ -59,6 +59,7 @@
         $rootScope.$on('$stateChangeStart', stateChangeStart);
 ////////////
         function stateChangeStart(event, next) {
+            console.log(userIsNotLinkedWithSalesforce());
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
 
@@ -81,6 +82,7 @@
 
             if(userIsNotLinkedWithSalesforce()){
                 event.preventDefault();
+
                 $state.go('link-with-salesforce');
             }
 
@@ -99,7 +101,7 @@
             }
 
             function userIsNotLinkedWithSalesforce() {
-                return !(next.name == 'get-started') && next.restricted && AuthService.loggedIn() && AuthService.notLinkedWithSalesforce();
+                return !(next.name == 'get-started') && !(next.name == 'link-with-salesforce') && next.restricted && AuthService.loggedIn() && AuthService.notLinkedWithSalesforce();
             }
 
             function userIsTryingToGetToLoginWhileLoggedIn() {

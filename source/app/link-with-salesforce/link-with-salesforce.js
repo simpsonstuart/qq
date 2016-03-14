@@ -2,9 +2,9 @@
     'use strict';
     angular.module('app.link-with-salesforce')
         .controller('LinkWithSalesforce', LinkWithSalesforce);
-    LinkWithSalesforce.$inject = ['$state', 'UrlService', '$window', 'AppConfig', 'AuthService'];
+    LinkWithSalesforce.$inject = ['$state', 'UrlService', '$window', 'AppConfig', 'AuthService', 'UserService'];
 
-    function LinkWithSalesforce($state, UrlService, $window, AppConfig, AuthService) {
+    function LinkWithSalesforce($state, UrlService, $window, AppConfig, AuthService, UserService) {
         var ctrl = this;
         ctrl.salesforceLogin = salesforceLogin;
         var linked = $state.params.linked;
@@ -14,18 +14,24 @@
             localStorage.setItem('linkedWithSalesforce', 'true');
             $window.close();
 
+            UserService.profile('current').then(function (data) {
+                AuthService.createTokenExpirationTime();
+                AuthService.setUser(data);
+            }).then(function () {
+                $state.go('deal-import');
+            });
+
         }
 
         function checkLinkedStatus() {
 
                 if (localStorage.getItem('linkedWithSalesforce')) {
                     localStorage.removeItem('linkedWithSalesforce');
-                    $state.go('deal-import');
+                        $state.go('deal-import');
+
                 } else {
                     setTimeout(checkLinkedStatus, 50);
                 }
-
-
         }
 
         function salesforceLogin() {
@@ -45,7 +51,7 @@
                     console.log('running loadstop');
                     if (event.url.match("oauth/success")) {
                         loginPopup.close();
-                        $state.go('deal-import');
+                            $state.go('deal-import');
                     }
                 });
             } else {
