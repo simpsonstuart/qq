@@ -85,9 +85,8 @@
            return ApiService.post('users/verify/' + token);
         }
 
-        function changeFiscalYear(fiscalYearMonth, fiscalYearDate){
-
-            return ApiService.post('users/' + userId + '/fiscalYearMonth', fiscalYearMonth, fiscalYearDate);
+        function changeFiscalYear(fiscalYearStartMonth) {
+            return ApiService.post('users/current/fiscalYearMonth', {fiscal_year_start_month: fiscalYearStartMonth});
         }
     }
 })();

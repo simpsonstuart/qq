@@ -2,9 +2,9 @@
     'use strict';
     angular.module('app.settings')
         .controller('Settings', Settings);
-    Settings.$inject = ['$scope', 'AuthService', '$state', 'UserService', '$stateParams', '_', 'moment'];
+    Settings.$inject = ['$scope', 'AuthService', '$state', 'UserService', '$stateParams', '_', 'moment', 'DateAndTimeService'];
 
-    function Settings($scope, AuthService, $state, UserService , $stateParams, _ , moment) {
+    function Settings($scope, AuthService, $state, UserService , $stateParams, _ , moment, DateAndTimeService) {
         var ctrl            = this;
         var user_id         = $stateParams.user_id;
         var daysInMonth = [];
@@ -22,6 +22,7 @@
 
 
         activate();
+
         function passwordReset() {
             return UserService.changePassword('current',
                 {'email': AuthService.authenticatedUser().email, 'password': $scope.current_password, 'new_password': $scope.pw2}
@@ -32,6 +33,7 @@
                     ctrl.passwordError = response.message;
                 });
         }
+
         function emailChange() {
             var email = $scope.new_email;
             return UserService.changeEmail('current', {'password': $scope.current_password_email, 'email': AuthService.authenticatedUser().email,'new_email': email})
@@ -45,16 +47,17 @@
                     ctrl.emailError = response.message;
                 });
         }
+
         function changeFiscalYear() {
-            return UserService.changeFiscalYear('current',
-                {'email': AuthService.authenticatedUser().email, 'fiscalYearStartMonth': ctrl.selectedMonth}
-                )
+            return UserService.changeFiscalYear(DateAndTimeService.monthNumber(ctrl.selectedMonth))
                 .then(function (response) {
+                    console.log('changed month');
                     ctrl.expandShowFiscalYear = !ctrl.expandShowFiscalYear;
                 }, function (response) {
                     ctrl.fiscalYearError = response.message;
                 });
         }
+
         function emailVerify() {
             var reg = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$/;
             if (reg.test($scope.new_email)){
@@ -65,10 +68,12 @@
                 $scope.email_form.$invalid = true;
             }
         }
+
         function logOut() {
             AuthService.logOut();
             $state.go('login');
         }
+
         function clickPassword() {
             ctrl.expand_show_password = !ctrl.expand_show_password;
             $scope.current_password = '';
@@ -76,23 +81,27 @@
             $scope.pw2 = '';
             $scope.password_form.$setPristine(true);
         }
+
         function clickEmail() {
             ctrl.expand_show_email = !ctrl.expand_show_email;
             $scope.current_password_email = '';
             $scope.new_email = '';
             $scope.email_form.$setPristine(true);
         }
+
         function clickFiscalYear() {
             ctrl.expandShowFiscalYear = !ctrl.expandShowFiscalYear;
             $scope.currentFiscalYear = '';
             $scope.newFiscalYear = '';
             $scope.fiscalYearForm.$setPristine(true);
         }
+
         function monthChanged (selectedMonth) {
-            var dateNumber = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(selectedMonth) / 3 + 1 ;
+            var dateNumber = DateAndTimeService.monthNumber(selectedMonth);
             ctrl.numberOfDays = moment(dateNumber, "MM").daysInMonth();
              ctrl.dates = _.range(1, ctrl.numberOfDays + 1);
         }
+
         function activate() {
             UserService.profile(function () {
                 return user_id ? user_id : 'current';

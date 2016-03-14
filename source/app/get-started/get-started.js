@@ -2,9 +2,9 @@
     'use strict';
     angular.module('app.get-started')
         .controller('GetStarted', GetStarted);
-    GetStarted.$inject = ['$state', 'UserService', '$timeout'];
+    GetStarted.$inject = ['$state', 'UserService', '$timeout', 'AuthService'];
 
-    function GetStarted($state, UserService, $timeout) {
+    function GetStarted($state, UserService, $timeout, AuthService) {
         var ctrl = this;
         var returnUrl = '/login';
         ctrl.error = false;
@@ -29,8 +29,6 @@
                     }).then(function () {
                         $state.go('link-with-salesforce');
                     });
-
-                    $state.go('link-with-salesforce');
                 }, function () {
                     ctrl.verifying = false;
                     ctrl.invalidCode = true;
