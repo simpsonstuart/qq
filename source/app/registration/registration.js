@@ -6,7 +6,7 @@
 
     function Registration($scope, $state, UserService, UrlService) {
         var ctrl         = this;
-        var returnUrl    = '/get-started';
+        var returnUrl    = '/login';
         ctrl.register    = register;
         ctrl.emailVerify = emailVerify;
 

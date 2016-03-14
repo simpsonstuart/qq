@@ -14,4 +14,13 @@
         <button ng-click="ctrl.verify()">Verify</button>
     </div>
 </div>
+    <div class="registration-confirmation">
+        <a class="resend-email" ng-click="ctrl.resendVerification()" ng-show="ctrl.resendEnabled">Resend Verification Email</a>
+        <p class="email-success" ng-show="ctrl.verificationSent">Verification Email Sent!</p>
+        <p class="email-wait" ng-show="ctrl.showCountdown"> Please wait {{ctrl.countDown}} to resend email</p>
+        <div class="email-error" ng-show="ctrl.sendError">
+            <p>Error: Verification email couldn't be sent. Please register again.</p>
+            <button ui-sref="registration">Back to Registration</button>
+        </div>
+    </div>
 
