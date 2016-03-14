@@ -16,7 +16,8 @@
             refreshToken:              refreshToken,
             setUser:                   setUser,
             token:                     token,
-            notVerified:               notVerified
+            notVerified:               notVerified,
+            notLinkedWithSalesforce:    notLinkedWithSalesforce
         };
 
 
@@ -102,17 +103,13 @@
             }
         }
 
-        function notVerified() {
-            console.log(authenticatedUser());
-            var userData = JSON.parse(localStorage.getItem('user'));
+        function notLinkedWithSalesforce() {
+            var userData = authenticatedUser();
+            return !! userData.salesforce_id;
+        }
 
-            if(userData.verified === true){
-                console.log('false');
-                return false;
-            } else {
-                console.log('true');
-                return true;
-            }
+        function notVerified() {
+            return !authenticatedUser().verified;
         }
     }
 })();

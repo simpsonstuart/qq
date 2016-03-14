@@ -69,15 +69,10 @@
             if (token) {
                 AuthService.logIn(token).then(function () {
                     UserService.profile('current').then(function (data) {
-                        var user = JSON.stringify(data);
                         AuthService.createTokenExpirationTime();
-                        localStorage.setItem('user', user);
+                        AuthService.setUser(data);
                     }).then(function () {
-                        if (!ctrl.currentUser.salesforce_id) {
-                            $state.go('link-with-salesforce');
-                        } else {
-                            $state.go('dashboard');
-                        }
+                        $state.go('dashboard');
                     });
                 });
             }

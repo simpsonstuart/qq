@@ -32,8 +32,8 @@
             return ApiService.get('users', 'filter=pending');
         }
 
-        function profile(user_id) {
-            return ApiService.get('users/' + user_id, 'include=active_deals_amount,next_steps_count,deals_without_next_steps_count,last_deal_import_amount');
+        function profile(user_id, bustCache) {
+            return ApiService.get('users/' + user_id, 'include=active_deals_amount,next_steps_count,deals_without_next_steps_count,last_deal_import_amount', undefined, undefined, bustCache);
         }
 
         function get(user_id) {

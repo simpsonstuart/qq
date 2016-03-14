@@ -5,7 +5,7 @@
     function config($stateProvider) {
         $stateProvider.state('get-started', {
             url: '/get-started?token',
-            restricted: false,
+            restricted: true,
             data: {
                 bodyClasses: 'login',
                 headerClasses: 'logo-nav',

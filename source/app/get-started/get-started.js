@@ -23,6 +23,13 @@
                 UserService.verify(ctrl.verifyCode).then(function () {
                     ctrl.verifying = false;
                     ctrl.invalidCode = false;
+                    UserService.profile('current').then(function (data) {
+                        AuthService.createTokenExpirationTime();
+                        AuthService.setUser(data);
+                    }).then(function () {
+                        $state.go('link-with-salesforce');
+                    });
+
                     $state.go('link-with-salesforce');
                 }, function () {
                     ctrl.verifying = false;

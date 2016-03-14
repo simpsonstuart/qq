@@ -61,21 +61,54 @@
         function stateChangeStart(event, next) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
-            if (next.restricted && (!AuthService.loggedIn())) {
 
+            AuthService.refreshToken();
+
+            if (userIsNotLoggedIn()) {
                 event.preventDefault();
                 $state.go('login');
             }
-            if (next.name == 'login' && AuthService.loggedIn()) {
-                event.preventDefault();
-                $state.go('dashboard');
-            }
-            if(next.restricted && AuthService.loggedIn() && AuthService.notVerified()){
+
+            if(userIsNotVerified()){
                 event.preventDefault();
                 $state.go('get-started');
             }
 
-            AuthService.refreshToken();
+            if(userIsVerifiedAndAttemptingToGetToGetStartedPage()){
+                event.preventDefault();
+                $state.go('dashboard');
+            }
+
+            if(userIsNotLinkedWithSalesforce()){
+                event.preventDefault();
+                $state.go('link-with-salesforce');
+            }
+
+            if (userIsTryingToGetToLoginWhileLoggedIn()) {
+                event.preventDefault();
+                $state.go('dashboard');
+
+            }
+
+            function userIsNotLoggedIn() {
+                return next.restricted && (!AuthService.loggedIn());
+            }
+
+            function userIsNotVerified() {
+                return !(next.name == 'get-started') && next.restricted && AuthService.loggedIn() && AuthService.notVerified();
+            }
+
+            function userIsNotLinkedWithSalesforce() {
+                return !(next.name == 'get-started') && next.restricted && AuthService.loggedIn() && AuthService.notLinkedWithSalesforce();
+            }
+
+            function userIsTryingToGetToLoginWhileLoggedIn() {
+                return next.name == 'login' && AuthService.loggedIn();
+            }
+
+            function userIsVerifiedAndAttemptingToGetToGetStartedPage() {
+                return (next.name == 'get-started') && AuthService.loggedIn() && AuthService.authenticatedUser().verified;
+            }
         }
 
     }
