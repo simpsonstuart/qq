@@ -43,7 +43,6 @@
         }
 
         function moreClicked (){
-            console.log('clicked');
             if(AppConfig.platform === 'android' || AppConfig.platform === 'ios'){
                 ctrl.moreShown = ! ctrl.moreShown;
                 ctrl.hoverShown = ! ctrl.hoverShown;

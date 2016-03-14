@@ -57,7 +57,7 @@
         });
 
         $rootScope.$on('$stateChangeStart', stateChangeStart);
-
+////////////
         function stateChangeStart(event, next) {
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
@@ -70,9 +70,14 @@
                 event.preventDefault();
                 $state.go('dashboard');
             }
+            if(next.restricted && AuthService.loggedIn() && AuthService.notVerified()){
+                event.preventDefault();
+                $state.go('get-started');
+            }
 
             AuthService.refreshToken();
         }
+
     }
 
     config.$inject = ['AppConfig', '$urlRouterProvider', '$httpProvider', '$locationProvider', '$authProvider'];

@@ -15,7 +15,8 @@
             createTokenExpirationTime: createTokenExpirationTime,
             refreshToken:              refreshToken,
             setUser:                   setUser,
-            token:                     token
+            token:                     token,
+            notVerified:               notVerified
         };
 
 
@@ -98,6 +99,19 @@
             } else {
                 localStorage.removeItem('user');
                 localStorage.removeItem('tokenExpiration');
+            }
+        }
+
+        function notVerified() {
+            console.log(authenticatedUser());
+            var userData = JSON.parse(localStorage.getItem('user'));
+
+            if(userData.verified === true){
+                console.log('false');
+                return false;
+            } else {
+                console.log('true');
+                return true;
             }
         }
     }

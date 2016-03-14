@@ -10,10 +10,6 @@
                         <option value="" disabled selected>Month</option>
                         <option ng-repeat="month in ctrl.months" value="{{month}}">{{month}}</option>
                     </select>
-                    <select class="fiscalYearSelect" data-ng-model="ctrl.selectedDate" required>
-                        <option value="" disabled selected>Day</option>
-                        <option ng-repeat="date in ctrl.dates" value="{{date}}">{{date}}</option>
-                    </select>
                 </p>
                 <button type="submit" ng-disabled="fiscalYearForm.$invalid" class="fiscalYearButton">Set</button>
             </fieldset>

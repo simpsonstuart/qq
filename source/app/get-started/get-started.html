@@ -1,15 +1,17 @@
 <div class="get-started">
-    <div ng-if="ctrl.showGetStarted">
-    <h2>Account Created!</h2>
-    <p>Knowing the right questions to ask is the start of a successful campaign. Traqq allows you to do just that.</p>
-    <button class="submit get-started" ng-click="ctrl.getStarted()">Login to Get Started</button>
-    </div>
-    <loading ng-show="ctrl.verifying" message="Verifying…"></loading>
-    <div ng-if="ctrl.error">
-        <h1 class="email-error">Link invalid or expired!</h1>
+    <div>
+    <h2>Enter Email Verification Code</h2>
+    <div ng-if="ctrl.invalidCode">
+        <h1 class="email-error">Verification Code is invalid or expired!</h1>
         <div class="email-error">
-        <button ui-sref="registration">Back to Registration</button>
         </div>
+    </div>
+    <div>
+        <p>
+            <small class="error-list" ng-if="login_form.email.$invalid && !login_form.email.$pristine">Verification Code required!</small>
+            <input type="text" name="verifyCode" ng-model="ctrl.verifyCode" ng-change="ctrl.reValid()" required placeholder="Verification Code"/>
+        </p>
+        <button ng-click="ctrl.verify()">Verify</button>
     </div>
 </div>
 

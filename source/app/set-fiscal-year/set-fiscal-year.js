@@ -19,11 +19,8 @@
 
         function setFiscalYear() {
 
-            console.log(ctrl.selectedMonth);
-            console.log(ctrl.selectedDate);
-
             return UserService.changeFiscalYear('current',
-                {'email': AuthService.authenticatedUser().email, 'fiscalYearStartMonth': ctrl.selectedMonth, 'fiscalYearStartDate': ctrl.selectedDate}
+                {'email': AuthService.authenticatedUser().email, 'fiscalYearStartMonth': ctrl.selectedMonth}
                 )
                 .then(function (response) {
                     $state.go('dashboard');

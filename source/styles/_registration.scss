@@ -1,6 +1,6 @@
 .registration-confirmation,
 .link-salesforce,
-.get-started {
+.get-started{
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
@@ -33,18 +33,11 @@
     margin-top: 20px;
   }
 }
+.get-started button{
+    margin: 15px auto !important;
 
-.get-started {
-  h2 {
-    &:before {
-      @include fa;
-      @include fa(check-circle);
-      @include fa-size(2.2rem);
-      @include fa-right(5px);
-      color: $col-green;
-    }
-  }
 }
+
 
 .email-success {
   color: $col-green;

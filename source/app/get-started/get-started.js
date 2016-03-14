@@ -9,31 +9,26 @@
         ctrl.error = false;
         ctrl.showGetStarted = false;
         ctrl.verifying = false;
-        ctrl.getStarted = getStarted;
+        ctrl.verify = verify;
+        ctrl.invalidCode = false;
+        ctrl.reValid = reValid;
 
-        activate();
 
-        function activate() {
-            var token = $state.params.token;
+        function verify() {
             ctrl.verifying = true;
-
-            if (token == "verified") {
-                $state.go('login');
-            } else {
-                UserService.verify(token).then(function () {
+                UserService.verify(ctrl.verifyCode).then(function () {
                     ctrl.verifying = false;
-                    ctrl.showGetStarted = true;
+                    ctrl.invalidCode = false;
+                    $state.go('link-with-salesforce');
                 }, function () {
                     ctrl.verifying = false;
-                    ctrl.error = true;
-                    console.log('error token invalid')
+                    ctrl.invalidCode = true;
                 });
-            }
+
         }
 
-        function getStarted() {
-            $state.go('login');
+        function reValid() {
+            ctrl.invalidCode = false;
         }
-
     }
 })();

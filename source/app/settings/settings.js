@@ -47,7 +47,7 @@
         }
         function changeFiscalYear() {
             return UserService.changeFiscalYear('current',
-                {'email': AuthService.authenticatedUser().email, 'fiscalYearStartMonth': ctrl.selectedMonth, 'fiscalYearStartDate': ctrl.selectedDate}
+                {'email': AuthService.authenticatedUser().email, 'fiscalYearStartMonth': ctrl.selectedMonth}
                 )
                 .then(function (response) {
                     ctrl.expandShowFiscalYear = !ctrl.expandShowFiscalYear;
