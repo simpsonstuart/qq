@@ -86,7 +86,7 @@
         }
 
         function changeFiscalYear(fiscalYearStartMonth) {
-            return ApiService.post('users/current/fiscalYearMonth', {fiscal_year_start_month: fiscalYearStartMonth});
+            return ApiService.post('users/current/fiscal-year', {fiscal_year_start_month: fiscalYearStartMonth});
         }
     }
 })();

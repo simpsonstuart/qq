@@ -2,7 +2,7 @@
     'use strict';
     angular.module('app')
         .factory('DateAndTimeService', DateAndTimeService);
-
+    DateAndTimeService.$inject = ['moment'];
     function DateAndTimeService(moment) {
         return {
             formatDate: formatDate,
@@ -11,7 +11,8 @@
             dateFromFormat: dateFromFormat,
             dateToFormat: dateToFormat,
             dateDayMonth: dateDayMonth,
-            monthNumber: monthNumber
+            monthNumber: monthNumber,
+            monthName: monthName
         };
 
         /**
@@ -79,6 +80,10 @@
          */
         function monthNumber(selectedMonth) {
             return moment.months().indexOf(selectedMonth) + 1;
+        }
+
+        function monthName(monthNumber) {
+            return moment.months()[monthNumber - 1];
         }
     }
 

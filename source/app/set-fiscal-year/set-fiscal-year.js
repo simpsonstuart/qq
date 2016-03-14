@@ -2,7 +2,7 @@
     'use strict';
     angular.module('app.set-fiscal-year')
         .controller('SetFiscalYear', SetFiscalYear);
-    SetFiscalYear.$inject = ['$state', 'UserService', 'moment', '_', 'AuthService', 'DateAndTimeService'];
+    SetFiscalYear.$inject = ['$state', 'UserService', 'moment', '_', 'DateAndTimeService'];
 
     function SetFiscalYear($state, UserService, moment, _, DateAndTimeService) {
         var ctrl = this;
@@ -18,7 +18,7 @@
         }
 
         function setFiscalYear() {
-
+             console.log(DateAndTimeService);
             return UserService.changeFiscalYear(DateAndTimeService.monthNumber(ctrl.selectedMonth))
                 .then(function (response) {
                     $state.go('dashboard');
