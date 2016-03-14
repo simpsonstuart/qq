@@ -72,13 +72,13 @@
 
         /**
          * Takes a three character month designator and converts it to an int
-         * e.g monthNumber('Jul') -> 7
+         * e.g monthNumber('July') -> 7
          *
          * @param selectedMonth
          * @returns {number}
          */
         function monthNumber(selectedMonth) {
-            return ("JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(selectedMonth) / 3) + 1;
+            return moment.months().indexOf(selectedMonth) + 1;
         }
     }
 
