@@ -9,7 +9,7 @@
 
         ctrl.monthChanged = monthChanged;
         ctrl.setFiscalYear = setFiscalYear;
-        ctrl.months = moment.monthsShort();
+        ctrl.months = moment.months();
 
         function monthChanged (selectedMonth) {
             var dateNumber = DateAndTimeService.monthNumber(selectedMonth);
