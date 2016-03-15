@@ -56,12 +56,12 @@
             </form>
         </div>
         <div class="row">
-            <small>Edit Start of Fiscal Year</small>
-            <h2>{{ctrl.profile.startFiscalYear}}</h2>
+            <small>Fiscal Year Start Month</small>
+            <h2 ng-bind="ctrl.selectedMonth"></h2>
             <a href="#settings" class="edit" ng-click="ctrl.clickFiscalYear()">edit</a>
         </div>
         <div ng-show="ctrl.expandShowFiscalYear" class="edit-expanded">
-            <small>Fiscal Year Start</small>
+            <small>Edit Start Month</small>
             <small class="error-list" ng-bind="ctrl.fiscalYearError" ng-if="ctrl.fiscalYearError">Error saving data!</small>
             <form name="fiscalYearForm" ng-submit="ctrl.setFiscalYear()">
                 <fieldset>
