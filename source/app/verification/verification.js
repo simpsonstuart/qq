@@ -1,14 +1,14 @@
 (function () {
     'use strict';
-    angular.module('app.get-started')
-        .controller('GetStarted', GetStarted);
-    GetStarted.$inject = ['$state', 'UserService', '$timeout', 'AuthService'];
+    angular.module('app.verification')
+        .controller('Verification', Verification);
+    Verification.$inject = ['$state', 'UserService', '$timeout', 'AuthService'];
 
-    function GetStarted($state, UserService, $timeout, AuthService) {
+    function Verification($state, UserService, $timeout, AuthService) {
         var ctrl = this;
         var returnUrl = '/login';
         ctrl.error = false;
-        ctrl.showGetStarted = false;
+        ctrl.showVerification = false;
         ctrl.verifying = false;
         ctrl.verify = verify;
         ctrl.invalidCode = false;

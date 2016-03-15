@@ -22,7 +22,7 @@
         'app.settings',
         'app.sync',
         'app.registration-confirmation',
-        'app.get-started',
+        'app.verification',
         'app.link-with-salesforce',
         'app.favorites',
         'app.edit-next-step',

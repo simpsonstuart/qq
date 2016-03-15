@@ -51,7 +51,7 @@
                     console.log('running loadstop');
                     if (event.url.match("oauth/success")) {
                         loginPopup.close();
-                            $state.go('deal-import');
+                        $state.go('deal-import');
                     }
                 });
             } else {
