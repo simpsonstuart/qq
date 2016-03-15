@@ -15,27 +15,32 @@
          */
         function currentFiscalQuarterDates(currentDate, fiscalYearStartMonth) {
             var fiscalYearStart;
+            fiscalYearStartMonth = (fiscalYearStartMonth - 1);
 
-            if (fiscalYearStartMonth <= currentDate.month() ) {
-                fiscalYearStart = moment().month(ctrl.fiscalYearStartMonthNumber).date(1).hour(0).minute(0).second(0);
+            if (fiscalYearStartMonth <= (currentDate.month()) ) {
+                fiscalYearStart = moment().month(fiscalYearStartMonth).date(1).hour(0).minute(0).second(0);
             } else {
                 fiscalYearStart = moment().year(moment().year() - 1).month(fiscalYearStartMonth).date(1).hour(0).minute(0).second(0);
             }
 
-            var startFirstQuarter = moment(fiscalYearStart);
-            var endFirstQuarter = moment(startFirstQuarter).add(3, 'months').subtract(1, 'days');
-            var endSecondQuarter = moment(endFirstQuarter).add(3, 'months').subtract(1, 'days');
-            var endThirdQuarter = moment(endSecondQuarter).add(3, 'months').subtract(1, 'days');
-            var endFourthQuarter = moment(endThirdQuarter).add(3, 'months').subtract(1, 'days');
+            var firstQuarterStart = moment(fiscalYearStart);
+            var secondQuarterStart = moment(firstQuarterStart).add(3, 'months');
+            var firstQuarterEnd = moment(secondQuarterStart).subtract(1, 'days');
+            var thirdQuarterStart = moment(secondQuarterStart).add(3, 'months');
+            var secondQuarterEnd = moment(thirdQuarterStart).subtract(1, 'days');
+            var fourthQuarterStart = moment(thirdQuarterStart).add(3, 'months');
+            var thirdQuarterEnd = moment(fourthQuarterStart).subtract(1, 'days');
+            var nextYearFirstQuarterStart = moment(fourthQuarterStart).add(3, 'months');
+            var fourthQuarterEnd = moment(nextYearFirstQuarterStart).subtract(1, 'days');
 
-            if(moment(currentDate).isBetween(startFirstQuarter, endFirstQuarter) || moment(currentDate).isSame(startFirstQuarter)) {
-                return new FiscalQuarter(startFirstQuarter, endFirstQuarter);
-            } else if (moment(currentDate).isBetween(endFirstQuarter, endSecondQuarter) || moment(currentDate).isSame(endFirstQuarter)) {
-                return new FiscalQuarter(moment(endFirstQuarter).add(1, 'days'), endSecondQuarter);
-            } else if(moment(currentDate).isBetween(endSecondQuarter, endThirdQuarter) || moment(currentDate).isSame(endSecondQuarter)) {
-                return new FiscalQuarter(moment(endSecondQuarter).add(1, 'days'), endThirdQuarter);
-            } else if(moment(currentDate).isBetween(endThirdQuarter, endFourthQuarter) || moment(currentDate).isSame(endThirdQuarter)) {
-                return new FiscalQuarter(moment(endThirdQuarter).add(1, 'days'), endFourthQuarter);
+            if(moment(currentDate).isBetween(firstQuarterStart, firstQuarterEnd) || moment(currentDate).isSame(firstQuarterStart)) {
+                return new FiscalQuarter(firstQuarterStart, firstQuarterEnd);
+            } else if (moment(currentDate).isBetween(firstQuarterEnd, secondQuarterEnd) || moment(currentDate).isSame(firstQuarterEnd)) {
+                return new FiscalQuarter(secondQuarterStart, secondQuarterEnd);
+            } else if(moment(currentDate).isBetween(secondQuarterEnd, thirdQuarterEnd) || moment(currentDate).isSame(secondQuarterEnd)) {
+                return new FiscalQuarter(thirdQuarterStart, thirdQuarterEnd);
+            } else if(moment(currentDate).isBetween(thirdQuarterEnd, fourthQuarterEnd) || moment(currentDate).isSame(thirdQuarterEnd)) {
+                return new FiscalQuarter(fourthQuarterStart, fourthQuarterEnd);
             }
         }
 
