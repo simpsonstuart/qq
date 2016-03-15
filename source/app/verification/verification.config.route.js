@@ -1,10 +1,10 @@
 (function () {
     'use strict';
-    angular.module('app.get-started').config(config);
+    angular.module('app.verification').config(config);
 
     function config($stateProvider) {
-        $stateProvider.state('get-started', {
-            url: '/get-started?token',
+        $stateProvider.state('verification', {
+            url: '/verification?token',
             restricted: true,
             data: {
                 bodyClasses: 'login',
@@ -19,8 +19,8 @@
                     controllerAs: 'ctrl'
                 },
                 'container': {
-                    templateUrl: 'views/get-started/get-started.html',
-                    controller: 'GetStarted',
+                    templateUrl: 'views/verification/verification.html',
+                    controller: 'Verification',
                     controllerAs: 'ctrl'
                 }
             }
