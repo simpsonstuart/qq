@@ -28,6 +28,7 @@ nvm use 4.3
 ```sh
 npm install
 npm install -g cordova@5.4.* gulp-cli
+bower install
 ```
 
 ### Plugins to install

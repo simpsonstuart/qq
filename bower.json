@@ -1,0 +1,32 @@
+{
+  "name": "traqq-frontend",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Andy Wendt <andy@awendt.com>"
+  ],
+  "license": "Custom",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.4.9",
+    "angular-cache": "^4.4.3",
+    "angular-ui-router": "^0.2.15",
+    "jquery": "^2.1.4",
+    "jquery-match-height": "^0.6.0",
+    "numeral": "^1.5.3",
+    "ngstorage": "^0.3.10",
+    "moment": "^2.11.0",
+    "moment-fquarter": "^0.1.0",
+    "underscore": "^1.8.3",
+    "satellizer": "^0.13.0"
+  }
+}

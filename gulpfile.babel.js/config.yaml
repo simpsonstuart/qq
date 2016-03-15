@@ -1,6 +1,7 @@
 ---
 paths:
   node_modules: "./node_modules"
+  bower: "./bower_components"
   vendor: "./source/vendor"
   source:
     root: "./source"

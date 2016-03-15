@@ -78,21 +78,17 @@ if(isMobile()){
     });
 }
 
-
-
-console.log('full path: ' + fullPath(config.paths.node_modules));
-
 var vendorJavascriptSources = [
-  fullPath(config.paths.node_modules + '/moment/moment.js'),
-  fullPath(config.paths.node_modules + '/moment-timezone/moment-timezone.js'),
-  fullPath(config.paths.node_modules + '/numeral/numeral.js'),
-  fullPath(config.paths.node_modules + '/jquery/dist/jquery.js'),
-  fullPath(config.paths.node_modules + '/underscore/underscore.js'),
-  fullPath(config.paths.node_modules + '/angular/angular.js'),
-  fullPath(config.paths.node_modules + '/angular-ui-router/release/angular-ui-router.js'),
-  fullPath(config.paths.node_modules + '/ngstorage/ngStorage.js'),
-  fullPath(config.paths.node_modules + '/satellizer/satellizer.js'),
-  fullPath(config.paths.node_modules + '/angular-cache/dist/angular-cache.js'),
+  fullPath(config.paths.bower + '/moment/moment.js'),
+  fullPath(config.paths.bower + '/moment-fquarter/moment-fquarter.js'),
+  fullPath(config.paths.bower + '/numeral/numeral.js'),
+  fullPath(config.paths.bower + '/jquery/dist/jquery.js'),
+  fullPath(config.paths.bower + '/underscore/underscore.js'),
+  fullPath(config.paths.bower + '/angular/angular.js'),
+  fullPath(config.paths.bower + '/angular-ui-router/release/angular-ui-router.js'),
+  fullPath(config.paths.bower + '/ngstorage/ngStorage.js'),
+  fullPath(config.paths.bower + '/satellizer/satellizer.js'),
+  fullPath(config.paths.bower + '/angular-cache/dist/angular-cache.js'),
   fullPath(config.paths.vendor + '/ng-cordova.js')
 ];
 
@@ -273,9 +269,7 @@ gulp.task('build', (() => {
 
       if (isAndoid()) {
           shell.task(['cordova-icon']);
-          gulp.src(fullPath('./release-signing.properties'))
-              .pipe(gulp.dest(fullPath(config.paths.platforms.android))
-              );
+          gulp.src(fullPath('./release-signing.properties')).pipe(gulp.dest(fullPath(config.paths.platforms.android)));
       }
   }
 
