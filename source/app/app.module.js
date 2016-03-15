@@ -59,7 +59,6 @@
         $rootScope.$on('$stateChangeStart', stateChangeStart);
 ////////////
         function stateChangeStart(event, next) {
-            console.log(userIsNotLinkedWithSalesforce());
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
 
@@ -82,7 +81,6 @@
 
             if(userIsNotLinkedWithSalesforce()){
                 event.preventDefault();
-
                 $state.go('link-with-salesforce');
             }
 

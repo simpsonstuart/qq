@@ -46,7 +46,7 @@ header {
   }
   .profile-details {
     @include span(75% no-gutter border-box);
-    .all-deals, .new-deals {
+    .all-deals {
       @include span(50% no-gutter border-box);
     }
     .dash-next-steps {
@@ -58,7 +58,7 @@ header {
         @include span(55% no-gutter border-box)
       }
     }
-    .playbook {
+    .playbook, .new-deals {
       @include span(100% no-gutter border-box);
     }
     .virtual-team {
@@ -151,10 +151,10 @@ header {
     }
     .profile-details {
       @include span(100% no-gutter border-box);
-      .all-deals, .new-deals, .qualify, .campaign {
+      .all-deals, .qualify, .campaign {
         @include span(50% no-gutter border-box);
       }
-      .dash-next-steps {
+      .dash-next-steps, .new-deals {
         @include span(100% no-gutter border-box);
         span {
           @include span(35% no-gutter border-box);

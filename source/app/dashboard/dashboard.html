@@ -16,13 +16,9 @@
                 </a>
             </div>
             <div class="flex-with-line">
-                <div class="start-of-fiscal">
-                    <small>Start of Fiscal Year</small>
-                    <h2>{{ctrl.fiscalYearStartMonth}}</h2>
-                </div>
                 <div class="new-deals">
-                    <small>Current Quarter</small>
-                    <h2>{{ctrl.formatQuarter(ctrl.currentQuarterStart)}} - {{ctrl.formatQuarter(ctrl.currentQuarterEnd)}}</h2>
+                    <small>Newly Imported Deals</small>
+                    <h2>{{ctrl.formatMoney(ctrl.newDealsAmount)}}</h2>
                 </div>
             </div>
 
