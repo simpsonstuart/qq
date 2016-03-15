@@ -30,5 +30,5 @@
         <engine name="cordova" version=">=5.0.0" />
     </engines>
 
-    <config-file platform="ios" target="*-Info.plist" parent="ITSAppUsesNonExemptEncryption"><false/></config-file>
+    <config-file target="*-Info.plist" parent="ITSAppUsesNonExemptEncryption"><false/></config-file>
 </plugin>
