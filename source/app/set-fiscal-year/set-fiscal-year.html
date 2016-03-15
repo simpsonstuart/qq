@@ -6,10 +6,7 @@
             <fieldset>
                 <p class="fiscalYearEdit">
                     <p class="fiscalYearSelectHeading">Start of Fiscal Year</p>
-                    <select class="fiscalYearSelect" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged(ctrl.selectedMonth)" required>
-                        <option value="" disabled selected>Month</option>
-                        <option ng-repeat="month in ctrl.months" value="{{month}}">{{month}}</option>
-                    </select>
+                    <months selected="ctrl.selectedMonth" months="ctrl.months"></months>
                 </p>
                 <button type="submit" ng-disabled="fiscalYearForm.$invalid" class="fiscalYearButton">Set</button>
             </fieldset>

@@ -9,7 +9,8 @@
 
         ctrl.monthChanged = monthChanged;
         ctrl.setFiscalYear = setFiscalYear;
-        ctrl.months = moment.months();
+
+        _activate();
 
         function monthChanged (selectedMonth) {
             var dateNumber = DateAndTimeService.monthNumber(selectedMonth);
@@ -18,13 +19,17 @@
         }
 
         function setFiscalYear() {
-             console.log(DateAndTimeService);
             return UserService.changeFiscalYear(DateAndTimeService.monthNumber(ctrl.selectedMonth))
                 .then(function (response) {
                     $state.go('dashboard');
                 }, function (response) {
                     ctrl.fiscalYearError = response.message;
                 });
+        }
+
+        function _activate() {
+            ctrl.selectedMonth = DateAndTimeService.monthName(1);
+            ctrl.months = moment.months();
         }
 
     }
