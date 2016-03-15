@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "T7YC6ZYQA3.com.mattneally.traqq",
+        "appID": "<YOUR_TEAM_ID_FROM_MEMBER_CENTER>.com.mattneally.traqq",
         "paths": [
           "*"
         ]
