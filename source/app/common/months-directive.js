@@ -13,11 +13,6 @@
                 selected: "="
             },
             link: function (scope, element, attrs) {
-                if (attrs.message) {
-                    scope.message = attrs.message;
-                } else {
-                    scope.message = "Loading…"
-                }
             }
         };
     }
