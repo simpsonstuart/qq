@@ -66,9 +66,7 @@
             <form name="fiscalYearForm" ng-submit="ctrl.setFiscalYear()">
                 <fieldset>
                     <p class="fiscalYearEdit">
-                        <select class="fiscalYearSelect" data-ng-model="ctrl.selectedMonth" ng-change="ctrl.monthChanged(ctrl.selectedMonth)" required>
-                            <option value="" disabled selected>Month</option>
-                            <option ng-repeat="month in ctrl.months" value="{{month}}">{{month}}</option>
+                        <select class="fiscalYearSelect" ng-model="ctrl.selectedMonth" ng-options="month for month in ctrl.months"> ng-required="true">
                         </select>
                     </p>
                     <button type="submit" ng-disabled="fiscalYearForm.$invalid">Save</button>

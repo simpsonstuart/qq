@@ -51,7 +51,6 @@
         function changeFiscalYear() {
             return UserService.changeFiscalYear(DateAndTimeService.monthNumber(ctrl.selectedMonth))
                 .then(function (response) {
-                    console.log('changed month');
                     ctrl.expandShowFiscalYear = !ctrl.expandShowFiscalYear;
                 }, function (response) {
                     ctrl.fiscalYearError = response.message;
@@ -103,10 +102,9 @@
         }
 
         function activate() {
-            UserService.profile(function () {
-                return user_id ? user_id : 'current';
-            }()).then(function (data) {
+            UserService.profile('current').then(function (data) {
                 ctrl.profile = data;
+                ctrl.selectedMonth = DateAndTimeService.monthName(ctrl.profile.fiscal_year_start_month);
             });
         }
     }
